@@ -1,6 +1,6 @@
 {
-  "version": "0.1.3",
+  "version": "0.1.4",
   "released": "2026-10-22",
-  "notes": "Update-Fix Build 3: Cache-busting, kontrollierte Navigation und Update-Hinweise",
-  "build": 3
+  "notes": "Lernzentrum 2.0: 50 Lektionen, 25 neue Themen, erweitertes Fachwissen",
+  "build": 1
 }
