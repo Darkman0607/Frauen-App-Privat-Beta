@@ -10,3 +10,6 @@
 - Teste mit Testdaten, prüfe Foto-Speicherung, App-Neustart, Backup, Wiederherstellung und Updates vor Einsatz mit echten Gesundheitsdaten.
 
 Build 3: Bei zu kurzem/abweichendem Passwort oder fehlgeschlagenem Entsperren erscheint ein Wiederholen-Button statt einer unbedienbaren leeren Ansicht. Kein Löschen von Daten.
+
+## Build 4 – Datenpasswort direkt in der App
+Beim ersten Start erscheinen zwei Eingabefelder (Passwort erstellen und wiederholen). Bei späterem Start wird das bestehende Datenpasswort abgefragt. Die Datenbank und Verschlüsselungsparameter bleiben unverändert. Nach einem ungültigen Passwort kann die Eingabe erneut geöffnet werden. Kein Fingerabdruck. Vor der Migration bestehender Daten Backup anlegen; ausschließlich mit Testdaten erproben.

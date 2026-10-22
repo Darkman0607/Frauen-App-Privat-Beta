@@ -1,6 +1,6 @@
 {
   "version": "0.1.6",
   "released": "2026-10-22",
-  "notes": "Lokale Verschlüsselung und verschlüsselte Sicherungen; erneute Passwort-Eingabe bei Einrichtung/Entsperrfehler",
-  "build": 3
+  "notes": "In-App Passwort-Einrichtung und Entsperrung mit sichtbaren Formularfeldern; verschlüsselte lokale Daten und Backups",
+  "build": 4
 }
