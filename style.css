@@ -308,3 +308,56 @@ details.deep-lesson.is-completed{border-left-color:#38a169}
 details.base-lesson{border-left:4px solid #94bba9;background:#fff;border-radius:16px;border-top:1px solid #e8edea;border-right:1px solid #e8edea;border-bottom:1px solid #e8edea}
 .base-ico{background:linear-gradient(135deg,#e8f6f0,#f4f8f6)}
 .base-pill{background:#e7f5ef;color:#286b51;font-weight:700}
+
+/* --- Lernzentrum Themen-Kacheln & Unterseiten (v0.1.9.2) --- */
+.topics-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+@media(max-width:520px){.topics-grid{grid-template-columns:1fr}}
+
+.topic-card{border-radius:22px;padding:18px 16px;text-align:left;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;transition:transform .16s ease,box-shadow .16s ease;border:1.5px solid transparent;box-shadow:0 6px 18px rgba(96,52,79,0.06);min-height:165px}
+.topic-card:active,.topic-card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(96,52,79,0.14)}
+
+.topic-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.topic-card-icon{width:48px;height:48px;border-radius:16px;display:inline-flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 10px rgba(0,0,0,0.06)}
+.topic-arrow{width:30px;height:30px;border-radius:50%;background:#ffffffb3;display:inline-flex;align-items:center;justify-content:center;font-size:14px;color:#8f3d64;transition:transform .15s}
+.topic-card:hover .topic-arrow{transform:translateX(3px)}
+
+.topic-card-title{font-size:16.5px;color:#5a233f;line-height:1.25;margin-bottom:4px}
+.topic-card-desc{font-size:12px;color:#785868;margin:0 0 12px;line-height:1.45}
+
+.topic-card-footer{display:flex;gap:6px;flex-wrap:wrap}
+.topic-stat-pill{font-size:11px;font-weight:700;padding:4px 9px;border-radius:10px;background:#ffffffcc;color:#6b294c;border:1px solid #ead0de}
+.base-stat-pill{background:#f4f9f7cc;color:#286b51;border-color:#c8e6da}
+
+/* Farbschemata für die 7 Themen */
+.topic-periode{background:linear-gradient(145deg,#fff2f6,#ffe8f0);border-color:#f5c4d4}
+.topic-periode .topic-card-icon{background:linear-gradient(135deg,#ffd5e3,#ffb8ce)}
+
+.topic-zyklus{background:linear-gradient(145deg,#fcf4ff,#f4e6ff);border-color:#e6c8fa}
+.topic-zyklus .topic-card-icon{background:linear-gradient(135deg,#ebd4fc,#ddb8fa)}
+
+.topic-schwanger{background:linear-gradient(145deg,#fffbf0,#fffae0);border-color:#fae8b2}
+.topic-schwanger .topic-card-icon{background:linear-gradient(135deg,#faeec5,#f7e099)}
+
+.topic-unter{background:linear-gradient(145deg,#f2fbf8,#e6f8f1);border-color:#bde7d7}
+.topic-unter .topic-card-icon{background:linear-gradient(135deg,#c8f2e2,#a8e8d1)}
+
+.topic-anatomie{background:linear-gradient(145deg,#fff4f9,#ffebf5);border-color:#f7c8e2}
+.topic-anatomie .topic-card-icon{background:linear-gradient(135deg,#fed5eb,#fcb6dc)}
+
+.topic-wochenbett{background:linear-gradient(145deg,#f0f7ff,#e4f0ff);border-color:#bdd6f7}
+.topic-wochenbett .topic-card-icon{background:linear-gradient(135deg,#cfe3fc,#b3d3fa)}
+
+.topic-brust{background:linear-gradient(145deg,#fff8f2,#ffeedd);border-color:#faecc8}
+.topic-brust .topic-card-icon{background:linear-gradient(135deg,#ffe0c2,#ffd0a1)}
+
+/* Unterseiten-Header */
+.learn-subpage-header{border-radius:22px;padding:20px 18px;margin-bottom:20px;border:1.5px solid #ebd0de;box-shadow:0 8px 24px rgba(116,62,89,0.08)}
+.subpage-back-btn{background:#ffffffdd;border:1px solid #ebd0de;border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;color:#8f3d64;cursor:pointer;margin-bottom:12px;display:inline-flex;align-items:center;gap:6px;box-shadow:0 2px 6px rgba(0,0,0,0.04)}
+.subpage-back-btn:active{transform:scale(0.97)}
+
+.subpage-title-row{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.subpage-ico{font-size:36px;width:56px;height:56px;border-radius:18px;background:#ffffffcc;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.06);flex-shrink:0}
+.subpage-texts h2{margin:0;font-size:22px;color:#5a233f}
+
+.subpage-stats-chips{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.sub-pill{font-size:12px;font-weight:700;padding:5px 12px;border-radius:12px;background:#ffffffcc;color:#6b294c;border:1px solid #ead0de}

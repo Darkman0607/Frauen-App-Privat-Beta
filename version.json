@@ -1,6 +1,6 @@
 {
-  "version": "0.1.9.1",
+  "version": "0.1.9.2",
   "released": "2026-10-22",
-  "notes": "Lernzentrum Redesign: Neue Hero-Karte mit Fortschrittsbalken, Live-Suche, Bereichs-Filterchips, strukturierte farbcodierte Fachboxen (Einfach erklärt, Hebammenwissen, Schritte) und Haken-Markierung.",
-  "build": 15
+  "notes": "Lernzentrum Kapitel-Kacheln: Übersichtliche 2-Spalten-Kacheln nach Themenbereichen (Periode, Zyklus, Schwangerschaft, Untersuchungen, Anatomie, Wochenbett, Brust) mit Direktsprung auf die jeweilige Themenseite.",
+  "build": 16
 }

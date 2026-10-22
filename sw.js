@@ -1,4 +1,4 @@
-const CACHE='frauen-app-0.1.9.1-build15';
+const CACHE='frauen-app-0.1.9.2-build16';
 const CORE=[
   './',
   './index.html',

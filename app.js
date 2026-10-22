@@ -1,5 +1,5 @@
 'use strict';
-const APP_VERSION='0.1.9.1', APP_BUILD=15, DB='frauen-app-beta', DB_VERSION=2;
+const APP_VERSION='0.1.9.2', APP_BUILD=16, DB='frauen-app-beta', DB_VERSION=2;
 const $=id=>document.getElementById(id), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const categories=['Periode','Zwischenblutung','Ausfluss','Flüssigkeitsverlust','Sexualität','Kinderwunsch','Zervixschleim / Eisprung','Basaltemperatur','Schwangerschaftstest','Schmerzen','Brustveränderung','Vulva / Scheide','WC / Ausscheidung','Wohlbefinden','Schwangerschaft','Kindsbewegungen / Wehen','Frauenarzttermin','Abstrich / Laboruntersuchung','Geburt / Wochenbett','Gemeinsame Selbstkontrolle','Krankheit / Allgemeinsymptome'];
 const categoryIcons = {
@@ -27,7 +27,7 @@ const categoryIcons = {
 };
 function getCatIcon(cat){return categoryIcons[cat]||'📝';}
 
-let updatingNow=false,db,page='home',selectedDay=[new Date().getFullYear(),String(new Date().getMonth()+1).padStart(2,'0'),String(new Date().getDate()).padStart(2,'0')].join('-'),reloadOnce=false,editing=null;
+let updatingNow=false,db,page='home',selectedTopic=null,selectedDay=[new Date().getFullYear(),String(new Date().getMonth()+1).padStart(2,'0'),String(new Date().getDate()).padStart(2,'0')].join('-'),reloadOnce=false,editing=null;
 const lessons=COURSE_LESSONS;
 let dataKey=null;
 const SECURE_CHECK='frauen-app-local-v1';
@@ -531,66 +531,176 @@ async function calendar(){
 
  <div class="entries" id="entry-list">${entryRows(todays)}</div>`;
 }
+const LEARN_TOPICS = [
+  {
+    id: 'periode',
+    title: 'Periode & Blutung',
+    icon: '🩸',
+    desc: 'Menstruationsverlauf, Blutmengen, Koagel, Hygiene & freies Bluten',
+    colorClass: 'topic-periode',
+    modules: ['Zyklus und Periode', 'Zyklus'],
+    keywords: ['menstruation', 'blutung', 'hygiene', 'periode']
+  },
+  {
+    id: 'zyklus',
+    title: 'Zyklus & Hormone',
+    icon: '✨',
+    desc: 'Eisprung, Zervixschleim, Basaltemperatur, Lutealphase & NFP',
+    colorClass: 'topic-zyklus',
+    modules: ['Zyklus und Periode', 'Hormone & Zyklus', 'Kinderwunsch', 'Zyklus'],
+    keywords: ['zervixschleim', 'basaltemperatur', 'lutealphase', 'sensiplan', 'eisprung', 'hormon']
+  },
+  {
+    id: 'schwangerschaft',
+    title: 'Schwangerschaft & Geburt',
+    icon: '🤰',
+    desc: 'Entwicklung, Fruchtblase, Fruchtwasser, Wehen & Geburt',
+    colorClass: 'topic-schwanger',
+    modules: ['Schwangerschaft und Geburt', 'Schwangerschaft & Geburt', 'Geburtshilfe'],
+    keywords: ['fruchtblase', 'fruchtwasser', 'geburt', 'schwangerschaft']
+  },
+  {
+    id: 'untersuchungen',
+    title: 'Untersuchungen & Spekulum',
+    icon: '🔦',
+    desc: 'Spekulumkunde, Vaginale Tastung (VU), Portio-Einstellung & Labor',
+    colorClass: 'topic-unter',
+    modules: ['Untersuchungen', 'Gynäkologie'],
+    keywords: ['spekulum', 'vaginale untersuchung', 'frauenarzt', 'palpation', 'labor']
+  },
+  {
+    id: 'anatomie',
+    title: 'Anatomie & Intimbereich',
+    icon: '🌸',
+    desc: 'Vulva, Schamlippen, Scheideneingang, Muttermund & Beckenboden',
+    colorClass: 'topic-anatomie',
+    modules: ['Anatomie'],
+    keywords: ['vulva', 'scheideneingang', 'muttermund', 'beckenboden']
+  },
+  {
+    id: 'wochenbett',
+    title: 'Wochenbett & Rückbildung',
+    icon: '🍼',
+    desc: 'Lochien (Wochenfluss), Fundusstand, Gebärmutter-Rückbildung & Pflege',
+    colorClass: 'topic-wochenbett',
+    modules: ['Wochenbett'],
+    keywords: ['lochien', 'wochenfluss', 'fundus', 'rückbildung']
+  },
+  {
+    id: 'brust',
+    title: 'Brustgesundheit',
+    icon: '🤲',
+    desc: 'Anatomie, Abtasttechnik, Mastodynie & Selbstbeobachtung',
+    colorClass: 'topic-brust',
+    modules: ['Brustgesundheit'],
+    keywords: ['brust']
+  }
+];
+
+function getDeepLessonsForTopic(topicId){
+  const t = LEARN_TOPICS.find(x => x.id === topicId);
+  if(!t) return DEEP_LESSONS.map((l,idx)=>({l,idx}));
+  return DEEP_LESSONS.map((l,idx)=>({l,idx})).filter(({l})=>{
+    const modMatch = t.modules.includes(l.module);
+    const kwMatch = t.keywords.some(kw => l.title.toLowerCase().includes(kw) || l.simple.toLowerCase().includes(kw));
+    return modMatch || kwMatch;
+  });
+}
+
+function getBaseLessonsForTopic(topicId){
+  const t = LEARN_TOPICS.find(x => x.id === topicId);
+  if(!t) return lessons;
+  return lessons.filter(l => {
+    const modMatch = t.modules.includes(l.module);
+    const kwMatch = t.keywords.some(kw => l.title.toLowerCase().includes(kw) || l.simple.toLowerCase().includes(kw));
+    return modMatch || kwMatch;
+  });
+}
+
 function learn(){
- const deepMods=[...new Set(DEEP_LESSONS.map(l=>l.module))];
- const baseMods=[...new Set(lessons.map(l=>l.module))];
- const allMods=[...new Set([...deepMods,...baseMods])];
+ if(selectedTopic){
+  const t = LEARN_TOPICS.find(x => x.id === selectedTopic);
+  if(!t){ selectedTopic = null; return learn(); }
+  const topicDeep = getDeepLessonsForTopic(t.id);
+  const topicBase = getBaseLessonsForTopic(t.id);
+
+  return `<div class="learn-subpage-header ${t.colorClass}">
+   <button class="subpage-back-btn" id="topic-back-btn">← Zur Themenübersicht</button>
+   <div class="subpage-title-row">
+    <span class="subpage-ico">${t.icon}</span>
+    <div class="subpage-texts">
+     <h2>${esc(t.title)}</h2>
+     <p class="muted" style="margin:2px 0 0">${esc(t.desc)}</p>
+    </div>
+   </div>
+   <div class="subpage-stats-chips">
+    <span class="pill sub-pill">📖 ${topicDeep.length} Fachlektionen</span>
+    <span class="pill sub-pill">📚 ${topicBase.length} Grundlagen</span>
+    <button class="secondary small-btn" id="open-all-topic">Alle öffnen</button>
+    <button class="secondary small-btn" id="close-all-topic">Alle schließen</button>
+   </div>
+  </div>
+
+  <div class="topic-lessons-wrap">
+   <h3 class="section-title">Ausführliche Lehrbuch-Lektionen (${topicDeep.length})</h3>
+   <div id="deep-lessons" class="lessons-container">
+    ${topicDeep.length ? topicDeep.map(({l,idx})=>deepCard(l,idx)).join('') : '<div class="card muted text-center" style="padding:20px">Keine vertieften Fachlektionen in diesem Bereich.</div>'}
+   </div>
+
+   ${topicBase.length ? `
+    <h3 class="section-title" style="margin-top:28px">Grundlagenlektionen (${topicBase.length})</h3>
+    <div id="lessons" class="lessons-container">${lessonCards(topicBase)}</div>
+   ` : ''}
+  </div>`;
+ }
+
+ // Hauptseite des Lernzentrums: Gekachelte Themenbereiche
+ const doneTotal = DEEP_LESSONS.filter((_,i)=>localStorage.getItem('frauen-app-lesson-done-'+i)==='1').length;
+ const pctTotal = Math.round((doneTotal / DEEP_LESSONS.length) * 100);
+
  return `<div class="learn-hero-card">
   <div class="learn-hero-top">
    <div class="learn-hero-title">
-    <h2>🎓 Lernzentrum &amp; Lehrbuch</h2>
-    <p class="muted" style="margin:2px 0 0">Gynäkologische Fachlektionen, Schritt-für-Schritt-Anleitungen &amp; Schautafeln.</p>
+    <h2>🎓 Lernzentrum · Themenbereiche</h2>
+    <p class="muted" style="margin:2px 0 0">Wähle ein Fachgebiet aus, um alle passenden Lektionen &amp; Schautafeln zu öffnen.</p>
    </div>
    <div class="learn-stats-badge">
     <strong>${DEEP_LESSONS.length}</strong>
-    <small>Fachlektionen</small>
+    <small>Fachkapitel</small>
    </div>
   </div>
 
   <div class="learn-progress-box">
    <div class="row" style="margin-bottom:6px">
-    <span class="learn-progress-label">Lernfortschritt</span>
-    <span class="learn-progress-val" id="deep-progress-text">0 / ${DEEP_LESSONS.length}</span>
+    <span class="learn-progress-label">Gesamter Lernfortschritt</span>
+    <span class="learn-progress-val">${doneTotal} / ${DEEP_LESSONS.length} (${pctTotal}%)</span>
    </div>
    <div class="progress-bar-track">
-    <div class="progress-bar-fill" id="learn-progress-bar" style="width:0%"></div>
-   </div>
-  </div>
-
-  <div class="learn-search-wrap">
-   <span class="learn-search-ico">🔍</span>
-   <input id="search-all-lessons" class="learn-search-input" placeholder="Thema suchen (z. B. Muttermund, Periode, Spekulum, Tastung)..." aria-label="Lernzentrum durchsuchen">
-  </div>
-
-  <div class="learn-module-filter-bar">
-   <button class="mod-filter-chip active" data-mod="">Alle Bereiche</button>
-   ${allMods.map(m=>`<button class="mod-filter-chip" data-mod="${esc(m)}">${esc(m)}</button>`).join('')}
-  </div>
- </div>
-
- <div class="learn-section-header">
-  <div class="row wrap" style="gap:8px">
-   <div class="section-title-wrap">
-    <h3>Ausführliche Fachlektionen (${DEEP_LESSONS.length})</h3>
-    <small class="muted">Mit medizinischen Schautafeln &amp; Vollbild-Zoom</small>
-   </div>
-   <div class="row" style="gap:6px">
-    <button class="secondary small-btn" id="open-all-deep">Alle öffnen</button>
-    <button class="secondary small-btn" id="close-all-deep">Alle schließen</button>
+    <div class="progress-bar-fill" style="width:${pctTotal}%"></div>
    </div>
   </div>
  </div>
 
- <div id="deep-lessons" class="lessons-container">${DEEP_LESSONS.map(deepCard).join('')}</div>
+ <h3 class="section-title" style="margin:16px 4px 12px">Wähle dein Lernkapitel:</h3>
 
- <div class="learn-section-header" style="margin-top:28px">
-  <div class="section-title-wrap">
-   <h3>📚 Grundlagenkartei (${lessons.length} Kurzlektionen)</h3>
-   <small class="muted">Schnellüberblick zum Nachschlagen</small>
-  </div>
- </div>
-
- <div id="lessons" class="lessons-container">${lessonCards(lessons)}</div>`;
+ <div class="topics-grid">
+  ${LEARN_TOPICS.map(t=>{
+    const deepCount = getDeepLessonsForTopic(t.id).length;
+    const baseCount = getBaseLessonsForTopic(t.id).length;
+    return `<button class="topic-card ${t.colorClass}" data-topic="${esc(t.id)}">
+     <div class="topic-card-top">
+      <span class="topic-card-icon">${t.icon}</span>
+      <span class="topic-arrow">➔</span>
+     </div>
+     <strong class="topic-card-title">${esc(t.title)}</strong>
+     <p class="topic-card-desc">${esc(t.desc)}</p>
+     <div class="topic-card-footer">
+      <span class="topic-stat-pill">📖 ${deepCount} Fachkapitel</span>
+      <span class="topic-stat-pill base-stat-pill">📚 ${baseCount} Grundlagen</span>
+     </div>
+    </button>`;
+  }).join('')}
+ </div>`;
 }
 function deepCard(l,i){
  const isDone = localStorage.getItem('frauen-app-lesson-done-'+i)==='1';
@@ -700,72 +810,38 @@ async function render(){buttons();$('view').innerHTML=page==='home'?home():page=
  if($('cal-new-entry'))$('cal-new-entry').onclick=async()=>{await goto('diary');showForm();if($('entry-date'))$('entry-date').value=selectedDay+'T12:00';};
  document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{selectedDay=b.dataset.day;render();});
 }if(page==='learn'){
- const updateProgress=()=>{
-  const doneCount=DEEP_LESSONS.filter((_,i)=>localStorage.getItem('frauen-app-lesson-done-'+i)==='1').length;
-  const pct=Math.round((doneCount/DEEP_LESSONS.length)*100);
-  if($('deep-progress-text'))$('deep-progress-text').textContent=doneCount+' / '+DEEP_LESSONS.length+' ('+pct+'%)';
-  if($('learn-progress-bar'))$('learn-progress-bar').style.width=pct+'%';
- };
- 
- const bindDeepCheckboxes=()=>{
+ // If in topic view
+ if(selectedTopic){
+  if($('topic-back-btn'))$('topic-back-btn').onclick=()=>{ selectedTopic=null; render(); };
+  if($('open-all-topic'))$('open-all-topic').onclick=()=>document.querySelectorAll('#deep-lessons details, #lessons details').forEach(d=>d.open=true);
+  if($('close-all-topic'))$('close-all-topic').onclick=()=>document.querySelectorAll('#deep-lessons details, #lessons details').forEach(d=>d.open=false);
+  
+  // Bind completion checkboxes in topic view
   document.querySelectorAll('.deep-complete').forEach(c=>c.onchange=()=>{
-   localStorage.setItem('frauen-app-lesson-done-'+c.dataset.deep,c.checked?'1':'0');
-   const card=c.closest('details.deep-lesson');
+   localStorage.setItem('frauen-app-lesson-done-'+c.dataset.deep, c.checked?'1':'0');
+   const card = c.closest('details.deep-lesson');
    if(card){
-    card.classList.toggle('is-completed',c.checked);
-    const meta=card.querySelector('.summary-meta');
+    card.classList.toggle('is-completed', c.checked);
+    const meta = card.querySelector('.summary-meta');
     if(meta){
-     const donePill=meta.querySelector('.done-pill');
-     if(c.checked&&!donePill){meta.insertAdjacentHTML('beforeend','<span class="pill done-pill">✓ Gelernt</span>');}
-     else if(!c.checked&&donePill){donePill.remove();}
+     const donePill = meta.querySelector('.done-pill');
+     if(c.checked && !donePill){ meta.insertAdjacentHTML('beforeend','<span class="pill done-pill">✓ Gelernt</span>'); }
+     else if(!c.checked && donePill){ donePill.remove(); }
     }
    }
-   updateProgress();
   });
- };
- updateProgress();
- bindDeepCheckboxes();
-
- if($('open-all-deep'))$('open-all-deep').onclick=()=>document.querySelectorAll('#deep-lessons details').forEach(d=>d.open=true);
- if($('close-all-deep'))$('close-all-deep').onclick=()=>document.querySelectorAll('#deep-lessons details').forEach(d=>d.open=false);
-
- let activeMod='';
- const applyFilter=()=>{
-  const q=$('search-all-lessons')?$('search-all-lessons').value.toLocaleLowerCase('de').trim():'';
-  
-  // Filter Deep Lessons
-  const filteredDeep=DEEP_LESSONS.map((l,idx)=>({l,idx})).filter(({l})=>{
-   const matchMod=!activeMod||l.module===activeMod;
-   const matchText=!q||[l.title,l.simple,l.expert,l.tip,...(l.steps||[])].some(t=>t.toLocaleLowerCase('de').includes(q));
-   return matchMod&&matchText;
+ } else {
+  // If in topics grid view: bind click on cards
+  document.querySelectorAll('[data-topic]').forEach(b=>{
+   b.onclick=()=>{
+    selectedTopic = b.dataset.topic;
+    render();
+    window.scrollTo(0,0);
+   };
   });
-  if($('deep-lessons')){
-   $('deep-lessons').innerHTML=filteredDeep.length?filteredDeep.map(({l,idx})=>deepCard(l,idx)).join(''):'<div class="card muted text-center" style="padding:20px">Keine Fachlektionen für diesen Suchbegriff.</div>';
-   bindLightbox();
-   bindDeepCheckboxes();
-  }
-
-  // Filter Base Lessons
-  const filteredBase=lessons.filter(l=>{
-   const matchMod=!activeMod||l.module===activeMod;
-   const matchText=!q||[l.title,l.simple,l.expert,l.practice,l.tip].some(t=>t.toLocaleLowerCase('de').includes(q));
-   return matchMod&&matchText;
-  });
-  if($('lessons')){
-   $('lessons').innerHTML=lessonCards(filteredBase);
-  }
- };
-
- if($('search-all-lessons'))$('search-all-lessons').oninput=applyFilter;
- document.querySelectorAll('.mod-filter-chip').forEach(btn=>{
-  btn.onclick=()=>{
-   document.querySelectorAll('.mod-filter-chip').forEach(b=>b.classList.remove('active'));
-   btn.classList.add('active');
-   activeMod=btn.dataset.mod||'';
-   applyFilter();
-  };
- });
-}if(page==='records'){$('open-record-form').onclick=async()=>{await goto('diary');showForm('Frauenarzttermin')};$('export').onclick=()=>backup().catch(err=>notify('Backup: '+err.message));$('drive-share').onclick=()=>shareDriveBackup().catch(err=>notify('Drive-Sicherung: '+err.message));$('restore').onchange=async e=>{try{await restore(e.target.files[0])}catch(err){notify('Importfehler: '+err.message)}};$('record-update').onclick=checkUpdate;$('clear-all').onclick=async()=>{if(!confirm('ALLE lokalen Gesundheitsdaten und Bilder unwiderruflich löschen?'))return;await Promise.all(['entries','photos'].map(async name=>{for(const v of await all(name))await del(name,v.id)}));notify('Alle Daten gelöscht');render()}}}
+ }
+}
+if(page==='records'){$('open-record-form').onclick=async()=>{await goto('diary');showForm('Frauenarzttermin')};$('export').onclick=()=>backup().catch(err=>notify('Backup: '+err.message));$('drive-share').onclick=()=>shareDriveBackup().catch(err=>notify('Drive-Sicherung: '+err.message));$('restore').onchange=async e=>{try{await restore(e.target.files[0])}catch(err){notify('Importfehler: '+err.message)}};$('record-update').onclick=checkUpdate;$('clear-all').onclick=async()=>{if(!confirm('ALLE lokalen Gesundheitsdaten und Bilder unwiderruflich löschen?'))return;await Promise.all(['entries','photos'].map(async name=>{for(const v of await all(name))await del(name,v.id)}));notify('Alle Daten gelöscht');render()}}}
 function bindLightbox(){
  const lb=$('lightbox');if(!lb)return;
  const close=()=>{lb.classList.remove('open');$('lb-img').src='';};
