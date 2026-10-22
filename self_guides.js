@@ -26,7 +26,8 @@ const SELF_GUIDES=[
         "alt": "Vorbereitetes Untersuchungstablett, Hygiene und Lagerung",
         "caption": "Schautafel 1: Komplettes Untersuchungstablett (Spekulum, lange Stieltupfer, NaCl/Gleitgel, Nierenschale) sowie entspannte Lagerung mit leicht erhöhtem Becken."
       }
-    ]
+    ],
+    "icon": "🧼"
   },
   {
     "title": "2. Vulva und Scheideneingang – Orientierung",
@@ -58,7 +59,8 @@ const SELF_GUIDES=[
         "alt": "Wischrichtung und Intimhygiene von vorne nach hinten",
         "caption": "Hygiene-Leitfaden: Systematische Reinigung von vorne nach hinten zum Schutz von Harnröhre und Scheideneingang."
       }
-    ]
+    ],
+    "icon": "🌸"
   },
   {
     "title": "3. Menstruation – Verlauf und Warnzeichen",
@@ -90,7 +92,8 @@ const SELF_GUIDES=[
         "alt": "Blick durch das Spekulum auf die Portio während der Menstruation",
         "caption": "Portio während der Periode: Leicht geöffneter Muttermund mit direktem Abfluss von Menstruationsblut und Gewebeflocken."
       }
-    ]
+    ],
+    "icon": "🩸"
   },
   {
     "title": "4. Ausfluss und Zervixschleim beurteilen",
@@ -117,7 +120,8 @@ const SELF_GUIDES=[
         "alt": "Die 4 Zyklusphasen von Portio und Zervixschleim im Vergleich",
         "caption": "Schautafel: Veränderung von Muttermundöffnung und Zervixschleim (Periode, frühe Follikelphase, Eisprung mit spinnbarem Schleim, Gelbkörperphase)."
       }
-    ]
+    ],
+    "icon": "💧"
   },
   {
     "title": "5. Gebärmutterhals und Muttermund im Zyklus",
@@ -149,7 +153,8 @@ const SELF_GUIDES=[
         "alt": "Portio-Befunde im Spekulum in den 4 Zyklusphasen",
         "caption": "Direkter Vergleich der Portio im Spekulum: Höhenstand, Konsistenz, Öffnungsgrad und Schleimqualität über den gesamten Zyklus."
       }
-    ]
+    ],
+    "icon": "🎯"
   },
   {
     "title": "6. Spekulumkunde: Bauarten, Größen und Einstelltechnik (Lehrbuchstandard)",
@@ -191,7 +196,8 @@ const SELF_GUIDES=[
         "caption": "Abb. 4: Was man nach dem Einstellen der Portio je nach Zyklusphase sieht (Periode, Follikelphase, Ovulation, Lutealphase)."
       }
     ],
-    "source": "https://www.amboss.com/de/wissen/gynakologische-untersuchung/"
+    "source": "https://www.amboss.com/de/wissen/gynakologische-untersuchung/",
+    "icon": "🔦"
   },
   {
     "title": "7. Spekulum-Untersuchung während der Periode: Hygiene, Sicht, Reinigung & Nachsorge",
@@ -234,7 +240,8 @@ const SELF_GUIDES=[
         "caption": "Abb. 4: Liebevolle, hygienische Nachreinigung der Frau (Wischrichtung Symphyse → Damm) und fachgerechte Kaltwasser-Aufbereitung des Edelstahl-Spekulums."
       }
     ],
-    "source": "https://www.frauenaerzte-im-netz.de/frauengesundheit/gynakologische-untersuchung/"
+    "source": "https://www.frauenaerzte-im-netz.de/frauengesundheit/gynakologische-untersuchung/",
+    "icon": "🌺"
   },
   {
     "title": "8. PAP, HPV und vaginale Abstriche richtig unterscheiden",
@@ -254,7 +261,8 @@ const SELF_GUIDES=[
     "image": "",
     "alt": "",
     "caption": "",
-    "source": "https://www.who.int/publications/i/item/WHO-SRH-23.1"
+    "source": "https://www.who.int/publications/i/item/WHO-SRH-23.1",
+    "icon": "🧪"
   },
   {
     "title": "9. Brustgesundheit und sichere Selbstbeobachtung",
@@ -273,6 +281,7 @@ const SELF_GUIDES=[
     "image": "anatomy-breast.svg",
     "alt": "Schematischer Aufbau einer Brust mit Drüsengewebe, Milchgängen und Brustwarze",
     "caption": "Anatomische Lernzeichnung, nicht zur Diagnosestellung.",
-    "source": "https://www.gesundheit.gv.at/krankheiten/krebs/brustkrebs/frueherkennung.html"
+    "source": "https://www.gesundheit.gv.at/krankheiten/krebs/brustkrebs/frueherkennung.html",
+    "icon": "🤲"
   }
 ];

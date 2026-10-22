@@ -18,3 +18,61 @@
 .lb-body{padding:14px;overflow:auto;text-align:center;background:#fff}
 .lb-body img{width:100%;height:auto;max-height:66dvh;object-fit:contain;border-radius:10px}
 .lb-caption{padding:12px 16px;background:#faf5f8;border-top:1px solid #ead9e2;font-size:13.5px;line-height:1.55;color:#4d3347;text-align:left}
+
+/* --- Design & Icon Upgrade v0.1.8.2 --- */
+body{background:linear-gradient(160deg,#fdf5f8 0%,#f6eff5 50%,#eff6f4 100%);background-attachment:fixed}
+.shell{background:linear-gradient(180deg,#fffbfd 0%,#fdf9fc 100%);box-shadow:0 0 38px rgba(116,62,89,0.08)}
+header{background:linear-gradient(135deg,#f9dce8 0%,#f3e7f5 55%,#e6f4f0 100%);border-bottom:1px solid #eed8e4;padding:24px 20px 18px}
+.hero{background:linear-gradient(135deg,#fce4ee 0%,#f4e8f7 52%,#e4f5ef 100%);border:1px solid #ebd2e0;box-shadow:0 8px 24px rgba(154,82,119,0.11);padding:20px}
+.hero-top{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.hero-pill{background:#ffffffd9;color:#8c3b61;font-weight:700;border:1px solid #e6c5d5}
+.hero-sub{background:#eef8f4d9;color:#2f6f58;font-weight:600;border:1px solid #c5e3d7}
+.hero-btn{background:linear-gradient(135deg,#b55480,#8f3d64);box-shadow:0 6px 16px rgba(155,66,108,0.28);font-size:15px;padding:14px 18px;border-radius:14px}
+.section-title{margin:16px 0 11px;font-size:17px;color:#683550}
+
+/* Hauptseite Kacheln (Bild 4) */
+.grid{gap:13px}
+.tile{position:relative;overflow:hidden;border-radius:22px;padding:18px 14px;box-shadow:0 6px 18px rgba(96,52,79,0.06);transition:transform .16s ease,box-shadow .16s ease;display:flex;flex-direction:column;justify-content:flex-start}
+.tile:active,.tile:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(96,52,79,0.12)}
+.tile-icon{width:50px;height:50px;border-radius:16px;display:inline-flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:12px;box-shadow:0 4px 10px rgba(0,0,0,0.06)}
+.tile-diary{background:linear-gradient(145deg,#fff5f8,#ffffff);border:1px solid #f2d4df}
+.tile-diary .tile-icon{background:linear-gradient(135deg,#ffdbe8,#ffc2d9)}
+.tile-cal{background:linear-gradient(145deg,#f5f7ff,#ffffff);border:1px solid #d6dff5}
+.tile-cal .tile-icon{background:linear-gradient(135deg,#dbe4ff,#c4d3ff)}
+.tile-learn{background:linear-gradient(145deg,#f8f4ff,#ffffff);border:1px solid #e2d6f5}
+.tile-learn .tile-icon{background:linear-gradient(135deg,#e9dcff,#d6c2ff)}
+.tile-records{background:linear-gradient(145deg,#fff9f2,#ffffff);border:1px solid #f2e0c9}
+.tile-records .tile-icon{background:linear-gradient(135deg,#ffe8c7,#ffd8a8)}
+.tile-self{background:linear-gradient(145deg,#f2fbf8,#ffffff);border:1px solid #cceadd}
+.tile-self .tile-icon{background:linear-gradient(135deg,#cef2e3,#b2e6d0)}
+.tile-ill{background:linear-gradient(145deg,#fff4f4,#ffffff);border:1px solid #f5d3d3}
+.tile-ill .tile-icon{background:linear-gradient(135deg,#ffd9d9,#ffc2c2)}
+
+/* Lektionskarten & Selbstkontrolle (Bild 1) */
+details.lesson{border-radius:18px;padding:14px 15px;margin:12px 0;box-shadow:0 4px 14px rgba(84,50,72,0.05);border:1px solid #ead8e2;transition:box-shadow .15s ease}
+details.lesson[open]{box-shadow:0 8px 24px rgba(84,50,72,0.09);background:#fffdfd}
+details.lesson summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:4px 0}
+details.lesson summary::-webkit-details-marker{display:none}
+details.lesson summary::after{content:"▾";font-size:18px;color:#9c587b;background:#f9edf3;width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .2s ease}
+details.lesson[open] summary::after{transform:rotate(180deg);background:#a9587c;color:#fff}
+.summary-row{display:flex;align-items:center;gap:12px;width:100%}
+.lesson-ico{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#fae5ef,#eef7f3);border:1px solid #ead4e0;display:inline-flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;box-shadow:0 3px 8px rgba(0,0,0,0.04)}
+.guide .lesson-ico{background:linear-gradient(135deg,#e3f5ec,#f7ebf1);border-color:#c9e6d8}
+.summary-text{display:flex;flex-direction:column;gap:4px;text-align:left}
+.summary-text strong{font-size:15px;color:#5c2f47;line-height:1.38}
+.summary-meta{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.guide-pill{background:#e7f5ee;color:#2d6b52;font-weight:700}
+.img-pill{background:#f3e8fa;color:#6c3b8c;font-weight:600}
+.small-btn{padding:6px 10px;font-size:12px;border-radius:10px}
+
+/* Untere Navigationsleiste (Bild 3) */
+nav{background:rgba(255,252,254,0.96);backdrop-filter:blur(10px);border-top:1px solid #ead6e1;padding:7px 6px max(8px,env(safe-area-inset-bottom));gap:4px}
+nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:15px;padding:5px 2px;transition:background .15s ease,transform .12s ease;color:#7d6675;font-weight:600}
+nav button .nav-ico{width:38px;height:32px;border-radius:11px;display:inline-flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:2px;transition:transform .15s ease,box-shadow .15s ease}
+.nav-home{background:#ffe5ef}
+.nav-diary{background:#e6eeff}
+.nav-cal{background:#e2f6ed}
+.nav-learn{background:#f1e4ff}
+.nav-rec{background:#fff0d9}
+nav button.active{color:#8f3963;font-weight:700;background:#fbf0f5}
+nav button.active .nav-ico{transform:translateY(-2px) scale(1.07);box-shadow:0 4px 10px rgba(143,57,99,0.18);border:1.5px solid #c97a9f}

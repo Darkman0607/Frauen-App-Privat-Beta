@@ -24,7 +24,8 @@ const DEEP_LESSONS=[
         "alt": "Hygiene und Wischrichtung",
         "caption": "Hygienische Wischrichtung von vorne nach hinten (Symphyse → Damm)."
       }
-    ]
+    ],
+    "icon": "🌸"
   },
   {
     "title": "Scheideneingang und Vorhof – Anatomie und Beobachtung",
@@ -46,7 +47,8 @@ const DEEP_LESSONS=[
         "alt": "Scheideneingang und Vorhof",
         "caption": "Scheidenvorhof (Vestibulum), Harnröhrenöffnung und Scheideneingang."
       }
-    ]
+    ],
+    "icon": "🔍"
   },
   {
     "title": "Brustgesundheit – Anschauen und Abtasten",
@@ -68,7 +70,8 @@ const DEEP_LESSONS=[
         "alt": "Anatomie der Brust",
         "caption": "Schematischer Aufbau der weiblichen Brust, Drüsenläppchen und Quadranten."
       }
-    ]
+    ],
+    "icon": "🤲"
   },
   {
     "title": "Menstruation – Blutungsbeobachtung und Hygiene",
@@ -95,7 +98,8 @@ const DEEP_LESSONS=[
         "alt": "Portio während der Periode",
         "caption": "Blick auf den leicht geöffneten äußeren Muttermund während der Menstruation."
       }
-    ]
+    ],
+    "icon": "🩸"
   },
   {
     "title": "Zervixschleim und Ausfluss im Zyklus",
@@ -117,7 +121,8 @@ const DEEP_LESSONS=[
         "alt": "Zervixschleim und Portio im Zyklus",
         "caption": "Die 4 Phasen im Vergleich: Periode, Follikelphase, Ovulation (spinnbarer Schleim) und Gelbkörperphase."
       }
-    ]
+    ],
+    "icon": "💧"
   },
   {
     "title": "Muttermund und Gebärmutterhals – Aufbau und Fachuntersuchung",
@@ -149,7 +154,8 @@ const DEEP_LESSONS=[
         "alt": "Portio im Zyklusverlauf",
         "caption": "Veränderung von Portio und Muttermund in den 4 Zyklusabschnitten."
       }
-    ]
+    ],
+    "icon": "🎯"
   },
   {
     "title": "Fruchtblase, Fruchtwasser und vorzeitiger Blasensprung",
@@ -164,7 +170,8 @@ const DEEP_LESSONS=[
       "Ärztlich dokumentierte Ergebnisse und Empfehlungen danach in die Akte übernehmen."
     ],
     "tip": "Bei möglichem Fruchtwasserabgang unverzüglich geburtshilfliche Abklärung – auch ohne Schmerzen und nach zuvor unauffälligem Ultraschall.",
-    "source": "https://www.nice.org.uk/guidance/ng25/chapter/recommendations"
+    "source": "https://www.nice.org.uk/guidance/ng25/chapter/recommendations",
+    "icon": "🤰"
   },
   {
     "title": "Frauenarzttermin – Befunde verstehen und dokumentieren",
@@ -179,7 +186,8 @@ const DEEP_LESSONS=[
       "Vereinbarte nächste Schritte, Warnzeichen und Telefonnummer der zuständigen Klinik dokumentieren."
     ],
     "tip": "Bei akuten Symptomen nicht auf einen Routine-Termin warten.",
-    "source": "https://www.gesundheit.gv.at/leben/frauengesundheit/inhalt.html"
+    "source": "https://www.gesundheit.gv.at/leben/frauengesundheit/inhalt.html",
+    "icon": "🩺"
   },
   {
     "title": "Basaltemperatur – richtig messen und einordnen",
@@ -201,7 +209,8 @@ const DEEP_LESSONS=[
         "alt": "Basaltemperaturkurve und Hormone",
         "caption": "Temperaturtieflage vor dem Eisprung und progesteronbedingte Hochlage (+0,2 bis 0,5 °C) nach der Ovulation."
       }
-    ]
+    ],
+    "icon": "🌡️"
   },
   {
     "title": "Geburt, Wochenbett und Warnzeichen",
@@ -223,7 +232,8 @@ const DEEP_LESSONS=[
         "alt": "Wochenbett und Rückbildung",
         "caption": "Höhenstand des Gebärmutterfundus und Stadien des Wochenflusses nach der Geburt."
       }
-    ]
+    ],
+    "icon": "👶"
   },
   {
     "title": "Muttermundtastung nach NFP / Sensiplan (Höhe, Festigkeit, Öffnung)",
@@ -250,7 +260,8 @@ const DEEP_LESSONS=[
         "alt": "Anatomie von Zervix und Scheidengewölbe",
         "caption": "Lage der Portio im Scheidengewölbe."
       }
-    ]
+    ],
+    "icon": "☝️"
   },
   {
     "title": "Lutealphase und Brustveränderungen (Gelbkörperfunktion)",
@@ -276,7 +287,8 @@ const DEEP_LESSONS=[
         "alt": "Brustdrüsengewebe",
         "caption": "Hormonelle Reaktion des Brustdrüsengewebes im Zyklus."
       }
-    ]
+    ],
+    "icon": "🌙"
   },
   {
     "title": "Beckenboden im Alltag und Zyklus (Wahrnehmung & Tonus)",
@@ -298,7 +310,8 @@ const DEEP_LESSONS=[
         "alt": "Beckenlagerung und Entspannung",
         "caption": "Entspannte Rückenlage mit leicht erhöhtem Becken zur Entlastung des Beckenbodens."
       }
-    ]
+    ],
+    "icon": "🧘‍♀️"
   },
   {
     "title": "Wochenbett: Lochien (Wochenfluss) und Uterusrückbildung",
@@ -319,7 +332,8 @@ const DEEP_LESSONS=[
         "alt": "Fundusstand und Lochienstadien",
         "caption": "Tägliches Absinken des Gebärmutterfundus (Querfinger unter Nabel) und die 4 Lochienstadien (rubra, fusca, flava, alba)."
       }
-    ]
+    ],
+    "icon": "🍼"
   },
   {
     "title": "Spekulum-Einstellung während der Periode – Bauarten, Lagerung, Technik & Nachsorge (Lehrbuchkapitel)",
@@ -369,6 +383,7 @@ const DEEP_LESSONS=[
       "13. Fachgerechte Instrumenten-Aufbereitung: Einmalspekulum entsorgen. Wiederverwendbares Edelstahl-Spekulum sofort nach der Untersuchung zuerst unter fließend KALTEM Wasser (< 20 °C) abspülen (heißes Wasser lässt das Bluteiweiß gerinnen und auf dem Metall festbacken!). Danach Stellschraube ganz herausdrehen, alle Teile unter warmem Wasser mit Reinigungsmittel und weicher Bürste (besonders Gelenk und Gewinde) gründlich säubern, in VAH-gelistete Instrumentendesinfektion einlegen, klar abspülen und vor der nächsten Nutzung mindestens 15 Minuten sprudelnd auskochen oder dampfsterilisieren. Handschuhe ausziehen und Hände waschen."
     ],
     "tip": "Zwei goldene Praxisregeln: 1. Beim Herausziehen immer erst die Schraube lösen und das Spekulum 2–3 cm leicht geöffnet von der Portio zurückziehen, bevor man die Blätter schließt. 2. Edelstahl-Spekula mit Blutkontakt immer zuerst KALT abspülen, niemals direkt heiß.",
-    "source": "https://www.amboss.com/de/wissen/gynakologische-untersuchung/"
+    "source": "https://www.amboss.com/de/wissen/gynakologische-untersuchung/",
+    "icon": "🔦"
   }
 ];
