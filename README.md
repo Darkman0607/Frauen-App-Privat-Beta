@@ -8,3 +8,5 @@
 - Achtung: Ein verlorenes Datenpasswort kann nicht zurückgesetzt werden. Schon zuvor im Browser gespeicherte Daten können in alten Gerätebackups / Speicherbereichen verbleiben.
 - Die Daten sind im entschlüsselten Zustand während der App-Nutzung im Arbeitsspeicher zugänglich. Kein Schutz gegen kompromittierte Geräte oder manipulierten App-Code auf GitHub.
 - Teste mit Testdaten, prüfe Foto-Speicherung, App-Neustart, Backup, Wiederherstellung und Updates vor Einsatz mit echten Gesundheitsdaten.
+
+Build 3: Bei zu kurzem/abweichendem Passwort oder fehlgeschlagenem Entsperren erscheint ein Wiederholen-Button statt einer unbedienbaren leeren Ansicht. Kein Löschen von Daten.

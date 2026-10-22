@@ -1,6 +1,6 @@
 {
   "version": "0.1.6",
   "released": "2026-10-22",
-  "notes": "Passwortgeschützte AES-GCM-Backups für Google Drive; keine App-Sperre",
-  "build": 2
+  "notes": "Lokale Verschlüsselung und verschlüsselte Sicherungen; erneute Passwort-Eingabe bei Einrichtung/Entsperrfehler",
+  "build": 3
 }
