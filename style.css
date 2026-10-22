@@ -3,3 +3,5 @@
 .lesson summary {line-height:1.6;cursor:pointer}.lesson .pill{font-size:0.72rem;display:inline-block;margin-right:.35rem}.lesson h3{margin-top:1.15rem}.lesson a{color:#914b70;text-decoration:underline}#lesson-module{margin-bottom:12px}#lesson-count{margin:10px 0}
 
 .deep-lesson{border-left:4px solid #b66e90}.deep-lesson ol{padding-left:24px}.deep-lesson li{margin-bottom:12px;line-height:1.7}.deep-lesson summary{padding:7px 0}
+
+.guide{border-left:4px solid #94bba9}.guide ol{padding-left:23px}.guide li{margin-bottom:12px}.medical-figure{margin:16px 0;padding:10px;border-radius:14px;background:#faf5f8;border:1px solid #ead9e2}.medical-figure img{display:block;width:100%;height:auto;max-height:330px;object-fit:contain}.medical-figure figcaption{font-size:12px;color:#765d6d;margin:8px 2px 2px;line-height:1.5}

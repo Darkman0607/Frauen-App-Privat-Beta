@@ -1,6 +1,6 @@
 {
-  "version": "0.1.7",
+  "version": "0.1.7.1",
   "released": "2026-10-22",
-  "notes": "Passwort-Entsperrung mit erneuter Eingabe und Löschen von Tagebuch- und Kalendereinträgen samt Fotos",
+  "notes": "Illustrierte Fachkapitel Selbstkontrolle, Hygiene, Testarten und Labor-Dokumentation, unveränderte verschlüsselte Datenbank",
   "build": 1
 }
