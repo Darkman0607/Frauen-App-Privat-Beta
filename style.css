@@ -125,3 +125,12 @@ nav button.active .nav-ico{transform:translateY(-2px) scale(1.07);box-shadow:0 4
 
 .form-actions{margin-top:4px}
 .submit-entry-btn{background:linear-gradient(135deg,#b55480,#7d2e53);box-shadow:0 6px 18px rgba(125,46,83,0.28);font-size:15.5px;padding:14px;border-radius:15px}
+
+/* --- Symptom Chips Multi-Select (v0.1.8.8) --- */
+.illness-detail-box{background:#fff8fa;border:1.5px solid #ebd0df;border-radius:18px;padding:16px;margin:10px 0}
+.symptom-chips-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.symptom-chip{display:inline-flex;align-items:center;cursor:pointer;user-select:none;margin:0}
+.symptom-chip input[type="checkbox"]{position:absolute;opacity:0;width:0;height:0}
+.symptom-chip .chip-text{padding:8px 13px;border-radius:20px;font-size:13px;font-weight:600;background:#ffffff;border:1.5px solid #e2cad7;color:#63334c;transition:all .15s ease;box-shadow:0 2px 6px rgba(0,0,0,0.03)}
+.symptom-chip input[type="checkbox"]:checked + .chip-text{background:linear-gradient(135deg,#b55480,#8f3d64);color:#ffffff;border-color:#8f3d64;box-shadow:0 4px 10px rgba(143,61,100,0.25);transform:translateY(-1px)}
+.symptom-chip:active .chip-text{transform:scale(0.96)}

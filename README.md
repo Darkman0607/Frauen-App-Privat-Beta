@@ -1,8 +1,22 @@
-# Frauen-App Beta 0.1.8.7 (Neues Formular-Layout garantiert)
+# Frauen-App Beta 0.1.8.8 (Symptom-Mehrfachauswahl bei Krankheit)
 
-Update von 0.1.8.6 auf 0.1.8.7 (Build 11):
-- **Fehlerursache behoben:** `diaryForm()` in `app.js` wurde im vorherigen Build durch einen Regex-Misfit nicht überschrieben. Jetzt ist das neue 4-Sektionen-Formular garantiert aktiv.
-- **Sektion 1:** Kategorie & Datum im 2-Spalten-Raster nebeneinander.
-- **Sektion 2:** Befundkriterien & stufenloser Schmerz-Schieberegler (0–10).
-- **Sektion 3:** Beschreibung & Notizen.
-- **Sektion 4:** Große Buttons für **„📷 Direkt Foto aufnehmen“** (öffnet Handykamera) und **„🖼️ Aus Galerie wählen“** mit quadratischer Kachel-Vorschau und **✕-Löschbutton** pro Bild.
+Update von 0.1.8.7 auf 0.1.8.8 (Build 12):
+- **Mehrfachauswahl für Symptome:**
+  - Unter „Krankheit / Allgemeinsymptome“ gibt es kein starres Einzelauswahlfeld mehr, sondern moderne interaktive **Symptom-Chips**.
+  - Mehrere Symptome können gleichzeitig angetippt werden:
+    - Fieber / erhöhte Temperatur
+    - Schüttelfrost
+    - Schlappheit / Erschöpfung
+    - Gliederschmerzen
+    - Husten
+    - Schnupfen
+    - Halsschmerzen
+    - Kopfschmerzen
+    - Übelkeit
+    - Erbrechen
+    - Durchfall
+    - Bauchkrämpfe
+    - Harnwegsbeschwerden
+    - Sonstige Beschwerden
+  - Ausgewählte Chips färben sich kräftig beerenfarben ein.
+  - Ergänzende 2-Spalten-Felder für Beginn, Ende, Temperatur in °C, Messmethode, Verlauf und Medikation.
