@@ -1,6 +1,6 @@
 {
-  "version": "0.1.6",
+  "version": "0.1.7",
   "released": "2026-10-22",
-  "notes": "In-App Passwort-Einrichtung und Entsperrung mit sichtbaren Formularfeldern; verschlüsselte lokale Daten und Backups",
-  "build": 4
+  "notes": "Passwort-Entsperrung mit erneuter Eingabe und Löschen von Tagebuch- und Kalendereinträgen samt Fotos",
+  "build": 1
 }
