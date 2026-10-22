@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" role="img">
-  <rect width="680" height="400" rx="24" fill="#fff9fb"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+  <rect width="720" height="420" rx="24" fill="#fff9fb"/>
   <style>
-    text{font:13px Arial,sans-serif;fill:#4d3347}
-    .title{font:bold 19px Arial,sans-serif;fill:#3b2336}
+    text{font:12.5px Arial,sans-serif;fill:#4d3347}
+    .title{font:bold 18.5px Arial,sans-serif;fill:#3b2336}
     .step{font:bold 14px Arial,sans-serif;fill:#7a3e5d}
-    .minor{font-size:12px;fill:#7d6677}
+    .minor{font-size:11.5px;fill:#7d6677}
     .tissue{fill:#f3c6d8;stroke:#a96983;stroke-width:2}
     .uterus{fill:#eab0c5;stroke:#94516d;stroke-width:2.2}
     .spec{fill:#dfeaf0;stroke:#4f636e;stroke-width:2.2}
@@ -13,52 +13,47 @@
   <text x="24" y="34" class="title">Spekulum-Einführung &amp; Entfaltung während der Periode (3 Phasen)</text>
 
   <!-- Panel 1: 45 Grad Einführung -->
-  <rect x="18" y="52" width="204" height="295" rx="14" fill="#fff2f7" stroke="#e2c6d5" stroke-width="1.5"/>
+  <rect x="18" y="52" width="218" height="310" rx="14" fill="#fff2f7" stroke="#e2c6d5" stroke-width="1.5"/>
   <text x="30" y="76" class="step">Phase 1: Einführen (~45°)</text>
-  <!-- Introitus cross-view -->
-  <ellipse cx="120" cy="175" rx="46" ry="68" class="tissue"/>
-  <ellipse cx="120" cy="175" rx="22" ry="48" fill="#fae6ee" stroke="#b87893" stroke-width="1.5"/>
-  <!-- urethra warning dot -->
-  <circle cx="120" cy="118" r="5" fill="#9c2649"/>
-  <text x="78" y="106" class="minor">Harnröhre schützen</text>
-  <!-- Speculum blade at 45 deg angle closed -->
-  <rect x="88" y="168" width="64" height="12" rx="6" transform="rotate(-38 120 174)" class="spec"/>
-  <text x="28" y="268">• Labien sanft spreizen</text>
+  <ellipse cx="127" cy="175" rx="46" ry="68" class="tissue"/>
+  <ellipse cx="127" cy="175" rx="22" ry="48" fill="#fae6ee" stroke="#b87893" stroke-width="1.5"/>
+  <circle cx="127" cy="118" r="5" fill="#9c2649"/>
+  <text x="76" y="105" class="minor">Harnröhre schützen</text>
+  <rect x="95" y="168" width="64" height="12" rx="6" transform="rotate(-38 127 174)" class="spec"/>
+  <text x="28" y="268">• Labien mit 2 Fingern spreizen</text>
   <text x="28" y="288">• Geschlossen schräg (~45°)</text>
-  <text x="28" y="308">• Druck nach hinten-unten</text>
-  <text x="28" y="328">  (Richtung Kreuzbein)</text>
+  <text x="28" y="308">• Sanfter Druck nach hinten-</text>
+  <text x="28" y="328">  unten (Richtung Damm)</text>
+  <text x="28" y="348">• Unter Ausatmung einführen</text>
 
   <!-- Panel 2: Rotation & Vorschub -->
-  <rect x="238" y="52" width="204" height="295" rx="14" fill="#fff2f7" stroke="#e2c6d5" stroke-width="1.5"/>
-  <text x="250" y="76" class="step">Phase 2: Drehen auf 90°</text>
-  <!-- Vaginal canal sagittal -->
-  <path d="M258 195 Q325 175 385 155 L395 190 Q330 210 258 228 Z" class="tissue"/>
-  <!-- Cervix -->
-  <circle cx="395" cy="170" r="24" class="uterus"/>
-  <!-- Speculum horizontal gliding -->
-  <path d="M252 198 L362 168 L364 176 L254 206 Z" class="spec"/>
-  <path d="M254 208 L365 180 L367 188 L256 216 Z" class="spec"/>
-  <!-- Rotation arrow -->
-  <path d="M295 145 Q315 130 330 148" fill="none" stroke="#7a3e5d" stroke-width="2.2"/>
-  <text x="250" y="268">• Auf halbem Weg waagrecht</text>
-  <text x="250" y="288">  drehen (Griff nach unten)</text>
-  <text x="250" y="308">• Im ~45°-Winkel entlang der</text>
-  <text x="250" y="328">  Hinterwand vorschieben</text>
+  <rect x="251" y="52" width="218" height="310" rx="14" fill="#fff2f7" stroke="#e2c6d5" stroke-width="1.5"/>
+  <text x="263" y="76" class="step">Phase 2: Drehen auf 90°</text>
+  <path d="M271 195 Q338 175 398 155 L408 190 Q343 210 271 228 Z" class="tissue"/>
+  <circle cx="408" cy="170" r="24" class="uterus"/>
+  <path d="M265 198 L375 168 L377 176 L267 206 Z" class="spec"/>
+  <path d="M267 208 L378 180 L380 188 L269 216 Z" class="spec"/>
+  <path d="M308 145 Q328 130 343 148" fill="none" stroke="#7a3e5d" stroke-width="2.2"/>
+  <text x="263" y="268">• Nach 2–3 cm waagrecht</text>
+  <text x="263" y="288">  drehen (Griff zeigt nach unten)</text>
+  <text x="263" y="308">• Im ~45°-Winkel entlang der</text>
+  <text x="263" y="328">  Hinterwand vorschieben</text>
+  <text x="263" y="348">• Keinen Druck nach vorne!</text>
 
   <!-- Panel 3: Aufspreizen & Portio-Einstellung bei Periode -->
-  <rect x="458" y="52" width="204" height="295" rx="14" fill="#fff2f7" stroke="#e2c6d5" stroke-width="1.5"/>
-  <text x="470" y="76" class="step">Phase 3: Öffnen &amp; Sicht</text>
-  <!-- Opened vaginal vault with Portio in center -->
-  <path d="M475 182 L582 135 L585 144 L478 190 Z" class="spec"/>
-  <path d="M478 202 L588 216 L586 225 L476 210 Z" class="spec"/>
-  <!-- Portio and external os with menstrual blood -->
-  <circle cx="592" cy="178" r="28" class="uterus"/>
-  <ellipse cx="585" cy="178" rx="5" ry="9" class="blood"/>
-  <path d="M582 183 Q565 198 552 206" stroke="#c93b5b" stroke-width="4" fill="none" stroke-linecap="round"/>
-  <text x="470" y="268">• Blätter im Scheidengewölbe</text>
-  <text x="470" y="288">  langsam öffnen &amp; fixieren</text>
-  <text x="470" y="308">• Portio wölbt sich dazwischen</text>
-  <text x="470" y="328">• Blut sanft abtupfen (Stieltupfer)</text>
+  <rect x="484" y="52" width="218" height="310" rx="14" fill="#fff2f7" stroke="#e2c6d5" stroke-width="1.5"/>
+  <text x="496" y="76" class="step">Phase 3: Öffnen &amp; Sicht</text>
+  <path d="M500 182 L607 135 L610 144 L503 190 Z" class="spec"/>
+  <path d="M503 202 L613 216 L611 225 L501 210 Z" class="spec"/>
+  <circle cx="617" cy="178" r="28" class="uterus"/>
+  <ellipse cx="610" cy="178" rx="5" ry="9" class="blood"/>
+  <path d="M607 183 Q590 198 577 206" stroke="#c93b5b" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <text x="496" y="268">• Blätter im Scheidengewölbe</text>
+  <text x="496" y="288">  langsam öffnen &amp; fixieren</text>
+  <text x="496" y="308">• Portio stellt sich mittig ein</text>
+  <text x="496" y="328">• Blutsee im hinteren Gewölbe</text>
+  <text x="496" y="348">  mit Stieltupfer abtupfen</text>
 
-  <text x="24" y="376" class="minor">Rückzug-Regel: Fixierschraube zuerst lösen, Blätter beim Zurückziehen leicht offen halten (Portio freigeben), erst kurz vor dem Scheideneingang schließen.</text>
+  <text x="20" y="388" class="minor">Rückzug-Regel: Stellschraube zuerst komplett lösen! Spekulum 2–3 cm leicht geöffnet zurückziehen (Portio nicht einklemmen),</text>
+  <text x="20" y="405" class="minor">erst kurz vor dem Scheideneingang fast schließen und unteres Blatt waagrecht wie einen Löffel herausführen.</text>
 </svg>

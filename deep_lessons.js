@@ -12,7 +12,19 @@ const DEEP_LESSONS=[
       "Mit Zustimmung Zeitpunkt, genaue äußere Stelle, Beschwerden und Veränderungen gegenüber früher dokumentieren."
     ],
     "tip": "Neue schmerzhafte Knoten, Wunden, wiederkehrende Beschwerden, Blutungen oder auffällige Hautveränderungen gynäkologisch abklären.",
-    "source": "https://www.nhs.uk/conditions/vaginitis/"
+    "source": "https://www.nhs.uk/conditions/vaginitis/",
+    "images": [
+      {
+        "src": "anatomy-vulva.svg",
+        "alt": "Anatomie der Vulva",
+        "caption": "Anatomische Übersicht von Vulva, Labien, Klitoris und Damm."
+      },
+      {
+        "src": "speculum-cleaning-aftercare.svg",
+        "alt": "Hygiene und Wischrichtung",
+        "caption": "Hygienische Wischrichtung von vorne nach hinten (Symphyse → Damm)."
+      }
+    ]
   },
   {
     "title": "Scheideneingang und Vorhof – Anatomie und Beobachtung",
@@ -27,7 +39,14 @@ const DEEP_LESSONS=[
       "Bei Bedarf äußere Beobachtungsfotos geschützt dokumentieren; keine inneren Instrumente oder Tastkontrolle."
     ],
     "tip": "Fieber, zunehmende Schmerzen, schmerzhafte Wunden oder ungewöhnliche Blutungen ärztlich beurteilen lassen.",
-    "source": "https://www.nhs.uk/conditions/vulvodynia/"
+    "source": "https://www.nhs.uk/conditions/vulvodynia/",
+    "images": [
+      {
+        "src": "anatomy-vulva.svg",
+        "alt": "Scheideneingang und Vorhof",
+        "caption": "Scheidenvorhof (Vestibulum), Harnröhrenöffnung und Scheideneingang."
+      }
+    ]
   },
   {
     "title": "Brustgesundheit – Anschauen und Abtasten",
@@ -42,7 +61,14 @@ const DEEP_LESSONS=[
       "Auffälligkeiten durch Ärztin oder Arzt untersuchen lassen, auch wenn keine Schmerzen bestehen."
     ],
     "tip": "Neu tastbarer Knoten, blutige Sekretion, neue Haut- oder Brustwarzeneinziehung und anhaltende einseitige Veränderungen gehören medizinisch untersucht.",
-    "source": "https://www.nhs.uk/tests-and-treatments/how-to-check-your-breasts-or-chest/"
+    "source": "https://www.nhs.uk/tests-and-treatments/how-to-check-your-breasts-or-chest/",
+    "images": [
+      {
+        "src": "anatomy-breast.svg",
+        "alt": "Anatomie der Brust",
+        "caption": "Schematischer Aufbau der weiblichen Brust, Drüsenläppchen und Quadranten."
+      }
+    ]
   },
   {
     "title": "Menstruation – Blutungsbeobachtung und Hygiene",
@@ -57,7 +83,19 @@ const DEEP_LESSONS=[
       "Blutungsende dokumentieren und im Kalender mit dem vorigen Zyklus vergleichen."
     ],
     "tip": "Extrem starke Blutungen, Ohnmacht, starke neue Schmerzen oder Blutungen in einer Schwangerschaft erfordern dringende medizinische Abklärung.",
-    "source": "https://www.nhs.uk/conditions/heavy-periods/"
+    "source": "https://www.nhs.uk/conditions/heavy-periods/",
+    "images": [
+      {
+        "src": "cycle-hormones-chart.svg",
+        "alt": "Hormonverlauf und Menstruation",
+        "caption": "Zyklusverlauf: Hormonabfall, Endometrium-Abblutung und Basaltemperatur."
+      },
+      {
+        "src": "speculum-period-view.svg",
+        "alt": "Portio während der Periode",
+        "caption": "Blick auf den leicht geöffneten äußeren Muttermund während der Menstruation."
+      }
+    ]
   },
   {
     "title": "Zervixschleim und Ausfluss im Zyklus",
@@ -72,7 +110,14 @@ const DEEP_LESSONS=[
       "Nach mehreren Zyklen Muster auswerten und Unsicherheiten bei Kinderwunsch fachlich besprechen."
     ],
     "tip": "Bei Schwangerschaft kann wässriger Flüssigkeitsverlust Fruchtwasser sein: sofort geburtshilflich untersuchen lassen, auch ohne Schmerzen.",
-    "source": "https://www.nhs.uk/conditions/vaginal-discharge/"
+    "source": "https://www.nhs.uk/conditions/vaginal-discharge/",
+    "images": [
+      {
+        "src": "cervix-cycle-comparison.svg",
+        "alt": "Zervixschleim und Portio im Zyklus",
+        "caption": "Die 4 Phasen im Vergleich: Periode, Follikelphase, Ovulation (spinnbarer Schleim) und Gelbkörperphase."
+      }
+    ]
   },
   {
     "title": "Muttermund und Gebärmutterhals – Aufbau und Fachuntersuchung",
@@ -90,14 +135,19 @@ const DEEP_LESSONS=[
     "source": "https://www.nice.org.uk/guidance/ng25/chapter/recommendations",
     "images": [
       {
-        "src": "speculum-types.svg",
-        "alt": "Spekulum-Bauarten und Größen",
-        "caption": "Bauarten im Vergleich: Zweiblättriges Spekulum (Cusco/Graves) und Rinnenspekulum (Kristeller)."
-      },
-      {
         "src": "anatomy-cervix.svg",
         "alt": "Gebärmutterhals Querschnitt",
-        "caption": "Anatomischer Aufbau von Portio, äußerem Muttermund und Zervikalkanal."
+        "caption": "Querschnitt durch Gebärmutterhals, Zervikalkanal und Scheidengewölbe."
+      },
+      {
+        "src": "speculum-types.svg",
+        "alt": "Spekulum-Bauarten",
+        "caption": "Spekulum-Bauarten (Cusco/Graves und Kristeller) sowie Größenauswahl (S, M, L)."
+      },
+      {
+        "src": "cervix-cycle-comparison.svg",
+        "alt": "Portio im Zyklusverlauf",
+        "caption": "Veränderung von Portio und Muttermund in den 4 Zyklusabschnitten."
       }
     ]
   },
@@ -144,7 +194,14 @@ const DEEP_LESSONS=[
       "Bei Kinderwunsch und Unsicherheit die Messkurve in der gynäkologischen Beratung besprechen."
     ],
     "tip": "Bei Fieber oder Krankheit vorrangig medizinisch relevante Symptome beurteilen; Temperaturkurven sind dann eingeschränkt interpretierbar.",
-    "source": "https://www.nhs.uk/pregnancy/trying-for-a-baby/trying-to-get-pregnant/"
+    "source": "https://www.nhs.uk/pregnancy/trying-for-a-baby/trying-to-get-pregnant/",
+    "images": [
+      {
+        "src": "cycle-hormones-chart.svg",
+        "alt": "Basaltemperaturkurve und Hormone",
+        "caption": "Temperaturtieflage vor dem Eisprung und progesteronbedingte Hochlage (+0,2 bis 0,5 °C) nach der Ovulation."
+      }
+    ]
   },
   {
     "title": "Geburt, Wochenbett und Warnzeichen",
@@ -159,7 +216,14 @@ const DEEP_LESSONS=[
       "Bei neuen Warnzeichen sofort medizinischen Rat einholen und dokumentierte Beobachtungen weitergeben."
     ],
     "tip": "Starke Blutung, Atemnot, Ohnmacht, Fieber mit ausgeprägtem Krankheitsgefühl oder schwere Schmerzen sofort abklären.",
-    "source": "https://www.nhs.uk/pregnancy/labour-and-birth/after-the-birth/your-body/"
+    "source": "https://www.nhs.uk/pregnancy/labour-and-birth/after-the-birth/your-body/",
+    "images": [
+      {
+        "src": "postpartum-fundus.svg",
+        "alt": "Wochenbett und Rückbildung",
+        "caption": "Höhenstand des Gebärmutterfundus und Stadien des Wochenflusses nach der Geburt."
+      }
+    ]
   },
   {
     "title": "Muttermundtastung nach NFP / Sensiplan (Höhe, Festigkeit, Öffnung)",
@@ -174,7 +238,19 @@ const DEEP_LESSONS=[
       "Befund unmittelbar in der App unter Tagebuch/Selbstkontrolle dokumentieren."
     ],
     "tip": "Bei vorzeitigen Wehen, Verdacht auf vorzeitigen Blasensprung oder ungeklärten vaginalen Infektionen keine Selbsttastung durchführen. Niemals Gegenstände zur Tastung verwenden.",
-    "source": "https://www.sensiplan.de/"
+    "source": "https://www.sensiplan.de/",
+    "images": [
+      {
+        "src": "cervix-cycle-comparison.svg",
+        "alt": "Muttermund-Veränderungen nach Sensiplan",
+        "caption": "Höhenstand, Festigkeit und Öffnungsgrad der Portio im Zyklusverlauf."
+      },
+      {
+        "src": "anatomy-cervix.svg",
+        "alt": "Anatomie von Zervix und Scheidengewölbe",
+        "caption": "Lage der Portio im Scheidengewölbe."
+      }
+    ]
   },
   {
     "title": "Lutealphase und Brustveränderungen (Gelbkörperfunktion)",
@@ -188,7 +264,19 @@ const DEEP_LESSONS=[
       "Bei einseitigen, zyklusunabhängigen Knoten, Hauteinziehungen oder spontanem Flüssigkeitsaustritt aus einer Brustwarze zeitnah eine gynäkologische Kontrolle veranlassen."
     ],
     "tip": "Starke einseitige Rötungen, Überwärmung und Schmerzen außerhalb von Stillzeit und Zyklus können auf ein entzündliches Geschehen hinweisen und müssen abgeklärt werden.",
-    "source": "https://www.frauenaerzte-im-netz.de/koerper-gesundheit/brust/zyklusbedingte-brustveraenderungen/"
+    "source": "https://www.frauenaerzte-im-netz.de/koerper-gesundheit/brust/zyklusbedingte-brustveraenderungen/",
+    "images": [
+      {
+        "src": "cycle-hormones-chart.svg",
+        "alt": "Progesteronkurve in der Lutealphase",
+        "caption": "Anstieg von Progesteron und Basaltemperatur in der Gelbkörperphase."
+      },
+      {
+        "src": "anatomy-breast.svg",
+        "alt": "Brustdrüsengewebe",
+        "caption": "Hormonelle Reaktion des Brustdrüsengewebes im Zyklus."
+      }
+    ]
   },
   {
     "title": "Beckenboden im Alltag und Zyklus (Wahrnehmung & Tonus)",
@@ -203,7 +291,14 @@ const DEEP_LESSONS=[
       "Beobachtungen (Druckgefühl, Tonus, Missempfindungen) im Zyklusverlauf notieren."
     ],
     "tip": "Kein isoliertes 'Pipi-Stoppen' beim Wasserlassen trainieren, da dies den physiologischen Blasenentleerungsreflex stört und Harnwegsinfekte begünstigen kann.",
-    "source": "https://www.hebammenverband.de/"
+    "source": "https://www.hebammenverband.de/",
+    "images": [
+      {
+        "src": "speculum-prep-tray.svg",
+        "alt": "Beckenlagerung und Entspannung",
+        "caption": "Entspannte Rückenlage mit leicht erhöhtem Becken zur Entlastung des Beckenbodens."
+      }
+    ]
   },
   {
     "title": "Wochenbett: Lochien (Wochenfluss) und Uterusrückbildung",
@@ -217,44 +312,63 @@ const DEEP_LESSONS=[
       "Auf Ruhephasen (Bauchlage mit Kissen unter dem Unterbauch zur Förderung des Abflusses) achten."
     ],
     "tip": "Warnzeichen: Plötzlicher Stopp des Wochenflusses mit Kopfschmerzen und Bauchschmerzen (Lochialstau), übelriechender fötider Geruch, plötzliche sturzartige Blutungen oder Fieber über 38 °C erfordern sofortigen Kontakt zur Hebamme oder Klinik.",
-    "source": "https://www.hebammenverband.de/"
+    "source": "https://www.hebammenverband.de/",
+    "images": [
+      {
+        "src": "postpartum-fundus.svg",
+        "alt": "Fundusstand und Lochienstadien",
+        "caption": "Tägliches Absinken des Gebärmutterfundus (Querfinger unter Nabel) und die 4 Lochienstadien (rubra, fusca, flava, alba)."
+      }
+    ]
   },
   {
-    "title": "Spekulum-Einstellung während der Periode – Bauarten, Lagerung, Technik & Nachsorge",
+    "title": "Spekulum-Einstellung während der Periode – Bauarten, Lagerung, Technik & Nachsorge (Lehrbuchkapitel)",
     "module": "Untersuchungen",
-    "simple": "Mit einem Spekulum lässt sich während der Periode direkt beobachten, wie der äußere Muttermund sich leicht öffnet und das Menstruationsblut aus der Gebärmutter abfließt. Entscheidend für eine schmerzfreie und saubere Untersuchung sind die richtige Spekulumgröße, das Anwärmen, der korrekte Einführungswinkel (45°/90°) und die liebevolle, hygienische Reinigung danach.",
-    "expert": "Instrumentenkunde: Cusco-Spekula (Entenschnabelform, selbsthaltend) aus Edelstahl oder transparentem Kunststoff (Größe S: 75×18 mm, Größe M: 100×26 mm, Größe L: 115×30 mm) spreizen das vordere und hintere Scheidengewölbe, während zweiteilige Kristeller-Rinnenspekula besonders bei stärkerer Blutung in Klinik und Geburtshilfe optimale Sicht bieten. Physiologie bei Menstruation: Durch den Progesteronabfall und Prostaglandinwirkung ist das Gewebe aufgelockert, hyperämisch und der Ostium uteri externum leicht geöffnet. Da Menstruationsblut den sauren Vaginal-pH (3,8–4,5) auf ca. 7,0–7,4 anhebt und sich im hinteren Scheidengewölbe (Fornix posterior) sammelt, sind keimarmes Arbeiten, Stieltupfer zum Abtupfen des Blutsees und konsequente Wischrichtung von ventral nach dorsal (Symphyse → Anus) obligat.",
+    "simple": "Mit einem Spekulum lässt sich während der Periode direkt beobachten, wie der äußere Muttermund sich leicht öffnet und das Menstruationsblut zusammen mit abgelöster Schleimhaut aus der Gebärmutter abfließt. Dieses Kapitel erklärt auf Fachbuch-Niveau alle Spekulumarten (Cusco, Graves, Kristeller), die genaue Vorbereitung des Untersuchungstabletts, die schmerzfreie 3-Phasen-Einführung, das sanfte Abtupfen des Blutsees im hinteren Scheidengewölbe sowie die hygienische Reinigung der Frau und der Instrumente.",
+    "expert": "1. Instrumentenkunde & Bauarten: Man unterscheidet zweiblättrige, selbsthaltende Entenschnabel-Spekula nach Cusco (Standardform mit abgerundeten Valven und Stellschraube) oder Graves (etwas breitere, gebogene Blätter) sowie zweiteilige Rinnenspekula nach Kristeller oder Sims (vorderes und hinteres Blatt getrennt, besonders übersichtlich bei starker Blutung und in der Geburtshilfe). Größenwahl nach Anatomie: Größe S (75–80 mm Länge × 16–20 mm Breite) bei engem Introitus oder Nullipara; Größe M (95–105 × 24–27 mm) als Standard; Größe L (110–120 × 30–32 mm) nach vaginalen Geburten oder bei langem Scheidenkanal. Transparente Kunststoffspekula erlauben zusätzlich die Beurteilung der gesamten Vaginalwand durch die Blätter hindurch. 2. Physiologie der Menstruationsblutung im Spekulum: Durch den Progesteronentzug am Zyklusende kontrahieren sich die Spiralarterien, und die funktionelle Endometriumschicht (Stratum functionale) wird abgestoßen. Prostaglandine (PGF2α) bewirken rhythmische Uteruskontraktionen und eine leichte Weitung des Zervikalkanals sowie des äußeren Muttermunds (Ostium uteri externum, ca. 1–3 mm geöffnet). In Rückenlage sammelt sich das abfließende Blut (ca. 30–80 ml über die gesamte Periode, durch Plasmin ungerinnbar, bei starker Blutung auch mit dunkelroten Koageln) am tiefsten Punkt: im hinteren Scheidengewölbe (Fornix vaginae posterior). 3. Asepsis & Infektionsschutz: Da Menstruationsblut einen pH-Wert von ca. 7,4 besitzt, wird das normalerweise saure Scheidenmilieu (pH 3,8–4,5 durch Laktobazillen) während der Blutung abgepuffert, während der Muttermund leicht offen steht. Deshalb sind Händedesinfektion, Untersuchungshandschuhe, keimarme Instrumente und die strikte Wischrichtung von vorne nach hinten (Symphyse → Damm → After) zum Schutz vor aufsteigenden Keimen (E. coli) unerlässlich.",
     "images": [
       {
         "src": "speculum-types.svg",
-        "alt": "Spekulum-Arten und Größenübersicht",
-        "caption": "Abb. 1: Spekulum-Bauarten (Cusco/Graves vs. Kristeller) und Größenauswahl (S, M, L)."
+        "alt": "Spekulum-Bauarten (Cusco/Graves vs. Kristeller) und Größen S, M, L",
+        "caption": "Schautafel 1: Instrumentenkunde – Zweiblättriges Spekulum (Cusco/Graves) vs. Rinnenspekulum (Kristeller) und Größenauswahl (S, M, L)."
+      },
+      {
+        "src": "speculum-prep-tray.svg",
+        "alt": "Vorbereitung Untersuchungstisch und Lagerung mit Beckenkissen",
+        "caption": "Schautafel 2: Vorbereitung – Untersuchungstablett (angewärmtes Spekulum, Stieltupfer, NaCl/Gleitgel) und Lagerung mit gekipptem Becken."
       },
       {
         "src": "speculum-application.svg",
-        "alt": "Schritt-für-Schritt-Einführung des Spekulums in 3 Phasen",
-        "caption": "Abb. 2: Dreiphasige Einführung (45° schräg → 90° waagrecht drehen → im Gewölbe öffnen) und Harnröhrenschutz."
+        "alt": "Dreiphasige Einführung und Entfaltung des Spekulums",
+        "caption": "Schautafel 3: Die 3 Phasen der Einführung (45°-Eintritt → 90°-Drehung → Öffnen im Gewölbe) unter Schonung der Harnröhre."
       },
       {
         "src": "speculum-period-view.svg",
-        "alt": "Blick durch das Spekulum auf die blutende Portio",
-        "caption": "Abb. 3: Portio-Ansicht während der Periode mit leicht geöffnetem Muttermund und Blutsee im hinteren Gewölbe."
+        "alt": "Blick durch das Spekulum auf die Portio während der Menstruation",
+        "caption": "Schautafel 4: Blick durch das Spekulum bei Periode – leicht geöffneter Muttermund, Blutfluss und Blutsee im hinteren Scheidengewölbe."
+      },
+      {
+        "src": "speculum-cleaning-aftercare.svg",
+        "alt": "Nachsorge: Intimreinigung der Frau und 4-Stufen-Aufbereitung",
+        "caption": "Schautafel 5: Nachsorge – Systematisches Abwischen von vorne nach hinten (3-Tupfer-Regel) und Kaltwasser-Vorreinigung des Spekulums."
       }
     ],
     "steps": [
-      "Hygiene & Arbeitsplatz: Vorab Harnblase entleeren lassen. Wasserdichte Saug-Unterlage unter das Gesäß legen. Hände mit Seife waschen, Händedesinfektionsmittel (30 Sek.) einreiben, Untersuchungshandschuhe anziehen. Bereitlegen: Spekulum (passende Größe S oder M), wasserlösliches Gleitgel / sterile NaCl-0,9-%-Lösung, lange Stieltupfer/Kornzange, Nierenschale, warme feuchte Kompressen und weiches Handtuch.",
-      "Instrument temperieren: Ein Metallspekulum unter fließend warmem Wasser auf Körpertemperatur (~37 °C) anwärmen (am eigenen Handrücken prüfen). Außenseiten der Blätter dünn mit Gleitgel oder NaCl benetzen.",
-      "Lagerung & Entspannung: Rückenlage mit leicht erhöhtem Becken (flaches Kissen unter dem Kreuzbein), Beine angewinkelt, Knie locker nach außen sinken lassen. Blendfreie Lichtquelle von hinten auf den Introitus richten.",
-      "Äußere Reinigung vor Beginn: Äußeres Blut an Vulva und Schamlippen mit einer warm angefeuchteten Kompresse sanft in einem Zug von vorne nach hinten (Harnröhre Richtung After) abwischen, Tupfer danach sofort verwerfen.",
-      "Einführen (Phase 1 – 45°-Winkel): Mit Daumen und Zeigefinger der freien Hand die Labia minora sanft spreizen. Sie atmet tief ein und langsam durch den offenen Mund aus. Das komplett geschlossene Spekulum im 45°-Schrägwinkel ansetzen und mit sanftem Druck nach hinten-unten (Richtung Damm) durch den Scheideneingang führen – die empfindliche Harnröhre oben unter der Symphyse wird so gar nicht berührt.",
-      "Drehen & Vorschieben (Phase 2 – 90° horizontal): Nach ca. 2–3 cm das Spekulum sanft in die Waagrechte drehen (Griff zeigt senkrecht nach unten zum Damm) und entlang der hinteren Scheidenwand im ~45°-Winkel nach hinten-oben in das Scheidengewölbe gleiten lassen.",
-      "Öffnen & Freitupfen (Phase 3): Spekulumblätter langsam öffnen, bis die Portio dazwischen sichtbar wird, und Schraube/Rastung locker fixieren. Das im hinteren Scheidengewölbe und in der unteren Rinne angesammelte Periodenblut mit einem angefeuchteten Stieltupfer behutsam abtupfen (nur tupfen, nicht über den Muttermund reiben).",
-      "Inspektion: Beurteilen von Portio-Schleimhaut (rosig bis leicht livide), Öffnung des äußeren Muttermunds (grübchenförmig oder spaltförmig leicht geöffnet), Blutungsstärke, Blutfarbe (hellrot, dunkelrot, bräunlich) und abgehenden Endometrium-Flocken.",
-      "Herausholen (Rückzug-Technik): Zuerst die Stellschraube/Arretierung vollständig lösen! Das Spekulum die ersten 2–3 cm noch leicht geöffnet zurückziehen, damit die Portio frei aus den Blättern gleitet und nicht eingeklemmt wird. Erst kurz vor dem Scheideneingang die Blätter fast schließen (1–2 mm Spalt lassen), das untere Blatt wie einen Löffel waagrecht halten (damit kein Restblut heraustropft) und unter Ausatmung sanft herausziehen.",
-      "Sie sauber machen & Nachsorge: Mit frischen, körperwarm angefeuchteten, weichen Kompressen oder Waschlappen zuerst die kleinen und großen Schamlippen, dann den Scheideneingang und zuletzt den Damm sanft tupfend von vorne nach hinten abwischen. Anschließend mit einem sauberen, weichen Tuch trocken tupfen. Frische Binde/Periodenunterwäsche geben, Unterlage entfernen und sie 2–3 Minuten zugedeckt nachruhen lassen.",
-      "Instrumentenreinigung: Einmalspekulum entsorgen. Edelstahl-Spekulum sofort zuerst unter KALTEM Wasser abspülen (warmes Wasser koaguliert Bluteiweiß!), danach warm mit Reinigungsmittel und Bürste (besonders Schraubgewinde und Gelenk) reinigen, desinfizieren und sterilisieren/auskochen. Handschuhe ausziehen, Hände waschen."
+      "1. Vorbereitung & Blasenentleerung: Sie entleert vorab die Harnblase (eine volle Blase drückt auf die vordere Scheidenwand, kippt die Gebärmutter nach hinten und erschwert das Einstellen der Portio). Raum angenehm temperieren, für Ruhe und ungestörte Atmosphäre sorgen.",
+      "2. Arbeitsplatz & Material richten: Wasserdichte, saugfähige Einmal-Unterlage (Flockenunterlage) unter das Becken legen. In Griffweite auf einem sauberen Tablett bereitlegen: Spekulum (Größe S oder M), sterile NaCl-0,9-%-Lösung oder wasserlösliches Gleitgel, lange Stieltupfer (oder Kornzange mit Mullkompressen), Nierenschale, körperwarme feuchte Kompressen, trockenes weiches Tuch, frische Binde/Periodenwäsche.",
+      "3. Händehygiene & Spekulum anwärmen: Hände gründlich mit Seife waschen, 30 Sekunden mit Händedesinfektionsmittel einreiben, frische Untersuchungshandschuhe anziehen. Edelstahl-Spekulum unter fließend warmem Wasser auf Körpertemperatur (~37 °C) anwärmen und Temperatur am eigenen Handrücken prüfen. Außenseiten der Blätter dünn mit NaCl oder Gleitgel benetzen.",
+      "4. Optimale Lagerung & Lichtachse: Bequeme Rückenlage. Ein flaches, festes Kissen direkt unter das Gesäß/Kreuzbein legen: Dadurch kippt das Becken leicht nach hinten, der Scheidenkanal flacht ab und die Portio rückt automatisch in die optische Sichtachse. Beine anwinkeln und Knie locker nach außen sinken lassen. Blendfreie Lichtquelle von hinten über die Schulter auf den Scheideneingang richten.",
+      "5. Äußere Vorreinigung vor dem Einführen: Äußerlich anhaftendes Menstruationsblut an Schamlippen und Scheidenvorhof mit einer körperwarm angefeuchteten Kompresse sanft in einem einzigen Zug von vorne nach hinten (Symphyse Richtung Damm) abwischen und Tupfer sofort in die Nierenschale abwerfen.",
+      "6. Phase 1 – Einführen im 45°-Schrägwinkel: Jeden Schritt ruhig ankündigen. Mit Daumen und Zeigefinger der nicht-führenden Hand die großen und kleinen Schamlippen sanft spreizen, sodass der Scheideneingang frei liegt und keine Härchen mitgezogen werden. Sie atmet tief ein und langsam durch den offenen Mund aus (der Beckenboden entspannt sich). Das komplett geschlossene Spekulum im ~45°-Schrägwinkel ansetzen und mit leichtem Druck Richtung hintere Kommissur (Damm) durch den Introitus führen – die empfindliche Harnröhre oben unter der Symphyse bleibt völlig druckfrei.",
+      "7. Phase 2 – Drehung auf 90° & Vorschub: Nach Überwinden des Scheideneingangs (nach ca. 2–3 cm) das geschlossene Spekulum sanft in die Waagrechte (90°, Griff zeigt senkrecht nach unten zum Damm) drehen. Anschließend im ~45°-Neigungswinkel schräg nach hinten-oben entlang der hinteren Scheidenwand bis in das Scheidengewölbe gleiten lassen.",
+      "8. Phase 3 – Öffnen & Einstellen der Portio: Im Scheidengewölbe die Blätter langsam und vorsichtig öffnen (bei Kunststoffspekula den Hebel mit dem Daumen führen, um lautes Knacken zu vermeiden). Die Portio wölbt sich nun mittig zwischen oberes und unteres Blatt. Stellschraube nur so weit fixieren, dass gute Sicht besteht, ohne Spannungsgefühl auszulösen.",
+      "9. Blutsee im hinteren Gewölbe sanft abtupfen: Während der Periode sammelt sich im tiefer gelegenen hinteren Scheidengewölbe und in der unteren Spekulumrinne ein kleiner Blutsee. Einen langen Stieltupfer (mit warmer NaCl-Lösung leicht angefeuchtet) vorsichtig einführen und das angesammelte Blut im hinteren Gewölbe sanft aufsaugen/abtupfen. Nicht fest über den Muttermund reiben, da das feine Zylinderepithel leicht kontaktblutet.",
+      "10. Systematische Beobachtung: Bei freier Sicht beurteilen: 1. Oberfläche der Portio (glattes, rosafarbenes bis leicht bläulich-livides Plattenepithel), 2. Äußerer Muttermund (grübchen- oder spaltförmig ca. 1–3 mm geöffnet), 3. Aktiver Austritt von Menstruationsblut und kleinen abgelösten Schleimhautflocken (Endometrium), 4. Farbe (frisch-hellrot, dunkelrot oder bräunlich) sowie Geruch.",
+      "11. Atraumatisches, tropffreies Herausholen: Zuerst die Stellschraube/Arretierung vollständig lösen! Das Spekulum die ersten 2–3 cm noch leicht geöffnet zurückziehen, damit die Portio frei aus den Blättern gleitet und niemals zwischen den Blattspitzen eingeklemmt wird. Erst kurz vor dem Scheideneingang die Blätter fast schließen (1–2 mm Spalt lassen, um keine Vaginalwandfalten einzuklemmen). Beim Austritt aus dem Introitus das untere Blatt waagrecht wie einen Löffel halten, damit das Restblut in der Rinne bleibt und nicht heraustropft, und direkt in die Nierenschale legen.",
+      "12. Sie sauber machen & liebevolle Nachsorge (3-Tupfer-Prinzip): Mit frischen, körperwarm angefeuchteten, weichen Kompressen oder Einmalwaschlappen sanft tupfend von vorne nach hinten reinigen: 1. Tupfer: Scheidenvorhof und kleine Schamlippen (von Klitoris Richtung Damm), 2. Tupfer: große Schamlippen beidseits von vorne nach hinten, 3. Tupfer: Damm und Analregion zuletzt. Danach mit einem weichen, sauberen Handtuch sanft trocken tupfen (nicht reiben). Frische Binde oder Periodenunterwäsche anreichen, Saug-Unterlage hervorziehen und sie noch 2–3 Minuten warm zugedeckt ruhen lassen.",
+      "13. Fachgerechte Instrumenten-Aufbereitung: Einmalspekulum entsorgen. Wiederverwendbares Edelstahl-Spekulum sofort nach der Untersuchung zuerst unter fließend KALTEM Wasser (< 20 °C) abspülen (heißes Wasser lässt das Bluteiweiß gerinnen und auf dem Metall festbacken!). Danach Stellschraube ganz herausdrehen, alle Teile unter warmem Wasser mit Reinigungsmittel und weicher Bürste (besonders Gelenk und Gewinde) gründlich säubern, in VAH-gelistete Instrumentendesinfektion einlegen, klar abspülen und vor der nächsten Nutzung mindestens 15 Minuten sprudelnd auskochen oder dampfsterilisieren. Handschuhe ausziehen und Hände waschen."
     ],
-    "tip": "Wichtige Grundregel beim Herausholen: Niemals das Spekulum im Scheidengewölbe komplett zuklappen, solange die Portio noch zwischen den Blättern liegt – immer erst leicht geöffnet 2–3 cm zurückziehen und das untere Blatt beim Austritt waagrecht halten, um Tropfen zu vermeiden.",
+    "tip": "Zwei goldene Praxisregeln: 1. Beim Herausziehen immer erst die Schraube lösen und das Spekulum 2–3 cm leicht geöffnet von der Portio zurückziehen, bevor man die Blätter schließt. 2. Edelstahl-Spekula mit Blutkontakt immer zuerst KALT abspülen, niemals direkt heiß.",
     "source": "https://www.amboss.com/de/wissen/gynakologische-untersuchung/"
   }
 ];

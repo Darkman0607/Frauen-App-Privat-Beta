@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 390" role="img">
+  <rect width="720" height="390" rx="24" fill="#fff9fb"/>
+  <style>
+    text{font:13px Arial,sans-serif;fill:#4d3347}
+    .title{font:bold 19px Arial,sans-serif;fill:#3b2336}
+    .sub{font:bold 14px Arial,sans-serif;fill:#7a3e5d}
+    .minor{font-size:11.5px;fill:#7d6677}
+  </style>
+  <text x="24" y="34" class="title">Wochenbett-Schautafel: Uterusrückbildung (Fundusstand) &amp; Lochienstadien</text>
+
+  <!-- Left: Fundus Height Diagram -->
+  <rect x="20" y="52" width="335" height="295" rx="16" fill="#fff2f7" stroke="#e2c6d5" stroke-width="1.5"/>
+  <text x="36" y="78" class="sub">1. Höhenstand des Gebärmutterfundus</text>
+  <!-- Abdomen outline -->
+  <ellipse cx="145" cy="195" rx="85" ry="102" fill="#fae6ee" stroke="#b87893" stroke-width="2"/>
+  <!-- Navel -->
+  <circle cx="145" cy="165" r="5" fill="#7a3e5d"/>
+  <text x="65" y="169" font-weight="bold">Nabel (N)</text>
+  <!-- Horizontal lines for days -->
+  <line x1="95" y1="145" x2="205" y2="145" stroke="#a9587c" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="212" y="149" class="minor">1. Tag (N+1 / N)</text>
+  <line x1="95" y1="165" x2="205" y2="165" stroke="#86546e" stroke-width="2"/>
+  <line x1="95" y1="195" x2="205" y2="195" stroke="#a9587c" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="212" y="199" class="minor">3. Tag (N-2 bis N-3)</text>
+  <line x1="95" y1="228" x2="205" y2="228" stroke="#a9587c" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="212" y="232" class="minor">5. Tag (N-4 bis N-5)</text>
+  <line x1="88" y1="268" x2="208" y2="268" stroke="#583d52" stroke-width="3"/>
+  <text x="212" y="272" font-weight="bold">Symphyse (~10. Tag)</text>
+  <text x="36" y="318" class="minor">Faustregel: Täglich ca. 1 Querfinger (QF) tiefer;</text>
+  <text x="36" y="334" class="minor">immer nach Entleerung der Harnblase tasten!</text>
+
+  <!-- Right: 4 Lochia Stages -->
+  <rect x="375" y="52" width="325" height="295" rx="16" fill="#fff2f7" stroke="#e2c6d5" stroke-width="1.5"/>
+  <text x="391" y="78" class="sub">2. Die 4 Phasen des Wochenflusses (Lochien)</text>
+
+  <rect x="391" y="94" width="293" height="52" rx="10" fill="#fff" stroke="#d9a7b8" stroke-width="1.5"/>
+  <circle cx="416" cy="120" r="14" fill="#b81d41"/>
+  <text x="440" y="115" font-weight="bold">Lochia rubra (1.–4. Tag pp)</text>
+  <text x="440" y="134" class="minor">Blutig-rot, flüssig, gelegentlich kleine Koagel</text>
+
+  <rect x="391" y="156" width="293" height="52" rx="10" fill="#fff" stroke="#d9a7b8" stroke-width="1.5"/>
+  <circle cx="416" cy="182" r="14" fill="#8c3b32"/>
+  <text x="440" y="177" font-weight="bold">Lochia fusca (ca. Ende 1. Woche)</text>
+  <text x="440" y="196" class="minor">Bräunlich-fleischwasserfarben, wässriger</text>
+
+  <rect x="391" y="218" width="293" height="52" rx="10" fill="#fff" stroke="#d9a7b8" stroke-width="1.5"/>
+  <circle cx="416" cy="244" r="14" fill="#e6c875" stroke="#b59845" stroke-width="1"/>
+  <text x="440" y="239" font-weight="bold">Lochia flava (ca. Ende 2. Woche)</text>
+  <text x="440" y="258" class="minor">Gelblich-rahmig (reich an Leukozyten)</text>
+
+  <rect x="391" y="280" width="293" height="52" rx="10" fill="#fff" stroke="#d9a7b8" stroke-width="1.5"/>
+  <circle cx="416" cy="306" r="14" fill="#f5f2eb" stroke="#bfb8aa" stroke-width="1.5"/>
+  <text x="440" y="301" font-weight="bold">Lochia alba (ab 3. Woche bis 6. Woche)</text>
+  <text x="440" y="320" class="minor">Grau-weißlich, glasig-wässrig, versiegend</text>
+
+  <text x="24" y="372" class="minor">Warnzeichen: Plötzliches Sistieren mit Unterbauch-/Stirnkopfschmerz = Verdacht auf Lochialstau! Übler Geruch + Fieber = Endometritis.</text>
+</svg>

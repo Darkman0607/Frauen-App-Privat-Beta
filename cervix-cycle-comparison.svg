@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 390" role="img">
+  <rect width="720" height="390" rx="24" fill="#fff9fb"/>
+  <style>
+    text{font:12.5px Arial,sans-serif;fill:#4d3347}
+    .title{font:bold 19px Arial,sans-serif;fill:#3b2336}
+    .sub{font:bold 13.5px Arial,sans-serif;fill:#7a3e5d}
+    .minor{font-size:11.5px;fill:#7d6677}
+  </style>
+  <text x="24" y="34" class="title">Portio-Befunde im Spekulum: Die 4 Phasen im direkten Vergleich</text>
+
+  <!-- Card 1: Menstruation -->
+  <rect x="18" y="52" width="162" height="285" rx="14" fill="#fff2f7" stroke="#e2c6d5" stroke-width="1.5"/>
+  <text x="28" y="75" class="sub">1. Periode (Tag 1–5)</text>
+  <circle cx="99" cy="145" r="46" fill="#e69eb8" stroke="#9e5876" stroke-width="2"/>
+  <ellipse cx="99" cy="145" rx="10" ry="6" fill="#7a1632"/>
+  <path d="M99 150 Q101 172 95 190 Q100 195 106 190 Z" fill="#b81d41"/>
+  <text x="26" y="218">• <tspan font-weight="bold">Stand:</tspan> mittel bis tief</text>
+  <text x="26" y="238">• <tspan font-weight="bold">Konsistenz:</tspan> aufgelockert</text>
+  <text x="26" y="258">• <tspan font-weight="bold">Muttermund:</tspan> leicht</text>
+  <text x="26" y="274">  geöffnet (1–3 mm)</text>
+  <text x="26" y="294">• <tspan font-weight="bold">Sicht:</tspan> hell-/dunkelrotes</text>
+  <text x="26" y="310">  Blut + Gewebeflocken</text>
+
+  <!-- Card 2: Frühe Follikelphase -->
+  <rect x="192" y="52" width="162" height="285" rx="14" fill="#fff2f7" stroke="#e2c6d5" stroke-width="1.5"/>
+  <text x="202" y="75" class="sub">2. Nach der Periode</text>
+  <circle cx="273" cy="145" r="46" fill="#f2b8cd" stroke="#9e5876" stroke-width="2"/>
+  <ellipse cx="273" cy="145" rx="6" ry="2.5" fill="#7a3e5d"/>
+  <text x="200" y="218">• <tspan font-weight="bold">Stand:</tspan> tief, gut sichtbar</text>
+  <text x="200" y="238">• <tspan font-weight="bold">Konsistenz:</tspan> fest (wie</text>
+  <text x="200" y="254">  Nasenspitze)</text>
+  <text x="200" y="274">• <tspan font-weight="bold">Muttermund:</tspan> geschlossen</text>
+  <text x="200" y="294">• <tspan font-weight="bold">Sicht:</tspan> kaum Sekret oder</text>
+  <text x="200" y="310">  etwas weißlich-klumpig</text>
+
+  <!-- Card 3: Eisprung / Ovulation -->
+  <rect x="366" y="52" width="162" height="285" rx="14" fill="#fff2f7" stroke="#e2c6d5" stroke-width="1.5"/>
+  <text x="376" y="75" class="sub">3. Eisprung (Ovulation)</text>
+  <circle cx="447" cy="145" r="48" fill="#ea9ab8" stroke="#9e5876" stroke-width="2"/>
+  <circle cx="447" cy="145" r="18" fill="#d96b91" opacity="0.5"/>
+  <circle cx="447" cy="145" r="8" fill="#5e1934"/>
+  <!-- Clear glassy mucus drop -->
+  <path d="M447 148 Q453 172 444 185 Q448 190 455 184 Z" fill="#d4f0fa" stroke="#7ab8d6" stroke-width="1.2" opacity="0.85"/>
+  <text x="374" y="218">• <tspan font-weight="bold">Stand:</tspan> hoch im Becken</text>
+  <text x="374" y="238">• <tspan font-weight="bold">Konsistenz:</tspan> weich (wie</text>
+  <text x="374" y="254">  Ohrläppchen/Lippe)</text>
+  <text x="374" y="274">• <tspan font-weight="bold">Muttermund:</tspan> geöffnet</text>
+  <text x="374" y="294">• <tspan font-weight="bold">Sicht:</tspan> glasklarer, spinn-</text>
+  <text x="374" y="310">  barer Zervixschleim</text>
+
+  <!-- Card 4: Lutealphase -->
+  <rect x="540" y="52" width="162" height="285" rx="14" fill="#fff2f7" stroke="#e2c6d5" stroke-width="1.5"/>
+  <text x="550" y="75" class="sub">4. Gelbkörperphase</text>
+  <circle cx="621" cy="145" r="46" fill="#f0b4ca" stroke="#9e5876" stroke-width="2"/>
+  <ellipse cx="621" cy="145" rx="6" ry="2" fill="#7a3e5d"/>
+  <!-- Creamy mucus -->
+  <ellipse cx="621" cy="153" rx="9" ry="4" fill="#fff8fa" stroke="#d9c1cb" stroke-width="1"/>
+  <text x="548" y="218">• <tspan font-weight="bold">Stand:</tspan> wieder tiefer</text>
+  <text x="548" y="238">• <tspan font-weight="bold">Konsistenz:</tspan> derb-fest</text>
+  <text x="548" y="258">• <tspan font-weight="bold">Muttermund:</tspan> dicht durch</text>
+  <text x="548" y="274">  Gestagen-Schleimpfropf</text>
+  <text x="548" y="294">• <tspan font-weight="bold">Sicht:</tspan> cremiger, weißlich-</text>
+  <text x="548" y="310">  gelblicher Ausfluss</text>
+
+  <text x="24" y="364" class="minor">Anatomischer Hinweis: Bei Frauen, die noch nicht geboren haben (Nullipara), ist das Grübchen rund; nach vaginaler Geburt (Multipara) meist querspaltförmig.</text>
+</svg>

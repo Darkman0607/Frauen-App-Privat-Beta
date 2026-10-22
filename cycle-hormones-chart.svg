@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+  <rect width="720" height="400" rx="24" fill="#fff9fb"/>
+  <style>
+    text{font:12.5px Arial,sans-serif;fill:#4d3347}
+    .title{font:bold 19px Arial,sans-serif;fill:#3b2336}
+    .sub{font:bold 13px Arial,sans-serif;fill:#7a3e5d}
+    .minor{font-size:11.5px;fill:#7d6677}
+  </style>
+  <text x="24" y="34" class="title">Zusammenspiel im Zyklus: Hormone, Basaltemperatur &amp; Gebärmutterschleimhaut</text>
+
+  <!-- Grid Box -->
+  <rect x="30" y="50" width="660" height="275" rx="12" fill="#fff" stroke="#e2c6d5" stroke-width="1.5"/>
+  <!-- Ovulation vertical dashed line at day 14 (x=360) -->
+  <line x1="360" y1="50" x2="360" y2="325" stroke="#c93b5b" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="315" y="68" font-weight="bold" fill="#c93b5b">Eisprung (~Tag 14)</text>
+
+  <!-- Hormone Curves (Top Band y=75..165) -->
+  <text x="42" y="88" class="sub">1. Hormonverlauf (Östrogen, LH-Gipfel, Progesteron)</text>
+  <!-- Estrogen (pink solid) -->
+  <path d="M45 155 Q180 150 280 95 Q330 75 355 125 Q420 145 500 110 Q600 115 675 155" fill="none" stroke="#d65c8b" stroke-width="3"/>
+  <!-- LH Peak (purple) -->
+  <path d="M45 160 L325 155 L355 72 L380 155 L675 160" fill="none" stroke="#7a2682" stroke-width="2.5"/>
+  <!-- Progesterone (teal) -->
+  <path d="M45 162 L355 160 Q440 85 520 85 Q610 85 675 160" fill="none" stroke="#2e8b78" stroke-width="3"/>
+  <text x="215" y="102" class="minor" fill="#d65c8b">Östrogen</text>
+  <text x="365" y="85" class="minor" fill="#7a2682">LH-Peak</text>
+  <text x="515" y="102" class="minor" fill="#2e8b78">Progesteron (Gelbkörper)</text>
+
+  <!-- Temperature Curve (Middle Band y=175..235) -->
+  <line x1="30" y1="175" x2="690" y2="175" stroke="#f0dce6" stroke-width="1"/>
+  <text x="42" y="195" class="sub">2. Basaltemperatur (Tieflage ~36,3–36,5 °C → Hochlage +0,2 bis 0,5 °C)</text>
+  <path d="M45 225 L120 222 L190 226 L270 223 L350 228 L385 200 L470 198 L560 201 L645 202 L675 224" fill="none" stroke="#cc5a2b" stroke-width="2.8"/>
+
+  <!-- Endometrium Layer (Bottom Band y=245..325) -->
+  <line x1="30" y1="242" x2="690" y2="242" stroke="#f0dce6" stroke-width="1"/>
+  <text x="42" y="260" class="sub">3. Gebärmutterschleimhaut (Endometrium-Aufbau &amp; Menstruationsabblutung)</text>
+  <!-- Endometrium thickness wave -->
+  <path d="M45 270 Q85 310 135 312 Q240 290 360 278 Q500 264 620 268 Q660 275 675 305 L675 325 L45 325 Z" fill="#edb6c7" opacity="0.75"/>
+  <!-- Menstrual shedding bars day 1-5 -->
+  <rect x="45" y="272" width="85" height="53" fill="#c93b5b" opacity="0.45"/>
+  <text x="52" y="318" font-weight="bold" fill="#7a1632">Tag 1–5: Periode</text>
+  <text x="200" y="318" class="minor">Aufbauphase (Proliferation)</text>
+  <text x="460" y="318" class="minor">Sekretionsphase (Drüsenreifung)</text>
+
+  <text x="24" y="355" class="minor">Schulbuch-Merksatz: Sinkt das Progesteron am Ende der Gelbkörperphase (ca. Tag 26–28) ab, ziehen sich die Spiralarterien zusammen –</text>
+  <text x="24" y="373" class="minor">die obere Schleimhautschicht (Functionalis) löst sich ab und fließt zusammen mit ca. 30–60 ml Blut durch den Muttermund ab.</text>
+</svg>

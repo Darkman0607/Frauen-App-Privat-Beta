@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+  <rect width="720" height="400" rx="24" fill="#fff9fb"/>
+  <style>
+    text{font:13px Arial,sans-serif;fill:#4d3347}
+    .title{font:bold 19px Arial,sans-serif;fill:#3b2336}
+    .sub{font:bold 14px Arial,sans-serif;fill:#7a3e5d}
+    .minor{font-size:11.5px;fill:#7d6677}
+    .tray{fill:#f4f8fa;stroke:#8fa8b8;stroke-width:2}
+    .item{fill:#ffffff;stroke:#9e6b84;stroke-width:1.8}
+  </style>
+  <text x="24" y="34" class="title">Vorbereitung: Untersuchungstisch, Material &amp; optimale Lagerung</text>
+
+  <!-- Left: Sterile/Clean Instrument Tray -->
+  <rect x="20" y="52" width="380" height="285" rx="16" class="tray"/>
+  <text x="36" y="78" class="sub">1. Vorbereitetes Untersuchungstablett (Griffweite)</text>
+  
+  <!-- Speculum in warm water bowl -->
+  <rect x="38" y="94" width="155" height="72" rx="10" class="item"/>
+  <text x="48" y="116" font-weight="bold">Spekulum (S oder M)</text>
+  <text x="48" y="135" class="minor">Auf ~37 °C angewärmt</text>
+  <text x="48" y="152" class="minor">Gelenk &amp; Schraube geprüft</text>
+
+  <!-- Stieltupfer & Kornzange -->
+  <rect x="208" y="94" width="174" height="72" rx="10" class="item"/>
+  <text x="218" y="116" font-weight="bold">Lange Stieltupfer</text>
+  <text x="218" y="135" class="minor">Kornzange + Mullkompressen</text>
+  <text x="218" y="152" class="minor">zum Abtupfen im Gewölbe</text>
+
+  <!-- Gleitmittel / NaCl -->
+  <rect x="38" y="178" width="155" height="72" rx="10" class="item"/>
+  <text x="48" y="200" font-weight="bold">NaCl 0,9 % / Gleitgel</text>
+  <text x="48" y="219" class="minor">Wasserlöslich, pH-neutral</text>
+  <text x="48" y="236" class="minor">(Kein Gel bei PAP-Abstrich)</text>
+
+  <!-- Hygiene & Abwurf -->
+  <rect x="208" y="178" width="174" height="72" rx="10" class="item"/>
+  <text x="218" y="200" font-weight="bold">Hygiene &amp; Nierenschale</text>
+  <text x="218" y="219" class="minor">Handschuhe, Desinfektion,</text>
+  <text x="218" y="236" class="minor">warme feuchte Kompressen</text>
+
+  <text x="38" y="276" class="minor">• Wasserdichte Saug-Unterlage (Flockenunterlage) unter dem Gesäß</text>
+  <text x="38" y="296" class="minor">• Blendfreie Lichtquelle (Stirnlampe / Untersuchungsleuchte)</text>
+  <text x="38" y="316" class="minor">• Vorab Harnblase entleeren lassen (entspannt vordere Scheidenwand)</text>
+
+  <!-- Right: Positioning & Pelvic Tilt Diagram -->
+  <rect x="418" y="52" width="282" height="285" rx="16" fill="#fff2f7" stroke="#e2c6d5" stroke-width="1.5"/>
+  <text x="434" y="78" class="sub">2. Lagerung &amp; Beckenkippung</text>
+  <!-- Mattress & Pillow under sacrum -->
+  <line x1="435" y1="215" x2="680" y2="215" stroke="#86546e" stroke-width="3"/>
+  <!-- Pillow under pelvis -->
+  <rect x="520" y="197" width="68" height="18" rx="9" fill="#d98cb3" stroke="#86546e" stroke-width="1.5"/>
+  <!-- Torso & Pelvis schematic -->
+  <path d="M445 195 Q490 195 535 190 Q565 186 585 192 L625 135 L665 205" fill="none" stroke="#6d3b56" stroke-width="6" stroke-linecap="round"/>
+  <!-- Light beam from behind shoulder -->
+  <polygon points="675,155 582,188 588,202" fill="#fce38a" opacity="0.55"/>
+  <circle cx="678" cy="153" r="9" fill="#f5b942" stroke="#b57c14" stroke-width="1.5"/>
+  <text x="595" y="122" class="minor">Beine angewinkelt,</text>
+  <text x="595" y="137" class="minor">Knie locker nach außen</text>
+  <text x="440" y="242" font-weight="bold">Effekt des Beckenkissens:</text>
+  <text x="440" y="262" class="minor">• Kippt das Becken leicht nach hinten</text>
+  <text x="440" y="280" class="minor">• Der Scheidenkanal verläuft flacher</text>
+  <text x="440" y="298" class="minor">• Die Portio rückt automatisch</text>
+  <text x="440" y="316" class="minor">  weiter in die optische Sichtachse</text>
+
+  <text x="24" y="368" class="minor">Merksatz der Hebammenkunde: Eine ruhige Raumtemperatur, angewärmte Instrumente und langsame Ausatmung senken den Beckenbodentonus sofort.</text>
+</svg>

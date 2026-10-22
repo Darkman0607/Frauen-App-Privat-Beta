@@ -5,3 +5,16 @@
 .deep-lesson{border-left:4px solid #b66e90}.deep-lesson ol{padding-left:24px}.deep-lesson li{margin-bottom:12px;line-height:1.7}.deep-lesson summary{padding:7px 0}
 
 .guide{border-left:4px solid #94bba9}.guide ol{padding-left:23px}.guide li{margin-bottom:12px}.medical-figure{margin:16px 0;padding:10px;border-radius:14px;background:#faf5f8;border:1px solid #ead9e2}.medical-figure img{display:block;width:100%;height:auto;max-height:330px;object-fit:contain}.medical-figure figcaption{font-size:12px;color:#765d6d;margin:8px 2px 2px;line-height:1.5}
+
+.medical-figure{cursor:zoom-in;transition:transform .15s ease,box-shadow .15s ease;position:relative}
+.medical-figure:hover,.medical-figure:active{transform:scale(1.01);box-shadow:0 6px 18px #5432481a;border-color:#c996b0}
+.zoom-hint{display:inline-block;margin-top:6px;font-size:11px;font-weight:700;color:#8c4669;background:#f5e4ec;padding:3px 9px;border-radius:99px}
+#lightbox{position:fixed;inset:0;background:rgba(34,18,29,0.92);z-index:999;display:none;flex-direction:column;align-items:center;justify-content:center;padding:14px;backdrop-filter:blur(4px)}
+#lightbox.open{display:flex}
+.lb-card{background:#fffcfd;border-radius:20px;max-width:96vw;max-height:92dvh;width:740px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 14px 44px rgba(0,0,0,0.45)}
+.lb-head{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:linear-gradient(125deg,#fce8ed,#f5f4ef);border-bottom:1px solid #ead9e2}
+.lb-head strong{color:#743e59;font-size:15px}
+.lb-close{background:#a9587c;color:#fff;border:0;border-radius:10px;padding:6px 13px;font-weight:700;font-size:13px}
+.lb-body{padding:14px;overflow:auto;text-align:center;background:#fff}
+.lb-body img{width:100%;height:auto;max-height:66dvh;object-fit:contain;border-radius:10px}
+.lb-caption{padding:12px 16px;background:#faf5f8;border-top:1px solid #ead9e2;font-size:13.5px;line-height:1.55;color:#4d3347;text-align:left}

@@ -4,7 +4,7 @@ const SELF_GUIDES=[
     "title": "1. Hygiene, Einverständnis und Material",
     "group": "Grundlagen",
     "simple": "Für eine äußere Beobachtung braucht ihr keinen sterilen Untersuchungsraum. Hände, saubere Oberfläche, Licht und ein Spiegel reichen häufig. Handschuhe ersetzen das Händewaschen nicht.",
-    "expert": "Händehygiene reduziert eine Übertragung von Krankheitserregern. Einmalhandschuhe schützen vor direktem Kontakt mit Körperflüssigkeiten, sind aber nicht keimfrei, sofern sie nicht ausdrücklich steril geliefert werden. Untersuchungshandschuhe dürfen nicht gewaschen und wiederverwendet werden. Verunreinigung entsteht auch beim Anfassen von Telefon, Türgriffen oder Verpackungen. Jeder Schritt muss freiwillig sein und jederzeit abgebrochen werden können.",
+    "expert": "Klinischer Hygienestandard (Asepsis & Antisepsis): Die vaginale Schleimhaut wird physiologisch durch Döderlein-Bakterien (Laktobazillen) geschützt, die Milchsäure bilden und den pH-Wert zwischen 3,8 und 4,5 halten. Während der Menstruation steigt der pH-Wert durch das Blut (pH ~7,4) vorübergehend an, und der Zervikalkanal ist leicht geöffnet (1–3 mm). Dadurch ist die natürliche Barriere gegenüber aufsteigenden Keimen (insbesondere Darmbakterien wie E. coli oder Hautkeimen) herabgesetzt. Deshalb gilt: 1. Hygienische Händedesinfektion (30 Sekunden Einreibemethode mit alkoholischem Präparat nach dem Händewaschen), 2. Frische, unsterile Untersuchungshandschuhe erst unmittelbar vor der Untersuchung anziehen (danach kein Smartphone oder Türklinken mehr berühren!), 3. Sämtliche Wisch- und Tupfbewegungen an der Vulva ausnahmslos von ventral nach dorsal (Symphyse → Damm → Anus) ausführen.",
     "steps": [
       "Vor Beginn gemeinsam festlegen, was heute beobachtet wird, und die ausdrückliche Einwilligung einholen. Die beobachtete Person entscheidet jederzeit über Fortsetzung, Foto und Speicherung.",
       "Hände mit Wasser und Seife sorgfältig waschen und abtrocknen; Schmuck bei Bedarf ablegen, Nägel kurz und glatt halten.",
@@ -19,7 +19,14 @@ const SELF_GUIDES=[
     "image": "",
     "alt": "",
     "caption": "",
-    "source": "https://www.who.int/publications/i/item/9789241597906"
+    "source": "https://www.who.int/publications/i/item/9789241597906",
+    "images": [
+      {
+        "src": "speculum-prep-tray.svg",
+        "alt": "Vorbereitetes Untersuchungstablett, Hygiene und Lagerung",
+        "caption": "Schautafel 1: Komplettes Untersuchungstablett (Spekulum, lange Stieltupfer, NaCl/Gleitgel, Nierenschale) sowie entspannte Lagerung mit leicht erhöhtem Becken."
+      }
+    ]
   },
   {
     "title": "2. Vulva und Scheideneingang – Orientierung",
@@ -39,7 +46,19 @@ const SELF_GUIDES=[
     "image": "anatomy-vulva.svg",
     "alt": "Schematische Außenansicht der Vulva mit beschrifteten anatomischen Orientierungspunkten",
     "caption": "Didaktische schematische Grafik; Größe und Form sind individuell verschieden.",
-    "source": "https://www.gesundheit.gv.at/leben/sexualitaet/sexualitaet-und-pubertaet/weibliche-geschlechtsorgane.html"
+    "source": "https://www.gesundheit.gv.at/leben/sexualitaet/sexualitaet-und-pubertaet/weibliche-geschlechtsorgane.html",
+    "images": [
+      {
+        "src": "anatomy-vulva.svg",
+        "alt": "Anatomische Übersicht der Vulva und des Scheideneingangs",
+        "caption": "Schautafel: Äußere Strukturen (Venushügel, große und kleine Schamlippen, Klitoris, Harnröhrenöffnung, Scheidenvorhof und Damm)."
+      },
+      {
+        "src": "speculum-cleaning-aftercare.svg",
+        "alt": "Wischrichtung und Intimhygiene von vorne nach hinten",
+        "caption": "Hygiene-Leitfaden: Systematische Reinigung von vorne nach hinten zum Schutz von Harnröhre und Scheideneingang."
+      }
+    ]
   },
   {
     "title": "3. Menstruation – Verlauf und Warnzeichen",
@@ -59,7 +78,19 @@ const SELF_GUIDES=[
     "image": "",
     "alt": "",
     "caption": "",
-    "source": "https://www.gesundheit.gv.at/leben/frauengesundheit/menstruation.html"
+    "source": "https://www.gesundheit.gv.at/leben/frauengesundheit/menstruation.html",
+    "images": [
+      {
+        "src": "cycle-hormones-chart.svg",
+        "alt": "Hormonkurven, Basaltemperatur und Gebärmutterschleimhaut im Zyklus",
+        "caption": "Lehrbuch-Diagramm: Zusammenspiel von Östrogen, LH-Gipfel, Progesteronabfall und Abblutung der Gebärmutterschleimhaut (Menstruation)."
+      },
+      {
+        "src": "speculum-period-view.svg",
+        "alt": "Blick durch das Spekulum auf die Portio während der Menstruation",
+        "caption": "Portio während der Periode: Leicht geöffneter Muttermund mit direktem Abfluss von Menstruationsblut und Gewebeflocken."
+      }
+    ]
   },
   {
     "title": "4. Ausfluss und Zervixschleim beurteilen",
@@ -79,7 +110,14 @@ const SELF_GUIDES=[
     "image": "",
     "alt": "",
     "caption": "",
-    "source": "https://www.gesundheit.gv.at/leben/sexualitaet/sexualitaet-und-pubertaet/weibliche-geschlechtsorgane.html"
+    "source": "https://www.gesundheit.gv.at/leben/sexualitaet/sexualitaet-und-pubertaet/weibliche-geschlechtsorgane.html",
+    "images": [
+      {
+        "src": "cervix-cycle-comparison.svg",
+        "alt": "Die 4 Zyklusphasen von Portio und Zervixschleim im Vergleich",
+        "caption": "Schautafel: Veränderung von Muttermundöffnung und Zervixschleim (Periode, frühe Follikelphase, Eisprung mit spinnbarem Schleim, Gelbkörperphase)."
+      }
+    ]
   },
   {
     "title": "5. Gebärmutterhals und Muttermund im Zyklus",
@@ -99,13 +137,25 @@ const SELF_GUIDES=[
     "image": "anatomy-cervix.svg",
     "alt": "Schematischer Querschnitt mit Gebärmutter, Gebärmutterhals, Zervikalkanal und Scheide",
     "caption": "Schema, nicht maßstabsgetreu. Millimeter-Messungen an einem Bild sind nicht möglich.",
-    "source": "https://www.gesundheit.gv.at/krankheiten/krebs/eierstock-gebaermutterhalskrebs/gebaermutterhalskrebs.html"
+    "source": "https://www.gesundheit.gv.at/krankheiten/krebs/eierstock-gebaermutterhalskrebs/gebaermutterhalskrebs.html",
+    "images": [
+      {
+        "src": "anatomy-cervix.svg",
+        "alt": "Gebärmutterhals und Zervikalkanal im Querschnitt",
+        "caption": "Anatomischer Längsschnitt: Gebärmutterhöhle, innerer Muttermund, Zervikalkanal, Portio vaginalis und äußerer Muttermund."
+      },
+      {
+        "src": "cervix-cycle-comparison.svg",
+        "alt": "Portio-Befunde im Spekulum in den 4 Zyklusphasen",
+        "caption": "Direkter Vergleich der Portio im Spekulum: Höhenstand, Konsistenz, Öffnungsgrad und Schleimqualität über den gesamten Zyklus."
+      }
+    ]
   },
   {
     "title": "6. Spekulumkunde: Bauarten, Größen und Einstelltechnik (Lehrbuchstandard)",
     "group": "Fachwissen & Instrumentenkunde",
     "simple": "Ein Spekulum hält die sonst aneinanderliegenden Scheidenwände sanft auseinander, sodass der Gebärmutterhals (Portio) und das Scheidengewölbe direkt ausgeleuchtet und betrachtet werden können. Je nach Anatomie und Situation kommen zweiblättrige Entenschnabel-Spekula oder zweiteilige Rinnenspekula zum Einsatz.",
-    "expert": "Man unterscheidet selbsthaltende zweiblättrige Spekula nach Cusco oder Graves (Edelstahl oder transparenter Einmal-Kunststoff mit Stellschraube/Rastung) und zweiteilige Rinnenspekula nach Kristeller oder Sims. Größenwahl: Größe S (ca. 75–80 × 16–20 mm) für engen Introitus/Nullipara, Größe M (ca. 95–105 × 24–27 mm) als Standard, Größe L (110–120 × 30 mm) bei höherer Parität oder weichem Beckenboden. Anatomischer Leitweg: Da die Harnröhre empfindlich direkt unter der Symphyse in der vorderen Scheidenwand verläuft, wird das geschlossene Spekulum schräg (~45°) mit sanftem Druck Richtung Damm/Kreuzbein eingeführt, auf halbem Weg in die Waagrechte (90°, Griff nach unten) gedreht und im 45°-Winkel nach hinten-oben in das Scheidengewölbe geführt.",
+    "expert": "Lehrbuchwissen Instrumentenkunde & Anatomie: 1. Bauarten im Detail: Das selbsthaltende zweiblättrige Spekulum nach Cusco (mit leicht gebogenen, abgerundeten Entenschnabel-Blättern und zentraler oder seitlicher Stellschraube) ist das Standardinstrument zur Portio-Einstellung. Das Modell nach Graves besitzt etwas breitere, stärker geschwungene Blätter. Einmal-Kunststoffspekula (glasklares Polystyrol) bieten den Vorteil, dass durch die transparenten Blätter auch die vordere und hintere Vaginalwand (Colporrhaphie-Beurteilung, Rugae vaginales) durchscheinen; allerdings erzeugt der Rastmechanismus beim Verstellen oft ein hörbares 'Klick'-Geräusch – wird der Feststellhebel beim Einführen und Öffnen mit dem Daumen geführt, lässt sich das Spekulum lautlos und stufenlos spreizen. Zweiteilige Rinnenspekula nach Kristeller oder Sims bestehen aus einem vorderen (kürzeren) und hinteren (längeren) Rinnenblatt: Sie erlauben in der Geburtshilfe und bei stärkerer Blutung eine variable Einstellung, benötigen aber beide Hände. 2. Topographische Anatomie beim Einführen: Der Scheideneingang (Introitus vaginae) ist als vertikaler Spalt angelegt, während das obere Scheidendrittel mit dem vorderen und hinteren Scheidengewölbe (Fornix vaginae anterior et posterior) queroval verläuft. Unmittelbar unter dem Schambeinbogen (Symphyse) liegt die Harnröhre (Urethra) mit dem empfindlichen Trigonum vesicae. Jeder Druck nach vorne-oben löst sofortigen Harndrang oder Schmerz aus. Der Beckenboden (M. pubococcygeus) gibt nach hinten-unten Richtung Steißbein nach. Daher folgt das Spekulum immer der physiologischen Beckenachse (erst 45° schräg, dann 90° waagrecht im 45°-Neigungswinkel nach dorsal-kranial). 3. Typische Einstellprobleme lösen (Troubleshooting): Ist die Portio nach dem Öffnen nicht sichtbar, liegt das Spekulum meist zu weit vorne oder nicht tief genug im hinteren Gewölbe. Bei einem anteflektierten Uterus (Regelfall, nach vorne geneigt) zeigt die Portio nach hinten-unten zur Kreuzbeinhöhle: Hier hilft ein flaches Kissen unter dem Gesäß (Beckenkippung) und ein etwas steileres Führen der Blattspitzen nach dorsal. Bei retroflektiertem Uterus (nach hinten gekippt) zeigt die Portio eher nach vorne-oben Richtung Symphyse.",
     "steps": [
       "Vorbereitung & Material: Vorher Harnblase entleeren (volle Blase kippt den Uterus nach hinten und erschwert die Sicht). Hände gründlich waschen und desinfizieren, unsterile Untersuchungshandschuhe anziehen. Passende Spekulumgröße bereitlegen, Metallspekulum auf Körpertemperatur (ca. 37 °C) unter warmem Wasser anwärmen.",
       "Gleitfähigkeit: Außenflächen der Spekulumblätter dünn mit wasserlöslichem, schleimhautverträglichem Gleitgel oder steriler NaCl-0,9-%-Lösung benetzen (bei geplantem zytologischem Abstrich nur warmes Wasser/NaCl nutzen, sonst Gel zur Komfortsteigerung).",
@@ -122,13 +172,23 @@ const SELF_GUIDES=[
     "images": [
       {
         "src": "speculum-types.svg",
-        "alt": "Bauarten und Größen von Spekula (Cusco, Graves, Kristeller)",
-        "caption": "Abb. 1: Zweiblättriges Entenschnabel-Spekulum (Cusco/Graves) vs. zweiteiliges Rinnenspekulum (Kristeller) und Größenwahl."
+        "alt": "Spekulum-Bauarten (Cusco/Graves vs. Kristeller) und Größenübersicht",
+        "caption": "Abb. 1: Instrumentenkunde – Zweiblättriges Entenschnabel-Spekulum (Cusco/Graves) vs. zweiteiliges Rinnenspekulum (Kristeller) sowie Größen S, M und L."
+      },
+      {
+        "src": "speculum-prep-tray.svg",
+        "alt": "Vorbereitung des Untersuchungstabletts und Beckenkippung",
+        "caption": "Abb. 2: Vorbereitung des Untersuchungstabletts und ergonomische Lagerung mit flachem Beckenkissen zur Einstellung der Sichtachse."
       },
       {
         "src": "speculum-application.svg",
-        "alt": "Dreiphasige Einführung und Entfaltung des Spekulums",
-        "caption": "Abb. 2: Schrittweise Einführung (45°-Eintritt → 90°-Drehung → Entfaltung im Gewölbe) unter Schonung der Harnröhre."
+        "alt": "Dreiphasige Einführung, Drehung und Entfaltung des Spekulums",
+        "caption": "Abb. 3: Die 3 Phasen der Einführung (45°-Eintritt → 90°-Rotation → Entfaltung im Gewölbe) unter Schonung der empfindlichen Harnröhre."
+      },
+      {
+        "src": "cervix-cycle-comparison.svg",
+        "alt": "Portio-Befunde im Spekulum in den vier Zyklusphasen",
+        "caption": "Abb. 4: Was man nach dem Einstellen der Portio je nach Zyklusphase sieht (Periode, Follikelphase, Ovulation, Lutealphase)."
       }
     ],
     "source": "https://www.amboss.com/de/wissen/gynakologische-untersuchung/"
@@ -137,7 +197,7 @@ const SELF_GUIDES=[
     "title": "7. Spekulum-Untersuchung während der Periode: Hygiene, Sicht, Reinigung & Nachsorge",
     "group": "Praxisanleitung Periode",
     "simple": "Während der Menstruation ist das Gewebe im Becken stärker durchblutet, weicher und der äußere Muttermund öffnet sich minimal, damit Blut und Schleimhaut abfließen können. Mit einer wasserdichten Unterlage, Stieltupfern zum sanften Abtupfen und sorgfältiger Reinigung lässt sich dieser natürliche Prozess im Spekulum genau beobachten.",
-    "expert": "In der Desquamationsphase (Zyklustag 1–5) stößt das Endometrium funktionelle Schichten ab, vermischt mit venös-arteriellem Blut und Zervixsekret. Durch Prostaglandine kontrahiert das Myometrium rhythmisch, während der Zervikalkanal leicht dilatiert ist (oft 1–3 mm geöffnet). Das Eigenblut wirkt im Vaginalkanal als natürliches Gleitmittel, sammelt sich jedoch in Rückenlage im tiefer gelegenen hinteren Scheidengewölbe (Fornix vaginae posterior) sowie in der unteren Spekulumrinne. Um die Portiooberfläche und das langsame Nachfließen aus dem Muttermund beurteilen zu können, wird der Blutsee im hinteren Gewölbe mit einer angefeuchteten Stielkompresse (auf Kornzange oder langem Tupferträger) vorsichtig abgetupft.",
+    "expert": "Klinische & hebammenkundliche Vertiefung zur Menstruations-Inspektion: 1. Physiologie der Desquamation: Am Ende der Sekretionsphase führt der Abfall von Progesteron und Östrogen zu einer Vasokonstriktion der Spiralarterien im Endometrium. Die funktionelle Schleimhautschicht (Stratum functionale) löst sich von der verbleibenden Basalschicht (Stratum basale) ab. Lokale Prostaglandine (insb. PGF2α) lösen rhythmische Kontraktionen des Myometriums aus, während sich der Zervikalkanal und der äußere Muttermund (Ostium uteri externum) leicht öffnen (ca. 1–3 mm). Das ausfließende Menstruationsblut (insgesamt ca. 30–80 ml über 3–7 Tage) besteht aus arteriellem und venösem Blut, abgelösten Endometriumfragmenten, Zervixschleim und Vaginalepithelzellen. Durch fibrinolytische Enzyme (Plasmin) aus dem Endometrium gerinnt Menstruationsblut im Normalfall nicht; erst bei sehr starker Blutung bilden sich dunkelrote Koagel (Blutgerinnsel), weil die Fibrinolysekapazität überschritten wird. 2. Warum sich Blut im hinteren Scheidengewölbe sammelt: In Rückenlage bildet das hintere Scheidengewölbe (Fornix vaginae posterior) unterhalb der Portio den tiefsten anatomischen Punkt (Pool-Bildung). Beim Öffnen des Spekulums fließt ein Teil dieses 'Blutsees' in die Rinne des unteren Spekulumblattes. Um die Oberfläche der Portio (Plattenepithel, eventuelle physiologische Ektopiezone/Umwandlungszone) und das langsame Nachfließen aus dem Muttermund frei zu betrachten, tupft man diesen Pool mit einem langen, mit warmer NaCl-0,9-%-Lösung angefeuchteten Stieltupfer (oder einer in einer Kornzange eingespannten Mullkompresse) behutsam aus. Trockene Tupfer auf empfindlichem Zylinderepithel vermeiden, da sie anhaften und Kontaktblutungen auslösen können! 3. Tropffreie Rückzug-Technik & Nachreinigung: Beim Herausnehmen des Spekulums sammelt sich Restblut in der konkaven Rinne des unteren Blattes. Wird das Spekulum beim Austritt aus dem Introitus leicht waagrecht (wie ein Löffel, Griff nach unten) geführt und direkt in die bereitstehende Nierenschale gelegt, bleibt die Unterlage vollkommen sauber. Bei der anschließenden Intimreinigung der Frau gilt das Drei-Tupfer-Prinzip mit körperwarmen, weichen Kompressen: 1. Tupfer für Vestibulum und Labia minora (von der Klitoris Richtung hintere Kommissur), 2. Tupfer für die Labia majora beidseits von vorne nach hinten, 3. Tupfer für Damm (Perineum) und Analregion. Danach sanft trocken tupfen.",
     "steps": [
       "Unterlage & Umfeld vorbereiten: Saugfähige, wasserdichte Krankenunterlage (Einmal-Flockenunterlage oder dunkles Handtuch mit wasserdichter Auflage) unter das Becken legen. Nierenschale oder Abwurfbehälter, lange Stieltupfer/Mullkompressen, warme NaCl-0,9-%-Lösung (oder warmes Wasser), Handschuhe und weiche Einmalwaschlappen in Griffweite platzieren.",
       "Äußere Vorreinigung: Vor dem Einführen des Spekulums äußeres Menstruationsblut an Vulva, Labien und Damm mit einer warm angefeuchteten Kompresse behutsam **immer von vorne nach hinten** (Symphyse Richtung After, niemals umgekehrt!) abwischen.",
@@ -154,14 +214,24 @@ const SELF_GUIDES=[
     "category": "Muttermund und Gebärmutterhals",
     "images": [
       {
-        "src": "speculum-period-view.svg",
-        "alt": "Blick durch das Spekulum auf die Portio während der Periode",
-        "caption": "Abb. 1: Direkter Blick durch das geöffnete Spekulum während der Menstruation: leicht geöffneter Muttermund und Blutsee im hinteren Scheidengewölbe."
+        "src": "speculum-prep-tray.svg",
+        "alt": "Vorbereitung von Untersuchungstablett, Stieltupfern und Lagerung",
+        "caption": "Abb. 1: Arbeitsplatzvorbereitung bei Periode – wasserdichte Saug-Unterlage, angewärmtes Spekulum, lange Stieltupfer/Kornzange und NaCl-0,9-%-Lösung."
       },
       {
         "src": "speculum-application.svg",
-        "alt": "Einführung, Öffnung und Abtupfen im Spekulum",
-        "caption": "Abb. 2: Längsschnitt der Spekulumlage im Scheidengewölbe und sanftes Abtupfen mit Stielkompresse."
+        "alt": "Schritt-für-Schritt-Einführung des Spekulums in 3 Phasen",
+        "caption": "Abb. 2: Sanfte 3-Phasen-Einführung (45° → 90° → Öffnen im Scheidengewölbe) und Abtupfen des Blutsees."
+      },
+      {
+        "src": "speculum-period-view.svg",
+        "alt": "Direkter Blick durch das Spekulum auf die Portio während der Menstruation",
+        "caption": "Abb. 3: Klinisches Bild im Spekulum während der Periode: aufgelockerte Portio, 1–3 mm geöffneter äußerer Muttermund und Blutsee im hinteren Scheidengewölbe."
+      },
+      {
+        "src": "speculum-cleaning-aftercare.svg",
+        "alt": "Nachsorge: Intimreinigung von vorne nach hinten und 4-Stufen-Aufbereitung",
+        "caption": "Abb. 4: Liebevolle, hygienische Nachreinigung der Frau (Wischrichtung Symphyse → Damm) und fachgerechte Kaltwasser-Aufbereitung des Edelstahl-Spekulums."
       }
     ],
     "source": "https://www.frauenaerzte-im-netz.de/frauengesundheit/gynakologische-untersuchung/"

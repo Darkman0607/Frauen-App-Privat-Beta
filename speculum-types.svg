@@ -1,49 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 380" role="img">
-  <rect width="680" height="380" rx="24" fill="#fff9fb"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+  <rect width="720" height="420" rx="24" fill="#fff9fb"/>
   <style>
-    text{font:14px Arial,sans-serif;fill:#4d3347}
+    text{font:13px Arial,sans-serif;fill:#4d3347}
     .title{font:bold 19px Arial,sans-serif;fill:#3b2336}
     .sub{font:bold 14px Arial,sans-serif;fill:#7a3e5d}
-    .minor{font-size:12px;fill:#7d6677}
-    .line{stroke:#86546e;stroke-width:1.8;fill:none}
+    .minor{font-size:11.5px;fill:#7d6677}
     .metal{fill:#e4e9ed;stroke:#5c6b73;stroke-width:2.2}
-    .plastic{fill:#f3f8fc;stroke:#6c91ad;stroke-width:2.2}
     .accent{fill:#d98cb3;stroke:#86546e;stroke-width:1.8}
   </style>
   <text x="24" y="34" class="title">Spekulum-Bauarten, Größen &amp; Mechanik (Fachschema)</text>
   
   <!-- Left Box: Entenschnabel-Spekulum (Cusco / Graves) -->
-  <rect x="20" y="50" width="310" height="210" rx="14" fill="#fff2f7" stroke="#e2c6d5" stroke-width="1.5"/>
+  <rect x="20" y="50" width="330" height="225" rx="14" fill="#fff2f7" stroke="#e2c6d5" stroke-width="1.5"/>
   <text x="34" y="74" class="sub">1. Zweiblättriges Spekulum (Cusco / Graves)</text>
-  <!-- Upper blade -->
-  <path d="M95 125 Q180 105 265 112 Q278 114 276 122 Q185 122 102 138 Z" class="metal"/>
-  <!-- Lower blade -->
-  <path d="M95 148 Q180 165 268 158 Q280 156 277 148 Q185 150 102 138 Z" class="metal"/>
-  <!-- Hinge & Handle -->
-  <circle cx="96" cy="141" r="8" fill="#8b9aa3" stroke="#49565e" stroke-width="2"/>
-  <path d="M88 145 L68 225 L84 229 L102 148 Z" class="metal"/>
-  <!-- Screw / Arretierung -->
-  <line x1="62" y1="175" x2="122" y2="192" stroke="#5c6b73" stroke-width="4"/>
-  <circle cx="124" cy="193" r="7" class="accent"/>
-  <!-- Labels Left -->
-  <text x="155" y="98">Oberes &amp; unteres Blatt (Valven)</text>
-  <text x="136" y="198">Stellschraube / Rastung</text>
-  <text x="42" y="247" class="minor">Selbsthaltend · Einmal-Kunststoff (mit Klick-Rast) oder Edelstahl</text>
+  <path d="M95 130 Q180 110 275 117 Q288 119 286 127 Q185 127 102 143 Z" class="metal"/>
+  <path d="M95 153 Q180 170 278 163 Q290 161 287 153 Q185 155 102 143 Z" class="metal"/>
+  <circle cx="96" cy="146" r="8" fill="#8b9aa3" stroke="#49565e" stroke-width="2"/>
+  <path d="M88 150 L68 230 L84 234 L102 153 Z" class="metal"/>
+  <line x1="62" y1="180" x2="122" y2="197" stroke="#5c6b73" stroke-width="4"/>
+  <circle cx="124" cy="198" r="7" class="accent"/>
+  <text x="140" y="102">Oberes &amp; unteres Blatt (Valven)</text>
+  <text x="136" y="203">Stellschraube / Arretierung</text>
+  <text x="34" y="252" class="minor">Selbsthaltend · Einmal-Kunststoff oder Edelstahl</text>
+  <text x="34" y="267" class="minor">Mit Lichtkanal oder externer Untersuchungsleuchte</text>
 
   <!-- Right Box: Kristeller Rinnenspekulum (2-teilig) -->
-  <rect x="350" y="50" width="310" height="210" rx="14" fill="#fff2f7" stroke="#e2c6d5" stroke-width="1.5"/>
-  <text x="364" y="74" class="sub">2. Rinnenspekula nach Kristeller / Sims</text>
-  <!-- Anterior blade -->
-  <path d="M405 112 L555 112 Q572 112 572 122 Q572 130 555 130 L420 130 L405 162 L392 158 Z" class="metal"/>
-  <!-- Posterior blade -->
-  <path d="M430 198 L585 198 Q604 198 604 186 Q604 178 585 178 L445 178 L430 144 L417 148 Z" class="metal"/>
-  <text x="450" y="103">Vorderes Blatt (hält Vorderwand)</text>
-  <text x="450" y="220">Hinteres Rinnenblatt (hält Damm)</text>
-  <text x="364" y="247" class="minor">Zweiteilig · optimaler Überblick bei stärkerer Blutung &amp; Geburtshilfe</text>
+  <rect x="370" y="50" width="330" height="225" rx="14" fill="#fff2f7" stroke="#e2c6d5" stroke-width="1.5"/>
+  <text x="384" y="74" class="sub">2. Rinnenspekula nach Kristeller / Sims</text>
+  <path d="M425 117 L585 117 Q602 117 602 127 Q602 135 585 135 L440 135 L425 167 L412 163 Z" class="metal"/>
+  <path d="M450 203 L615 203 Q634 203 634 191 Q634 183 615 183 L465 183 L450 149 L437 153 Z" class="metal"/>
+  <text x="445" y="106">Vorderes Blatt (hält Vorderwand)</text>
+  <text x="445" y="226">Hinteres Rinnenblatt (hält Damm)</text>
+  <text x="384" y="252" class="minor">Zweiteilig · optimaler Überblick bei starker Blutung,</text>
+  <text x="384" y="267" class="minor">in der Geburtshilfe und bei tiefen Scheidenwänden</text>
 
   <!-- Bottom Box: Größenübersicht -->
-  <rect x="20" y="274" width="640" height="86" rx="14" fill="#fdf6f9" stroke="#dcc2d0" stroke-width="1.5"/>
-  <text x="34" y="298" class="sub">Größenauswahl in der Praxis (Länge × Blattbreite):</text>
-  <text x="34" y="320">• <tspan font-weight="bold">Größe S (Virgo / schmal):</tspan> ca. 75–80 mm × 16–20 mm – bei engem Introitus, Nullipara oder empfindlicher Schleimhaut</text>
-  <text x="34" y="341">• <tspan font-weight="bold">Größe M (Standard):</tspan> ca. 95–105 mm × 24–27 mm (Standardgröße) · <tspan font-weight="bold">Größe L:</tspan> ca. 110–120 mm × 30–32 mm (nach vaginalen Geburten / höherem Tonus)</text>
+  <rect x="20" y="290" width="680" height="110" rx="14" fill="#fdf6f9" stroke="#dcc2d0" stroke-width="1.5"/>
+  <text x="34" y="314" class="sub">Größenauswahl in der klinischen Praxis (Blattlänge × Blattbreite):</text>
+  <text x="34" y="338">• <tspan font-weight="bold">Größe S (Virgo / schmal):</tspan> ca. 75–80 mm × 16–20 mm – bei engem Introitus, Nullipara, empfindlicher Schleimhaut</text>
+  <text x="34" y="360">• <tspan font-weight="bold">Größe M (Standard):</tspan> ca. 95–105 mm × 24–27 mm – gängige Standardgröße für die meisten erwachsenen Frauen</text>
+  <text x="34" y="382">• <tspan font-weight="bold">Größe L (Lang / Breit):</tspan> ca. 110–120 mm × 30–32 mm – nach vaginalen Geburten, langem Scheidenkanal oder tiefem Gewölbe</text>
 </svg>

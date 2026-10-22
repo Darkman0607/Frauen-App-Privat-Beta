@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+  <rect width="720" height="400" rx="24" fill="#fff9fb"/>
+  <style>
+    text{font:13px Arial,sans-serif;fill:#4d3347}
+    .title{font:bold 19px Arial,sans-serif;fill:#3b2336}
+    .sub{font:bold 14px Arial,sans-serif;fill:#7a3e5d}
+    .minor{font-size:11.5px;fill:#7d6677}
+    .good{fill:#edf7f2;stroke:#5a9e7c;stroke-width:1.8}
+    .stepbox{fill:#fff2f7;stroke:#d9b2c5;stroke-width:1.5}
+  </style>
+  <text x="24" y="34" class="title">Nachsorge nach der Spekulum-Untersuchung: Intimhygiene &amp; Instrumente</text>
+
+  <!-- Left: Wiping Direction & Intimate Care -->
+  <rect x="20" y="52" width="335" height="295" rx="16" class="good"/>
+  <text x="36" y="78" class="sub">1. Sie sauber machen (Wischrichtung)</text>
+  
+  <!-- Schematic Vulva/Perineum top-to-bottom with numbered arrows -->
+  <ellipse cx="115" cy="185" rx="48" ry="82" fill="#f7d6e4" stroke="#b37490" stroke-width="2"/>
+  <ellipse cx="115" cy="175" rx="22" ry="52" fill="#fae8f0" stroke="#c48aa3" stroke-width="1.5"/>
+  <circle cx="115" cy="138" r="4" fill="#86546e"/>
+  <circle cx="115" cy="195" r="11" fill="#c97a9b"/>
+  <circle cx="115" cy="250" r="6" fill="#7d5268"/>
+  <!-- Arrows strictly top to bottom (ventral -> dorsal) -->
+  <path d="M115 125 L115 225" stroke="#2e7d5b" stroke-width="3.5" fill="none"/>
+  <polygon points="115,233 109,221 121,221" fill="#2e7d5b"/>
+  <path d="M82 135 L82 220" stroke="#2e7d5b" stroke-width="2.5" stroke-dasharray="4,3" fill="none"/>
+  <polygon points="82,227 77,217 87,217" fill="#2e7d5b"/>
+  <path d="M148 135 L148 220" stroke="#2e7d5b" stroke-width="2.5" stroke-dasharray="4,3" fill="none"/>
+  <polygon points="148,227 143,217 153,217" fill="#2e7d5b"/>
+
+  <text x="182" y="112" font-weight="bold">Reihenfolge (je 1 frischer Tupfer):</text>
+  <text x="182" y="135" class="minor">1. Zug: Kleine Schamlippen &amp;</text>
+  <text x="182" y="151" class="minor">   Vorhof (Symphyse → Damm)</text>
+  <text x="182" y="175" class="minor">2. Zug: Große Schamlippen</text>
+  <text x="182" y="191" class="minor">   beidseits von vorne nach hinten</text>
+  <text x="182" y="215" class="minor">3. Zug: Damm &amp; Analregion</text>
+  <text x="182" y="231" class="minor">   zuletzt (Tupfer sofort verwerfen)</text>
+  <text x="182" y="258" font-weight="bold">Danach:</text>
+  <text x="182" y="276" class="minor">• Mit weichem Tuch trocken tupfen</text>
+  <text x="182" y="294" class="minor">• Frische Binde / Periodenwäsche</text>
+  <text x="36" y="328" class="minor">NIEMALS von hinten nach vorne wischen (Schutz vor E.-coli-Keimen)!</text>
+
+  <!-- Right: 4-Stage Speculum Reprocessing -->
+  <rect x="375" y="52" width="325" height="295" rx="16" class="stepbox"/>
+  <text x="391" y="78" class="sub">2. Aufbereitung Edelstahl-Spekulum</text>
+
+  <rect x="391" y="92" width="293" height="52" rx="10" fill="#e8f4fc" stroke="#7aaed6" stroke-width="1.5"/>
+  <text x="403" y="112" font-weight="bold">Schritt 1: SOFORT KALT abspülen (&lt; 20 °C)</text>
+  <text x="403" y="131" class="minor">Wichtig: Heißes Wasser lässt Bluteiweiß sofort gerinnen!</text>
+
+  <rect x="391" y="154" width="293" height="52" rx="10" fill="#fff" stroke="#d4b2c4" stroke-width="1.5"/>
+  <text x="403" y="174" font-weight="bold">Schritt 2: Warm reinigen &amp; Gewinde bürsten</text>
+  <text x="403" y="193" class="minor">Stellschraube ganz herausdrehen, Gelenk abbürsten.</text>
+
+  <rect x="391" y="216" width="293" height="52" rx="10" fill="#fff" stroke="#d4b2c4" stroke-width="1.5"/>
+  <text x="403" y="236" font-weight="bold">Schritt 3: Instrumenten-Desinfektion</text>
+  <text x="403" y="255" class="minor">VAH-gelistete Lösung nach Einwirkzeit, danach klar spülen.</text>
+
+  <rect x="391" y="278" width="293" height="52" rx="10" fill="#fff" stroke="#d4b2c4" stroke-width="1.5"/>
+  <text x="403" y="298" font-weight="bold">Schritt 4: Sterilisation / Auskochen &amp; Trocknen</text>
+  <text x="403" y="317" class="minor">Auskochen (mind. 15 Min.) / Dampfsterilisation, staubfrei lagern.</text>
+
+  <text x="24" y="374" class="minor">Hinweis: Einmal-Kunststoffspekula sind nicht hitzebeständig und werden nach der Untersuchung direkt über den Restmüll entsorgt.</text>
+</svg>

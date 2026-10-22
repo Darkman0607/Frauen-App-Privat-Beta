@@ -1,6 +1,6 @@
 {
-  "version": "0.1.8.0",
+  "version": "0.1.8.1",
   "released": "2026-10-22",
-  "notes": "Lehrbuch-Erweiterung: Spekulum-Untersuchung während der Periode (Arten, Größen, Lagerung, 3-Phasen-Einführung, Abtupfen, Herausholen, intime Nachreinigung & Instrumentenhygiene) inkl. 3 neuer medizinischer SVG-Schautafeln im Lernzentrum und unter Gemeinsame Selbstkontrolle.",
-  "build": 4
+  "notes": "Vollbild-Zoom (klickbare Schautafeln & Fotos), 5 neue medizinische Lehrbuch-SVGs (insgesamt 8 Fachgrafiken) und umfassende Schulbuch-Vertiefung zu Spekulum, Periode, Zyklus und Nachsorge.",
+  "build": 5
 }
