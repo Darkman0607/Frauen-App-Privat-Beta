@@ -22,7 +22,7 @@ Eigenständige private PWA zum Testen von Navigation, gynäkologischem Tagebuch,
 - Oben rechts befindet sich die Updateprüfung.
 - Die App lädt beim Start, wenn sie wieder in den Vordergrund kommt und während aktiver Nutzung alle fünf Minuten `version.json` neu.
 - Bei neuer Version wird der Service Worker überprüft und die Seite automatisch neu geladen, sofern kein Eingabeformular geöffnet ist. In einem geöffneten Formular wird das Update zurückgestellt, um ungespeicherte Eingaben nicht zu verlieren.
-- Für jedes neue Release **alle drei Versionsstellen identisch erhöhen**: `app.js` (`APP_VERSION`), `sw.js` (`CACHE`) und `version.json` (`version`). Beispiel `0.1.2`.
+- Für jedes neue Release **alle drei Versionsstellen identisch erhöhen**: `app.js` (`APP_VERSION`), `sw.js` (`CACHE`) und `version.json` (`version`). Beispiel `0.1.3`.
 - GitHub muss die neuen Dateien erst via GitHub Pages veröffentlichen. Das Betriebssystem kann eine PWA nicht garantiert in einer geschlossenen App sofort aktualisieren; die Prüfung funktioniert online bei geöffneter/wiedergeöffneter App.
 
 ## Umfang der Beta
@@ -37,12 +37,26 @@ Eigenständige private PWA zum Testen von Navigation, gynäkologischem Tagebuch,
 PIN/Verschlüsselung, echte med. Quellenprüfung je Lektion, medizinisches Volllehrbuch, PDF-Befunde, Langzeit-Diagramme, automatisierte medizinische Voreinschätzung, Cloud-Synchronisierung, zuverlässige medizinische Warnlogik, automatisierte Browser-Tests.
 
 
-### Prüfung und Korrektur 0.1.2
+### Prüfung und Korrektur 0.1.3
 Schnellzugriff auf Formulare, Kalender-Details und Update-Start korrigiert. Keine Verschlüsselung: ausschließlich Testdaten verwenden.
 
-## Neu in 0.1.2
+## Neu in 0.1.3
 - Eigene Start-Kacheln „Selbstkontrolle“ und „Krankheiten“ mit direkter Erfassung.
 - Erweiterte Eingabefelder, die nur bei entsprechender Kategorie erscheinen, inklusive Temperatur/Messmethode, Krankheitsverlauf und Selbstbeobachtungs-Methode.
 - Vorhandene IndexedDB-Daten bleiben erhalten (unveränderter Datenbankname und Schema).
 - Keine PIN und keine Verschlüsselung; nur erfundene Testdaten verwenden.
 - Keine diagnostische Bewertung oder invasive Selbstuntersuchung.
+
+
+Beta 0.1.3: Neues lessons.js ist zwingend mit hochzuladen. 25 Ausbildungs-Grundlagenlektionen mit externen Quellen. Kein vollständiges Hebammenlehrbuch und keine medizinische Freigabe. Bestehende IndexedDB fra uen-app-beta unverändert (Name: frauen-app-beta). Historische Eintragskategorie Selbstkontrolle bleibt lesbar.
+
+
+## Korrekturen Build 2 (Beta 0.1.3)
+- Bearbeiten aus dem Kalender verliert den Eintrag nicht mehr.
+- Kalender-Details öffnen das Tagebuch mit dem richtigen Eintrag.
+- Eintrag und neue Fotos werden gemeinsam in einer IndexedDB-Transaktion gespeichert, Fehler brechen alles ab.
+- Import validiert Einträge und Fotoreferenzen vor dem Ersetzen des lokalen Bestandes.
+- Updateprüfer vergleicht zusätzlich Build 2, damit bereits installierte 0.1.3-Versionen das korrigierte Update erkennen.
+- Bestehende historische Kategorie Selbstkontrolle ist weiterhin lesbar, neue Einträge nutzen Gemeinsame Selbstkontrolle.
+
+Vor dem Upload in GitHub unbedingt Backup exportieren. Keine echten sensitiven Gesundheitsdaten bis PIN und Verschlüsselung ergänzt und getestet sind.
