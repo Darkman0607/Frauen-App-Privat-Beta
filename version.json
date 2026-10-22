@@ -1,6 +1,6 @@
 {
-  "version": "0.1.8.5",
+  "version": "0.1.8.6",
   "released": "2026-10-22",
-  "notes": "Redesign 'Neue Beobachtung': Übersichtliche 4-Sektionen-Struktur, 2-Spalten-Raster, Schieberegler für Schmerz, Kamera- & Galerie-Buttons zum direkten Fotografieren mit Live-Vorschau und Lösch-Buttons.",
-  "build": 9
+  "notes": "Cache- und Update-Fix: Sofortiges Update ohne Hängenbleiben auf alter Version, Network-First-Strategie im Service Worker, automatisches Überspringen alter Caches und vollständiges Redesign der Beobachtungs-Erfassung.",
+  "build": 10
 }

@@ -1,5 +1,5 @@
 'use strict';
-const APP_VERSION='0.1.8.5', APP_BUILD=9, DB='frauen-app-beta', DB_VERSION=2;
+const APP_VERSION='0.1.8.6', APP_BUILD=10, DB='frauen-app-beta', DB_VERSION=2;
 const $=id=>document.getElementById(id), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const categories=['Periode','Zwischenblutung','Ausfluss','Flüssigkeitsverlust','Sexualität','Kinderwunsch','Zervixschleim / Eisprung','Basaltemperatur','Schwangerschaftstest','Schmerzen','Brustveränderung','Vulva / Scheide','WC / Ausscheidung','Wohlbefinden','Schwangerschaft','Kindsbewegungen / Wehen','Frauenarzttermin','Abstrich / Laboruntersuchung','Geburt / Wochenbett','Gemeinsame Selbstkontrolle','Krankheit / Allgemeinsymptome'];
 let updatingNow=false,db,page='home',selectedDay=[new Date().getFullYear(),String(new Date().getMonth()+1).padStart(2,'0'),String(new Date().getDate()).padStart(2,'0')].join('-'),reloadOnce=false,editing=null;
@@ -229,7 +229,8 @@ async function checkUpdate(silent=false){
  if(!navigator.onLine){status.textContent='Offline';return;}
  if(!silent)status.textContent='Prüfe…';
  try{
-  const u=new URL('./version.json',location.href);u.searchParams.set('check',String(Date.now()));
+  const u=new URL('./version.json',location.href);
+  u.searchParams.set('check',String(Date.now()));
   const res=await fetch(u.href,{cache:'no-store'});
   if(!res.ok)throw Error('Versionsdatei nicht erreichbar');
   const info=await res.json();
@@ -237,19 +238,34 @@ async function checkUpdate(silent=false){
   if(info.version!==APP_VERSION||build>APP_BUILD){
    status.textContent='Neu: '+info.version+' ('+build+')';
    if(hasPendingInput()){if(!silent)notify('Erst Eingabe speichern oder schließen, dann Update starten');return;}
-   updatingNow=true;status.textContent='Aktualisiere…';
-   notify('Neue Version wird geprüft und geladen');
-   try{if('serviceWorker' in navigator){const reg=await navigator.serviceWorker.getRegistration();await reg?.update();}}catch(e){/* Navigation versucht Netzwerk-Update dennoch */}
-   // Eine neue URL erzwingt eine neue Navigationsanfrage statt einer bloßen Wiederholung.
-   // Der Service Worker verwendet network-first für Seiten und JavaScript.
+   updatingNow=true;
+   status.textContent='Lade v'+info.version+'…';
+   notify('Neue Version gefunden: v'+info.version+' wird geladen');
+   try{
+    if('serviceWorker' in navigator){
+     const reg=await navigator.serviceWorker.getRegistration();
+     if(reg){
+      reg.waiting?.postMessage('SKIP_WAITING');
+      await reg.update();
+     }
+    }
+    if('caches' in window){
+     const keys=await caches.keys();
+     await Promise.all(keys.filter(k=>!k.includes('build'+build)).map(k=>caches.delete(k)));
+    }
+   }catch(e){}
    const next=new URL('./index.html',location.href);
    next.searchParams.set('app_update',info.version+'-'+build);
    next.searchParams.set('t',String(Date.now()));
    location.replace(next.href);
   }else{
-   status.textContent='Aktuell';if(!silent)notify('Version '+APP_VERSION+' (Build '+APP_BUILD+') ist aktuell');
+   status.textContent='Aktuell';
+   if(!silent)notify('Version '+APP_VERSION+' (Build '+APP_BUILD+') ist aktuell');
   }
- }catch(e){status.textContent='Prüfung fehlgeschlagen';if(!silent)notify('Update nicht prüfbar – Verbindung und GitHub-Dateien kontrollieren');}
+ }catch(e){
+  status.textContent='Prüfung fehlgeschlagen';
+  if(!silent)notify('Update nicht prüfbar – Verbindung und GitHub kontrollieren');
+ }
 }
 async function init(){try{db=await openDB();await unlockLocal();$('update').onclick=()=>checkUpdate();$('version').textContent='v'+APP_VERSION;await render();if('serviceWorker' in navigator && location.protocol==='https:'){navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).then(()=>{navigator.serviceWorker.addEventListener('controllerchange',()=>{/* App navigiert nach eigener Versionsprüfung; kein zweites Neuladen */})}).catch(()=>{});}setTimeout(()=>checkUpdate(true),2000);setInterval(()=>checkUpdate(true),5*60*1000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkUpdate(true)})}catch(err){const message=err?.message||'Unbekannter Fehler';const recoverable=/Mindestens 12 Zeichen|Passwörter stimmen nicht|Entsperren abgebrochen|Einrichtung abgebrochen|Datenpasswort falsch/.test(message);$('view').innerHTML='<div class="card"><h2>Lokale Daten '+(recoverable?'noch gesperrt':'nicht verfügbar')+'</h2><div class="warning">'+esc(message)+'</div><p class="muted">'+(recoverable?'Deine vorhandenen Daten wurden dadurch nicht gelöscht. Wähle ein Datenpasswort mit mindestens 12 Zeichen und wiederhole die Eingabe.':'Bitte nicht die Website-Daten oder den Browsercache löschen. Falls du bereits ein Backup hast, bewahre es auf.')+'</p><button class="primary" id="retry-unlock">'+'Passworteingabe erneut öffnen'+'</button></div>';const retry=$('retry-unlock');if(retry)retry.onclick=()=>{retry.disabled=true;init()};}}
 init();
