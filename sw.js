@@ -1,6 +1,7 @@
-const CACHE='frauen-app-0.1.9.6-build20';
+const CACHE='frauen-app-0.1.9.2-build16';
 const CORE=[
   './',
+  './index.html',
   './style.css',
   './app.js',
   './lessons.js',
@@ -51,14 +52,13 @@ self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
   if (e.request.method !== 'GET' || url.origin !== self.location.origin) return;
 
-  if (url.pathname.endsWith('/') || url.pathname.endsWith('/index.html') || url.pathname.endsWith('/version.json') || url.pathname.endsWith('/sw.js')) {
-    e.respondWith(
-      fetch(e.request, { cache: 'no-store' })
-        .catch(() => caches.match(e.request))
-    );
+  // version.json und sw.js niemals aus Cache
+  if (url.pathname.endsWith('/version.json') || url.pathname.endsWith('/sw.js')) {
+    e.respondWith(fetch(e.request, { cache: 'no-store' }));
     return;
   }
 
+  // Network-First für Skripte, HTML und CSS damit Updates sofort sichtbar sind
   e.respondWith(
     fetch(e.request, { cache: 'no-cache' })
       .then(response => {

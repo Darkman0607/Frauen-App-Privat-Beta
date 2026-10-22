@@ -1,6 +1,6 @@
 {
-  "version": "0.1.9.6",
+  "version": "0.1.9.2",
   "released": "2026-10-22",
-  "notes": "Render- & Cache-Fix: Strikte no-store Netzwerk-Strategie für index.html und Service Worker, automatisches Entwurzeln alter Service Worker beim Start, 69 Fachlektionen.",
-  "build": 20
+  "notes": "Lernzentrum Kapitel-Kacheln: Übersichtliche 2-Spalten-Kacheln nach Themenbereichen (Periode, Zyklus, Schwangerschaft, Untersuchungen, Anatomie, Wochenbett, Brust) mit Direktsprung auf die jeweilige Themenseite.",
+  "build": 16
 }

@@ -1,7 +1,21 @@
-# Frauen-App Beta 0.1.9.6 (Render- & Cache-Fix)
+# Frauen-App Beta 0.1.9.2 (Lernzentrum Themen-Kacheln)
 
-Update auf 0.1.9.6 (Build 20):
-- **Behebung des weißen Bildschirms / alter Version:**
-  - `index.html` wird ab sofort vom Service Worker **niemals mehr gecached** (`no-store`), sondern immer direkt frisch von GitHub geladen.
-  - Automatisches Bereinigen und Neu-Registrieren des Service Workers beim App-Start.
-- **Enthält alle 69 Fachlektionen**, Schautafeln, Themen-Kacheln, Tagebuch-Redesign und Kalender-Icons.
+Update von 0.1.9.1 auf 0.1.9.2 (Build 16):
+- **Strukturierte Kapitel-Kacheln im Lernzentrum (`learn()`):**
+  - Statt einer langen Liste gibt es jetzt eine übersichtliche Startseite mit **farbigen Themenkacheln nebeneinander**:
+    1. 🩸 **Periode & Blutung**
+    2. ✨ **Zyklus & Hormone** (Eisprung, Zervixschleim, Basaltemperatur, NFP)
+    3. 🤰 **Schwangerschaft & Geburt** (Fruchtwasser, Wehen, Geburtsanzeichen)
+    4. 🔦 **Untersuchungen & Spekulum** (Spekulumkunde, Vaginale Tastung/VU, Abstriche)
+    5. 🌸 **Anatomie & Intimbereich** (Vulva, Scheideneingang, Muttermund, Beckenboden)
+    6. 🍼 **Wochenbett & Rückbildung** (Lochien, Fundusstand, Uteruspflege)
+    7. 🤲 **Brustgesundheit** (Abtastung, Mastodynie)
+  - Jede Kachel zeigt:
+    - Großes Themen-Icon
+    - Aussagekräftige Kurzbeschreibung
+    - Zähler der enthaltenen Fachkapitel & Grundlagenlektionen
+    - Pfeil-Button zum Öffnen
+  - **Tippen auf eine Kachel öffnet die Unterseite:**
+    - Eigener farblich abgestimmter Header mit Zurück-Button (`← Zur Themenübersicht`).
+    - Schnelltasten `Alle öffnen` / `Alle schließen`.
+    - Alle vertieften Fachlektionen mit Schautafeln und Grundlagenlektionen exakt zu diesem Bereich.
