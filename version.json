@@ -1,6 +1,6 @@
 {
-  "version": "0.1.9.0",
+  "version": "0.1.9.1",
   "released": "2026-10-22",
-  "notes": "Kalender-Redesign: Moderne Monatskacheln mit bunten Mini-Icons (z. B. Periode 🩸, Krankheit 🤒, Selbstkontrolle 🔦, Schleim ✨), aktiver Tag-Hervorhebung, Zähler-Pills, Monatswechsler und Legende.",
-  "build": 14
+  "notes": "Lernzentrum Redesign: Neue Hero-Karte mit Fortschrittsbalken, Live-Suche, Bereichs-Filterchips, strukturierte farbcodierte Fachboxen (Einfach erklärt, Hebammenwissen, Schritte) und Haken-Markierung.",
+  "build": 15
 }

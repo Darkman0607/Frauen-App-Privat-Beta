@@ -1,5 +1,5 @@
 'use strict';
-const APP_VERSION='0.1.9.0', APP_BUILD=14, DB='frauen-app-beta', DB_VERSION=2;
+const APP_VERSION='0.1.9.1', APP_BUILD=15, DB='frauen-app-beta', DB_VERSION=2;
 const $=id=>document.getElementById(id), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const categories=['Periode','Zwischenblutung','Ausfluss','Flüssigkeitsverlust','Sexualität','Kinderwunsch','Zervixschleim / Eisprung','Basaltemperatur','Schwangerschaftstest','Schmerzen','Brustveränderung','Vulva / Scheide','WC / Ausscheidung','Wohlbefinden','Schwangerschaft','Kindsbewegungen / Wehen','Frauenarzttermin','Abstrich / Laboruntersuchung','Geburt / Wochenbett','Gemeinsame Selbstkontrolle','Krankheit / Allgemeinsymptome'];
 const categoryIcons = {
@@ -531,9 +531,150 @@ async function calendar(){
 
  <div class="entries" id="entry-list">${entryRows(todays)}</div>`;
 }
-function learn(){const mods=[...new Set(lessons.map(l=>l.module))];return `<h2>Lernzentrum · Lehrbuch</h2><p class="muted">${DEEP_LESSONS.length} umfangreiche Praxis- und Fachlektionen, ${lessons.length} Grundlagenlektionen sowie ${SELF_GUIDES.length} illustrierte Kapitel unter „Gemeinsame Selbstkontrolle“. Suche, Lernstufen und Fortschritt bleiben lokal auf diesem Handy.</p><div class="warning"><strong>Sicherheit:</strong> Die Lernkartei erklärt sichere äußere Beobachtung und ärztliche Verfahren. Bei möglichem Fruchtwasserverlust oder Frühgeburtszeichen während einer Schwangerschaft sofort in die Geburtsklinik.</div><h3>Ausführliche Lehrbuchlektionen</h3><p class="footnote" id="deep-progress"></p><div id="deep-lessons">${DEEP_LESSONS.map(deepCard).join('')}</div><h3>Weitere 50 Grundlagenlektionen</h3><p class="muted">Diese älteren Kurzlektionen werden in künftigen Updates schrittweise vertieft.</p><label for="lesson-module">Lerngebiet</label><select id="lesson-module"><option value="">Alle Lerngebiete</option>${mods.map(m=>`<option value="${esc(m)}">${esc(m)}</option>`).join('')}</select><label for="search-lessons">Suche in Grundlagen</label><input id="search-lessons" placeholder="z. B. Muttermund, Hygiene, Ausfluss..." aria-label="Lektionen durchsuchen"><p id="lesson-count" class="footnote">${lessons.length} Grundlagenlektionen</p><div id="lessons">${lessonCards(lessons)}</div>`}
-function deepCard(l,i){return `<details class="lesson deep-lesson" id="deep-${i}"><summary><span class="summary-row"><span class="lesson-ico">${esc(l.icon||"🎓")}</span><span class="summary-text"><span class="summary-meta"><span class="pill">${esc(l.module)}</span>${l.images?.length?`<span class="pill img-pill">🖼️ ${l.images.length} Tafeln</span>`:""}</span><strong>${esc(l.title)}</strong></span></span></summary><p class="footnote">Vertiefte Lernlektion · ${l.steps.length} Praxis- und Dokumentationsschritte</p>${l.images?l.images.map(im=>`<figure class="medical-figure"><img src="./${esc(im.src)}" alt="${esc(im.alt)}" loading="lazy"><figcaption>${esc(im.caption)}<br><span class="zoom-hint">🔍 Antippen zum Vergrößern (Vollbild)</span></figcaption></figure>`).join(''):l.image?`<figure class="medical-figure"><img src="./${esc(l.image)}" alt="${esc(l.alt||l.title)}" loading="lazy"><figcaption>${esc(l.caption||'')}</figcaption></figure>`:""}<h3>Einfach erklärt</h3><p>${esc(l.simple)}</p><h3>Fachwissen – vertieft</h3><p>${esc(l.expert)}</p><h3>Vorbereitung und Schritt für Schritt</h3><ol>${l.steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol><div class="warning"><strong>Praxishinweis &amp; Besonderheiten:</strong> ${esc(l.tip)}</div><p class="footnote"><a target="_blank" rel="noopener noreferrer" href="${esc(l.source)}">Weiterführende Fachquelle ↗</a></p><label><input class="checkbox deep-complete" type="checkbox" data-deep="${i}" ${localStorage.getItem('frauen-app-lesson-done-'+i)==='1'?'checked':''}> Lektion abgeschlossen</label></details>`}
-function lessonCards(arr){return arr.map(l=>`<details class="lesson"><summary><span class="pill">${esc(l.module)}</span> ${esc(l.title)}</summary><p class="footnote">Grundlagenlektion – wird noch erweitert.</p><h3>Einfach erklärt</h3><p>${esc(l.simple)}</p><h3>Medizinisches Fachwissen</h3><p>${esc(l.expert)}</p><h3>Selbstbeobachtung / Dokumentation</h3><p>${esc(l.practice)}</p><div class="warning"><strong>Grenzen und Warnzeichen:</strong> ${esc(l.tip)}</div><p class="footnote"><a href="${esc(l.source)}" target="_blank" rel="noopener noreferrer">Fachquelle öffnen ↗</a></p></details>`).join('')||'<p>Keine Lektion gefunden.</p>'}
+function learn(){
+ const deepMods=[...new Set(DEEP_LESSONS.map(l=>l.module))];
+ const baseMods=[...new Set(lessons.map(l=>l.module))];
+ const allMods=[...new Set([...deepMods,...baseMods])];
+ return `<div class="learn-hero-card">
+  <div class="learn-hero-top">
+   <div class="learn-hero-title">
+    <h2>🎓 Lernzentrum &amp; Lehrbuch</h2>
+    <p class="muted" style="margin:2px 0 0">Gynäkologische Fachlektionen, Schritt-für-Schritt-Anleitungen &amp; Schautafeln.</p>
+   </div>
+   <div class="learn-stats-badge">
+    <strong>${DEEP_LESSONS.length}</strong>
+    <small>Fachlektionen</small>
+   </div>
+  </div>
+
+  <div class="learn-progress-box">
+   <div class="row" style="margin-bottom:6px">
+    <span class="learn-progress-label">Lernfortschritt</span>
+    <span class="learn-progress-val" id="deep-progress-text">0 / ${DEEP_LESSONS.length}</span>
+   </div>
+   <div class="progress-bar-track">
+    <div class="progress-bar-fill" id="learn-progress-bar" style="width:0%"></div>
+   </div>
+  </div>
+
+  <div class="learn-search-wrap">
+   <span class="learn-search-ico">🔍</span>
+   <input id="search-all-lessons" class="learn-search-input" placeholder="Thema suchen (z. B. Muttermund, Periode, Spekulum, Tastung)..." aria-label="Lernzentrum durchsuchen">
+  </div>
+
+  <div class="learn-module-filter-bar">
+   <button class="mod-filter-chip active" data-mod="">Alle Bereiche</button>
+   ${allMods.map(m=>`<button class="mod-filter-chip" data-mod="${esc(m)}">${esc(m)}</button>`).join('')}
+  </div>
+ </div>
+
+ <div class="learn-section-header">
+  <div class="row wrap" style="gap:8px">
+   <div class="section-title-wrap">
+    <h3>Ausführliche Fachlektionen (${DEEP_LESSONS.length})</h3>
+    <small class="muted">Mit medizinischen Schautafeln &amp; Vollbild-Zoom</small>
+   </div>
+   <div class="row" style="gap:6px">
+    <button class="secondary small-btn" id="open-all-deep">Alle öffnen</button>
+    <button class="secondary small-btn" id="close-all-deep">Alle schließen</button>
+   </div>
+  </div>
+ </div>
+
+ <div id="deep-lessons" class="lessons-container">${DEEP_LESSONS.map(deepCard).join('')}</div>
+
+ <div class="learn-section-header" style="margin-top:28px">
+  <div class="section-title-wrap">
+   <h3>📚 Grundlagenkartei (${lessons.length} Kurzlektionen)</h3>
+   <small class="muted">Schnellüberblick zum Nachschlagen</small>
+  </div>
+ </div>
+
+ <div id="lessons" class="lessons-container">${lessonCards(lessons)}</div>`;
+}
+function deepCard(l,i){
+ const isDone = localStorage.getItem('frauen-app-lesson-done-'+i)==='1';
+ return `<details class="lesson deep-lesson ${isDone?'is-completed':''}" id="deep-${i}">
+  <summary>
+   <span class="summary-row">
+    <span class="lesson-ico">${esc(l.icon||"🎓")}</span>
+    <span class="summary-text">
+     <span class="summary-meta">
+      <span class="pill module-pill">${esc(l.module)}</span>
+      ${l.images?.length?`<span class="pill img-pill">🖼️ ${l.images.length} Schautafeln</span>`:l.image?`<span class="pill img-pill">🖼️ 1 Schautafel</span>`:""}
+      <span class="pill steps-pill">📋 ${l.steps.length} Schritte</span>
+      ${isDone?`<span class="pill done-pill">✓ Gelernt</span>`:''}
+     </span>
+     <strong>${esc(l.title)}</strong>
+    </span>
+   </span>
+  </summary>
+
+  <div class="lesson-content-body">
+   ${l.images?l.images.map(im=>`<figure class="medical-figure"><img src="./${esc(im.src)}" alt="${esc(im.alt)}" loading="lazy"><figcaption>${esc(im.caption)}<br><span class="zoom-hint">🔍 Antippen zum Vergrößern (Vollbild)</span></figcaption></figure>`).join(''):l.image?`<figure class="medical-figure"><img src="./${esc(l.image)}" alt="${esc(l.alt||l.title)}" loading="lazy"><figcaption>${esc(l.caption||'')}<br><span class="zoom-hint">🔍 Antippen zum Vergrößern (Vollbild)</span></figcaption></figure>`:""}
+
+   <div class="lesson-box simple-box">
+    <h4>💡 Einfach erklärt</h4>
+    <p>${esc(l.simple)}</p>
+   </div>
+
+   <div class="lesson-box expert-box">
+    <h4>🔬 Hebammen- &amp; Fachwissen</h4>
+    <p>${esc(l.expert)}</p>
+   </div>
+
+   <div class="lesson-box steps-box">
+    <h4>📋 Schritt für Schritt</h4>
+    <ol class="styled-steps-list">
+     ${l.steps.map(x=>`<li>${esc(x)}</li>`).join('')}
+    </ol>
+   </div>
+
+   <div class="warning lesson-warning">
+    <strong>⚠️ Praxishinweis &amp; Warnzeichen:</strong> ${esc(l.tip)}
+   </div>
+
+   <div class="lesson-footer-bar">
+    <p class="footnote"><a target="_blank" rel="noopener noreferrer" href="${esc(l.source)}">Fachquelle öffnen ↗</a></p>
+    <label class="lesson-check-label">
+     <input class="checkbox deep-complete" type="checkbox" data-deep="${i}" ${isDone?'checked':''}>
+     <span>Lektion als verstanden markieren</span>
+    </label>
+   </div>
+  </div>
+ </details>`;
+}
+function lessonCards(arr){
+ return arr.map(l=>`<details class="lesson base-lesson">
+  <summary>
+   <span class="summary-row">
+    <span class="lesson-ico base-ico">📖</span>
+    <span class="summary-text">
+     <span class="summary-meta"><span class="pill base-pill">${esc(l.module)}</span></span>
+     <strong>${esc(l.title)}</strong>
+    </span>
+   </span>
+  </summary>
+  <div class="lesson-content-body">
+   <div class="lesson-box simple-box">
+    <h4>💡 Einfach erklärt</h4>
+    <p>${esc(l.simple)}</p>
+   </div>
+   <div class="lesson-box expert-box">
+    <h4>🔬 Medizinisches Fachwissen</h4>
+    <p>${esc(l.expert)}</p>
+   </div>
+   <div class="lesson-box steps-box">
+    <h4>📋 Selbstbeobachtung / Dokumentation</h4>
+    <p>${esc(l.practice)}</p>
+   </div>
+   <div class="warning lesson-warning">
+    <strong>⚠️ Grenzen und Warnzeichen:</strong> ${esc(l.tip)}
+   </div>
+   <p class="footnote"><a href="${esc(l.source)}" target="_blank" rel="noopener noreferrer">Fachquelle öffnen ↗</a></p>
+  </div>
+ </details>`).join('') || '<div class="card muted text-center" style="padding:24px">Keine Lektionen gefunden.</div>';
+}
 function records(){return `<h2>Frauenarztakte & Sicherung</h2><div class="card"><h3>Untersuchungen dokumentieren</h3><p class="muted">Lege unter „Tagebuch“ die Kategorie „Frauenarzttermin“ an. Dort kannst du mehrere Bilder von Befunden hinzufügen. Eine eigene PDF-Verwaltung folgt später.</p><button class="secondary" id="open-record-form">＋ Frauenarzt-Eintrag</button></div><div class="card"><h3>🔐 Verschlüsselte Google-Drive-Sicherung</h3><p class="muted">Die Backup-Datei wird vor dem Teilen oder Herunterladen auf diesem Gerät mit AES-GCM verschlüsselt. Du legst dafür ein <strong>separates Sicherungspasswort</strong> fest. Ohne dieses Passwort kann niemand die Backup-Inhalte wiederherstellen.</p><button id="drive-share" class="secondary">☁ Verschlüsseltes Backup nach Drive teilen</button><button id="export" class="secondary">⬇ Verschlüsseltes Backup herunterladen</button><label for="restore">Verschlüsselte Sicherung aus Drive / Dateien auswählen</label><input id="restore" type="file" accept=".json,.fbackup,application/json"><p class="footnote">Die App verbindet sich nicht direkt mit Google Drive. Alte unverschlüsselte Backups aus 0.1.5 können nach deutlicher Warnung importiert werden. Bewahre das Passwort außerhalb der App sicher auf.</p></div><div class="warning"><strong>Datenschutz:</strong> Lokale Einträge und Fotos werden mit AES-GCM verschlüsselt, ebenso exportierte Backups. Kein Fingerabdruck und keine App-PIN. Das Datenpasswort wird zum Entschlüsseln bei jedem Start benötigt. Ein verlorenes Passwort kann nicht zurückgesetzt werden.</div><div class="card"><h3>Lokale Datenverwaltung</h3><p class="muted">Browserdaten zu löschen kann die Tagebucheinträge dauerhaft entfernen. Prüfe ein verschlüsseltes Backup und die Wiederherstellung zunächst mit Testdaten.</p><button id="clear-all" class="danger">Alle lokalen Daten löschen</button></div><div class="card"><h3>Version & Aktualisierung</h3><p>Aktuell: <strong>v${APP_VERSION}</strong></p><p class="muted">Die Prüfung oben sucht nach einer neu veröffentlichten Version.</p><button class="secondary" id="record-update">Jetzt nach Updates suchen</button></div>`}
 async function buildBackupFile(){let entries=await all('entries'),photos=await all('photos');let encoded=[];for(let p of photos){let b64=await new Promise((ok,no)=>{let r=new FileReader();r.onload=()=>ok(r.result);r.onerror=no;r.readAsDataURL(p.blob)});encoded.push({...p,blob:b64})}const payload={format:'frauen-app-backup',version:1,created:new Date().toISOString(),entries,photos:encoded};return new File([JSON.stringify(payload)],'frauen-app-backup-'+new Date().toISOString().slice(0,10)+'.json',{type:'application/json'});}
 const BACKUP_LIMIT=150*1024*1024;
@@ -558,7 +699,73 @@ async function render(){buttons();$('view').innerHTML=page==='home'?home():page=
  $('next').onclick=()=>shiftMonth(1);
  if($('cal-new-entry'))$('cal-new-entry').onclick=async()=>{await goto('diary');showForm();if($('entry-date'))$('entry-date').value=selectedDay+'T12:00';};
  document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{selectedDay=b.dataset.day;render();});
-}if(page==='learn'){const updateProgress=()=>{$('deep-progress').textContent=DEEP_LESSONS.filter((_,i)=>localStorage.getItem('frauen-app-lesson-done-'+i)==='1').length+' von '+DEEP_LESSONS.length+' vertieften Lektionen abgeschlossen';};document.querySelectorAll('.deep-complete').forEach(c=>c.onchange=()=>{localStorage.setItem('frauen-app-lesson-done-'+c.dataset.deep,c.checked?'1':'0');updateProgress()});updateProgress();const filterLessons=()=>{const q=$('search-lessons').value.toLocaleLowerCase('de'),m=$('lesson-module').value;const filtered=lessons.filter(l=>(!m||l.module===m)&&[l.title,l.simple,l.expert,l.practice].some(t=>t.toLocaleLowerCase('de').includes(q)));$('lessons').innerHTML=lessonCards(filtered);$('lesson-count').textContent=filtered.length+' von '+lessons.length+' Lektionen';};$('search-lessons').oninput=filterLessons;$('lesson-module').onchange=filterLessons;}if(page==='records'){$('open-record-form').onclick=async()=>{await goto('diary');showForm('Frauenarzttermin')};$('export').onclick=()=>backup().catch(err=>notify('Backup: '+err.message));$('drive-share').onclick=()=>shareDriveBackup().catch(err=>notify('Drive-Sicherung: '+err.message));$('restore').onchange=async e=>{try{await restore(e.target.files[0])}catch(err){notify('Importfehler: '+err.message)}};$('record-update').onclick=checkUpdate;$('clear-all').onclick=async()=>{if(!confirm('ALLE lokalen Gesundheitsdaten und Bilder unwiderruflich löschen?'))return;await Promise.all(['entries','photos'].map(async name=>{for(const v of await all(name))await del(name,v.id)}));notify('Alle Daten gelöscht');render()}}}
+}if(page==='learn'){
+ const updateProgress=()=>{
+  const doneCount=DEEP_LESSONS.filter((_,i)=>localStorage.getItem('frauen-app-lesson-done-'+i)==='1').length;
+  const pct=Math.round((doneCount/DEEP_LESSONS.length)*100);
+  if($('deep-progress-text'))$('deep-progress-text').textContent=doneCount+' / '+DEEP_LESSONS.length+' ('+pct+'%)';
+  if($('learn-progress-bar'))$('learn-progress-bar').style.width=pct+'%';
+ };
+ 
+ const bindDeepCheckboxes=()=>{
+  document.querySelectorAll('.deep-complete').forEach(c=>c.onchange=()=>{
+   localStorage.setItem('frauen-app-lesson-done-'+c.dataset.deep,c.checked?'1':'0');
+   const card=c.closest('details.deep-lesson');
+   if(card){
+    card.classList.toggle('is-completed',c.checked);
+    const meta=card.querySelector('.summary-meta');
+    if(meta){
+     const donePill=meta.querySelector('.done-pill');
+     if(c.checked&&!donePill){meta.insertAdjacentHTML('beforeend','<span class="pill done-pill">✓ Gelernt</span>');}
+     else if(!c.checked&&donePill){donePill.remove();}
+    }
+   }
+   updateProgress();
+  });
+ };
+ updateProgress();
+ bindDeepCheckboxes();
+
+ if($('open-all-deep'))$('open-all-deep').onclick=()=>document.querySelectorAll('#deep-lessons details').forEach(d=>d.open=true);
+ if($('close-all-deep'))$('close-all-deep').onclick=()=>document.querySelectorAll('#deep-lessons details').forEach(d=>d.open=false);
+
+ let activeMod='';
+ const applyFilter=()=>{
+  const q=$('search-all-lessons')?$('search-all-lessons').value.toLocaleLowerCase('de').trim():'';
+  
+  // Filter Deep Lessons
+  const filteredDeep=DEEP_LESSONS.map((l,idx)=>({l,idx})).filter(({l})=>{
+   const matchMod=!activeMod||l.module===activeMod;
+   const matchText=!q||[l.title,l.simple,l.expert,l.tip,...(l.steps||[])].some(t=>t.toLocaleLowerCase('de').includes(q));
+   return matchMod&&matchText;
+  });
+  if($('deep-lessons')){
+   $('deep-lessons').innerHTML=filteredDeep.length?filteredDeep.map(({l,idx})=>deepCard(l,idx)).join(''):'<div class="card muted text-center" style="padding:20px">Keine Fachlektionen für diesen Suchbegriff.</div>';
+   bindLightbox();
+   bindDeepCheckboxes();
+  }
+
+  // Filter Base Lessons
+  const filteredBase=lessons.filter(l=>{
+   const matchMod=!activeMod||l.module===activeMod;
+   const matchText=!q||[l.title,l.simple,l.expert,l.practice,l.tip].some(t=>t.toLocaleLowerCase('de').includes(q));
+   return matchMod&&matchText;
+  });
+  if($('lessons')){
+   $('lessons').innerHTML=lessonCards(filteredBase);
+  }
+ };
+
+ if($('search-all-lessons'))$('search-all-lessons').oninput=applyFilter;
+ document.querySelectorAll('.mod-filter-chip').forEach(btn=>{
+  btn.onclick=()=>{
+   document.querySelectorAll('.mod-filter-chip').forEach(b=>b.classList.remove('active'));
+   btn.classList.add('active');
+   activeMod=btn.dataset.mod||'';
+   applyFilter();
+  };
+ });
+}if(page==='records'){$('open-record-form').onclick=async()=>{await goto('diary');showForm('Frauenarzttermin')};$('export').onclick=()=>backup().catch(err=>notify('Backup: '+err.message));$('drive-share').onclick=()=>shareDriveBackup().catch(err=>notify('Drive-Sicherung: '+err.message));$('restore').onchange=async e=>{try{await restore(e.target.files[0])}catch(err){notify('Importfehler: '+err.message)}};$('record-update').onclick=checkUpdate;$('clear-all').onclick=async()=>{if(!confirm('ALLE lokalen Gesundheitsdaten und Bilder unwiderruflich löschen?'))return;await Promise.all(['entries','photos'].map(async name=>{for(const v of await all(name))await del(name,v.id)}));notify('Alle Daten gelöscht');render()}}}
 function bindLightbox(){
  const lb=$('lightbox');if(!lb)return;
  const close=()=>{lb.classList.remove('open');$('lb-img').src='';};
