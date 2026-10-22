@@ -134,3 +134,57 @@ nav button.active .nav-ico{transform:translateY(-2px) scale(1.07);box-shadow:0 4
 .symptom-chip .chip-text{padding:8px 13px;border-radius:20px;font-size:13px;font-weight:600;background:#ffffff;border:1.5px solid #e2cad7;color:#63334c;transition:all .15s ease;box-shadow:0 2px 6px rgba(0,0,0,0.03)}
 .symptom-chip input[type="checkbox"]:checked + .chip-text{background:linear-gradient(135deg,#b55480,#8f3d64);color:#ffffff;border-color:#8f3d64;box-shadow:0 4px 10px rgba(143,61,100,0.25);transform:translateY(-1px)}
 .symptom-chip:active .chip-text{transform:scale(0.96)}
+
+/* --- Tagebuch Redesign (v0.1.8.9) --- */
+.diary-header-card{background:linear-gradient(135deg,#fcebf2 0%,#f5ecf7 50%,#eaf6f2 100%);border:1px solid #ead0de;box-shadow:0 6px 20px rgba(138,55,95,0.08);border-radius:20px;padding:18px 16px;margin-bottom:14px}
+.diary-header-card h2{margin:0;font-size:22px;color:#6b294c}
+.new-entry-top-btn{width:auto;margin:0;padding:10px 18px;font-size:14px;border-radius:14px;box-shadow:0 4px 12px rgba(143,61,100,0.22);background:linear-gradient(135deg,#b55480,#8f3d64)}
+.diary-filter-bar{display:flex;align-items:center;gap:10px;margin-top:14px;background:#ffffffcc;padding:6px 12px;border-radius:14px;border:1px solid #ebd4e1}
+.filter-icon{font-size:16px;color:#8f3d64}
+.diary-filter-select{border:0;background:transparent;padding:6px 4px;font-weight:600;color:#5a2b43;box-shadow:none}
+.diary-filter-select:focus{box-shadow:none;border-color:transparent}
+
+.entries-count-bar{display:flex;justify-content:space-between;align-items:center;padding:0 4px 8px;font-size:12px;color:#856877;font-weight:600}
+
+/* Entry Cards */
+.entries{display:flex;flex-direction:column;gap:12px}
+.entry-card{background:#ffffff;border:1px solid #eddbe4;border-radius:20px;padding:16px;box-shadow:0 4px 16px rgba(116,62,89,0.05);transition:transform .15s ease,box-shadow .15s ease;display:flex;flex-direction:column;gap:10px}
+.entry-card:hover{box-shadow:0 8px 24px rgba(116,62,89,0.1)}
+.entry-card-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap}
+
+.entry-cat-badge{display:flex;align-items:center;gap:10px}
+.entry-cat-icon{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#fbe8f2,#f0e6f6);border:1.5px solid #ebd0df;display:inline-flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 3px 8px rgba(0,0,0,0.04);flex-shrink:0}
+.entry-cat-texts{display:flex;flex-direction:column;gap:2px}
+.entry-cat-title{font-size:16px;color:#5c2542;line-height:1.25}
+.entry-date-pill{font-size:11.5px;color:#7d6170;font-weight:600}
+
+.entry-pain-pill{padding:4px 9px;border-radius:99px;font-size:11px;font-weight:700}
+.pain-lvl-low{background:#fef7e0;color:#8c650d;border:1px solid #fae39c}
+.pain-lvl-med{background:#ffeedb;color:#a85108;border:1px solid #fed2a4}
+.pain-lvl-high{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}
+
+/* Symptom Tags */
+.entry-symptoms-list{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0}
+.entry-symptom-tag{background:linear-gradient(135deg,#faebf3,#f6e2ed);color:#833257;border:1px solid #e8cad9;padding:3px 9px;border-radius:12px;font-size:11.5px;font-weight:600}
+
+.entry-temp-badge{background:#fff3e6;color:#a34710;padding:5px 10px;border-radius:10px;font-size:12px;display:inline-block;border:1px solid #fedbc0}
+
+.entry-note-preview{margin:0;font-size:13.5px;line-height:1.5;color:#45303d;background:#faf6f8;padding:10px 12px;border-radius:12px;border-left:3.5px solid #b55480}
+.entry-note-preview.empty{color:#9c8592;font-style:italic;background:#fcf9fa;border-left-color:#dfcbd5}
+
+.entry-meta-chips{display:flex;flex-wrap:wrap;gap:6px}
+.meta-chip{background:#f3edf1;color:#6b5361;padding:3px 8px;border-radius:8px;font-size:11px;font-weight:600}
+.meta-source{background:#eaf4f0;color:#2a6850}
+
+.entry-card-actions{display:flex;gap:8px;margin-top:4px;border-top:1px solid #f3e6ed;padding-top:10px}
+.entry-card-actions button{flex:1;padding:8px 10px;font-size:12.5px;font-weight:700;border-radius:11px;display:inline-flex;align-items:center;justify-content:center;gap:4px}
+.action-btn-details{background:#fbf0f5;color:#7a2e54;border:1px solid #edd2e0}
+.action-btn-details:active{background:#edd2e0}
+.action-btn-edit{background:#f0f4ff;color:#2c4c91;border:1px solid #d2dfff}
+.action-btn-edit:active{background:#d2dfff}
+.action-btn-del{background:#fff1f1;color:#a82835;border:1px solid #fecdd3;flex:0 0 auto;padding:8px 12px}
+.action-btn-del:active{background:#fecdd3}
+
+.empty-diary-card{text-align:center;padding:36px 18px;border-radius:22px;border:1.5px dashed #e6cfdc;background:#fffcfd}
+.empty-diary-ico{font-size:42px;display:block;margin-bottom:8px}
+.empty-diary-card h3{margin:0 0 6px;color:#6b2e4f}

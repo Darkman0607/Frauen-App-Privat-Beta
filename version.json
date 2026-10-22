@@ -1,6 +1,6 @@
 {
-  "version": "0.1.8.8",
+  "version": "0.1.8.9",
   "released": "2026-10-22",
-  "notes": "Erweiterung Angaben zur Erkrankung: Mehrfachauswahl von Symptomen (Fieber, Husten, Schlappheit/Erschöpfung, Gliederschmerzen etc.) via interaktive Chips mit direktem Anwählen.",
-  "build": 12
+  "notes": "Redesign Tagebuch-Übersicht: Moderne Kacheln mit bunten Kategorie-Icons, Zeitstempel-Pill, hervorgehobenen Symptom-Tags, Temperatur-Badge, Schmerz-Status und ansprechenden Aktions-Buttons.",
+  "build": 13
 }

@@ -1,7 +1,32 @@
 'use strict';
-const APP_VERSION='0.1.8.8', APP_BUILD=12, DB='frauen-app-beta', DB_VERSION=2;
+const APP_VERSION='0.1.8.9', APP_BUILD=13, DB='frauen-app-beta', DB_VERSION=2;
 const $=id=>document.getElementById(id), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const categories=['Periode','Zwischenblutung','Ausfluss','Flüssigkeitsverlust','Sexualität','Kinderwunsch','Zervixschleim / Eisprung','Basaltemperatur','Schwangerschaftstest','Schmerzen','Brustveränderung','Vulva / Scheide','WC / Ausscheidung','Wohlbefinden','Schwangerschaft','Kindsbewegungen / Wehen','Frauenarzttermin','Abstrich / Laboruntersuchung','Geburt / Wochenbett','Gemeinsame Selbstkontrolle','Krankheit / Allgemeinsymptome'];
+const categoryIcons = {
+ 'Periode': '🩸',
+ 'Zwischenblutung': '🍷',
+ 'Ausfluss': '💧',
+ 'Flüssigkeitsverlust': '💦',
+ 'Sexualität': '❤️',
+ 'Kinderwunsch': '🌱',
+ 'Zervixschleim / Eisprung': '✨',
+ 'Basaltemperatur': '🌡️',
+ 'Schwangerschaftstest': '🧪',
+ 'Schmerzen': '⚡',
+ 'Brustveränderung': '🤲',
+ 'Vulva / Scheide': '🌸',
+ 'WC / Ausscheidung': '🚽',
+ 'Wohlbefinden': '🧘‍♀️',
+ 'Schwangerschaft': '🤰',
+ 'Kindsbewegungen / Wehen': '👣',
+ 'Frauenarzttermin': '🩺',
+ 'Abstrich / Laboruntersuchung': '🔬',
+ 'Geburt / Wochenbett': '👶',
+ 'Gemeinsame Selbstkontrolle': '🔦',
+ 'Krankheit / Allgemeinsymptome': '🤒'
+};
+function getCatIcon(cat){return categoryIcons[cat]||'📝';}
+
 let updatingNow=false,db,page='home',selectedDay=[new Date().getFullYear(),String(new Date().getMonth()+1).padStart(2,'0'),String(new Date().getDate()).padStart(2,'0')].join('-'),reloadOnce=false,editing=null;
 const lessons=COURSE_LESSONS;
 let dataKey=null;
@@ -249,8 +274,78 @@ function diaryForm(){
   </form>
  </div>`;
 }
-async function diary(){const entries=(await all('entries')).sort((a,b)=>b.date.localeCompare(a.date));return `<div class="row"><h2>Tagebuch</h2><button class="secondary" id="new-entry">＋ Neu</button></div><p class="muted">Beobachtungen mit Fotos erfassen und später bearbeiten.</p><div id="form-holder"></div><label>Einträge filtern</label><select id="filter"><option>Alle Kategorien</option>${optionHTML(categories)}</select><div class="entries" id="entry-list">${entryRows(entries)}</div>`}
-function entryRows(entries){return entries.map(e=>`<div class="entry"><div class="row"><strong>${esc(e.category)}</strong><small>${esc(new Date(e.date).toLocaleString('de-AT'))}</small></div><p class="muted">${esc(e.note||'Keine Beschreibung')}</p><small>${esc(e.source)} · ${esc(e.amount)}</small><div class="row wrap" style="margin-top:9px"><button class="secondary" data-open="${esc(e.id)}">Details / Fotos</button><button class="secondary" data-edit="${esc(e.id)}">Bearbeiten</button><button class="danger" data-delete="${esc(e.id)}" aria-label="Eintrag löschen" title="Eintrag löschen">🗑 Löschen</button></div></div>`).join('')||'<div class="card muted">Noch keine Einträge.</div>'}
+async function diary(){
+ const entries=(await all('entries')).sort((a,b)=>b.date.localeCompare(a.date));
+ return `<div class="diary-header-card">
+  <div class="row">
+   <div>
+    <h2>📔 Tagebuch</h2>
+    <p class="muted" style="margin:2px 0 0">Einträge, Symptome und Fotos chronologisch im Überblick.</p>
+   </div>
+   <button class="primary new-entry-top-btn" id="new-entry">＋ Neuer Eintrag</button>
+  </div>
+  <div class="diary-filter-bar">
+   <span class="filter-icon">🔍</span>
+   <select id="filter" class="select-styled diary-filter-select">
+    <option>Alle Kategorien (${entries.length})</option>
+    ${optionHTML(categories)}
+   </select>
+  </div>
+ </div>
+ <div id="form-holder"></div>
+ <div class="entries-count-bar">
+  <span id="entries-count-text">${entries.length} ${entries.length===1?'Eintrag':'Einträge'} gefunden</span>
+ </div>
+ <div class="entries" id="entry-list">${entryRows(entries)}</div>`;
+}
+function entryRows(entries){
+ return entries.map(e=>{
+  const ico=getCatIcon(e.category);
+  const d=new Date(e.date);
+  const dateFormatted=d.toLocaleDateString('de-AT',{day:'2-digit',month:'2-digit',year:'numeric'});
+  const timeFormatted=d.toLocaleTimeString('de-AT',{hour:'2-digit',minute:'2-digit'});
+  const hasSymptoms=Array.isArray(e.symptoms)&&e.symptoms.length>0;
+  const painVal=e.pain!==undefined&&e.pain!==''?Number(e.pain):null;
+
+  return `<div class="entry-card" data-entry-card="${esc(e.id)}">
+   <div class="entry-card-header">
+    <div class="entry-cat-badge">
+     <span class="entry-cat-icon">${ico}</span>
+     <div class="entry-cat-texts">
+      <strong class="entry-cat-title">${esc(e.category)}</strong>
+      <span class="entry-date-pill">📅 ${dateFormatted} · ⏰ ${timeFormatted}</span>
+     </div>
+    </div>
+    ${painVal!==null&&painVal>0?`<span class="entry-pain-pill pain-lvl-${painVal>6?'high':painVal>3?'med':'low'}">⚡ Schmerz ${painVal}/10</span>`:''}
+   </div>
+
+   ${hasSymptoms?`<div class="entry-symptoms-list">
+    ${e.symptoms.map(s=>`<span class="entry-symptom-tag">${esc(s)}</span>`).join('')}
+   </div>`:''}
+
+   ${e.temperature?`<div class="entry-temp-badge">🌡️ Temperatur: <strong>${esc(e.temperature)} °C</strong> ${e.tempMethod&&e.tempMethod!=='Nicht angegeben'?`(${esc(e.tempMethod)})`:''}</div>`:''}
+
+   <p class="entry-note-preview ${e.note?'':'empty'}">${esc(e.note||'Keine zusätzliche Notiz hinterlegt.')}</p>
+
+   <div class="entry-meta-chips">
+    ${e.amount&&e.amount!=='Unbekannt / nicht erfasst'&&e.amount!=='Keine'?`<span class="meta-chip">Menge: ${esc(e.amount)}</span>`:''}
+    ${e.color&&e.color!=='Nicht angegeben'?`<span class="meta-chip">Farbe: ${esc(e.color)}</span>`:''}
+    ${e.texture&&e.texture!=='Nicht angegeben'?`<span class="meta-chip">Art: ${esc(e.texture)}</span>`:''}
+    ${e.source&&e.source!=='Ungeklärt'?`<span class="meta-chip meta-source">👤 ${esc(e.source)}</span>`:''}
+   </div>
+
+   <div class="entry-card-actions">
+    <button class="secondary action-btn-details" data-open="${esc(e.id)}">🔍 Details &amp; Fotos</button>
+    <button class="secondary action-btn-edit" data-edit="${esc(e.id)}">✏️ Bearbeiten</button>
+    <button class="danger action-btn-del" data-delete="${esc(e.id)}" aria-label="Eintrag löschen" title="Eintrag löschen">🗑️ Löschen</button>
+   </div>
+  </div>`;
+ }).join('') || `<div class="card empty-diary-card">
+   <span class="empty-diary-ico">📝</span>
+   <h3>Noch keine Einträge vorhanden</h3>
+   <p class="muted">Tippe oben auf „＋ Neuer Eintrag“, um deine erste Beobachtung zu dokumentieren.</p>
+ </div>`;
+}
 async function photoCards(id){const photos=(await all('photos')).filter(p=>p.entryId===id);return photos.map(p=>`<div class="photo-card"><img src="${URL.createObjectURL(p.blob)}" alt="Gespeichertes Foto"><button class="danger" data-delphoto="${esc(p.id)}">Foto löschen</button></div>`).join('')}
 async function openEntry(id){let entry=(await all('entries')).find(x=>x.id===id);if(!entry)return;let photos=await photoCards(id);let holder=$('form-holder');holder.innerHTML=`<div class="card"><div class="row"><h3>${esc(entry.category)}</h3><button class="secondary" id="detail-close">Schließen</button></div><p class="muted">${esc(new Date(entry.date).toLocaleString('de-AT'))}</p><p>${esc(entry.note||'Keine Beschreibung')}</p><p class="muted">Quelle: ${esc(entry.source)} · Menge: ${esc(entry.amount)} · Farbe: ${esc(entry.color)} · Konsistenz: ${esc(entry.texture)} · Schmerz: ${esc(entry.pain||'–')}</p><div class="entry-extra">${Object.entries({illnessType:'Hauptsymptom',symptoms:'Symptome',illnessStart:'Beginn',illnessEnd:'Ende',temperature:'Temperatur °C',tempMethod:'Messmethode',frequency:'Häufigkeit',illnessDetails:'Zusatzangaben',checkArea:'Bereich',checkMethod:'Methode',change:'Veränderung',doctorQuestions:'Fragen für Arzt'}).filter(([key])=>entry[key]).map(([key,label])=>`<p class="fine"><strong>${esc(label)}:</strong> ${esc(entry[key])}</p>`).join('')}</div><div class="grid">${photos}</div><button class="danger" id="delete-entry" style="margin-top:12px">Eintrag vollständig löschen</button></div>`;$('detail-close').onclick=()=>holder.innerHTML='';$('delete-entry').onclick=async()=>{if(!confirm('Eintrag inklusive Fotos unwiderruflich löschen?'))return;await removeEntryWithPhotos(id);notify('Eintrag gelöscht');render()};holder.querySelectorAll('[data-delphoto]').forEach(b=>b.onclick=async()=>{if(!confirm('Dieses Foto unwiderruflich löschen?'))return;await del('photos',b.dataset.delphoto);openEntry(id)});holder.scrollIntoView({behavior:'smooth',block:'start'})}
 function formBind(){
@@ -374,7 +469,13 @@ async function backup(){const file=await encryptedBackupFile();saveBackup(file);
 async function shareDriveBackup(){const file=await encryptedBackupFile();if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],title:'Frauen-App verschlüsselte Sicherung'});notify('Verschlüsselte Sicherung geteilt');return}catch(err){if(err.name==='AbortError'){notify('Teilen abgebrochen');return;}}}saveBackup(file);notify('Verschlüsselte Datei herunterladen und in Drive hochladen')}
 async function readBackup(file){if(file.size>BACKUP_LIMIT*2)throw Error('Sicherungsdatei zu groß');let raw=JSON.parse(await file.text());if(raw.format==='frauen-app-backup'){if(!confirm('WARNUNG: Das ist ein ALTES, UNVERSCHLÜSSELTES Backup. Nur aus vertrauenswürdiger Quelle importieren. Fortsetzen?'))throw Error('Import abgebrochen');return raw}if(raw.format!=='frauen-app-encrypted-backup'||raw.version!==1||raw.algorithm!=='AES-256-GCM'||raw.kdf!=='PBKDF2-SHA256'||raw.iterations!==310000)throw Error('Unbekanntes verschlüsseltes Backup');const salt=fromB64(raw.salt),iv=fromB64(raw.iv),bytes=fromB64(raw.data);if(salt.length!==16||iv.length!==12||bytes.length>BACKUP_LIMIT+32)throw Error('Ungültige Verschlüsselungsparameter');const password=prompt('Sicherungspasswort eingeben:');if(password===null)throw Error('Import abgebrochen');try{const key=await passwordKey(password,salt);const clear=await crypto.subtle.decrypt({name:'AES-GCM',iv},key,bytes);return JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(clear))}catch(e){throw Error('Entschlüsselung fehlgeschlagen: Passwort falsch oder Datei beschädigt')}}
 async function restore(file){if(!file)return;if(!confirm('Achtung: Alle derzeitigen Einträge und Bilder werden durch dieses Backup ersetzt. Hast du zuvor eine Sicherung erstellt?'))return;let raw=await readBackup(file);if(raw.format!=='frauen-app-backup'||raw.version!==1||!Array.isArray(raw.entries)||!Array.isArray(raw.photos))throw Error('Unbekanntes Backup-Format');if(raw.entries.length>50000||raw.photos.length>50000)throw Error('Backup zu groß');const ids=new Set();for(const e of raw.entries){if(!e||typeof e.id!=='string'||!e.id||typeof e.date!=='string'||!/^\d{4}-\d{2}-\d{2}T/.test(e.date)||typeof e.category!=='string'||!e.category||ids.has(e.id))throw Error('Ungültiger oder doppelter Eintrag');ids.add(e.id)}const photoIds=new Set();for(const p of raw.photos){if(!p||typeof p.id!=='string'||!p.id||photoIds.has(p.id)||typeof p.entryId!=='string'||!ids.has(p.entryId)||typeof p.blob!=='string'||!/^data:image\/(png|jpeg|webp|gif);base64,/.test(p.blob))throw Error('Ungültige Fotoangaben');photoIds.add(p.id)}const newPhotos=await Promise.all(raw.photos.map(async p=>{const response=await fetch(p.blob);const blob=await response.blob();if(blob.size>20*1024*1024)throw Error('Foto im Backup zu groß');return {...p,blob}}));const encryptedEntries=await Promise.all(raw.entries.map(e=>packRecord('entries',e)));const encryptedPhotos=[];for(const p of newPhotos)encryptedPhotos.push(await packRecord('photos',p));await new Promise((ok,no)=>{let tx=db.transaction(['entries','photos'],'readwrite');tx.objectStore('entries').clear();tx.objectStore('photos').clear();for(const e of encryptedEntries)tx.objectStore('entries').put(e);for(const p of encryptedPhotos)tx.objectStore('photos').put(p);tx.oncomplete=()=>ok();tx.onerror=()=>no(tx.error);tx.onabort=()=>no(tx.error||Error('Import abgebrochen'))});notify('Backup wiederhergestellt');render()}
-async function render(){buttons();$('view').innerHTML=page==='home'?home():page==='diary'?await diary():page==='calendar'?await calendar():page==='learn'?learn():page==='selfcheck'?selfcheckPage():page==='illness'?illnessPage():records();$('view').querySelectorAll('[data-link]').forEach(b=>b.onclick=()=>goto(b.dataset.link));bindLightbox();if($('quick'))$('quick').onclick=async()=>{await goto('diary');showForm()};if(page==='selfcheck'){if($('open-all-guides'))$('open-all-guides').onclick=()=>document.querySelectorAll('details.guide').forEach(d=>d.open=true);if($('close-all-guides'))$('close-all-guides').onclick=()=>document.querySelectorAll('details.guide').forEach(d=>d.open=false);$('new-selfcheck').onclick=()=>startSpecial('Gemeinsame Selbstkontrolle');$('new-labcheck').onclick=()=>startSpecial('Abstrich / Laboruntersuchung');document.querySelectorAll('[data-checktopic]').forEach(b=>b.onclick=()=>startSpecial('Gemeinsame Selbstkontrolle','checkArea',b.dataset.checktopic))}if(page==='illness'){$('new-illness').onclick=()=>startSpecial('Krankheit / Allgemeinsymptome');document.querySelectorAll('[data-illness]').forEach(b=>b.onclick=()=>startSpecial('Krankheit / Allgemeinsymptome','illnessType',b.dataset.illness))}if(page==='diary'){const entries=await all('entries');$('new-entry').onclick=()=>showForm();$('filter').onchange=()=>{$('entry-list').innerHTML=entryRows(entries.filter(e=>$('filter').value==='Alle Kategorien'||e.category===$('filter').value).sort((a,b)=>b.date.localeCompare(a.date)));bindEntryButtons()};bindEntryButtons()}if(page==='calendar'){bindEntryButtons();$('prev').onclick=()=>shiftMonth(-1);$('next').onclick=()=>shiftMonth(1);document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{selectedDay=b.dataset.day;render()})}if(page==='learn'){const updateProgress=()=>{$('deep-progress').textContent=DEEP_LESSONS.filter((_,i)=>localStorage.getItem('frauen-app-lesson-done-'+i)==='1').length+' von '+DEEP_LESSONS.length+' vertieften Lektionen abgeschlossen';};document.querySelectorAll('.deep-complete').forEach(c=>c.onchange=()=>{localStorage.setItem('frauen-app-lesson-done-'+c.dataset.deep,c.checked?'1':'0');updateProgress()});updateProgress();const filterLessons=()=>{const q=$('search-lessons').value.toLocaleLowerCase('de'),m=$('lesson-module').value;const filtered=lessons.filter(l=>(!m||l.module===m)&&[l.title,l.simple,l.expert,l.practice].some(t=>t.toLocaleLowerCase('de').includes(q)));$('lessons').innerHTML=lessonCards(filtered);$('lesson-count').textContent=filtered.length+' von '+lessons.length+' Lektionen';};$('search-lessons').oninput=filterLessons;$('lesson-module').onchange=filterLessons;}if(page==='records'){$('open-record-form').onclick=async()=>{await goto('diary');showForm('Frauenarzttermin')};$('export').onclick=()=>backup().catch(err=>notify('Backup: '+err.message));$('drive-share').onclick=()=>shareDriveBackup().catch(err=>notify('Drive-Sicherung: '+err.message));$('restore').onchange=async e=>{try{await restore(e.target.files[0])}catch(err){notify('Importfehler: '+err.message)}};$('record-update').onclick=checkUpdate;$('clear-all').onclick=async()=>{if(!confirm('ALLE lokalen Gesundheitsdaten und Bilder unwiderruflich löschen?'))return;await Promise.all(['entries','photos'].map(async name=>{for(const v of await all(name))await del(name,v.id)}));notify('Alle Daten gelöscht');render()}}}
+async function render(){buttons();$('view').innerHTML=page==='home'?home():page==='diary'?await diary():page==='calendar'?await calendar():page==='learn'?learn():page==='selfcheck'?selfcheckPage():page==='illness'?illnessPage():records();$('view').querySelectorAll('[data-link]').forEach(b=>b.onclick=()=>goto(b.dataset.link));bindLightbox();if($('quick'))$('quick').onclick=async()=>{await goto('diary');showForm()};if(page==='selfcheck'){if($('open-all-guides'))$('open-all-guides').onclick=()=>document.querySelectorAll('details.guide').forEach(d=>d.open=true);if($('close-all-guides'))$('close-all-guides').onclick=()=>document.querySelectorAll('details.guide').forEach(d=>d.open=false);$('new-selfcheck').onclick=()=>startSpecial('Gemeinsame Selbstkontrolle');$('new-labcheck').onclick=()=>startSpecial('Abstrich / Laboruntersuchung');document.querySelectorAll('[data-checktopic]').forEach(b=>b.onclick=()=>startSpecial('Gemeinsame Selbstkontrolle','checkArea',b.dataset.checktopic))}if(page==='illness'){$('new-illness').onclick=()=>startSpecial('Krankheit / Allgemeinsymptome');document.querySelectorAll('[data-illness]').forEach(b=>b.onclick=()=>startSpecial('Krankheit / Allgemeinsymptome','illnessType',b.dataset.illness))}if(page==='diary'){const entries=await all('entries');$('new-entry').onclick=()=>showForm();$('filter').onchange=()=>{
+   const selVal=$('filter').value;
+   const filtered=entries.filter(e=>selVal.startsWith('Alle Kategorien')||e.category===selVal).sort((a,b)=>b.date.localeCompare(a.date));
+   $('entry-list').innerHTML=entryRows(filtered);
+   if($('entries-count-text'))$('entries-count-text').textContent=filtered.length+(filtered.length===1?' Eintrag':' Einträge')+' gefunden';
+   bindEntryButtons();
+  };bindEntryButtons()}if(page==='calendar'){bindEntryButtons();$('prev').onclick=()=>shiftMonth(-1);$('next').onclick=()=>shiftMonth(1);document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{selectedDay=b.dataset.day;render()})}if(page==='learn'){const updateProgress=()=>{$('deep-progress').textContent=DEEP_LESSONS.filter((_,i)=>localStorage.getItem('frauen-app-lesson-done-'+i)==='1').length+' von '+DEEP_LESSONS.length+' vertieften Lektionen abgeschlossen';};document.querySelectorAll('.deep-complete').forEach(c=>c.onchange=()=>{localStorage.setItem('frauen-app-lesson-done-'+c.dataset.deep,c.checked?'1':'0');updateProgress()});updateProgress();const filterLessons=()=>{const q=$('search-lessons').value.toLocaleLowerCase('de'),m=$('lesson-module').value;const filtered=lessons.filter(l=>(!m||l.module===m)&&[l.title,l.simple,l.expert,l.practice].some(t=>t.toLocaleLowerCase('de').includes(q)));$('lessons').innerHTML=lessonCards(filtered);$('lesson-count').textContent=filtered.length+' von '+lessons.length+' Lektionen';};$('search-lessons').oninput=filterLessons;$('lesson-module').onchange=filterLessons;}if(page==='records'){$('open-record-form').onclick=async()=>{await goto('diary');showForm('Frauenarzttermin')};$('export').onclick=()=>backup().catch(err=>notify('Backup: '+err.message));$('drive-share').onclick=()=>shareDriveBackup().catch(err=>notify('Drive-Sicherung: '+err.message));$('restore').onchange=async e=>{try{await restore(e.target.files[0])}catch(err){notify('Importfehler: '+err.message)}};$('record-update').onclick=checkUpdate;$('clear-all').onclick=async()=>{if(!confirm('ALLE lokalen Gesundheitsdaten und Bilder unwiderruflich löschen?'))return;await Promise.all(['entries','photos'].map(async name=>{for(const v of await all(name))await del(name,v.id)}));notify('Alle Daten gelöscht');render()}}}
 function bindLightbox(){
  const lb=$('lightbox');if(!lb)return;
  const close=()=>{lb.classList.remove('open');$('lb-img').src='';};
