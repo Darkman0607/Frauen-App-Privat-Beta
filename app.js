@@ -1,5 +1,5 @@
 'use strict';
-const APP_VERSION='0.1.8.6', APP_BUILD=10, DB='frauen-app-beta', DB_VERSION=2;
+const APP_VERSION='0.1.8.7', APP_BUILD=11, DB='frauen-app-beta', DB_VERSION=2;
 const $=id=>document.getElementById(id), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const categories=['Periode','Zwischenblutung','Ausfluss','Flüssigkeitsverlust','Sexualität','Kinderwunsch','Zervixschleim / Eisprung','Basaltemperatur','Schwangerschaftstest','Schmerzen','Brustveränderung','Vulva / Scheide','WC / Ausscheidung','Wohlbefinden','Schwangerschaft','Kindsbewegungen / Wehen','Frauenarzttermin','Abstrich / Laboruntersuchung','Geburt / Wochenbett','Gemeinsame Selbstkontrolle','Krankheit / Allgemeinsymptome'];
 let updatingNow=false,db,page='home',selectedDay=[new Date().getFullYear(),String(new Date().getMonth()+1).padStart(2,'0'),String(new Date().getDate()).padStart(2,'0')].join('-'),reloadOnce=false,editing=null;
@@ -79,7 +79,139 @@ function selfcheckPage(){return `<h2>Gemeinsame Selbstkontrolle</h2><p class="mu
 const illnessTypes=['Fieber / erhöhte Temperatur','Husten','Durchfall','Erbrechen','Schnupfen','Halsschmerzen','Kopfschmerzen','Harnwegsbeschwerden','Sonstige Erkrankung / Beschwerden'];
 function illnessPage(){return `<h2>Krankheiten & Symptome</h2><p class="muted">Erkrankungen dokumentieren und zeitlich mit Zyklus- oder Schwangerschaftseinträgen vergleichen. Einträge ersetzen keine medizinische Einschätzung.</p><div class="card"><h3>Krankheit erfassen</h3><p class="muted">Beginn, Dauer, Intensität, Körpertemperatur, Messmethode, Symptome und Medikamente erfassen.</p><button class="primary" id="new-illness">＋ Krankheits-Eintrag</button></div><div class="warning"><strong>Schwangerschaft:</strong> Fieber, starke Beschwerden oder Beschwerden beim Wasserlassen zeitnah ärztlich abklären. Bei schwerem Krankheitsgefühl, Atemnot oder anderen akuten Warnzeichen sofort medizinische Hilfe holen.</div><h3>Typische Symptome</h3>${illnessTypes.map(name=>`<button class="link-btn" data-illness="${esc(name)}">＋ ${esc(name)}</button>`).join('')}`}
 function extraFields(category){if(category==='Abstrich / Laboruntersuchung')return `<div class="detailfields"><h3>Abstrich und Labor – Dokumentation</h3><label>Art des Tests</label><select name="testType">${optionHTML(['HPV-Selbsttest (validiertes Testset)','PAP-Zytologie (ärztliche Entnahme)','Vaginaler Erregerabstrich','Andere Laboruntersuchung'])}</select><label>Wer hat die Probe entnommen?</label><select name="sampleBy">${optionHTML(['Ärztin / Arzt','Patientin mit geeignetem Selbsttestset','Andere / nicht geklärt'])}</select><label>Hersteller / Testkit / Chargennummer</label><input name="testKit" placeholder="Genaue Bezeichnung laut Verpackung"><label>Labor / Arztpraxis</label><input name="labName" placeholder="Name und Kontakt"><label>Probenabgabe / Versand am</label><input name="sentAt" type="date"><label>Laborbefund / Ergebnis</label><select name="testResult">${optionHTML(['Ergebnis ausständig','Negativ / unauffällig – laut Befund','Positiv / auffällig – laut Befund','Ungültig / Probe nicht verwertbar','Sonstiges'])}</select><label>Datum Befundeingang</label><input name="resultAt" type="date"><label>Ärztlicher Kontrolltermin</label><input name="followUp" type="date"><label>Ausführlicher Befund / Fragen</label><textarea name="labDetail" placeholder="Befund wortgetreu dokumentieren; keine Eigendiagnose"></textarea><p class="fine">Nur geeignete, vom Labor akzeptierte Selbsttestsets nach Herstelleranleitung verwenden. Ein HPV-Selbsttest ersetzt nicht pauschal PAP-Zytologie oder frauenärztliche Untersuchung.</p></div>`;if(category==='Krankheit / Allgemeinsymptome')return `<div class="detailfields"><h3>Angaben zur Erkrankung</h3><label>Art der Erkrankung / Symptom</label><select name="illnessType">${optionHTML(['Nicht zugeordnet',...illnessTypes])}</select><label>Beginn der Beschwerden</label><input type="datetime-local" name="illnessStart"><label>Ende (optional)</label><input type="datetime-local" name="illnessEnd"><label>Temperatur in °C (optional)</label><input name="temperature" type="number" min="30" max="45" step="0.1" placeholder="z. B. 38,2"><label>Temperatur-Messmethode</label><select name="tempMethod">${optionHTML(['Nicht angegeben','Ohr','Mund','Achsel','Rektal','Stirn'])}</select><label>Häufigkeit / Episoden</label><input name="frequency" placeholder="z. B. 3-mal heute"><label>Weitere Symptome / Medikamente</label><textarea name="illnessDetails" placeholder="Medikament, Dosierung, Wirkung, weitere Symptome ..."></textarea></div>`;if(category==='Gemeinsame Selbstkontrolle'||category==='Selbstkontrolle')return `<div class="detailfields"><h3>Angaben zur Gemeinsame Selbstkontrolle</h3><label>Beobachteter Bereich</label><select name="checkArea">${optionHTML(['Nicht zugeordnet',...selfcheckTopics.map(t=>t[0])])}</select><label>Beobachtungsmethode</label><select name="checkMethod">${optionHTML(['Ansehen','Äußerliches vorsichtiges Abtasten','Spekulum-Einstellung (Portio / Periode)','Vaginale Tastuntersuchung (NFP / Muttermund)','Messung mit Thermometer','Beobachtung an Kleidung/Toilettenpapier','Andere Beobachtung'])}</select><label>Veränderung seit letzter Beobachtung</label><select name="change">${optionHTML(['Unbekannt','Keine Veränderung','Neu aufgetreten','Verstärkt','Weniger geworden'])}</select><label>Fragen für den Frauenarzt</label><textarea name="doctorQuestions" placeholder="Was soll ärztlich abgeklärt werden?"></textarea><p class="fine">Keine invasiven vaginalen Untersuchungen oder ärztliche Diagnosen selbst durchführen.</p></div>`;return ''}
-function diaryForm(){let edit=editing;return `<div class="card"><div class="row"><h3>${edit?'Eintrag bearbeiten':'Neue Beobachtung'}</h3><button class="secondary" id="close-form">Schließen</button></div><form id="entry-form"><label>Kategorie</label><select name="category" id="category">${optionHTML(categories)}</select><div id="category-extra"></div><label>Datum & Uhrzeit</label><input type="datetime-local" name="date" id="entry-date" required><label>Quelle</label><select name="source"><option>Eigene Beobachtung</option><option>Von ihr berichtet</option><option>Ärztlich mitgeteilt</option><option>Schriftlich ärztlich bestätigt</option><option>Ungeklärt</option></select><label>Stärke / Menge</label><select name="amount"><option>Unbekannt / nicht erfasst</option><option>Keine</option><option>Wenig</option><option>Mittel</option><option>Viel</option></select><label>Farbe</label><select name="color"><option>Nicht angegeben</option><option>Klar</option><option>Weiß</option><option>Gelblich</option><option>Grünlich</option><option>Rosa</option><option>Rot</option><option>Braun</option><option>Andere</option></select><label>Konsistenz</label><select name="texture"><option>Nicht angegeben</option><option>Wässrig</option><option>Cremig</option><option>Dick</option><option>Klumpig</option><option>Spinnbar</option><option>Anders</option></select><label>Schmerzstärke 0–10 (optional)</label><input name="pain" type="number" min="0" max="10" placeholder="Nicht angegeben"><label>Beschreibung / Beobachtung</label><textarea name="note" placeholder="Was wurde festgestellt? Wann? Wiederholt? Begleitbeschwerden?"></textarea><label>Fotos hinzufügen (mehrere möglich)</label><input id="photos-input" type="file" accept="image/*" multiple><div class="fine">Bei Bearbeitung bleiben bestehende Fotos erhalten; neue Fotos werden ergänzt.</div><div id="photos-preview" class="images"></div><div class="warning" id="form-alert">Bei möglichem Fruchtwasserverlust in einer Schwangerschaft sofort die Klinik kontaktieren – keine App- oder Fotodiagnose.</div><button class="primary" type="submit">Eintrag speichern</button></form></div>`}
+function diaryForm(){
+ let edit=editing;
+ return `<div class="card form-modal-card">
+  <div class="form-header">
+   <div class="form-header-title">
+    <h3>${edit?'✏️ Beobachtung bearbeiten':'✨ Neue Beobachtung erfassen'}</h3>
+    <p class="muted">${edit?'Bestehende Daten &amp; Fotos anpassen':'Symptome, Befunde &amp; Fotos strukturiert dokumentieren'}</p>
+   </div>
+   <button class="secondary close-form-btn" id="close-form" aria-label="Schließen">✕</button>
+  </div>
+  <form id="entry-form" class="modern-entry-form">
+
+   <!-- Sektion 1: Kategorie & Zeitpunkt -->
+   <div class="form-section">
+    <div class="section-badge"><span class="badge-num">1</span><strong>Kategorie &amp; Zeitpunkt</strong></div>
+    <div class="form-grid-2">
+     <div class="field-wrap">
+      <label for="category">Kategorie</label>
+      <select name="category" id="category" class="select-styled">${optionHTML(categories)}</select>
+     </div>
+     <div class="field-wrap">
+      <label for="entry-date">Datum &amp; Uhrzeit</label>
+      <input type="datetime-local" name="date" id="entry-date" required class="input-styled">
+     </div>
+    </div>
+   </div>
+
+   <!-- Dynamische Spezialfelder -->
+   <div id="category-extra"></div>
+
+   <!-- Sektion 2: Befund-Kriterien -->
+   <div class="form-section">
+    <div class="section-badge"><span class="badge-num">2</span><strong>Körperliche Kriterien &amp; Befund</strong></div>
+    <div class="form-grid-2">
+     <div class="field-wrap">
+      <label>Quelle</label>
+      <select name="source" class="select-styled">
+       <option>Eigene Beobachtung</option>
+       <option>Von ihr berichtet</option>
+       <option>Gemeinsame Tastung / VU</option>
+       <option>Ärztlich mitgeteilt</option>
+       <option>Schriftlich ärztlich bestätigt</option>
+       <option>Ungeklärt</option>
+      </select>
+     </div>
+     <div class="field-wrap">
+      <label>Stärke / Menge</label>
+      <select name="amount" class="select-styled">
+       <option>Unbekannt / nicht erfasst</option>
+       <option>Keine</option>
+       <option>Wenig / leicht</option>
+       <option>Mittel / normal</option>
+       <option>Viel / stark</option>
+       <option>Sehr stark (Koagel)</option>
+      </select>
+     </div>
+     <div class="field-wrap">
+      <label>Farbe</label>
+      <select name="color" class="select-styled">
+       <option>Nicht angegeben</option>
+       <option>Klar / durchsichtig</option>
+       <option>Weißlich / milchig</option>
+       <option>Gelblich</option>
+       <option>Grünlich / schaumig</option>
+       <option>Rosa / zartrot</option>
+       <option>Hellrot (frisch)</option>
+       <option>Dunkelrot</option>
+       <option>Braun / Schmierblutung</option>
+       <option>Grau-weißlich</option>
+       <option>Andere</option>
+      </select>
+     </div>
+     <div class="field-wrap">
+      <label>Konsistenz / Tastgefühl</label>
+      <select name="texture" class="select-styled">
+       <option>Nicht angegeben</option>
+       <option>Wässrig / flüssig</option>
+       <option>Spinnbar (zieht Fäden / fruchtbar)</option>
+       <option>Cremig / lotionartig</option>
+       <option>Dicklich / zäh</option>
+       <option>Klumpig / bröckelig (Hüttenkäse)</option>
+       <option>Knorpelig-fest (Nasenspitze)</option>
+       <option>Weich (Lippenrot)</option>
+       <option>Anders</option>
+      </select>
+     </div>
+    </div>
+
+    <!-- Schmerz Schieberegler -->
+    <div class="field-wrap pain-field-wrap">
+     <div class="row">
+      <label for="pain-input">Schmerz- / Spannungsstärke (0–10)</label>
+      <span class="pain-badge" id="pain-val-display">Keine (0)</span>
+     </div>
+     <div class="pain-slider-row">
+      <input type="range" name="pain" id="pain-input" min="0" max="10" value="0" step="1" class="slider-styled">
+      <span class="pain-num" id="pain-num-pill">0</span>
+     </div>
+    </div>
+   </div>
+
+   <!-- Sektion 3: Notiz -->
+   <div class="form-section">
+    <div class="section-badge"><span class="badge-num">3</span><strong>Beschreibung &amp; Notizen</strong></div>
+    <div class="field-wrap">
+     <textarea name="note" class="textarea-styled" placeholder="Was genau wurde festgestellt? (z. B. Muttermundstand, Geruch, Krämpfe, Begleitsymptome, Stimmung oder Besonderheiten)"></textarea>
+    </div>
+   </div>
+
+   <!-- Sektion 4: Fotos mit Kamera & Galerie -->
+   <div class="form-section photo-upload-section">
+    <div class="section-badge"><span class="badge-num">4</span><strong>Fotos &amp; Befundbilder</strong></div>
+    <p class="muted" style="margin:2px 0 10px;font-size:12.5px">Dokumentiere Zervixschleim, Tests, Befunde oder Beobachtungen. Sicher verschlüsselt auf diesem Gerät.</p>
+    <div class="photo-action-bar">
+     <label for="camera-input" class="photo-btn camera-btn">
+      <span class="photo-btn-icon">📷</span> Direkt Foto aufnehmen
+      <input id="camera-input" type="file" accept="image/*" capture="environment" style="display:none">
+     </label>
+     <label for="photos-input" class="photo-btn gallery-btn">
+      <span class="photo-btn-icon">🖼️</span> Aus Galerie wählen
+      <input id="photos-input" type="file" accept="image/*" multiple style="display:none">
+     </label>
+    </div>
+    <div id="photos-preview-gallery" class="photo-preview-grid"></div>
+    <div id="photos-status" class="footnote" style="margin-top:6px"></div>
+   </div>
+
+   <div class="form-actions">
+    <button class="primary submit-entry-btn" type="submit">💾 Beobachtung sicher speichern</button>
+   </div>
+  </form>
+ </div>`;
+}
 async function diary(){const entries=(await all('entries')).sort((a,b)=>b.date.localeCompare(a.date));return `<div class="row"><h2>Tagebuch</h2><button class="secondary" id="new-entry">＋ Neu</button></div><p class="muted">Beobachtungen mit Fotos erfassen und später bearbeiten.</p><div id="form-holder"></div><label>Einträge filtern</label><select id="filter"><option>Alle Kategorien</option>${optionHTML(categories)}</select><div class="entries" id="entry-list">${entryRows(entries)}</div>`}
 function entryRows(entries){return entries.map(e=>`<div class="entry"><div class="row"><strong>${esc(e.category)}</strong><small>${esc(new Date(e.date).toLocaleString('de-AT'))}</small></div><p class="muted">${esc(e.note||'Keine Beschreibung')}</p><small>${esc(e.source)} · ${esc(e.amount)}</small><div class="row wrap" style="margin-top:9px"><button class="secondary" data-open="${esc(e.id)}">Details / Fotos</button><button class="secondary" data-edit="${esc(e.id)}">Bearbeiten</button><button class="danger" data-delete="${esc(e.id)}" aria-label="Eintrag löschen" title="Eintrag löschen">🗑 Löschen</button></div></div>`).join('')||'<div class="card muted">Noch keine Einträge.</div>'}
 async function photoCards(id){const photos=(await all('photos')).filter(p=>p.entryId===id);return photos.map(p=>`<div class="photo-card"><img src="${URL.createObjectURL(p.blob)}" alt="Gespeichertes Foto"><button class="danger" data-delphoto="${esc(p.id)}">Foto löschen</button></div>`).join('')}

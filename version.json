@@ -1,6 +1,6 @@
 {
-  "version": "0.1.8.6",
+  "version": "0.1.8.7",
   "released": "2026-10-22",
-  "notes": "Cache- und Update-Fix: Sofortiges Update ohne Hängenbleiben auf alter Version, Network-First-Strategie im Service Worker, automatisches Überspringen alter Caches und vollständiges Redesign der Beobachtungs-Erfassung.",
-  "build": 10
+  "notes": "Layout-Fix: Neues 4-Sektionen-Formular (Kamera-Button, Galerie-Button, 2-Spalten-Raster, Schmerz-Schieberegler) in diaryForm() garantiert aktiv.",
+  "build": 11
 }

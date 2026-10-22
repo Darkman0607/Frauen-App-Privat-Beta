@@ -1,13 +1,8 @@
-# Frauen-App Beta 0.1.8.6 (Cache- & Update-Fix)
+# Frauen-App Beta 0.1.8.7 (Neues Formular-Layout garantiert)
 
-Update von 0.1.8.5 auf 0.1.8.6 (Build 10):
-- **Wichtigster Fix (Kein Zurückfallen mehr auf alte Versionen):**
-  - `sw.js` nutzt ab sofort eine strikte **Network-First-Strategie** für HTML, Skripte und Stylesheets. Wenn online, holt der Browser immer die frischeste Version von GitHub statt veraltete Offline-Caches zu verwenden.
-  - Automatisches Löschen aller alten Caches bei Versionssprung (`caches.delete`).
-  - `SKIP_WAITING` aktiviert neue Service Worker sofort ohne Neustart-Warteschleife.
-- **Enthält alle Neuerungen aus den letzten Updates:**
-  - Redesign der **Neuen Beobachtung**: 4 strukturierte Sektionen, Schieberegler für Schmerz (0–10 mit Farbwechsel), 2 Spalten für Kriterien.
-  - Neues Fotosystem: **Direkt Kamera öffnen** (`📷`) oder **Galerie** (`🖼️`) mit Kachel-Vorschau und individuellem Lösch-Button (`✕`).
-  - Umfassende **Hebammen-Fachlektionen**: Vaginale Untersuchung (VU) mit Intimsphäre-Abdeckung, Spekulum-Anwendung bei Periode, Zervixschleim-Spinnbarkeit (NFP), Ausfluss-Unterscheidung.
-  - 12 anklickbare medizinische Schautafeln mit Vollbild-Zoom (Lightbox).
-- **Datenbankschutz:** Die verschlüsselte lokale Datenbank bleibt 100 % erhalten.
+Update von 0.1.8.6 auf 0.1.8.7 (Build 11):
+- **Fehlerursache behoben:** `diaryForm()` in `app.js` wurde im vorherigen Build durch einen Regex-Misfit nicht überschrieben. Jetzt ist das neue 4-Sektionen-Formular garantiert aktiv.
+- **Sektion 1:** Kategorie & Datum im 2-Spalten-Raster nebeneinander.
+- **Sektion 2:** Befundkriterien & stufenloser Schmerz-Schieberegler (0–10).
+- **Sektion 3:** Beschreibung & Notizen.
+- **Sektion 4:** Große Buttons für **„📷 Direkt Foto aufnehmen“** (öffnet Handykamera) und **„🖼️ Aus Galerie wählen“** mit quadratischer Kachel-Vorschau und **✕-Löschbutton** pro Bild.
