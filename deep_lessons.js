@@ -385,5 +385,30 @@ const DEEP_LESSONS=[
     "tip": "Zwei goldene Praxisregeln: 1. Beim Herausziehen immer erst die Schraube lösen und das Spekulum 2–3 cm leicht geöffnet von der Portio zurückziehen, bevor man die Blätter schließt. 2. Edelstahl-Spekula mit Blutkontakt immer zuerst KALT abspülen, niemals direkt heiß.",
     "source": "https://www.amboss.com/de/wissen/gynakologische-untersuchung/",
     "icon": "🔦"
+  },
+  {
+    "title": "Hebammen-Fachwissen: Vaginale Untersuchung (VU) & Palpationsbefunde",
+    "module": "Untersuchungen",
+    "icon": "🤲",
+    "simple": "Die vaginale Tastuntersuchung gehört zu den grundlegenden Fertigkeiten von Hebammen und Ärztinnen. Sie ermöglicht es, ohne Instrumente den Reifegrad des Gebärmutterhalses, den Öffnungszustand des Muttermunds und zyklus- sowie schwangerschaftsbedingte Veränderungen zu erfassen.",
+    "expert": "Klinische Bi-manuelle Palpation: Zeige- und Mittelfinger der dominanten Hand tasten im hinteren und vorderen Scheidengewölbe (Fornices vaginae), während die suprapubisch aufgesetzte freie Hand den Gebärmutterkörper fixiert. Unterschiede nach Phase: \n1. Menstruation: Leichte Weitung (1–3 mm), aufgelockertes Myometrium, Uterus kann krampfempfindlich sein. \n2. Follikel- vs. Ovulationsphase: Unter Östrogeneinfluss wird die Zervix weich (wie Lippenrot), der äußere Muttermund öffnet sich für eine Fingerkuppe, die Portio steigt kranial auf. \n3. Schwangerschaft & Geburt: Beurteilt werden Zervixlänge (physiologisch > 25 mm bis 40 mm), Konsistenz (derb vs. weich), Ausrichtung (sakral vs. zentriert) und Weite des inneren und äußeren Muttermunds (bis 10 cm zur Vollständigkeit).",
+    "images": [
+      {
+        "src": "vaginal-palpation-technique.svg",
+        "alt": "Vaginale Palpation und Hebammentechnik",
+        "caption": "Fachschema: Lagerung, schonende Intimabdeckung, zweihändige Tastung und die 4 Kriterien der Zervixbeurteilung."
+      }
+    ],
+    "steps": [
+      "Blase entleeren lassen, um Uterusverlagerung zu vermeiden.",
+      "Intimsphäre wahren: Oberbekleidung bleibt an, Unterkörper wird bis auf die Tastregion mit einem Tuch abgedeckt.",
+      "Lagerung in Rückenlage mit leicht erhöhtem Oberkörper und Beckenkissen.",
+      "Hände desinfizieren, sterile Handschuhe oder Einmalhandschuhe mit NaCl/Gleitgel verwenden.",
+      "Einführen der 2 Finger (Zeige- und Mittelfinger) nach Ausatmung entlang der hinteren Scheidenwand.",
+      "Systematische Tastung: Lage, Konsistenz, Länge der Portio und Weite des Muttermunds.",
+      "Sanfter Rückzug, Intimreinigung von vorne nach hinten."
+    ],
+    "tip": "Absolute Kontraindikation in der Schwangerschaft: Blutungen vor geklärter Plazentalage (Ausschluss Placenta praevia!) und Blasensprung ohne Wehentätigkeit wegen aufsteigender Keime.",
+    "source": "https://www.amboss.com/de/wissen/gynakologische-untersuchung/"
   }
 ];

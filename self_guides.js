@@ -154,7 +154,40 @@ const SELF_GUIDES=[
     "source": "https://www.amboss.com/de/wissen/vaginitis-und-vaginose/"
   },
   {
-    "title": "6. Gebärmutterhals und Muttermund im Zyklus",
+    "title": "6. Vaginale Untersuchung (VU) & Tastbefunde: Periode, Eisprung & Schwangerschaft",
+    "group": "Hebammenkunde & Tastpraxis",
+    "icon": "🤲",
+    "simple": "Die vaginale Untersuchung (VU) mit den Fingern ist neben dem Spekulum das wichtigste Handwerk in der Gynäkologie und Geburtshilfe. Ob bei der Periode, zum Erkennen des Eisprungs (NFP) oder in der Schwangerschaft: Sie erfordert absolute Achtsamkeit, Hygiene und das Wissen, wie sich Muttermund, Scheidengewölbe und Gebärmutter anfühlen.",
+    "expert": "Lehrbuch-Wissen zur Vaginalen Palpation (VU):\n1. Indikationen & Unterschiede in den Phasen:\n• BEI DER PERIODE (Menstruation): Das Gewebe ist durch Progesteronabfall weicher, der äußere Muttermund ca. 1–3 mm geöffnet (dilatiert), um Blut und Schleimhaut abfließen zu lassen. Der Zervixkanal ist tastbar aufgelockert, aber kürzer als in der Follikelphase. Das eigene Menstruationsblut dient als Gleitfilm. Infektionsschutz beachten!\n• BEIM EISPRUNG (Ovulation / NFP): Östrogen führt zum Höhertreten der Zervix (oft nur mit langer Fingerstreckung im hinteren Gewölbe erreichbar). Die Konsistenz wechselt von knorpelig-hart ('wie die Nasenspitze') zu weich ('wie die Unterlippe' oder 'wie ein Ohrläppchen'). Der äußere Muttermund öffnet sich für 1 Fingerbeere (grubig bis geöffnet).\n• IN DER SCHWANGERSCHAFT: Der Muttermund steht meist weit hinten (sakral), ist geschlossen und mit einem zähen Schleimpfropf versiegelt. Die Portio hat eine Länge von physiologisch 3–4 cm. Die Schleimhaut ist durch Hyperämie bläulich-weich (Chadwick-Zeichen). Bei der Geburtsreife verkürzt sich die Portio ('verstrichen') und öffnet sich von fingerkuppenweit (1–2 cm) bis vollständig (10 cm).\n2. Die bi-manuelle Untersuchungstechnik: Zur Beurteilung von Lage, Größe und Schmerzempfindlichkeit des Uterus wird bi-manuell getastet: Die innere Hand (Zeige- und Mittelfinger) tastet im Scheidengewölbe, während die äußere Hand die Bauchdecke oberhalb der Symphyse nach unten drückt, um den Gebärmutterkörper (Fundus uteri) zwischen beiden Händen zu erfassen.\n3. Bishop-Score Kriterien: Gynäkologen und Hebammen bewerten 5 Faktoren: Portiolänge (cm), Muttermundsweite (cm), Konsistenz (derb, mittel, weich), Position (sakral, mediosakral, zentriert) und Höhenstand des vorangehenden Teils.",
+    "steps": [
+      "Vorbereitung & Blasenentleerung: Vor jeder Untersuchung zwingend die Harnblase entleeren lassen. Eine gefüllte Blase drückt die Gebärmutter nach hinten und verfälscht Tastbefund und Höhenstand.",
+      "Intimsphäre & Bekleidung (Muss sie sich ausziehen?): Nein, sie muss sich keineswegs ganz ausziehen! Es genügt völlig, Unterhose und Hose/Rock bis zu den Knien herunterzuschieben oder ganz abzulegen. T-Shirt, Pullover und Socken bleiben an. Ein großes, weiches Handtuch oder Tuch über den Oberschenkeln wahrt die Würde und sorgt für Wärme und Entspannung.",
+      "Lagerung (Position der Frau): Bequeme Rückenlage mit leicht erhöhtem Oberkörper und einem flachen Kissen unter dem Gesäß/Kreuzbein (Beckenkippung). Die Beine werden in den Knien angewinkelt, die Fersen nahe ans Gesäß gestellt und die Knie locker nach außen fallen gelassen. Der Kopf liegt entspannt.",
+      "Hygiene & Handschuhe: Hände waschen, hygienische Händedesinfektion (30 Sek.). Medizinische Untersuchungshandschuhe anziehen. Zeige- und Mittelfinger der führenden Hand mit sterilem Gleitmittel (oder steriler NaCl-Lösung) benetzen.",
+      "Ankündigung & Einatmung: Jeden Berührungsschritt ankündigen. Labien mit der freien Hand sanft spreizen. Die Frau bitten, ruhig ein- und langsam durch den Mund auszuatmen.",
+      "Einführen der Tastfinger: Zeige- und Mittelfinger werden gemeinsam mit den Fingerbeeren nach dorsal (Richtung Damm/Kreuzbein) sanft in die Scheide eingeführt. Niemals nach oben gegen die Harnröhre drücken!",
+      "Palpation der Zervix (Tastbefund erfassen):\n- Stand: Wo steht die Portio? (tief erreichbar oder weit oben/sakral?)\n- Festigkeit: Knorpelig-fest wie Nasenspitze (unfruchtbar) oder weich wie Lippe (Eisprung / wehenbereit)?\n- Öffnung: Geschlossen (spitz zulaufend) oder ist die Fingerbeere in das Grübchen/den Spalt einlegbar?\n- Portiolänge: Wie viele Zentimeter tastbarer Zervixhals stehen noch (erhalten ca. 2–3 cm vs. verstrichen)?",
+      "Sanftes Zurückziehen & Reinigung: Finger behutsam unter Ausatmung herausführen. Mit einer feuchten Kompresse von vorne nach hinten (Richtung After) abwischen, Handtuch anreichen und nachruhen lassen."
+    ],
+    "docs": "Dokumentation: Datum, Anlass (Periode / NFP-Zyklustag / Schwangerschaftswoche), Konsistenz (fest/weich), Öffnungsgrad (geschlossen/grubig/offen in cm), Stand (hoch/tief/sakral) und Schmerzfreiheit im Tagebuch notieren.",
+    "warning": "KONTRAINDIKATIONEN (Wann NIEMALS tasten?): 1. Bei Verdacht auf vorzeitigen Blasensprung in der Schwangerschaft (Gefahr des Amnioninfektionssyndroms!), 2. Bei ungeklärten vaginalen Blutungen in der 2. Schwangerschaftshälfte (Verdacht auf Placenta praevia – Lebensgefahr bei digitaler Lösung!), 3. Bei akuten Infektionen ohne Indikation.",
+    "category": "Muttermund und Gebärmutterhals",
+    "images": [
+      {
+        "src": "vaginal-palpation-technique.svg",
+        "alt": "Hebammenkunde: Vaginale Untersuchung (VU) & Palpationstechnik",
+        "caption": "Schautafel 1: Lagerung mit Abdeckung (Intimsphäre), bi-manuelle Tastung von Fundus und Portio sowie die 4 Bishop-Kriterien."
+      },
+      {
+        "src": "cervix-cycle-comparison.svg",
+        "alt": "Portio-Befunde im Zyklusverlauf",
+        "caption": "Schautafel 2: Tastbefunde im Zyklus: Von fest & geschlossen (Follikelphase) zu weich & geöffnet (Eisprung & Periode)."
+      }
+    ],
+    "source": "https://www.aerzteblatt.de/archiv/vaginale-untersuchung-geburtshilfe"
+  },
+  {
+    "title": "7. Gebärmutterhals und Muttermund im Zyklus",
     "group": "Anatomie",
     "simple": "Der Muttermund ist das Ende des Gebärmutterhalses zur Scheide. Seine Position und das Gewebe können sich im Zyklus verändern. Durch Fühlen lässt sich aber nicht zuverlässig messen, ob er geöffnet oder verkürzt ist.",
     "expert": "Die Zervix verbindet Gebärmutterhöhle und Vagina und enthält den Zervikalkanal. Äußerer Muttermund, Zervikalkanal und innerer Muttermund sind anatomisch verschiedene Strukturen. Die sogenannte Zervixlänge wird klinisch per transvaginalem Ultraschall unter standardisierten Bedingungen beurteilt. Eine zervikale Zellprobe für die Zytologie unterscheidet sich von einer vaginalen Probe für einen dafür validierten HPV-Test. Aussehen und Tastgefühl erlauben keine verlässliche Beurteilung von Dysplasien, Fruchtblasenstatus oder Frühgeburtsrisiko.",
@@ -187,7 +220,7 @@ const SELF_GUIDES=[
     "icon": "🎯"
   },
   {
-    "title": "7. Spekulumkunde: Bauarten, Größen und Einstelltechnik (Lehrbuchstandard)",
+    "title": "8. Spekulumkunde: Bauarten, Größen und Einstelltechnik (Lehrbuchstandard)",
     "group": "Fachwissen & Instrumentenkunde",
     "simple": "Ein Spekulum hält die sonst aneinanderliegenden Scheidenwände sanft auseinander, sodass der Gebärmutterhals (Portio) und das Scheidengewölbe direkt ausgeleuchtet und betrachtet werden können. Je nach Anatomie und Situation kommen zweiblättrige Entenschnabel-Spekula oder zweiteilige Rinnenspekula zum Einsatz.",
     "expert": "Lehrbuchwissen Instrumentenkunde & Anatomie: 1. Bauarten im Detail: Das selbsthaltende zweiblättrige Spekulum nach Cusco (mit leicht gebogenen, abgerundeten Entenschnabel-Blättern und zentraler oder seitlicher Stellschraube) ist das Standardinstrument zur Portio-Einstellung. Das Modell nach Graves besitzt etwas breitere, stärker geschwungene Blätter. Einmal-Kunststoffspekula (glasklares Polystyrol) bieten den Vorteil, dass durch die transparenten Blätter auch die vordere und hintere Vaginalwand (Colporrhaphie-Beurteilung, Rugae vaginales) durchscheinen; allerdings erzeugt der Rastmechanismus beim Verstellen oft ein hörbares 'Klick'-Geräusch – wird der Feststellhebel beim Einführen und Öffnen mit dem Daumen geführt, lässt sich das Spekulum lautlos und stufenlos spreizen. Zweiteilige Rinnenspekula nach Kristeller oder Sims bestehen aus einem vorderen (kürzeren) und hinteren (längeren) Rinnenblatt: Sie erlauben in der Geburtshilfe und bei stärkerer Blutung eine variable Einstellung, benötigen aber beide Hände. 2. Topographische Anatomie beim Einführen: Der Scheideneingang (Introitus vaginae) ist als vertikaler Spalt angelegt, während das obere Scheidendrittel mit dem vorderen und hinteren Scheidengewölbe (Fornix vaginae anterior et posterior) queroval verläuft. Unmittelbar unter dem Schambeinbogen (Symphyse) liegt die Harnröhre (Urethra) mit dem empfindlichen Trigonum vesicae. Jeder Druck nach vorne-oben löst sofortigen Harndrang oder Schmerz aus. Der Beckenboden (M. pubococcygeus) gibt nach hinten-unten Richtung Steißbein nach. Daher folgt das Spekulum immer der physiologischen Beckenachse (erst 45° schräg, dann 90° waagrecht im 45°-Neigungswinkel nach dorsal-kranial). 3. Typische Einstellprobleme lösen (Troubleshooting): Ist die Portio nach dem Öffnen nicht sichtbar, liegt das Spekulum meist zu weit vorne oder nicht tief genug im hinteren Gewölbe. Bei einem anteflektierten Uterus (Regelfall, nach vorne geneigt) zeigt die Portio nach hinten-unten zur Kreuzbeinhöhle: Hier hilft ein flaches Kissen unter dem Gesäß (Beckenkippung) und ein etwas steileres Führen der Blattspitzen nach dorsal. Bei retroflektiertem Uterus (nach hinten gekippt) zeigt die Portio eher nach vorne-oben Richtung Symphyse.",
@@ -230,7 +263,7 @@ const SELF_GUIDES=[
     "icon": "🔦"
   },
   {
-    "title": "8. Spekulum-Untersuchung während der Periode: Hygiene, Sicht, Reinigung & Nachsorge",
+    "title": "9. Spekulum-Untersuchung während der Periode: Hygiene, Sicht, Reinigung & Nachsorge",
     "group": "Praxisanleitung Periode",
     "simple": "Während der Menstruation ist das Gewebe im Becken stärker durchblutet, weicher und der äußere Muttermund öffnet sich minimal, damit Blut und Schleimhaut abfließen können. Mit einer wasserdichten Unterlage, Stieltupfern zum sanften Abtupfen und sorgfältiger Reinigung lässt sich dieser natürliche Prozess im Spekulum genau beobachten.",
     "expert": "Klinische & hebammenkundliche Vertiefung zur Menstruations-Inspektion: 1. Physiologie der Desquamation: Am Ende der Sekretionsphase führt der Abfall von Progesteron und Östrogen zu einer Vasokonstriktion der Spiralarterien im Endometrium. Die funktionelle Schleimhautschicht (Stratum functionale) löst sich von der verbleibenden Basalschicht (Stratum basale) ab. Lokale Prostaglandine (insb. PGF2α) lösen rhythmische Kontraktionen des Myometriums aus, während sich der Zervikalkanal und der äußere Muttermund (Ostium uteri externum) leicht öffnen (ca. 1–3 mm). Das ausfließende Menstruationsblut (insgesamt ca. 30–80 ml über 3–7 Tage) besteht aus arteriellem und venösem Blut, abgelösten Endometriumfragmenten, Zervixschleim und Vaginalepithelzellen. Durch fibrinolytische Enzyme (Plasmin) aus dem Endometrium gerinnt Menstruationsblut im Normalfall nicht; erst bei sehr starker Blutung bilden sich dunkelrote Koagel (Blutgerinnsel), weil die Fibrinolysekapazität überschritten wird. 2. Warum sich Blut im hinteren Scheidengewölbe sammelt: In Rückenlage bildet das hintere Scheidengewölbe (Fornix vaginae posterior) unterhalb der Portio den tiefsten anatomischen Punkt (Pool-Bildung). Beim Öffnen des Spekulums fließt ein Teil dieses 'Blutsees' in die Rinne des unteren Spekulumblattes. Um die Oberfläche der Portio (Plattenepithel, eventuelle physiologische Ektopiezone/Umwandlungszone) und das langsame Nachfließen aus dem Muttermund frei zu betrachten, tupft man diesen Pool mit einem langen, mit warmer NaCl-0,9-%-Lösung angefeuchteten Stieltupfer (oder einer in einer Kornzange eingespannten Mullkompresse) behutsam aus. Trockene Tupfer auf empfindlichem Zylinderepithel vermeiden, da sie anhaften und Kontaktblutungen auslösen können! 3. Tropffreie Rückzug-Technik & Nachreinigung: Beim Herausnehmen des Spekulums sammelt sich Restblut in der konkaven Rinne des unteren Blattes. Wird das Spekulum beim Austritt aus dem Introitus leicht waagrecht (wie ein Löffel, Griff nach unten) geführt und direkt in die bereitstehende Nierenschale gelegt, bleibt die Unterlage vollkommen sauber. Bei der anschließenden Intimreinigung der Frau gilt das Drei-Tupfer-Prinzip mit körperwarmen, weichen Kompressen: 1. Tupfer für Vestibulum und Labia minora (von der Klitoris Richtung hintere Kommissur), 2. Tupfer für die Labia majora beidseits von vorne nach hinten, 3. Tupfer für Damm (Perineum) und Analregion. Danach sanft trocken tupfen.",
@@ -274,7 +307,7 @@ const SELF_GUIDES=[
     "icon": "🌺"
   },
   {
-    "title": "9. PAP, HPV und vaginale Abstriche richtig unterscheiden",
+    "title": "10. PAP, HPV und vaginale Abstriche richtig unterscheiden",
     "group": "Labor",
     "simple": "PAP beurteilt Zellen des Gebärmutterhalses. HPV sucht nach bestimmten Viren. Ein vaginaler Erregerabstrich sucht je nach Laborauftrag nach Mikroorganismen. Das sind drei verschiedene Fragestellungen.",
     "expert": "Zytologie, molekulare HPV-Diagnostik und Erregerdiagnostik benutzen unterschiedliche Probenarten, Transportmedien und Nachweismethoden. Manche HPV-Tests akzeptieren eine vaginale Selbstprobe mit dafür validiertem Kit. PAP-Zytologie benötigt eine geeignete Zervixzellprobe; eine beliebige Probe vom Wattestäbchen ist hierfür ungeeignet. Bei einem auffälligen HPV-Befund sind ärztlich festgelegte Folgeuntersuchungen notwendig. Ein negativer Test schließt nicht alle Ursachen für Beschwerden aus.",
@@ -295,7 +328,7 @@ const SELF_GUIDES=[
     "icon": "🧪"
   },
   {
-    "title": "10. Brustgesundheit und sichere Selbstbeobachtung",
+    "title": "11. Brustgesundheit und sichere Selbstbeobachtung",
     "group": "Anatomie",
     "simple": "Brüste können sich im Zyklus verändern. Ein regelmäßiger Blick hilft, neue Unterschiede zu bemerken. Ein einzelner selbst ertasteter Befund lässt sich nicht sicher als harmlos oder krankhaft einordnen.",
     "expert": "Brustgewebe besteht aus Drüsenläppchen, Milchgängen, Binde- und Fettgewebe. Hormonabhängige Wassereinlagerung und Empfindlichkeit können vor der Menstruation zunehmen. Auch Brustgröße und Form können asymmetrisch sein. Sichtbare Hauteinziehungen, Veränderungen der Brustwarze oder neue tastbare Veränderungen brauchen professionelle Beurteilung.",
