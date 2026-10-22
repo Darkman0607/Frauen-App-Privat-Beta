@@ -1,6 +1,6 @@
 {
-  "version": "0.1.9.2",
+  "version": "0.1.9.4",
   "released": "2026-10-22",
-  "notes": "Lernzentrum Kapitel-Kacheln: Übersichtliche 2-Spalten-Kacheln nach Themenbereichen (Periode, Zyklus, Schwangerschaft, Untersuchungen, Anatomie, Wochenbett, Brust) mit Direktsprung auf die jeweilige Themenseite.",
-  "build": 16
+  "notes": "Force-Update & Cache-Buster Fix: Aggressive Bereinigung alter Service-Worker-Registrierungen bei Versionsaktualisierung.",
+  "build": 18
 }

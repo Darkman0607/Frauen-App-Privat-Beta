@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 400" role="img">
+  <rect width="740" height="400" rx="24" fill="#fff9fb"/>
+  <style>
+    text{font:12.5px Arial,sans-serif;fill:#4d3347}
+    .title{font:bold 18.5px Arial,sans-serif;fill:#3b2336}
+    .sub{font:bold 14px Arial,sans-serif;fill:#7a3e5d}
+    .minor{font-size:11.5px;fill:#7d6677}
+    .stepbox{fill:#fff;stroke:#94bba9;stroke-width:1.5}
+    .organ{fill:#f7d6e4;stroke:#b37490;stroke-width:2}
+    .pelvic{stroke:#2d6b52;stroke-width:3.5;fill:none}
+    .blood{fill:#c9183b}
+  </style>
+  <text x="24" y="34" class="title">Freies Bluten (Free Bleeding): Beckenboden-Reflex &amp; 4-Schritte-Anleitung</text>
+
+  <!-- Left Panel: Beckenboden-Kontinenz & Reservoir-Funktion -->
+  <rect x="20" y="52" width="310" height="305" rx="16" fill="#f2fcf7" stroke="#bde6cd" stroke-width="1.5"/>
+  <text x="34" y="78" class="sub" fill="#2d6b52">1. Reservoir-Funktion der Vagina</text>
+  
+  <!-- Vaginal canal sagittal holding blood pool -->
+  <path d="M70 145 Q125 125 175 145 L165 220 Q120 240 75 220 Z" class="organ"/>
+  <!-- Cervix on top -->
+  <circle cx="122" cy="122" r="22" fill="#edaec5" stroke="#9e5876" stroke-width="2"/>
+  <ellipse cx="122" cy="132" rx="4" ry="2" fill="#751327"/>
+  <!-- Blood pooling in lower fornix -->
+  <path d="M92 205 Q120 225 148 205 Q140 225 120 228 Q100 225 92 205 Z" class="blood"/>
+  <!-- Pelvic floor muscle holding it closed -->
+  <path d="M70 230 Q120 250 170 230" class="pelvic"/>
+
+  <text x="34" y="272" font-weight="bold">Physiologisches Prinzip:</text>
+  <text x="34" y="292" class="minor">• Vagina ist im Ruhezustand kollabiert</text>
+  <text x="34" y="308" class="minor">• Blut sammelt sich im hinteren Gewölbe</text>
+  <text x="34" y="324" class="minor">• Dehnungsrezeptoren melden 'Völlegefühl'</text>
+  <text x="34" y="340" class="minor">• Beckenboden hält bis zum WC geschlossen</text>
+
+  <!-- Right Panel: 4-Schritte-Praxisanleitung -->
+  <rect x="345" y="52" width="375" height="305" rx="16" fill="#fff" stroke="#ebd0de" stroke-width="1.5"/>
+  <text x="360" y="78" class="sub">2. Die 4 Phasen der praktischen Umsetzung</text>
+
+  <rect x="360" y="92" width="345" height="52" rx="10" class="stepbox"/>
+  <text x="372" y="112" font-weight="bold" fill="#7a3e5d">Schritt 1: Signal wahrnehmen (Propriozeption)</text>
+  <text x="372" y="130" class="minor">Sanftes Ziehen im Muttermund oder Druckgefühl im Becken spüren.</text>
+
+  <rect x="360" y="150" width="345" height="52" rx="10" class="stepbox"/>
+  <text x="372" y="170" font-weight="bold" fill="#7a3e5d">Schritt 2: Zur Toilette gehen &amp; hinsetzen</text>
+  <text x="372" y="188" class="minor">Oberkörper leicht nach vorne beugen, Füße flach am Boden (Becken weit).</text>
+
+  <rect x="360" y="208" width="345" height="52" rx="10" class="stepbox"/>
+  <text x="372" y="228" font-weight="bold" fill="#7a3e5d">Schritt 3: Vollständig loslassen (kein Pressen!)</text>
+  <text x="372" y="246" class="minor">Tief in den Bauch atmen, Mund locker öffnen → Blut fließt schwallartig ab.</text>
+
+  <rect x="360" y="266" width="345" height="52" rx="10" class="stepbox"/>
+  <text x="372" y="286" font-weight="bold" fill="#7a3e5d">Schritt 4: Nachreinigen &amp; Schutzwäsche</text>
+  <text x="372" y="304" class="minor">Mit feuchtem Tuch von vorne nach hinten tupfen. Periodenslip als Backup.</text>
+
+  <text x="24" y="378" class="minor">Vorteile laut Hebammenliteratur: Keine Austrocknung der Scheidenschleimhaut, 0 % Müll, kein TSS-Risiko und oft deutliche Linderung von Regelschmerzen!</text>
+</svg>

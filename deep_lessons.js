@@ -89,14 +89,19 @@ const DEEP_LESSONS=[
     "source": "https://www.nhs.uk/conditions/heavy-periods/",
     "images": [
       {
+        "src": "period-flow-anatomy.svg",
+        "alt": "Endometrium-Desquamation & Spiralarterien",
+        "caption": "Histologischer Aufbau: Spiralarterien-Ischämie, Abstoßung der Functionalis und Fibrinolyse durch Plasmin."
+      },
+      {
         "src": "cycle-hormones-chart.svg",
-        "alt": "Hormonverlauf und Menstruation",
-        "caption": "Zyklusverlauf: Hormonabfall, Endometrium-Abblutung und Basaltemperatur."
+        "alt": "Hormonkurven und Menstruation",
+        "caption": "Hormoneller Absturz von Progesteron und Östrogen als Auslöser der Blutung."
       },
       {
         "src": "speculum-period-view.svg",
-        "alt": "Portio während der Periode",
-        "caption": "Blick auf den leicht geöffneten äußeren Muttermund während der Menstruation."
+        "alt": "Portio bei der Periode",
+        "caption": "Klinische Sicht durch das Spekulum: Leicht geöffneter Muttermund und Blutfluss."
       }
     ],
     "icon": "🩸"
@@ -410,5 +415,78 @@ const DEEP_LESSONS=[
     ],
     "tip": "Absolute Kontraindikation in der Schwangerschaft: Blutungen vor geklärter Plazentalage (Ausschluss Placenta praevia!) und Blasensprung ohne Wehentätigkeit wegen aufsteigender Keime.",
     "source": "https://www.amboss.com/de/wissen/gynakologische-untersuchung/"
+  },
+  {
+    "title": "Blutungsstärke, Blutmenge & Koagelbildung (Menorrhagie vs. physiologischer Fluss)",
+    "module": "Zyklus und Periode",
+    "icon": "🩸",
+    "simple": "Wie viel Blut verliert eine Frau wirklich bei der Periode? Im Schnitt sind es nur 30 bis 60 ml (etwa 2 bis 4 Schnapsgläser). Wenn Blut klumpig herauskommt (Koagel), liegt das meist daran, dass das Blut vorübergehend im Scheidengewölbe geronnen ist, weil die körpereigenen Gerinnungshemmer überfordert waren.",
+    "expert": "Gynäkologische Blutungsphysiologie:\n1. Normalvolumen (Eumenorrhoe): 30 bis maximal 80 ml Gesamtblutverlust über 3 bis 7 Tage. Mehr als 80 ml wird als Menorrhagie bzw. Hypermenorrhoe klassifiziert und führt bei Persistenz zur mikrozytären hypochromen Eisenmangelanämie (Ferritin-Mangel).\n2. Gerinnungshemmung durch Plasmin: Das abgelöste Endometrium sezerniert Gewebsplasminogenaktivator (t-PA). Dieser aktiviert Plasmin, welches Fibrin abbaut. Deshalb ist gesundes Menstruationsblut vollkommen flüssig und ungerinnbar!\n3. Pathophysiologie der Koagel (Thromben): Wenn die Blutung zu stark ist (> 1 Binde/Tampon pro Stunde) oder sich das Blut in Rückenlage stundenlang im hinteren Scheidengewölbe staut, wird die fibrinolytische Kapazität des Plasmins überschritten: Das Blut gerinnt in der Vagina zu dunkelroten, gallertartigen Koageln.\n4. Differentialdiagnostik: Koagel > 2,5 cm (Größe einer 2-Euro-Münze), Abgang großer Gewebestücke oder sturzartige Blutungen müssen gynäkologisch abgeklärt werden (Ausschluss Uterusmyome, Endometrium-Polypen, Adenomyose, Gerinnungsstörungen wie Von-Willebrand-Syndrom).",
+    "images": [
+      {
+        "src": "period-flow-anatomy.svg",
+        "alt": "Gynäkologie: Endometrium-Abstoßung und Koagelbildung",
+        "caption": "Schautafel: Enzymatische Fibrinolyse vs. Koagelbildung bei Überforderung der Plasmin-Kapazität."
+      }
+    ],
+    "steps": [
+      "1. Messung & Erfassung: Dokumentiert im Tagebuch die Anzahl der gewechselten Tampons/Binden oder die Milliliter-Skala der Menstruationstasse.",
+      "2. Koagel-Größenprüfung: Achtet darauf, ob Koagel kleiner als eine Euromünze sind (meist harmlos nach dem Aufstehen) oder regelmäßig größer als 2–3 cm.",
+      "3. Farbbeurteilung: Hellrot (aktive arterielle Blutung), Dunkelrot (venöses, gesammeltes Blut), Braun/Schwarz (oxydiertes Hämoglobin bei Schmierblutung).",
+      "4. Kreislauf-Monitoring: Bei starker Blutung auf Schwindel, Blässe, Herzklopfen oder Müdigkeit achten (HB-Wert und Ferritin beim Arzt kontrollieren lassen)."
+    ],
+    "tip": "Wenn tagsüber ein normaler Tampon oder eine Binde nach weniger als 1 Stunde vollständig durchtränkt ist oder Blutklumpen größer als eine 2-Euro-Münze abgehen, sollte zeitnah eine frauenärztliche Abklärung erfolgen.",
+    "source": "https://www.amboss.com/de/wissen/menstruationszyklus-und-zyklusstorungen/"
+  },
+  {
+    "title": "Freies Bluten (Free Bleeding): Beckenboden-Kontinenz & Praxisanleitung",
+    "module": "Zyklus und Periode",
+    "icon": "🌸",
+    "simple": "Freies Bluten ist keine esoterische Mode, sondern erlernte Körperbeherrschung: Die Vagina ist im Ruhezustand keine offene Röhre, sondern liegt eng aneinander. Das Blut sammelt sich wie in einer Schale im hinteren Scheidengewölbe. Durch Spüren dieses Völlegefühls kann man zur Toilette gehen und das Blut durch gezielte Beckenboden-Entspannung gezielt ablassen.",
+    "expert": "Hebammenkunde & Biomechanik des Freien Blutens:\n1. Anatomische Grundlage: Der Scheidenkanal verläuft im Stehen ca. 45° nach dorsal geneigt. Der Musculus levator ani (insb. M. puborectalis) umfasst das untere Scheidendrittel wie eine Schlinge. Das Menstruationsblut fließt nicht in einem kontinuierlichen Wasserfall, sondern schubweise (durch Uteruskontraktionen ca. alle 15–30 Minuten). Das hintere Scheidengewölbe (Fornix vaginae posterior) bietet ca. 5–15 ml Reservoirkapazität.\n2. Propriozeption (Körperwahrnehmung): Frauen spüren eine minimale Zunahme des Gewebedrucks und das Öffnen des Zervikalkanals. Auf der Toilette wird durch Vorbeugen des Rumpfes der anorektale und urogenitale Winkel begradigt. Durch Ausatmung entspannt der M. pubococcygeus vollständig, und das gesammelte Blut entleert sich schwallartig durch Schwerkraft.\n3. Medizinische Vorteile: 1. Keine Austrocknung des Epithels (Tampons entziehen bis zu 35 % Feuchtigkeit aus schützenden Laktobazillen), 2. Ausschluss des Toxischen Schocksyndroms (TSS), 3. Deutliche Reduktion primärer Dysmenorrhoe (Regelkrämpfe), da kein Fremdkörper gegen die empfindlichen Rezeptoren der Vaginalwand drückt.",
+    "images": [
+      {
+        "src": "period-free-bleeding-guide.svg",
+        "alt": "Freies Bluten (Free Bleeding) Beckenboden & Schritte",
+        "caption": "Schautafel: Reservoir-Funktion des Scheidengewölbes, Schlingenwirkung des M. levator ani und die 4 Phasen der Entleerung."
+      },
+      {
+        "src": "period-hygiene-products.svg",
+        "alt": "Vergleich der Hygienemethoden",
+        "caption": "Vergleich: Tampon, Menstruationstasse, Binde und Freies Bluten im anatomischen Schnitt."
+      }
+    ],
+    "steps": [
+      "1. Vorbereitung & Einstieg: Beginnt an ruhigen Tagen zu Hause (z. B. am Wochenende oder an den schwächeren Tagen 3–5). Tragt als mentale Sicherheit eine waschbare Periodenunterwäsche (Period Panty).",
+      "2. Das Völlegefühl wahrnehmen: Sobald ein leichtes Ziehen oder ein warmes, volles Gefühl im Becken auftritt, nicht erschrecken: Der Beckenboden hält das Blut reflexartig zurück. Geht in Ruhe zur Toilette.",
+      "3. WC-Positionierung (Hocksitz): Setzt euch auf die Toilette, beugt den Oberkörper leicht nach vorne und stellt die Füße flach (evtl. mit einem kleinen Schemel) auf. Das öffnet das Becken optimal.",
+      "4. Bewusstes Loslassen: Atmet tief durch die Nase in den Unterbauch ein und lasst beim Ausatmen durch den leicht geöffneten Mund das Becken vollkommen locker. Nicht mit der Bauchpresse drücken! Das Blut fließt durch die Schwerkraft von selbst ab.",
+      "5. Reinigung: Nach dem Ablassen sanft mit Wasser oder feuchter Kompresse von vorne nach hinten abtupfen. Nach 2–3 Zyklen gelingt das Freie Bluten meist auch unterwegs problemlos."
+    ],
+    "tip": "Wichtigster Anfängerfehler: Nicht krampfhaft 'einhalten' wie bei Harndrang, sondern den Beckenboden einfach in seinem normalen Grundtonus belassen – er dichtet die Scheidenwände von Natur aus ausreichend ab.",
+    "source": "https://www.hebammenverband.de/"
+  },
+  {
+    "title": "Regelschmerzen (Dysmenorrhoe), Prostaglandine & Hebammenhilfe",
+    "module": "Zyklus und Periode",
+    "icon": "⚡",
+    "simple": "Warum tut die Periode weh? Verantwortlich sind körpereigene Botenstoffe namens Prostaglandine. Sie lassen die Gebärmuttermuskeln verkrampfen, damit das Blut ausgestoßen wird. Diese Lektion zeigt, wie man diesen Mechanismus versteht und mit Wärme, Magnesium, Akupressur und Kräutern wirksam lindert.",
+    "expert": "Pathophysiologie der primären Dysmenorrhoe:\n1. Prostaglandin F2-alpha (PGF2α): Beim Zerfall der Endometriumzellen wird Arachidonsäure über das Enzym Cyclooxygenase (COX-2) in Prostaglandine umgewandelt. PGF2α bewirkt eine massive myometriale Vasokonstriktion und uterine Hypertonie. Der intra-uterine Druck kann während der Krämpfe über 120–150 mmHg ansteigen (höher als der arterielle Blutdruck!), was zu einer vorübergehenden Ischämie (Sauerstoffmangel im Gewebe) führt – das ist der typische krampfartige Schmerz!\n2. Begleitsymptome: Gelangen Prostaglandine in den systemischen Blutkreislauf, stimulieren sie auch die glatte Muskulatur des Magen-Darm-Trakts. Folge: Perioden-Durchfall, Übelkeit, Kopfschmerzen und Hitzewallungen.\n3. Hebammen- & Naturheilkundliche Maßnahmen: \n• Lokale Thermotherapie (Wärmflasche / warmes Vollbad): Dilatiert myometriale Blutgefäße, senkt den Vasospasmus und wirkt sofort spasmolytisch.\n• Hochdosiertes Magnesium (300–400 mg/Tag): Natürlicher Calciumantagonist, blockiert die Muskelanspannung.\n• Phytotherapie: Schafgarbe (*Achillea millefolium* – krampflösend), Frauenmantel (*Alchemilla vulgaris* – adstringierend/harmonisierend), Mönchspfeffer bei PMS.\n• Akupressur-Punkt Milz 6 (Sanyinjiao): Liegt 4 Fingerbreiten oberhalb des inneren Fußknöchels hinter der Schienbeinkante – senkt uterine Schmerzen nachweislich.",
+    "images": [
+      {
+        "src": "period-flow-anatomy.svg",
+        "alt": "Myometrium-Krämpfe und Prostaglandine",
+        "caption": "Schautafel: Myometrium-Hypertonie durch PGF2α und Entstehung der ischämischen Regelschmerzen."
+      }
+    ],
+    "steps": [
+      "1. Schmerzskala dokumentieren: Im Tagebuch die Schmerzstärke von 0 bis 10 mit dem neuen Schieberegler festhalten.",
+      "2. Frühzeitige Wärme: Bei den ersten Anzeichen von Ziehen sofort Wärme auf Unterbauch und Kreuzbein legen (senkt den Schmerzmittelbedarf um bis zu 50 %).",
+      "3. Magnesium-Prophylaxe: Bereits 2–3 Tage vor der erwarteten Menstruation mit Magnesium beginnen.",
+      "4. Bewegung & Beckenkreisen: Sanfte Beckenbewegungen (Katze-Kuh im Vierfüßlerstand) entstauen die pelvinen Venengeflechte.",
+      "5. Sekundäre Dysmenorrhoe ausschließen: Treten Schmerzen neu auf, nehmen sie von Jahr zu Jahr zu oder strahlen tief in den Rücken/Darm aus, muss gynäkologisch auf Endometriose oder Adenomyose untersucht werden."
+    ],
+    "tip": "Warnsignal Endometriose: Regelschmerzen, die selbst mit Schmerzmitteln (wie Ibuprofen) nicht beherrschbar sind oder zu Ohnmacht führen, sind nicht 'normal' und erfordern eine spezialisierte Endometriose-Sprechstunde.",
+    "source": "https://www.frauenaerzte-im-netz.de/erkrankungen/dysmenorrhoe/"
   }
 ];

@@ -1,5 +1,5 @@
 'use strict';
-const APP_VERSION='0.1.9.2', APP_BUILD=16, DB='frauen-app-beta', DB_VERSION=2;
+const APP_VERSION='0.1.9.4', APP_BUILD=18, DB='frauen-app-beta', DB_VERSION=2;
 const $=id=>document.getElementById(id), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const categories=['Periode','Zwischenblutung','Ausfluss','Flüssigkeitsverlust','Sexualität','Kinderwunsch','Zervixschleim / Eisprung','Basaltemperatur','Schwangerschaftstest','Schmerzen','Brustveränderung','Vulva / Scheide','WC / Ausscheidung','Wohlbefinden','Schwangerschaft','Kindsbewegungen / Wehen','Frauenarzttermin','Abstrich / Laboruntersuchung','Geburt / Wochenbett','Gemeinsame Selbstkontrolle','Krankheit / Allgemeinsymptome'];
 const categoryIcons = {
@@ -539,7 +539,7 @@ const LEARN_TOPICS = [
     desc: 'Menstruationsverlauf, Blutmengen, Koagel, Hygiene & freies Bluten',
     colorClass: 'topic-periode',
     modules: ['Zyklus und Periode', 'Zyklus'],
-    keywords: ['menstruation', 'blutung', 'hygiene', 'periode']
+    keywords: ['menstruation', 'blutung', 'hygiene', 'periode', 'koagel', 'freies bluten', 'dysmenorrhoe', 'regelschmerz']
   },
   {
     id: 'zyklus',
@@ -872,41 +872,38 @@ async function checkUpdate(silent=false){
  if(!silent)status.textContent='Prüfe…';
  try{
   const u=new URL('./version.json',location.href);
-  u.searchParams.set('check',String(Date.now()));
+  u.searchParams.set('force_ts',String(Date.now()));
   const res=await fetch(u.href,{cache:'no-store'});
   if(!res.ok)throw Error('Versionsdatei nicht erreichbar');
   const info=await res.json();
   const build=Number(info.build||1);
   if(info.version!==APP_VERSION||build>APP_BUILD){
-   status.textContent='Neu: '+info.version+' ('+build+')';
+   status.textContent='Neu: v'+info.version;
    if(hasPendingInput()){if(!silent)notify('Erst Eingabe speichern oder schließen, dann Update starten');return;}
    updatingNow=true;
-   status.textContent='Lade v'+info.version+'…';
-   notify('Neue Version gefunden: v'+info.version+' wird geladen');
+   status.textContent='Installiere…';
+   notify('Neue Version v'+info.version+' gefunden – Cache wird bereinigt');
    try{
     if('serviceWorker' in navigator){
-     const reg=await navigator.serviceWorker.getRegistration();
-     if(reg){
-      reg.waiting?.postMessage('SKIP_WAITING');
-      await reg.update();
-     }
+     const regs=await navigator.serviceWorker.getRegistrations();
+     for(const r of regs){ await r.unregister(); }
     }
     if('caches' in window){
      const keys=await caches.keys();
-     await Promise.all(keys.filter(k=>!k.includes('build'+build)).map(k=>caches.delete(k)));
+     await Promise.all(keys.map(k=>caches.delete(k)));
     }
    }catch(e){}
    const next=new URL('./index.html',location.href);
-   next.searchParams.set('app_update',info.version+'-'+build);
-   next.searchParams.set('t',String(Date.now()));
-   location.replace(next.href);
+   next.searchParams.set('v_fresh',info.version+'-'+build);
+   next.searchParams.set('ts',String(Date.now()));
+   setTimeout(()=>{ location.replace(next.href); },300);
   }else{
    status.textContent='Aktuell';
-   if(!silent)notify('Version '+APP_VERSION+' (Build '+APP_BUILD+') ist aktuell');
+   if(!silent)notify('Version v'+APP_VERSION+' (Build '+APP_BUILD+') ist aktuell');
   }
  }catch(e){
-  status.textContent='Prüfung fehlgeschlagen';
-  if(!silent)notify('Update nicht prüfbar – Verbindung und GitHub kontrollieren');
+  status.textContent='Prüffehler';
+  if(!silent)notify('Update-Prüfung: Bitte Internetverbindung prüfen');
  }
 }
 async function init(){try{db=await openDB();await unlockLocal();$('update').onclick=()=>checkUpdate();$('version').textContent='v'+APP_VERSION;await render();if('serviceWorker' in navigator && location.protocol==='https:'){navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).then(()=>{navigator.serviceWorker.addEventListener('controllerchange',()=>{/* App navigiert nach eigener Versionsprüfung; kein zweites Neuladen */})}).catch(()=>{});}setTimeout(()=>checkUpdate(true),2000);setInterval(()=>checkUpdate(true),5*60*1000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkUpdate(true)})}catch(err){const message=err?.message||'Unbekannter Fehler';const recoverable=/Mindestens 12 Zeichen|Passwörter stimmen nicht|Entsperren abgebrochen|Einrichtung abgebrochen|Datenpasswort falsch/.test(message);$('view').innerHTML='<div class="card"><h2>Lokale Daten '+(recoverable?'noch gesperrt':'nicht verfügbar')+'</h2><div class="warning">'+esc(message)+'</div><p class="muted">'+(recoverable?'Deine vorhandenen Daten wurden dadurch nicht gelöscht. Wähle ein Datenpasswort mit mindestens 12 Zeichen und wiederhole die Eingabe.':'Bitte nicht die Website-Daten oder den Browsercache löschen. Falls du bereits ein Backup hast, bewahre es auf.')+'</p><button class="primary" id="retry-unlock">'+'Passworteingabe erneut öffnen'+'</button></div>';const retry=$('retry-unlock');if(retry)retry.onclick=()=>{retry.disabled=true;init()};}}
