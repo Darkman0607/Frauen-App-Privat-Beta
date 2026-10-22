@@ -60,3 +60,7 @@ Beta 0.1.3: Neues lessons.js ist zwingend mit hochzuladen. 25 Ausbildungs-Grundl
 - Bestehende historische Kategorie Selbstkontrolle ist weiterhin lesbar, neue Einträge nutzen Gemeinsame Selbstkontrolle.
 
 Vor dem Upload in GitHub unbedingt Backup exportieren. Keine echten sensitiven Gesundheitsdaten bis PIN und Verschlüsselung ergänzt und getestet sind.
+
+
+### Build 3: Update-Fix
+Alle neun Dateien im GitHub-Hauptordner ersetzen; besonders index.html, app.js, sw.js, lessons.js und version.json. Danach GitHub-Actions-Pages-Deployment abwarten und die App mit `?t=3` öffnen. Anzeige v0.1.3 Build 3 wird in der Akte/Updateinformation ersichtlich. Vorher Backup speichern. Browser-Daten niemals ohne Backup löschen.

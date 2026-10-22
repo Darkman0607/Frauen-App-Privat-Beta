@@ -1,5 +1,5 @@
 'use strict';
-const APP_VERSION='0.1.3', APP_BUILD=2, DB='frauen-app-beta', DB_VERSION=1;
+const APP_VERSION='0.1.3', APP_BUILD=3, DB='frauen-app-beta', DB_VERSION=1;
 const $=id=>document.getElementById(id), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const categories=['Periode','Zwischenblutung','Ausfluss','Flüssigkeitsverlust','Sexualität','Kinderwunsch','Zervixschleim / Eisprung','Basaltemperatur','Schwangerschaftstest','Schmerzen','Brustveränderung','Vulva / Scheide','WC / Ausscheidung','Wohlbefinden','Schwangerschaft','Kindsbewegungen / Wehen','Frauenarzttermin','Geburt / Wochenbett','Gemeinsame Selbstkontrolle','Krankheit / Allgemeinsymptome'];
 let updatingNow=false,db,page='home',selectedDay=[new Date().getFullYear(),String(new Date().getMonth()+1).padStart(2,'0'),String(new Date().getDate()).padStart(2,'0')].join('-'),reloadOnce=false,editing=null;
@@ -44,6 +44,33 @@ async function startSpecial(category,field,value){await goto('diary');showForm(c
 function showForm(category){$('form-holder').innerHTML=diaryForm();formBind();if(category){$('category').value=category;$('category').onchange()};$('form-holder').scrollIntoView({behavior:'smooth',block:'start'})}
 function shiftMonth(delta){let d=new Date(selectedDay+'T12:00');d.setDate(1);d.setMonth(d.getMonth()+delta);selectedDay=[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),'01'].join('-');render()}
 function hasPendingInput(){return !!document.querySelector('#entry-form')}
-async function checkUpdate(silent=false){const status=$('update-state');if(!navigator.onLine){status.textContent='Offline';return}if(!silent)status.textContent='Prüfe…';try{const url=new URL('./version.json',location.href);url.searchParams.set('t',Date.now());const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),9000);let res=await fetch(url,{cache:'no-store',signal:controller.signal});clearTimeout(timeout);if(!res.ok)throw Error('Keine Verbindung');let info=await res.json();if(info.version!==APP_VERSION||Number(info.build||1)>APP_BUILD){status.textContent='Neu: '+info.version+' ('+(info.build||1)+')';if(hasPendingInput()){notify('Neue Version verfügbar: Formular speichern oder schließen. Danach Update oben antippen.');return}notify('Neue Version '+info.version+' wird geladen');if('serviceWorker' in navigator){let reg=await navigator.serviceWorker.getRegistration();updatingNow=true;await reg?.update()}setTimeout(()=>{if(!hasPendingInput())location.reload();else notify('Formular schließen und Update erneut prüfen')},1800)}else{status.textContent='Aktuell';if(!silent)notify('Bereits auf dem neuesten Stand')}}catch{status.textContent='Nicht geprüft';if(!silent)notify('Update-Prüfung nicht möglich (offline oder noch nicht veröffentlicht)')}}
-async function init(){try{db=await openDB();$('update').onclick=()=>checkUpdate();$('version').textContent='v'+APP_VERSION;await render();if('serviceWorker' in navigator && location.protocol==='https:'){navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).then(()=>{navigator.serviceWorker.addEventListener('controllerchange',()=>{if(reloadOnce||!updatingNow||hasPendingInput())return;reloadOnce=true;location.reload()})}).catch(()=>{});}setTimeout(()=>checkUpdate(true),2000);setInterval(()=>checkUpdate(true),5*60*1000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkUpdate(true)})}catch(err){$('view').innerHTML='<div class="warning">Lokale Speicherung kann nicht geöffnet werden. Bitte die App im normalen Browser über HTTPS öffnen. '+esc(err.message)+'</div>'}}
+async function checkUpdate(silent=false){
+ const status=$('update-state');
+ if(updatingNow)return;
+ if(!navigator.onLine){status.textContent='Offline';return;}
+ if(!silent)status.textContent='Prüfe…';
+ try{
+  const u=new URL('./version.json',location.href);u.searchParams.set('check',String(Date.now()));
+  const res=await fetch(u.href,{cache:'no-store'});
+  if(!res.ok)throw Error('Versionsdatei nicht erreichbar');
+  const info=await res.json();
+  const build=Number(info.build||1);
+  if(info.version!==APP_VERSION||build>APP_BUILD){
+   status.textContent='Neu: '+info.version+' ('+build+')';
+   if(hasPendingInput()){if(!silent)notify('Erst Eingabe speichern oder schließen, dann Update starten');return;}
+   updatingNow=true;status.textContent='Aktualisiere…';
+   notify('Neue Version wird geprüft und geladen');
+   try{if('serviceWorker' in navigator){const reg=await navigator.serviceWorker.getRegistration();await reg?.update();}}catch(e){/* Navigation versucht Netzwerk-Update dennoch */}
+   // Eine neue URL erzwingt eine neue Navigationsanfrage statt einer bloßen Wiederholung.
+   // Der Service Worker verwendet network-first für Seiten und JavaScript.
+   const next=new URL('./index.html',location.href);
+   next.searchParams.set('app_update',info.version+'-'+build);
+   next.searchParams.set('t',String(Date.now()));
+   location.replace(next.href);
+  }else{
+   status.textContent='Aktuell';if(!silent)notify('Version '+APP_VERSION+' (Build '+APP_BUILD+') ist aktuell');
+  }
+ }catch(e){status.textContent='Prüfung fehlgeschlagen';if(!silent)notify('Update nicht prüfbar – Verbindung und GitHub-Dateien kontrollieren');}
+}
+async function init(){try{db=await openDB();$('update').onclick=()=>checkUpdate();$('version').textContent='v'+APP_VERSION;await render();if('serviceWorker' in navigator && location.protocol==='https:'){navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).then(()=>{navigator.serviceWorker.addEventListener('controllerchange',()=>{/* App navigiert nach eigener Versionsprüfung; kein zweites Neuladen */})}).catch(()=>{});}setTimeout(()=>checkUpdate(true),2000);setInterval(()=>checkUpdate(true),5*60*1000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkUpdate(true)})}catch(err){$('view').innerHTML='<div class="warning">Lokale Speicherung kann nicht geöffnet werden. Bitte die App im normalen Browser über HTTPS öffnen. '+esc(err.message)+'</div>'}}
 init();

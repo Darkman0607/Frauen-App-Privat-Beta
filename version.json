@@ -1,6 +1,6 @@
 {
   "version": "0.1.3",
   "released": "2026-10-22",
-  "notes": "Beta 0.1.3 korrigiert: Bearbeiten, Kalender-Details, atomare Foto-Speicherung, Backup-Prüfung und Update-Erkennung",
-  "build": 2
+  "notes": "Update-Fix Build 3: Cache-busting, kontrollierte Navigation und Update-Hinweise",
+  "build": 3
 }
