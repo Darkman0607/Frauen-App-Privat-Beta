@@ -1,6 +1,6 @@
 {
-  "version": "0.1.5",
+  "version": "0.1.6",
   "released": "2026-10-22",
-  "notes": "10 vertiefte Lehrbuchlektionen und manuelle Google-Drive-Dateisicherung",
-  "build": 1
+  "notes": "Passwortgeschützte AES-GCM-Backups für Google Drive; keine App-Sperre",
+  "build": 2
 }
