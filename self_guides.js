@@ -63,68 +63,98 @@ const SELF_GUIDES=[
     "icon": "🌸"
   },
   {
-    "title": "3. Menstruation – Verlauf und Warnzeichen",
-    "group": "Zyklus",
-    "simple": "Während der Periode wird Gebärmutterschleimhaut abgestoßen. Blut kann hellrot, dunkelrot oder bräunlich sein; entscheidend sind Verlauf, Menge, Beschwerden und Veränderungen gegenüber dem üblichen Muster.",
-    "expert": "Menstruationsflüssigkeit enthält Blut, Schleim und abgeschilferte Schleimhaut. Farbe hängt unter anderem von Blutungsstärke und Kontakt mit Sauerstoff ab. Gerinnsel können auftreten; Größe, Häufigkeit und Begleitsymptome sind bedeutsamer als die Farbe allein. Die Blutungsmenge lässt sich im Alltag nur annähernd über Produktwechsel und Durchtränkung schätzen.",
+    "title": "3. Periode & Menstruationshygiene: Vaginale Kontrolle & Produkte",
+    "group": "Praxisanleitung Periode",
+    "icon": "🩸",
+    "simple": "Die Menstruation ist ein natürlicher Reinigungsprozess der Gebärmutter. Die Art, wie das Blut aufgefangen wird (Binde, Tampon, Menstruationstasse oder Freies Bluten), hat großen Einfluss auf die Scheidenflora und das Wohlbefinden. Bei der gemeinsamen Kontrolle lässt sich die Blutungsstärke und Beschaffenheit genau beurteilen.",
+    "expert": "Physiologie der Menstruation: Die Desquamation des Endometriums wird durch einen Abfall von Progesteron und Östrogen ausgelöst. PGF2α induziert Myometriumkontraktionen (oft als Krämpfe spürbar) und eine Vasokonstriktion der Spiralarterien. Das Menstruationsblut (ca. 30-80 ml) besteht aus Blut, Endometriumfragmenten und Vaginalsekret und gerinnt aufgrund enzymatischer Fibrinolyse (Plasmin) normalerweise nicht. Hygieneartikel beeinflussen das vaginale Mikrobiom: Tampons absorbieren nicht nur Blut, sondern auch schützendes Laktobazillen-Sekret und können Mikroläsionen beim Einführen/Entfernen verursachen. Menstruationstassen (aus medizinischem Silikon) fangen Blut per Unterdruck im Gewölbe auf, ohne auszutrocknen. 'Freies Bluten' (Free Bleeding) nutzt die Körperwahrnehmung (Propriozeption des Beckenbodens und Muttermunds), um das Blut gezielt auf der Toilette abzulassen, was den Vaginalkanal völlig reizfrei hält.",
     "steps": [
-      "Ersten Blutungstag und Uhrzeit notieren; Schmierblutung separat kennzeichnen.",
-      "Verwendete Produkte und Wechselzeiten notieren; nicht wegen einer App länger als hygienisch empfohlen benutzen.",
-      "Begleitende Krämpfe, Kreislaufgefühl und Schmerzstärke von 0 bis 10 erfassen.",
-      "Bei auffälligem Verlauf an andere mögliche Ursachen wie Schwangerschaft denken; Blutung beweist nicht, dass keine Schwangerschaft besteht.",
-      "Am Ende der Periode Gesamtdauer, Veränderung und offene Fragen zusammenfassen."
+      "Vorbereitung zur Kontrolle: Hände gründlich waschen und desinfizieren. Für die Begutachtung der Blutung auf dem Rücken lagern, Beine anstellen. Wasserdichte Flockenunterlage unter das Gesäß legen.",
+      "Beurteilung des Blutes (Quantität & Qualität): Farbe prüfen (hellrot = frische, starke Blutung; dunkelrot = venös/gesammelt; bräunlich = Schmierblutung/alt). Konsistenz prüfen (flüssig vs. Koagel). Koagel (Blutklumpen > 2 cm) deuten darauf hin, dass die Blutung so stark ist, dass die Fibrinolyse-Enzyme nicht nachkommen.",
+      "Hygiene: Tampon-Anwendung: Immer die kleinste nötige Größe wählen. Vor dem Einführen Hände waschen. Der Tampon muss tief in das mittlere/obere Scheidendrittel geschoben werden, da er im unteren Drittel (sensibel innerviert) schmerzt. Spätestens alle 4-8 Stunden wechseln (TSS-Gefahr!).",
+      "Hygiene: Menstruationstasse: Vor dem Zyklus 5 Min. auskochen. Zum Einführen falten (C-Fold oder Punch-Down) und Richtung Steißbein einführen. Sie ploppt unter der Portio auf und dichtet durch Unterdruck ab. Zum Entfernen NIE einfach am Stiel ziehen (Sog!), sondern den Tassenboden leicht eindrücken, um das Vakuum zu lösen.",
+      "Hygiene: Binden / Periodenunterwäsche: Hautfreundliche, atmungsaktive (Baumwoll-)Produkte ohne Plastikfolie bevorzugen, um einen feucht-warmen Wärmestau (begünstigt Pilzinfektionen) zu vermeiden. Wechsel nach Bedarf, mind. 3-4x täglich.",
+      "Hygiene: Freies Bluten (Free Bleeding): Die Frau lernt, das Öffnen des Muttermunds und das Füllen der Vagina zu spüren. Bei diesem Völlegefühl geht sie zur Toilette und entspannt den Beckenboden bewusst, um das Blut abfließen zu lassen. Vorteil: Keine Fremdkörper, keine Reizung der Scheidenwände, ideal bei Neigung zu Infektionen oder Endometriose-Schmerzen.",
+      "Äußere Reinigung: Bei der Menstruation das Blut an der Vulva mit warmem Wasser (ohne Seife!) von vorne nach hinten (Richtung After) abwischen."
     ],
-    "docs": "Start/Ende, Stärke pro Tag, Wechselhäufigkeit, Schmerzen, größere Gerinnsel, Medikamente und Begleitsymptome eintragen.",
-    "warning": "Sehr starke Blutung, Benommenheit/Ohnmacht, starke einseitige Schmerzen, Fieber oder Blutung in möglicher Schwangerschaft sofort beziehungsweise dringlich abklären.",
+    "docs": "Blutungsstärke (leicht, mittel, stark, Koagel), Farbe, Anzahl der gewechselten Produkte pro Tag und Begleitsymptome (Krämpfe, Übelkeit, Kopfschmerz) im Tagebuch notieren.",
+    "warning": "Warnzeichen für ärztliche Abklärung: Binden/Tampons müssen häufiger als alle 1-2 Stunden gewechselt werden (Hypermenorrhoe). Plötzliches hohes Fieber, Schüttelfrost und Hautausschlag bei Tamponnutzung (Verdacht auf Toxisches Schocksyndrom - TSS!).",
     "category": "Blutungen",
-    "image": "",
-    "alt": "",
-    "caption": "",
-    "source": "https://www.gesundheit.gv.at/leben/frauengesundheit/menstruation.html",
     "images": [
       {
-        "src": "cycle-hormones-chart.svg",
-        "alt": "Hormonkurven, Basaltemperatur und Gebärmutterschleimhaut im Zyklus",
-        "caption": "Lehrbuch-Diagramm: Zusammenspiel von Östrogen, LH-Gipfel, Progesteronabfall und Abblutung der Gebärmutterschleimhaut (Menstruation)."
+        "src": "period-hygiene-products.svg",
+        "alt": "Menstruationshygiene und Produkte",
+        "caption": "Schautafel 1: Anatomischer Sitz und Funktionsweise von Tampon, Menstruationstasse, Binde und der Methode des Freien Blutens."
       },
       {
-        "src": "speculum-period-view.svg",
-        "alt": "Blick durch das Spekulum auf die Portio während der Menstruation",
-        "caption": "Portio während der Periode: Leicht geöffneter Muttermund mit direktem Abfluss von Menstruationsblut und Gewebeflocken."
+        "src": "cycle-hormones-chart.svg",
+        "alt": "Menstruationszyklus Hormone",
+        "caption": "Schautafel 2: Abblutung der Gebärmutterschleimhaut (Tag 1-5) als Reaktion auf den Hormonabfall."
       }
     ],
-    "icon": "🩸"
+    "source": "https://www.frauenaerzte-im-netz.de/koerper-gesundheit/menstruationszyklus/menstruation/"
   },
   {
-    "title": "4. Ausfluss und Zervixschleim beurteilen",
-    "group": "Zyklus",
-    "simple": "Ausfluss verändert sich über den Zyklus. Er kann klar, weißlich, zäh oder dehnbar sein. Eine Veränderung allein beweist weder Eisprung noch Infektion.",
-    "expert": "Zervixschleim wird durch hormonelle Veränderungen beeinflusst, vor allem durch Östrogene und Progesteron. Beobachtungen an der Unterwäsche oder beim Abwischen können zyklusabhängige Muster zeigen. Farbe, Geruch, Jucken und Brennen sind wichtig, aber ein Ausflussprotokoll kann keine mikrobiologische Diagnose stellen.",
+    "title": "4. Kinderwunsch & Zervixschleim: NFP-Kontrolle & Spinnbarkeit",
+    "group": "Kinderwunsch & NFP",
+    "icon": "💧",
+    "simple": "Der Zervixschleim ist das wichtigste Zeichen für die fruchtbare Phase. Nur wenn er flüssig und 'spinnbar' (zieht Fäden) ist, können Spermien in der Gebärmutter überleben. Wir lernen hier die NFP-Fingerprobe zur Bestimmung der Fruchtbarkeit.",
+    "expert": "Endokrinologie des Zervixschleims: Die Krypten des Zervikalkanals produzieren je nach Hormonlage unterschiedliches Sekret (Muzine). In der frühen Follikelphase (niedriges Östrogen) ist der Schleim zäh, klebrig und verschließt den Muttermund (G-Schleim = gestagengeprägt), der pH-Wert ist sauer, Spermien sterben ab. Mit steigendem Östrogen vor dem Eisprung (E-Schleim = östrogengeprägt) wird das Sekret wässrig, alkalisch, glykogenreich und bildet unter dem Mikroskop Farnkraut-Kristalle. Die Muzinfäden ordnen sich parallel an und bilden Leitbahnen für die Spermien. Die Spermien können in diesem 'S+'-Schleim bis zu 5 Tage im Zervikalkanal überleben (Kapazitation) und auf die Eizelle warten.",
     "steps": [
-      "Ohne innere Tast- oder Abstrichversuche die sichtbaren Spuren auf Unterwäsche oder Toilettenpapier beobachten.",
-      "Farbe, ungefähre Menge und Konsistenz in denselben Kategorien beschreiben.",
-      "Geruch nur beschreiben, wenn er ohnehin auffällt; keine Gegenstände oder Produkte zur Geruchsprüfung einführen.",
-      "Begleitendes Brennen, Jucken, Unterbauchschmerzen oder Fieber erfassen.",
-      "Mehrere Zyklustage vergleichen und auffällige neue Veränderungen ärztlich besprechen."
+      "Hygiene: Vor der Schleimabnahme Hände gründlich waschen.",
+      "Abnahme des Schleims: Entweder am Scheideneingang (mit Toilettenpapier oder dem sauberen Zeigefinger vor dem Urinieren abwischen) oder direkt am Muttermund (Zeigefinger tief einführen und vorsichtig über die Portio streichen).",
+      "Gefühl (Fühlen): Wie fühlt sich der Scheideneingang im Alltag an? Trocken (t), feucht (f) oder nass/rutschig/wie geölt?",
+      "Aussehen (Sehen): Wie sieht der Schleim am Finger aus? Nichts zu sehen (Ø), weißlich-trüb, gelblich, cremig, oder glasklar wie rohes Eiweiß?",
+      "Dehnbarkeit (Fingerprobe / Spinnbarkeit): Den Schleim zwischen Daumen und Zeigefinger nehmen und die Finger langsam bis zu 5 cm spreizen. Reißt er sofort ab (Kategorie S) oder zieht er lange, elastische Fäden (Kategorie S+)?",
+      "Kategorisierung nach Sensiplan (NFP): \n- 't' (trocken): Nichts gefühlt, nichts gesehen. \n- 'f' (feucht): Feucht gefühlt, aber nichts gesehen. \n- 'S': Dicklich, cremig, weiß, klebrig (reißt beim Dehnen). \n- 'S+': Glasklar, spinnbar (zieht Fäden), flüssig, nasses Gefühl (Hochfruchtbar!).",
+      "Zeitpunkt für den Kinderwunsch: Die Chancen auf eine Befruchtung sind am höchsten, wenn der Zervixschleim die Qualität 'S+' erreicht (meist 1-3 Tage vor dem Eisprung). Geschlechtsverkehr ist in dieser Phase ideal.",
+      "Umschwung erkennen: Wenn der Schleim nach Tagen mit 'S+' plötzlich wieder cremig (S) oder trocken (t) wird, war der Eisprung (Ovulation) in der Regel am Tag des letzten S+-Schleims."
     ],
-    "docs": "Datum, Zyklustag, Farbe, Konsistenz, Menge, Geruch, Begleitsymptome und Veränderungen dokumentieren.",
-    "warning": "Gelbgrüner oder übelriechender Ausfluss mit Beschwerden, Fieber oder Schmerzen gehört ärztlich abgeklärt. Wässriger Flüssigkeitsabgang während Schwangerschaft umgehend geburtshilflich prüfen lassen.",
-    "category": "Ausfluss",
-    "image": "",
-    "alt": "",
-    "caption": "",
-    "source": "https://www.gesundheit.gv.at/leben/sexualitaet/sexualitaet-und-pubertaet/weibliche-geschlechtsorgane.html",
+    "docs": "Täglich abends die *beste* Schleimqualität des Tages notieren. Wenn morgens 'S' und abends 'S+' war, wird 'S+' eingetragen.",
+    "warning": "Vorsicht: Zervixschleim kann leicht mit Sperma-Resten vom Vortag (wässrig, reißt nach 1-2 cm) oder mit Erregungsschleim (glasklar, aber nur bei sexueller Erregung produziert) verwechselt werden.",
+    "category": "Zervixschleim / Eisprung",
     "images": [
       {
+        "src": "cervical-mucus-nfp.svg",
+        "alt": "Fingerprobe Spinnbarkeit und NFP Kategorien",
+        "caption": "Schautafel 1: Die Fingerprobe ('Spinnbarkeit') und die Sensiplan-Kategorien (t, f, S, S+) zur Bestimmung der hochfruchtbaren Tage."
+      },
+      {
         "src": "cervix-cycle-comparison.svg",
-        "alt": "Die 4 Zyklusphasen von Portio und Zervixschleim im Vergleich",
-        "caption": "Schautafel: Veränderung von Muttermundöffnung und Zervixschleim (Periode, frühe Follikelphase, Eisprung mit spinnbarem Schleim, Gelbkörperphase)."
+        "alt": "Zervixschleim am Muttermund im Zyklus",
+        "caption": "Schautafel 2: Veränderung des Schleims direkt am Muttermund (von cremig zu glasklar-spinnbar beim Eisprung)."
       }
     ],
-    "icon": "💧"
+    "source": "https://www.sensiplan.de/zervixschleim-beobachten"
   },
   {
-    "title": "5. Gebärmutterhals und Muttermund im Zyklus",
+    "title": "5. Ausfluss (Fluor vaginalis) erkennen & vaginale Kontrolle",
+    "group": "Ausfluss & Infektionen",
+    "icon": "🦠",
+    "simple": "Nicht jeder Ausfluss ist eine Pilzinfektion. Gesunder Ausfluss ist weißlich-klar und schützt die Scheide. Verändert er sich in Farbe (grünlich, grau), Konsistenz (bröckelig, schaumig) oder Geruch (fischig), kann eine Infektion vorliegen, die behandelt werden muss.",
+    "expert": "Pathologie des Fluor vaginalis: Das physiologische Vaginalsekret (Transsudat des Vaginalepithels, Zervixschleim, abgeschilferte Epithelzellen und Laktobazillen) ist weißlich, geruchlos bis leicht säuerlich (pH 3,8-4,5) und verursacht keine Beschwerden. Dysbiosen und Infektionen verändern das Sekret spezifisch: \n1. Vaginale Candidose (Pilz): Hyperergische Reaktion auf Candida albicans. Symptome: massiver Pruritus (Juckreiz), Vulva-Erythem, Ausfluss ist weiß, bröckelig (hüttenkäseartig), pH-Wert bleibt meist normal (< 4,5). \n2. Bakterielle Vaginose (Aminkolpitis): Verdrängung der Laktobazillen durch Anaerobier (z.B. Gardnerella vaginalis). Symptome: dünnflüssiger, homogen grau-weißer Fluor, typischer 'Fischgeruch' (Amine, verstärkt nach Geschlechtsverkehr oder Periode), pH-Wert > 4,5. Oft kaum Juckreiz. \n3. Trichomoniasis (STI): Infektion mit dem Protozoon Trichomonas vaginalis. Symptome: übelriechender, gelb-grünlicher, schaumiger Ausfluss, Schmerzen beim Wasserlassen, Rötung der Vaginalwand ('Erdbeerzervix').",
+    "steps": [
+      "Hygiene: Hände vor der Begutachtung gründlich waschen.",
+      "Äußere Begutachtung (Inspektion): Die Vulva und den Scheideneingang mit gutem Licht (Taschenlampe/Stirnlampe) betrachten. Ist die Haut normal rosig? Oder stark gerötet, geschwollen, mit Kratzspuren (deutet auf Pilz) oder kleinen Rissen (Fissuren)?",
+      "Geruchsprüfung (Amnin-Geruch): Riecht der Ausfluss in der Unterwäsche auffällig? Ein fischiger Geruch spricht stark für eine Bakterielle Vaginose (die Bakterien produzieren Amine). Ein hefeartiger Geruch kann bei Pilz auftreten. Normaler Ausfluss riecht leicht säuerlich (Milchsäure).",
+      "Sichtprüfung (Beschaffenheit): \n- Weiß & bröckelig/krümelig wie Topfen/Hüttenkäse -> Verdacht auf Pilz.\n- Grau-weißlich, milchig, wässrig fließend -> Verdacht auf Bakterielle Vaginose.\n- Gelblich-grün, schaumig, Bläschen -> Verdacht auf Trichomonaden oder andere bakterielle Infektion.",
+      "pH-Wert Messung (optional): Mit speziellen pH-Testhandschuhen oder -stäbchen aus der Apotheke kann der vaginale pH-Wert (ca. 2-3 cm tief in der Scheide, an der Seitenwand abstreifen) gemessen werden. Ein Wert von 4,0 oder 4,4 ist gesund. Ein Wert von 4,7 oder höher deutet auf eine gestörte Flora (Bakterielle Vaginose) hin. Bei reinem Pilz ist der pH-Wert oft völlig normal (sauer).",
+      "Therapie-Regeln: Niemals auf Verdacht Hausmittel wie Joghurt, Teebaumöl oder Knoblauch in die Vagina einführen! Diese zerstören die Schleimhaut und können schwere Allergien auslösen. Bei Juckreiz keine Seife verwenden, nur mit lauwarmem Wasser spülen."
+    ],
+    "docs": "Genaues Aussehen (Farbe, Konsistenz), Geruch, pH-Wert (falls gemessen) und Begleitsymptome (Jucken, Brennen, Schmerz) im Tagebuch dokumentieren.",
+    "warning": "Blutiger, fleischwasserfarbener oder eitriger Ausfluss außerhalb der Periode, Ausfluss gepaart mit Fieber oder Unterbauchschmerzen (Verdacht auf aufsteigende Infektion/PID) muss immer rasch ärztlich abgeklärt werden.",
+    "category": "Ausfluss",
+    "images": [
+      {
+        "src": "discharge-types.svg",
+        "alt": "Ausfluss Arten: Gesund, Pilz, Vaginose, Trichomonaden",
+        "caption": "Schautafel 1: Typische Erscheinungsbilder von gesundem Ausfluss und den drei häufigsten Infektionen (Pilz, Bakterielle Vaginose, Trichomoniasis) in der Unterwäsche."
+      }
+    ],
+    "source": "https://www.amboss.com/de/wissen/vaginitis-und-vaginose/"
+  },
+  {
+    "title": "6. Gebärmutterhals und Muttermund im Zyklus",
     "group": "Anatomie",
     "simple": "Der Muttermund ist das Ende des Gebärmutterhalses zur Scheide. Seine Position und das Gewebe können sich im Zyklus verändern. Durch Fühlen lässt sich aber nicht zuverlässig messen, ob er geöffnet oder verkürzt ist.",
     "expert": "Die Zervix verbindet Gebärmutterhöhle und Vagina und enthält den Zervikalkanal. Äußerer Muttermund, Zervikalkanal und innerer Muttermund sind anatomisch verschiedene Strukturen. Die sogenannte Zervixlänge wird klinisch per transvaginalem Ultraschall unter standardisierten Bedingungen beurteilt. Eine zervikale Zellprobe für die Zytologie unterscheidet sich von einer vaginalen Probe für einen dafür validierten HPV-Test. Aussehen und Tastgefühl erlauben keine verlässliche Beurteilung von Dysplasien, Fruchtblasenstatus oder Frühgeburtsrisiko.",
@@ -157,7 +187,7 @@ const SELF_GUIDES=[
     "icon": "🎯"
   },
   {
-    "title": "6. Spekulumkunde: Bauarten, Größen und Einstelltechnik (Lehrbuchstandard)",
+    "title": "7. Spekulumkunde: Bauarten, Größen und Einstelltechnik (Lehrbuchstandard)",
     "group": "Fachwissen & Instrumentenkunde",
     "simple": "Ein Spekulum hält die sonst aneinanderliegenden Scheidenwände sanft auseinander, sodass der Gebärmutterhals (Portio) und das Scheidengewölbe direkt ausgeleuchtet und betrachtet werden können. Je nach Anatomie und Situation kommen zweiblättrige Entenschnabel-Spekula oder zweiteilige Rinnenspekula zum Einsatz.",
     "expert": "Lehrbuchwissen Instrumentenkunde & Anatomie: 1. Bauarten im Detail: Das selbsthaltende zweiblättrige Spekulum nach Cusco (mit leicht gebogenen, abgerundeten Entenschnabel-Blättern und zentraler oder seitlicher Stellschraube) ist das Standardinstrument zur Portio-Einstellung. Das Modell nach Graves besitzt etwas breitere, stärker geschwungene Blätter. Einmal-Kunststoffspekula (glasklares Polystyrol) bieten den Vorteil, dass durch die transparenten Blätter auch die vordere und hintere Vaginalwand (Colporrhaphie-Beurteilung, Rugae vaginales) durchscheinen; allerdings erzeugt der Rastmechanismus beim Verstellen oft ein hörbares 'Klick'-Geräusch – wird der Feststellhebel beim Einführen und Öffnen mit dem Daumen geführt, lässt sich das Spekulum lautlos und stufenlos spreizen. Zweiteilige Rinnenspekula nach Kristeller oder Sims bestehen aus einem vorderen (kürzeren) und hinteren (längeren) Rinnenblatt: Sie erlauben in der Geburtshilfe und bei stärkerer Blutung eine variable Einstellung, benötigen aber beide Hände. 2. Topographische Anatomie beim Einführen: Der Scheideneingang (Introitus vaginae) ist als vertikaler Spalt angelegt, während das obere Scheidendrittel mit dem vorderen und hinteren Scheidengewölbe (Fornix vaginae anterior et posterior) queroval verläuft. Unmittelbar unter dem Schambeinbogen (Symphyse) liegt die Harnröhre (Urethra) mit dem empfindlichen Trigonum vesicae. Jeder Druck nach vorne-oben löst sofortigen Harndrang oder Schmerz aus. Der Beckenboden (M. pubococcygeus) gibt nach hinten-unten Richtung Steißbein nach. Daher folgt das Spekulum immer der physiologischen Beckenachse (erst 45° schräg, dann 90° waagrecht im 45°-Neigungswinkel nach dorsal-kranial). 3. Typische Einstellprobleme lösen (Troubleshooting): Ist die Portio nach dem Öffnen nicht sichtbar, liegt das Spekulum meist zu weit vorne oder nicht tief genug im hinteren Gewölbe. Bei einem anteflektierten Uterus (Regelfall, nach vorne geneigt) zeigt die Portio nach hinten-unten zur Kreuzbeinhöhle: Hier hilft ein flaches Kissen unter dem Gesäß (Beckenkippung) und ein etwas steileres Führen der Blattspitzen nach dorsal. Bei retroflektiertem Uterus (nach hinten gekippt) zeigt die Portio eher nach vorne-oben Richtung Symphyse.",
@@ -200,7 +230,7 @@ const SELF_GUIDES=[
     "icon": "🔦"
   },
   {
-    "title": "7. Spekulum-Untersuchung während der Periode: Hygiene, Sicht, Reinigung & Nachsorge",
+    "title": "8. Spekulum-Untersuchung während der Periode: Hygiene, Sicht, Reinigung & Nachsorge",
     "group": "Praxisanleitung Periode",
     "simple": "Während der Menstruation ist das Gewebe im Becken stärker durchblutet, weicher und der äußere Muttermund öffnet sich minimal, damit Blut und Schleimhaut abfließen können. Mit einer wasserdichten Unterlage, Stieltupfern zum sanften Abtupfen und sorgfältiger Reinigung lässt sich dieser natürliche Prozess im Spekulum genau beobachten.",
     "expert": "Klinische & hebammenkundliche Vertiefung zur Menstruations-Inspektion: 1. Physiologie der Desquamation: Am Ende der Sekretionsphase führt der Abfall von Progesteron und Östrogen zu einer Vasokonstriktion der Spiralarterien im Endometrium. Die funktionelle Schleimhautschicht (Stratum functionale) löst sich von der verbleibenden Basalschicht (Stratum basale) ab. Lokale Prostaglandine (insb. PGF2α) lösen rhythmische Kontraktionen des Myometriums aus, während sich der Zervikalkanal und der äußere Muttermund (Ostium uteri externum) leicht öffnen (ca. 1–3 mm). Das ausfließende Menstruationsblut (insgesamt ca. 30–80 ml über 3–7 Tage) besteht aus arteriellem und venösem Blut, abgelösten Endometriumfragmenten, Zervixschleim und Vaginalepithelzellen. Durch fibrinolytische Enzyme (Plasmin) aus dem Endometrium gerinnt Menstruationsblut im Normalfall nicht; erst bei sehr starker Blutung bilden sich dunkelrote Koagel (Blutgerinnsel), weil die Fibrinolysekapazität überschritten wird. 2. Warum sich Blut im hinteren Scheidengewölbe sammelt: In Rückenlage bildet das hintere Scheidengewölbe (Fornix vaginae posterior) unterhalb der Portio den tiefsten anatomischen Punkt (Pool-Bildung). Beim Öffnen des Spekulums fließt ein Teil dieses 'Blutsees' in die Rinne des unteren Spekulumblattes. Um die Oberfläche der Portio (Plattenepithel, eventuelle physiologische Ektopiezone/Umwandlungszone) und das langsame Nachfließen aus dem Muttermund frei zu betrachten, tupft man diesen Pool mit einem langen, mit warmer NaCl-0,9-%-Lösung angefeuchteten Stieltupfer (oder einer in einer Kornzange eingespannten Mullkompresse) behutsam aus. Trockene Tupfer auf empfindlichem Zylinderepithel vermeiden, da sie anhaften und Kontaktblutungen auslösen können! 3. Tropffreie Rückzug-Technik & Nachreinigung: Beim Herausnehmen des Spekulums sammelt sich Restblut in der konkaven Rinne des unteren Blattes. Wird das Spekulum beim Austritt aus dem Introitus leicht waagrecht (wie ein Löffel, Griff nach unten) geführt und direkt in die bereitstehende Nierenschale gelegt, bleibt die Unterlage vollkommen sauber. Bei der anschließenden Intimreinigung der Frau gilt das Drei-Tupfer-Prinzip mit körperwarmen, weichen Kompressen: 1. Tupfer für Vestibulum und Labia minora (von der Klitoris Richtung hintere Kommissur), 2. Tupfer für die Labia majora beidseits von vorne nach hinten, 3. Tupfer für Damm (Perineum) und Analregion. Danach sanft trocken tupfen.",
@@ -244,7 +274,7 @@ const SELF_GUIDES=[
     "icon": "🌺"
   },
   {
-    "title": "8. PAP, HPV und vaginale Abstriche richtig unterscheiden",
+    "title": "9. PAP, HPV und vaginale Abstriche richtig unterscheiden",
     "group": "Labor",
     "simple": "PAP beurteilt Zellen des Gebärmutterhalses. HPV sucht nach bestimmten Viren. Ein vaginaler Erregerabstrich sucht je nach Laborauftrag nach Mikroorganismen. Das sind drei verschiedene Fragestellungen.",
     "expert": "Zytologie, molekulare HPV-Diagnostik und Erregerdiagnostik benutzen unterschiedliche Probenarten, Transportmedien und Nachweismethoden. Manche HPV-Tests akzeptieren eine vaginale Selbstprobe mit dafür validiertem Kit. PAP-Zytologie benötigt eine geeignete Zervixzellprobe; eine beliebige Probe vom Wattestäbchen ist hierfür ungeeignet. Bei einem auffälligen HPV-Befund sind ärztlich festgelegte Folgeuntersuchungen notwendig. Ein negativer Test schließt nicht alle Ursachen für Beschwerden aus.",
@@ -265,7 +295,7 @@ const SELF_GUIDES=[
     "icon": "🧪"
   },
   {
-    "title": "9. Brustgesundheit und sichere Selbstbeobachtung",
+    "title": "10. Brustgesundheit und sichere Selbstbeobachtung",
     "group": "Anatomie",
     "simple": "Brüste können sich im Zyklus verändern. Ein regelmäßiger Blick hilft, neue Unterschiede zu bemerken. Ein einzelner selbst ertasteter Befund lässt sich nicht sicher als harmlos oder krankhaft einordnen.",
     "expert": "Brustgewebe besteht aus Drüsenläppchen, Milchgängen, Binde- und Fettgewebe. Hormonabhängige Wassereinlagerung und Empfindlichkeit können vor der Menstruation zunehmen. Auch Brustgröße und Form können asymmetrisch sein. Sichtbare Hauteinziehungen, Veränderungen der Brustwarze oder neue tastbare Veränderungen brauchen professionelle Beurteilung.",

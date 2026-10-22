@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 400" role="img">
+  <rect width="740" height="400" rx="24" fill="#fff9fb"/>
+  <style>
+    text{font:13px Arial,sans-serif;fill:#4d3347}
+    .title{font:bold 19px Arial,sans-serif;fill:#3b2336}
+    .sub{font:bold 14px Arial,sans-serif;fill:#7a3e5d}
+    .minor{font-size:11.5px;fill:#7d6677}
+    .tissue{fill:#f3c6d8;stroke:#a96983;stroke-width:2}
+    .blood{fill:#c93b5b}
+    .item{fill:#fff;stroke:#6c91ad;stroke-width:2}
+  </style>
+  <text x="24" y="34" class="title">Menstruationshygiene: Anatomischer Sitz &amp; Produkte im Vergleich</text>
+
+  <!-- Box 1: Tampon -->
+  <rect x="20" y="50" width="165" height="280" rx="14" fill="#fff2f7" stroke="#e2c6d5" stroke-width="1.5"/>
+  <text x="30" y="74" class="sub">1. Tampon</text>
+  <path d="M50 160 Q102 140 150 160 L140 210 Q102 230 60 210 Z" fill="#fae6ee" stroke="#b87893" stroke-width="1.5"/>
+  <rect x="75" y="158" width="50" height="60" rx="8" class="item"/>
+  <line x1="100" y1="218" x2="100" y2="250" stroke="#8fa8b8" stroke-width="2"/>
+  <text x="30" y="270" font-weight="bold">Sitz: Mittleres Drittel</text>
+  <text x="30" y="286" class="minor">• Saugt Blut &amp; Sekret auf</text>
+  <text x="30" y="302" class="minor">• Trocknet Schleimhaut aus</text>
+  <text x="30" y="318" class="minor">• Regelmäßiger Wechsel!</text>
+
+  <!-- Box 2: Menstruationstasse -->
+  <rect x="195" y="50" width="165" height="280" rx="14" fill="#fff2f7" stroke="#e2c6d5" stroke-width="1.5"/>
+  <text x="205" y="74" class="sub">2. Menstruationstasse</text>
+  <path d="M225 160 Q277 140 325 160 L315 210 Q277 230 235 210 Z" fill="#fae6ee" stroke="#b87893" stroke-width="1.5"/>
+  <!-- Cup -->
+  <path d="M255 165 L295 165 Q290 205 275 210 Q260 205 255 165 Z" fill="#e8f4fc" stroke="#6c91ad" stroke-width="2"/>
+  <line x1="275" y1="210" x2="275" y2="225" stroke="#6c91ad" stroke-width="2"/>
+  <ellipse cx="275" cy="185" rx="15" ry="4" class="blood"/>
+  <text x="205" y="270" font-weight="bold">Sitz: Unter der Portio</text>
+  <text x="205" y="286" class="minor">• Fängt Blut auf (Unterdruck)</text>
+  <text x="205" y="302" class="minor">• Erhält Scheidenmilieu</text>
+  <text x="205" y="318" class="minor">• Sterilisation nötig</text>
+
+  <!-- Box 3: Binde / Periodenunterwäsche -->
+  <rect x="370" y="50" width="165" height="280" rx="14" fill="#fff2f7" stroke="#e2c6d5" stroke-width="1.5"/>
+  <text x="380" y="74" class="sub">3. Binde / Panty</text>
+  <path d="M400 160 Q452 140 500 160 L490 210 Q452 230 410 210 Z" fill="#fae6ee" stroke="#b87893" stroke-width="1.5"/>
+  <path d="M448 150 Q452 180 450 225" stroke="#c93b5b" stroke-width="3" fill="none"/>
+  <rect x="420" y="225" width="60" height="12" rx="4" class="item"/>
+  <text x="380" y="270" font-weight="bold">Sitz: Außen am Vulva-Bereich</text>
+  <text x="380" y="286" class="minor">• Nimmt abfließendes Blut auf</text>
+  <text x="380" y="302" class="minor">• Vaginalkanal bleibt völlig frei</text>
+  <text x="380" y="318" class="minor">• Atmungsaktivität wichtig</text>
+
+  <!-- Box 4: Freies Bluten -->
+  <rect x="545" y="50" width="175" height="280" rx="14" fill="#f2fcf7" stroke="#b5e3cc" stroke-width="1.5"/>
+  <text x="555" y="74" class="sub" fill="#2d6b52">4. Freies Bluten</text>
+  <path d="M575 160 Q627 140 675 160 L665 210 Q627 230 585 210 Z" fill="#fae6ee" stroke="#b87893" stroke-width="1.5"/>
+  <path d="M623 150 Q627 180 625 240" stroke="#c93b5b" stroke-width="4" stroke-dasharray="8,4" fill="none"/>
+  <ellipse cx="625" cy="245" rx="8" ry="4" class="blood"/>
+  <text x="555" y="270" font-weight="bold">Methode: Körperwahrnehmung</text>
+  <text x="555" y="286" class="minor">• Gezieltes Ablassen am WC</text>
+  <text x="555" y="302" class="minor">• Spüren der Muttermund-</text>
+  <text x="555" y="318" class="minor">  Öffnung &amp; Kontraktionen</text>
+
+  <text x="24" y="360" class="minor">Lehrbuchhinweis: Bei vaginaler Infektion oder zur exakten Beobachtung von Blutkoageln/Gewebeflocken sind Binden oder Freies Bluten</text>
+  <text x="24" y="378" class="minor">die schonendsten Methoden, da sie den Abfluss nicht blockieren und den vaginalen pH-Wert am wenigsten stören.</text>
+</svg>

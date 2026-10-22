@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 400" role="img">
+  <rect width="740" height="400" rx="24" fill="#fff9fb"/>
+  <style>
+    text{font:13px Arial,sans-serif;fill:#4d3347}
+    .title{font:bold 19px Arial,sans-serif;fill:#3b2336}
+    .sub{font:bold 15px Arial,sans-serif;fill:#7a3e5d}
+    .minor{font-size:11.5px;fill:#7d6677}
+    .finger{fill:#fcebe6;stroke:#c29b93;stroke-width:2}
+    .mucus{fill:#e6f7ff;stroke:#80caff;stroke-width:1.5;opacity:0.8}
+  </style>
+  <text x="24" y="34" class="title">Zervixschleim &amp; Kinderwunsch (NFP): Kategorien &amp; Spinnbarkeit</text>
+
+  <!-- Left: Finger Test (Spinnbarkeit) -->
+  <rect x="20" y="50" width="340" height="290" rx="16" fill="#fff2f7" stroke="#e2c6d5" stroke-width="1.5"/>
+  <text x="36" y="76" class="sub">1. Die Fingerprobe ("Spinnbarkeit")</text>
+  
+  <!-- Fingers apart -->
+  <!-- Top finger -->
+  <path d="M80 120 Q120 120 160 140 Q180 150 180 165 Q180 180 160 175 L80 160 Z" class="finger"/>
+  <!-- Bottom finger -->
+  <path d="M80 270 Q120 270 160 250 Q180 240 180 225 Q180 210 160 215 L80 230 Z" class="finger"/>
+  <!-- Stretchy mucus -->
+  <path d="M165 173 Q150 195 165 217 Q175 195 165 173 Z" class="mucus"/>
+  <!-- Thread -->
+  <line x1="165" y1="173" x2="165" y2="217" stroke="#80caff" stroke-width="3" opacity="0.6"/>
+  <line x1="168" y1="173" x2="168" y2="217" stroke="#fff" stroke-width="1.5" opacity="0.8"/>
+  
+  <text x="210" y="130" font-weight="bold">Abnahme:</text>
+  <text x="210" y="148" class="minor">• Am Scheideneingang</text>
+  <text x="210" y="164" class="minor">• Oder direkt am Muttermund</text>
+  <text x="210" y="194" font-weight="bold">Testung:</text>
+  <text x="210" y="212" class="minor">• Zwischen Daumen &amp;</text>
+  <text x="210" y="228" class="minor">  Zeigefinger langsam spreizen</text>
+  <text x="210" y="244" class="minor">• Reißt er sofort? Oder</text>
+  <text x="210" y="260" class="minor">  zieht er lange Fäden (&gt; 2 cm)?</text>
+
+  <!-- Right: NFP Categories -->
+  <rect x="380" y="50" width="340" height="290" rx="16" fill="#f4f8fa" stroke="#b5d3e3" stroke-width="1.5"/>
+  <text x="396" y="76" class="sub">2. NFP-Kategorien (Sensiplan)</text>
+  
+  <!-- t / nothing -->
+  <rect x="396" y="96" width="308" height="42" rx="8" fill="#fff" stroke="#d1e3ed"/>
+  <text x="406" y="121" font-weight="bold" fill="#7a3e5d">"t" (trocken) / Nichts</text>
+  <text x="540" y="121" class="minor">Fühlt sich trocken an, nichts zu sehen.</text>
+
+  <!-- f / feucht -->
+  <rect x="396" y="146" width="308" height="42" rx="8" fill="#fff" stroke="#d1e3ed"/>
+  <text x="406" y="171" font-weight="bold" fill="#7a3e5d">"f" (feucht)</text>
+  <text x="540" y="171" class="minor">Feuchtes Gefühl, aber kein Schleim sichtbar.</text>
+
+  <!-- S -->
+  <rect x="396" y="196" width="308" height="42" rx="8" fill="#fff" stroke="#d1e3ed"/>
+  <text x="406" y="221" font-weight="bold" fill="#7a3e5d">Kategorie "S"</text>
+  <text x="540" y="213" class="minor">Dicklich, weißlich, cremig, klumpig,</text>
+  <text x="540" y="229" class="minor">reißt beim Dehnen sofort ab.</text>
+
+  <!-- S+ -->
+  <rect x="396" y="246" width="308" height="52" rx="8" fill="#eaf7eb" stroke="#a3d6a8"/>
+  <text x="406" y="271" font-weight="bold" fill="#2d6b52">Kategorie "S+" (Hochfruchtbar!)</text>
+  <text x="406" y="289" class="minor" fill="#1b4534">Glasklar, flüssig, spinnbar (zieht Fäden wie rohes Eiweiß).</text>
+
+  <text x="24" y="364" class="minor">Spermienüberleben: Im sauren Scheidenmilieu sterben Spermien rasch ab. Nur im alkalischen "S+" Schleim können sie</text>
+  <text x="24" y="380" class="minor">bis zu 5 Tage im Zervikalkanal überleben und auf den Eisprung warten.</text>
+</svg>

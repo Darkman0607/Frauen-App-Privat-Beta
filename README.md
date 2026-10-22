@@ -1,8 +1,12 @@
-# Frauen-App Beta 0.1.8.2 (Design- & Icon-Update)
+# Frauen-App Beta 0.1.8.3 (Hebammen-Fachbuch-Update)
 
-Update von 0.1.8.1 auf 0.1.8.2 (Build 6):
-- **Bild 1 (Illustrierte Fachlektionen & Lernzentrum):** Jedes Kapitel hat jetzt ein eigenes farbiges Themen-Icon, Kategorie- und Schautafel-Badges („🖼️ X Schautafeln“), einen runden Aufklapp-Pfeil sowie die Schnellbuttons „Alle öffnen / Alle schließen“ für einfachste Bedienung.
-- **Bild 2 (Startseite aufgeräumt):** Die beiden unteren Hinweisblöcke („Schwangerschaft“ und „Datenschutz der Beta“) wurden wie gewünscht von der Startseite entfernt.
-- **Bild 3 (Untere Navigationsleiste):** Neue, farbige Icon-Badges (🏠 Start, 📔 Tagebuch, 📅 Kalender, 🎓 Lernen, 🗂️ Akte) mit sanfter Hervorhebung des aktiven Bereichs.
-- **Bild 4 (Hauptseite & Hintergrund):** Sanfter Pastell-Verlaufshintergrund, modernisierte Hero-Karte und farblich abgestimmte Bereichskacheln mit großen Icons.
-- **Interne Prüfung:** `APP_VERSION='0.1.8.2'` und `APP_BUILD=6` in allen Dateien synchronisiert. Datenbank und Einträge bleiben zu 100 % erhalten.
+Update von 0.1.8.2 auf 0.1.8.3 (Build 7):
+- **Neustrukturierung der Selbstkontrolle auf Hebammen/Gyn-Niveau:**
+  - `Periode & Menstruationshygiene:` Detaillierte Kontrolle und Anatomie/Anwendung von Tampons, Menstruationstasse, Binden und der Methode des 'Freien Blutens'. Beurteilung von Blut und Koageln.
+  - `Kinderwunsch & Zervixschleim (NFP):` Genaue Anleitung zur Fingerprobe ('Spinnbarkeit'), den NFP-Kategorien (t, f, S, S+) und dem optimalen Zeitpunkt für den Kinderwunsch.
+  - `Ausfluss (Fluor vaginalis) erkennen:` Neues Kapitel zur Unterscheidung von gesundem Ausfluss, Vaginalpilz (bröckelig), Bakterieller Vaginose (Amingeruch) und Trichomonaden.
+- **3 neue medizinische SVG-Schautafeln integriert:**
+  - `period-hygiene-products.svg`: Anatomischer Sitz der Menstruationsprodukte.
+  - `cervical-mucus-nfp.svg`: Die Fingerprobe (Spinnbarkeit) und die Sensiplan-Schleimkategorien.
+  - `discharge-types.svg`: Typische Ausflussarten (Gesund, Pilz, Vaginose, Trichomoniasis) zur optischen Unterscheidung.
+- **Interne Prüfung:** Syntax geprüft, `APP_VERSION='0.1.8.3'` und `APP_BUILD=7` in allen Dateien synchronisiert. Datenbank bleibt zu 100 % erhalten.

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 400" role="img">
+  <rect width="740" height="400" rx="24" fill="#fff9fb"/>
+  <style>
+    text{font:13px Arial,sans-serif;fill:#4d3347}
+    .title{font:bold 19px Arial,sans-serif;fill:#3b2336}
+    .sub{font:bold 15px Arial,sans-serif;fill:#7a3e5d}
+    .minor{font-size:11.5px;fill:#7d6677}
+    .panty{fill:#332830;stroke:#1a1418;stroke-width:2;rx:12}
+    .stain{opacity:0.9}
+  </style>
+  <text x="24" y="34" class="title">Ausfluss (Fluor vaginalis): Gesund vs. Infektion (Diagnosehilfe)</text>
+
+  <!-- Healthy -->
+  <rect x="20" y="55" width="165" height="290" rx="16" fill="#f4fcf7" stroke="#bde6cd" stroke-width="1.5"/>
+  <text x="30" y="80" class="sub" fill="#2d6b52">1. Physiologisch (Gesund)</text>
+  <rect x="52" y="100" width="100" height="120" class="panty"/>
+  <!-- White/clear stain -->
+  <path d="M80 140 Q102 120 120 140 Q130 160 110 180 Q80 180 80 140 Z" fill="#ffffff" class="stain"/>
+  <text x="30" y="245" font-weight="bold">Farbe: Weiß / Klar</text>
+  <text x="30" y="265" class="minor">• Geruch: Neutral / leicht säuerlich</text>
+  <text x="30" y="285" class="minor">• Konsistenz: Cremig bis wässrig</text>
+  <text x="30" y="305" class="minor">• Symptome: Keine</text>
+  <text x="30" y="325" class="minor">• Ursache: Laktobazillen / Zyklus</text>
+
+  <!-- Pilz -->
+  <rect x="195" y="55" width="165" height="290" rx="16" fill="#fff5f5" stroke="#f5c1c1" stroke-width="1.5"/>
+  <text x="205" y="80" class="sub" fill="#9c2626">2. Scheidenpilz</text>
+  <rect x="227" y="100" width="100" height="120" class="panty"/>
+  <!-- Chunky white stain -->
+  <circle cx="270" cy="150" r="15" fill="#ffffff" stroke="#e8e8e8" stroke-width="1"/>
+  <circle cx="285" cy="160" r="10" fill="#ffffff" stroke="#e8e8e8" stroke-width="1"/>
+  <circle cx="265" cy="170" r="12" fill="#ffffff" stroke="#e8e8e8" stroke-width="1"/>
+  <text x="205" y="245" font-weight="bold">Farbe: Weiß, bröckelig</text>
+  <text x="205" y="265" class="minor">• Geruch: Eher neutral / hefeartig</text>
+  <text x="205" y="285" class="minor">• Konsistenz: Hüttenkäse-artig</text>
+  <text x="205" y="305" class="minor" fill="#9c2626">• Symptome: Starker Juckreiz, Rötung</text>
+  <text x="205" y="325" class="minor">• Ursache: Candida albicans</text>
+
+  <!-- Vaginose -->
+  <rect x="370" y="55" width="165" height="290" rx="16" fill="#fcfcf0" stroke="#e3e3b3" stroke-width="1.5"/>
+  <text x="380" y="80" class="sub" fill="#7d7d2b">3. Bakt. Vaginose (BV)</text>
+  <rect x="402" y="100" width="100" height="120" class="panty"/>
+  <!-- Thin grayish stain -->
+  <path d="M430 140 Q452 120 470 140 Q480 180 440 180 Q410 180 430 140 Z" fill="#e6e8e0" class="stain"/>
+  <text x="380" y="245" font-weight="bold">Farbe: Grau-weißlich</text>
+  <text x="380" y="265" class="minor" fill="#7d7d2b">• Geruch: Fischig (Amine)</text>
+  <text x="380" y="285" class="minor">• Konsistenz: Dünnflüssig</text>
+  <text x="380" y="305" class="minor">• Symptome: Oft kein Juckreiz</text>
+  <text x="380" y="325" class="minor">• Ursache: Gardnerella (pH &gt; 4,5)</text>
+
+  <!-- Trichomonaden -->
+  <rect x="545" y="55" width="175" height="290" rx="16" fill="#f4fcf7" stroke="#b5e3cc" stroke-width="1.5"/>
+  <text x="555" y="80" class="sub" fill="#246e45">4. Trichomoniasis</text>
+  <rect x="582" y="100" width="100" height="120" class="panty"/>
+  <!-- Frothy yellow/green stain -->
+  <path d="M600 150 Q632 120 660 150 Q670 180 630 180 Q590 180 600 150 Z" fill="#e2f0c9" class="stain"/>
+  <circle cx="620" cy="150" r="2" fill="#fff"/>
+  <circle cx="635" cy="160" r="3" fill="#fff"/>
+  <circle cx="645" cy="145" r="2" fill="#fff"/>
+  <text x="555" y="245" font-weight="bold">Farbe: Gelb-grünlich</text>
+  <text x="555" y="265" class="minor">• Geruch: Übelriechend</text>
+  <text x="555" y="285" class="minor">• Konsistenz: Schaumig</text>
+  <text x="555" y="305" class="minor" fill="#9c2626">• Symptome: Schmerzen, Rötung</text>
+  <text x="555" y="325" class="minor">• Ursache: Parasit (STI)</text>
+
+  <text x="24" y="370" class="minor">Lehrbuchhinweis: Bei V. a. bakterielle Vaginose (Fischgeruch) oder Pilzinfektion (bröckelig, Juckreiz) sollte der vaginale pH-Wert kontrolliert werden.</text>
+  <text x="24" y="386" class="minor">Nur ärztliche Abstriche sichern die Diagnose. Dokumentiert Aussehen und Geruch genau im Tagebuch.</text>
+</svg>

@@ -1,6 +1,6 @@
 {
-  "version": "0.1.8.2",
+  "version": "0.1.8.3",
   "released": "2026-10-22",
-  "notes": "Design- & Bedienungs-Update: Farbige Icons für Lektionen, Hauptseite und Navigation, Aufklapp-Steuerung und aufgeräumte Startseite ohne Warn-/Datenschutzblöcke.",
-  "build": 6
+  "notes": "Hebammen-Fachbuch-Update: Detaillierte Schritt-für-Schritt-Anleitungen zu Menstruationshygiene (Tampon, Tasse, freies Bluten), Kinderwunsch/NFP (Zervixschleim-Spinnbarkeit auswerten) und Ausflusskontrolle (gesund vs. Pilz/BV/Trichomonaden) inkl. 3 neuer SVGs.",
+  "build": 7
 }
