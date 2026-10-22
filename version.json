@@ -1,6 +1,6 @@
 {
-  "version": "0.1.7.2",
+  "version": "0.1.7.3",
   "released": "2026-10-22",
-  "notes": "Erweiterung Lernzentrum: NFP-Muttermundtastung, Lutealphase & Mastodynie, Beckenboden & Tonus, Wochenbett & Lochien; dynamischer Lektionszähler und PWA-Cache-Refresh.",
-  "build": 2
+  "notes": "Hotfix: APP_VERSION & APP_BUILD in app.js synchronisiert (behebt Update-Reload-Schleife nach Passworteingabe), inklusive der 4 neuen Fachlektionen im Lernzentrum.",
+  "build": 3
 }
