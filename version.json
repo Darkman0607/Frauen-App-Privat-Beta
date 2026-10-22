@@ -1,6 +1,6 @@
 {
-  "version": "0.1.8.4",
+  "version": "0.1.8.5",
   "released": "2026-10-22",
-  "notes": "Hebammen-Update: Vollständiges Fachkapitel zur Vaginalen Untersuchung (VU) bei Periode, Eisprung und Schwangerschaft (Lagerung, Intimsphäre, Ausziehen/Abdecken, bimanuelle Tastung, Bishop-Kriterien) inkl. neuer medizinischer Schautafel.",
-  "build": 8
+  "notes": "Redesign 'Neue Beobachtung': Übersichtliche 4-Sektionen-Struktur, 2-Spalten-Raster, Schieberegler für Schmerz, Kamera- & Galerie-Buttons zum direkten Fotografieren mit Live-Vorschau und Lösch-Buttons.",
+  "build": 9
 }

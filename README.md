@@ -1,14 +1,15 @@
-# Frauen-App Beta 0.1.8.4 (Hebammenkunde: Vaginale Untersuchung)
+# Frauen-App Beta 0.1.8.5 (Redesign Neue Beobachtung)
 
-Update von 0.1.8.3 auf 0.1.8.4 (Build 8):
-- **Neues Fachkapitel: Vaginale Untersuchung (VU) & Palpation:**
-  - `Intimsphäre & Bekleidung:` Detaillierte Klärung (Muss sie sich ausziehen? Nein: Oberbekleidung bleibt an, Unterkörper wird gezielt mit einem Tuch abgedeckt).
-  - `Lagerung & Vorbereitung:` Blasenentleerung, Rückenlage mit Beckenkissen, Knie locker angewinkelt.
-  - `Phasenspezifische Tastbefunde:`
-    - Bei der Periode (geöffneter Muttermund 1–3 mm, weicheres Gewebe, Eigenblut-Gleitfilm).
-    - Beim Eisprung (hochstehende, weiche Portio wie Unterlippe, fingerkuppenweit geöffnet für NFP).
-    - In der Schwangerschaft (Länge 3–4 cm, sakraler Stand, Schleimpfropf-Verschluss, Geburtsreifung & Bishop-Score).
-  - `Bi-manuelle Palpationstechnik:` Zusammenspiel der vaginalen Hand und der abdominalen Hand zur Tastung von Uterus und Fundus.
-  - `Kontraindikationen:` Klare Warnungen (Verdacht auf Placenta praevia bei Blutung, Blasensprung-Infektionsrisiko).
-- **Neue medizinische Schautafel:** `vaginal-palpation-technique.svg` (Lagerung mit Tuch, 2-Hand-Tastung, 4 Kriterien).
-- **Interne Qualitätsprüfung:** `APP_VERSION='0.1.8.4'` und `APP_BUILD=8` in `app.js`, `version.json`, `sw.js` und `index.html` synchronisiert.
+Update von 0.1.8.4 auf 0.1.8.5 (Build 9):
+- **Komplettes Redesign des Formulars „Neue Beobachtung / Eintrag bearbeiten“:**
+  - `Klare 4-Sektionen-Struktur:`
+    1. Kategorie & Zeitpunkt (übersichtliches 2-Spalten-Raster).
+    2. Körperliche Kriterien (Quelle, Menge, Farbe, Konsistenz) plus interaktiver Schieberegler für Schmerz/Spannung mit dynamischem Farbwechsel.
+    3. Ausführliche Notizen & Beobachtungen.
+    4. Fotos & Befundbilder.
+  - `Optimiertes Foto-System:`
+    - Getrennter Button **„📷 Direkt Foto aufnehmen“** (öffnet direkt die Smartphone-Kamera über `capture="environment"`).
+    - Getrennter Button **„🖼️ Aus Galerie wählen“** für mehrere Fotos gleichzeitig.
+    - Kachel-Vorschau mit rotem **✕-Löschbutton** pro Bild vor dem Speichern.
+    - Mehrfachauswahl bleibt erhalten (akkumulativ).
+- **Interne Qualitätskontrolle:** Alle Tags, CSS, SVGs und JS-Klammern geprüft. Datenbank und bestehende Einträge bleiben zu 100 % erhalten.

@@ -1,5 +1,5 @@
 'use strict';
-const APP_VERSION='0.1.8.4', APP_BUILD=8, DB='frauen-app-beta', DB_VERSION=2;
+const APP_VERSION='0.1.8.5', APP_BUILD=9, DB='frauen-app-beta', DB_VERSION=2;
 const $=id=>document.getElementById(id), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const categories=['Periode','Zwischenblutung','Ausfluss','Flüssigkeitsverlust','Sexualität','Kinderwunsch','Zervixschleim / Eisprung','Basaltemperatur','Schwangerschaftstest','Schmerzen','Brustveränderung','Vulva / Scheide','WC / Ausscheidung','Wohlbefinden','Schwangerschaft','Kindsbewegungen / Wehen','Frauenarzttermin','Abstrich / Laboruntersuchung','Geburt / Wochenbett','Gemeinsame Selbstkontrolle','Krankheit / Allgemeinsymptome'];
 let updatingNow=false,db,page='home',selectedDay=[new Date().getFullYear(),String(new Date().getMonth()+1).padStart(2,'0'),String(new Date().getDate()).padStart(2,'0')].join('-'),reloadOnce=false,editing=null;
@@ -84,7 +84,105 @@ async function diary(){const entries=(await all('entries')).sort((a,b)=>b.date.l
 function entryRows(entries){return entries.map(e=>`<div class="entry"><div class="row"><strong>${esc(e.category)}</strong><small>${esc(new Date(e.date).toLocaleString('de-AT'))}</small></div><p class="muted">${esc(e.note||'Keine Beschreibung')}</p><small>${esc(e.source)} · ${esc(e.amount)}</small><div class="row wrap" style="margin-top:9px"><button class="secondary" data-open="${esc(e.id)}">Details / Fotos</button><button class="secondary" data-edit="${esc(e.id)}">Bearbeiten</button><button class="danger" data-delete="${esc(e.id)}" aria-label="Eintrag löschen" title="Eintrag löschen">🗑 Löschen</button></div></div>`).join('')||'<div class="card muted">Noch keine Einträge.</div>'}
 async function photoCards(id){const photos=(await all('photos')).filter(p=>p.entryId===id);return photos.map(p=>`<div class="photo-card"><img src="${URL.createObjectURL(p.blob)}" alt="Gespeichertes Foto"><button class="danger" data-delphoto="${esc(p.id)}">Foto löschen</button></div>`).join('')}
 async function openEntry(id){let entry=(await all('entries')).find(x=>x.id===id);if(!entry)return;let photos=await photoCards(id);let holder=$('form-holder');holder.innerHTML=`<div class="card"><div class="row"><h3>${esc(entry.category)}</h3><button class="secondary" id="detail-close">Schließen</button></div><p class="muted">${esc(new Date(entry.date).toLocaleString('de-AT'))}</p><p>${esc(entry.note||'Keine Beschreibung')}</p><p class="muted">Quelle: ${esc(entry.source)} · Menge: ${esc(entry.amount)} · Farbe: ${esc(entry.color)} · Konsistenz: ${esc(entry.texture)} · Schmerz: ${esc(entry.pain||'–')}</p><div class="entry-extra">${Object.entries({illnessType:'Symptom',illnessStart:'Beginn',illnessEnd:'Ende',temperature:'Temperatur °C',tempMethod:'Messmethode',frequency:'Häufigkeit',illnessDetails:'Zusatzangaben',checkArea:'Bereich',checkMethod:'Methode',change:'Veränderung',doctorQuestions:'Fragen für Arzt'}).filter(([key])=>entry[key]).map(([key,label])=>`<p class="fine"><strong>${esc(label)}:</strong> ${esc(entry[key])}</p>`).join('')}</div><div class="grid">${photos}</div><button class="danger" id="delete-entry" style="margin-top:12px">Eintrag vollständig löschen</button></div>`;$('detail-close').onclick=()=>holder.innerHTML='';$('delete-entry').onclick=async()=>{if(!confirm('Eintrag inklusive Fotos unwiderruflich löschen?'))return;await removeEntryWithPhotos(id);notify('Eintrag gelöscht');render()};holder.querySelectorAll('[data-delphoto]').forEach(b=>b.onclick=async()=>{if(!confirm('Dieses Foto unwiderruflich löschen?'))return;await del('photos',b.dataset.delphoto);openEntry(id)});holder.scrollIntoView({behavior:'smooth',block:'start'})}
-function formBind(){const f=$('entry-form');if(!f)return;const now=editing?.date||new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,16);$('entry-date').value=now;if(editing){for(const [k,v] of Object.entries(editing)){if(f.elements[k]&&k!=='date')f.elements[k].value=v;}}$('category').onchange=()=>{const current=Object.fromEntries(new FormData(f).entries());$('category-extra').innerHTML=extraFields($('category').value);for(const [key,val] of Object.entries(current)){const control=f.elements[key];if(control && !['category','date'].includes(key) && control.type!=='file')control.value=val}}; if(editing){$('category').value=editing.category;} $('category').onchange(); if(editing){for(const [key,val] of Object.entries(editing)){const control=f.elements[key];if(control && control.type!=='file')control.value=val}} $('photos-input').onchange=()=>{$('photos-preview').textContent=[...$('photos-input').files].map(f=>f.name).join(' · ')};f.onsubmit=async ev=>{ev.preventDefault();let data=Object.fromEntries(new FormData(f).entries());delete data[''];let id=editing?.id||crypto.randomUUID();let files=[...$('photos-input').files];if(files.some(x=>!x.type.startsWith('image/'))){notify('Nur Bilder erlaubt');return}if(files.some(x=>x.size>12*1024*1024)){notify('Maximal 12 MB pro Bild');return}const item={...data,id,modified:new Date().toISOString()};try{const encodedItem=await packRecord('entries',item);const encodedPhotos=[];for(const file of files)encodedPhotos.push(await packRecord('photos',{id:crypto.randomUUID(),entryId:id,blob:file,name:file.name,added:new Date().toISOString()}));await new Promise((resolve,reject)=>{const tx=db.transaction(['entries','photos'],'readwrite');tx.objectStore('entries').put(encodedItem);for(const encryptedPhoto of encodedPhotos)tx.objectStore('photos').put(encryptedPhoto);tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error||Error('Speicherfehler'));tx.onabort=()=>reject(tx.error||Error('Speicherplatz oder Datenbankfehler'));});editing=null;notify('Eintrag inklusive Fotos gespeichert');await render()}catch(err){notify('Speichern fehlgeschlagen: '+(err?.message||'Speicher prüfen')+'. Eingabe bleibt geöffnet.')}};$('close-form').onclick=()=>{editing=null;$('form-holder').innerHTML=''}}
+function formBind(){
+ const f=$('entry-form');if(!f)return;
+ const now=editing?.date||new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,16);
+ $('entry-date').value=now;
+ 
+ // Pain slider listener
+ const painSlider=$('pain-input'), painDisp=$('pain-val-display'), painPill=$('pain-num-pill');
+ if(painSlider){
+  const updatePain=()=>{
+   const v=Number(painSlider.value);
+   painPill.textContent=v;
+   painDisp.textContent=v===0?'Keine':v<=3?'Leicht ('+v+')':v<=6?'Mäßig ('+v+')':v<=8?'Stark ('+v+')':'Extrem ('+v+')';
+   painPill.style.background=v===0?'#e3f5ec':v<=3?'#fbf1cf':v<=6?'#fde2cf':v<=8?'#fccfcf':'#9c2649';
+   painPill.style.color=v>8?'#fff':'#4d3347';
+  };
+  painSlider.oninput=updatePain;
+  if(editing?.pain!==undefined&&editing.pain!==''){painSlider.value=editing.pain;updatePain();}
+ }
+
+ // Category dynamic fields
+ $('category').onchange=()=>{
+  const current=Object.fromEntries(new FormData(f).entries());
+  $('category-extra').innerHTML=extraFields($('category').value);
+  for(const [key,val] of Object.entries(current)){
+   const control=f.elements[key];
+   if(control && !['category','date'].includes(key) && control.type!=='file')control.value=val;
+  }
+ };
+ if(editing){$('category').value=editing.category;}
+ $('category').onchange();
+ if(editing){
+  for(const [key,val] of Object.entries(editing)){
+   const control=f.elements[key];
+   if(control && control.type!=='file')control.value=val;
+  }
+ }
+
+ // Accumulative photo files list
+ let selectedFiles=[];
+ const previewBox=$('photos-preview-gallery'), statusBox=$('photos-status');
+ const renderPreviews=()=>{
+  previewBox.innerHTML='';
+  if(selectedFiles.length===0){
+   statusBox.textContent=editing?'Bestehende Fotos bleiben erhalten; tippe oben um weitere hinzuzufügen.':'Noch keine Fotos ausgewählt.';
+   return;
+  }
+  statusBox.textContent=selectedFiles.length+(selectedFiles.length===1?' neues Foto bereit':' neue Fotos bereit');
+  selectedFiles.forEach((file,idx)=>{
+   const card=document.createElement('div');card.className='form-preview-thumb';
+   const img=document.createElement('img');img.src=URL.createObjectURL(file);card.appendChild(img);
+   const delBtn=document.createElement('button');delBtn.type='button';delBtn.className='thumb-del-btn';delBtn.innerHTML='✕';delBtn.title='Foto entfernen';
+   delBtn.onclick=(e)=>{e.preventDefault();selectedFiles.splice(idx,1);renderPreviews();};
+   card.appendChild(delBtn);
+   previewBox.appendChild(card);
+  });
+ };
+ renderPreviews();
+
+ const handleAddFiles=(fileList)=>{
+  for(const file of fileList){
+   if(!file.type.startsWith('image/')){notify('Nur Bilddateien erlaubt');continue;}
+   if(file.size>12*1024*1024){notify('Maximal 12 MB pro Bild erlaubt');continue;}
+   selectedFiles.push(file);
+  }
+  renderPreviews();
+ };
+
+ if($('photos-input'))$('photos-input').onchange=e=>handleAddFiles(e.target.files);
+ if($('camera-input'))$('camera-input').onchange=e=>handleAddFiles(e.target.files);
+
+ f.onsubmit=async ev=>{
+  ev.preventDefault();
+  let data=Object.fromEntries(new FormData(f).entries());
+  delete data[''];
+  let id=editing?.id||crypto.randomUUID();
+  const item={...data,id,modified:new Date().toISOString()};
+  try{
+   const encodedItem=await packRecord('entries',item);
+   const encodedPhotos=[];
+   for(const file of selectedFiles){
+    encodedPhotos.push(await packRecord('photos',{id:crypto.randomUUID(),entryId:id,blob:file,name:file.name,added:new Date().toISOString()}));
+   }
+   await new Promise((resolve,reject)=>{
+    const tx=db.transaction(['entries','photos'],'readwrite');
+    tx.objectStore('entries').put(encodedItem);
+    for(const encryptedPhoto of encodedPhotos)tx.objectStore('photos').put(encryptedPhoto);
+    tx.oncomplete=()=>resolve();
+    tx.onerror=()=>reject(tx.error||Error('Speicherfehler'));
+    tx.onabort=()=>reject(tx.error||Error('Speicherplatz oder Datenbankfehler'));
+   });
+   editing=null;
+   notify('Beobachtung inklusive '+encodedPhotos.length+' Foto(s) sicher gespeichert');
+   await render();
+  }catch(err){
+   notify('Speichern fehlgeschlagen: '+(err?.message||'Speicher prüfen')+'. Eingabe bleibt geöffnet.');
+  }
+ };
+ $('close-form').onclick=()=>{editing=null;$('form-holder').innerHTML='';};
+}
 async function calendar(){let entries=await all('entries');let d=new Date(selectedDay+'T12:00:00');let year=d.getFullYear(),month=d.getMonth(),first=new Date(year,month,1),last=new Date(year,month+1,0),start=(first.getDay()+6)%7;let cells=Array(start).fill('<div></div>');for(let n=1;n<=last.getDate();n++){let date=`${year}-${String(month+1).padStart(2,'0')}-${String(n).padStart(2,'0')}`,count=entries.filter(e=>e.date.startsWith(date)).length;cells.push(`<button class="day ${date===selectedDay?'active':''}" data-day="${date}">${n}${count?`<br><small>● ${count}</small>`:''}</button>`)}let todays=entries.filter(e=>e.date.startsWith(selectedDay));return `<h2>Kalender</h2><div id="form-holder"></div><div class="card"><div class="row"><button class="secondary" id="prev">←</button><strong>${d.toLocaleDateString('de-AT',{month:'long',year:'numeric'})}</strong><button class="secondary" id="next">→</button></div><div class="week" style="margin:17px 0 6px">${['Mo','Di','Mi','Do','Fr','Sa','So'].map(x=>`<small style="text-align:center">${x}</small>`).join('')}</div><div class="week">${cells.join('')}</div></div><h3>Einträge am ${esc(new Date(selectedDay+'T12:00').toLocaleDateString('de-AT'))}</h3>${entryRows(todays)}<p class="footnote">Der Kalender zeigt dokumentierte Ereignisse. Eine medizinische Zyklusvorhersage ist in Beta 0.1 noch nicht enthalten.</p>`}
 function learn(){const mods=[...new Set(lessons.map(l=>l.module))];return `<h2>Lernzentrum · Lehrbuch</h2><p class="muted">${DEEP_LESSONS.length} umfangreiche Praxis- und Fachlektionen, ${lessons.length} Grundlagenlektionen sowie ${SELF_GUIDES.length} illustrierte Kapitel unter „Gemeinsame Selbstkontrolle“. Suche, Lernstufen und Fortschritt bleiben lokal auf diesem Handy.</p><div class="warning"><strong>Sicherheit:</strong> Die Lernkartei erklärt sichere äußere Beobachtung und ärztliche Verfahren. Bei möglichem Fruchtwasserverlust oder Frühgeburtszeichen während einer Schwangerschaft sofort in die Geburtsklinik.</div><h3>Ausführliche Lehrbuchlektionen</h3><p class="footnote" id="deep-progress"></p><div id="deep-lessons">${DEEP_LESSONS.map(deepCard).join('')}</div><h3>Weitere 50 Grundlagenlektionen</h3><p class="muted">Diese älteren Kurzlektionen werden in künftigen Updates schrittweise vertieft.</p><label for="lesson-module">Lerngebiet</label><select id="lesson-module"><option value="">Alle Lerngebiete</option>${mods.map(m=>`<option value="${esc(m)}">${esc(m)}</option>`).join('')}</select><label for="search-lessons">Suche in Grundlagen</label><input id="search-lessons" placeholder="z. B. Muttermund, Hygiene, Ausfluss..." aria-label="Lektionen durchsuchen"><p id="lesson-count" class="footnote">${lessons.length} Grundlagenlektionen</p><div id="lessons">${lessonCards(lessons)}</div>`}
 function deepCard(l,i){return `<details class="lesson deep-lesson" id="deep-${i}"><summary><span class="summary-row"><span class="lesson-ico">${esc(l.icon||"🎓")}</span><span class="summary-text"><span class="summary-meta"><span class="pill">${esc(l.module)}</span>${l.images?.length?`<span class="pill img-pill">🖼️ ${l.images.length} Tafeln</span>`:""}</span><strong>${esc(l.title)}</strong></span></span></summary><p class="footnote">Vertiefte Lernlektion · ${l.steps.length} Praxis- und Dokumentationsschritte</p>${l.images?l.images.map(im=>`<figure class="medical-figure"><img src="./${esc(im.src)}" alt="${esc(im.alt)}" loading="lazy"><figcaption>${esc(im.caption)}<br><span class="zoom-hint">🔍 Antippen zum Vergrößern (Vollbild)</span></figcaption></figure>`).join(''):l.image?`<figure class="medical-figure"><img src="./${esc(l.image)}" alt="${esc(l.alt||l.title)}" loading="lazy"><figcaption>${esc(l.caption||'')}</figcaption></figure>`:""}<h3>Einfach erklärt</h3><p>${esc(l.simple)}</p><h3>Fachwissen – vertieft</h3><p>${esc(l.expert)}</p><h3>Vorbereitung und Schritt für Schritt</h3><ol>${l.steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol><div class="warning"><strong>Praxishinweis &amp; Besonderheiten:</strong> ${esc(l.tip)}</div><p class="footnote"><a target="_blank" rel="noopener noreferrer" href="${esc(l.source)}">Weiterführende Fachquelle ↗</a></p><label><input class="checkbox deep-complete" type="checkbox" data-deep="${i}" ${localStorage.getItem('frauen-app-lesson-done-'+i)==='1'?'checked':''}> Lektion abgeschlossen</label></details>`}
