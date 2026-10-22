@@ -148,5 +148,63 @@ const DEEP_LESSONS=[
     ],
     "tip": "Starke Blutung, Atemnot, Ohnmacht, Fieber mit ausgeprägtem Krankheitsgefühl oder schwere Schmerzen sofort abklären.",
     "source": "https://www.nhs.uk/pregnancy/labour-and-birth/after-the-birth/your-body/"
+  },
+  {
+    "title": "Muttermundtastung nach NFP / Sensiplan (Höhe, Festigkeit, Öffnung)",
+    "module": "Zyklus und Periode",
+    "simple": "Der Gebärmutterhals verändert sich im Monatszyklus spürbar: In unfruchtbaren Phasen steht er tiefer, fühlt sich fest wie eine Nasenspitze an und ist geschlossen. Zur hochfruchtbaren Zeit steigt er nach oben, wird weich wie eine Lippe und öffnet sich leicht.",
+    "expert": "Die Zervix reagiert sensibel auf das Verhältnis von Östrogen zu Progesteron. Präovulatorisch bewirkt der Östrogenanstieg eine Auflockerung des zervikalen Bindegewebes, eine Weitung des äußeren Muttermunds und ein Höhertreten im Becken. Postovulatorisch sorgt Progesteron rasch für einen Verschluss, Absinken und derbe Konsistenz. Die Tastung erfolgt idealerweise einmal täglich zur gleichen Zeit in identischer Position (z. B. Hocke oder ein Bein aufgestellt) nach Entleerung der Blase.",
+    "steps": [
+      "Hände gründlich mit Seife waschen und Fingernägel kurz und glatt halten.",
+      "Gleiche Ausgangshaltung wählen (z. B. tiefe Hocke oder stehend mit einem Fuß auf dem Wannenrand).",
+      "Zeige- oder Mittelfinger vorsichtig in die Vagina einführen und entlang der Scheidenwand nach oben/hinten tasten.",
+      "Kriterien systematisch erfassen: 1. Höhenstand (tief/leicht erreichbar vs. hochstehend), 2. Festigkeit (knorpelig-hart wie Nasenspitze vs. weich wie Lippe), 3. Öffnung (geschlossen, grubig oder fingerkuppenweit geöffnet).",
+      "Befund unmittelbar in der App unter Tagebuch/Selbstkontrolle dokumentieren."
+    ],
+    "tip": "Bei vorzeitigen Wehen, Verdacht auf vorzeitigen Blasensprung oder ungeklärten vaginalen Infektionen keine Selbsttastung durchführen. Niemals Gegenstände zur Tastung verwenden.",
+    "source": "https://www.sensiplan.de/"
+  },
+  {
+    "title": "Lutealphase und Brustveränderungen (Gelbkörperfunktion)",
+    "module": "Hormone & Zyklus",
+    "simple": "Nach dem Eisprung beginnt die zweite Zyklushälfte. Das Hormon Progesteron erhöht die Körpertemperatur leicht und kann die Brust voller, empfindlicher oder knotiger anfühlen lassen (Mastodynie). Das ist eine normale hormonelle Reaktion.",
+    "expert": "Nach der Ovulation bildet der Follikel das Corpus luteum, welches Progesteron sezerniert. Progesteron führt zu einer leichten Hyperthermie (Temperaturanstieg um ca. 0,2–0,5 °C) und bewirkt im Brustdrüsengewebe eine physiologische Flüssigkeitsretention und Hyperämie. Eine systematische Tastuntersuchung zur Krebsvorsorge sollte daher bevorzugt in der ersten Zykluswoche nach Ende der Menstruation stattfinden, wenn das Gewebe am weichsten und hormonell ruhigsten ist.",
+    "steps": [
+      "Zyklustag und Temperaturanstieg parallel im Zyklustagebuch festhalten.",
+      "Brustsymptome wie Spannungsgefühl, Berührungsempfindlichkeit oder Schweregefühl von umschriebenen Verhärtungen differenzieren.",
+      "Selbstabtastung zur Befundung idealerweise 3 bis 7 Tage nach Beginn der Blutung terminieren.",
+      "Bei einseitigen, zyklusunabhängigen Knoten, Hauteinziehungen oder spontanem Flüssigkeitsaustritt aus einer Brustwarze zeitnah eine gynäkologische Kontrolle veranlassen."
+    ],
+    "tip": "Starke einseitige Rötungen, Überwärmung und Schmerzen außerhalb von Stillzeit und Zyklus können auf ein entzündliches Geschehen hinweisen und müssen abgeklärt werden.",
+    "source": "https://www.frauenaerzte-im-netz.de/koerper-gesundheit/brust/zyklusbedingte-brustveraenderungen/"
+  },
+  {
+    "title": "Beckenboden im Alltag und Zyklus (Wahrnehmung & Tonus)",
+    "module": "Anatomie",
+    "simple": "Der Beckenboden besteht aus drei Muskelschichten, die Blase, Gebärmutter und Darm stützen. Seine Spannung schwankt im Zyklus, nach Belastungen oder nach Geburten. Ziel ist nicht nur Kraft, sondern auch das bewusste Loslassen.",
+    "expert": "Die Beckenbodenmuskulatur (Diaphragma pelvis, Diaphragma urogenitale und die äußere Schließmuskelschicht) arbeitet eng mit Zwerchfell und Bauchwand zusammen. Östrogen sorgt für Elastizität und Durchblutung; Progesteron und Relaxin lockern das Bindegewebe. Ein dauerhaft hypertoner (zu stark angespannter) Beckenboden kann ebenso Beschwerden wie Missempfindungen oder Schmerzen beim Verkehr verursachen wie ein hypotoner (überdehnter) Beckenboden.",
+    "steps": [
+      "Bequeme Sitz- oder Rückenlage einnehmen, Füße entspannt aufstellen.",
+      "Ruhig in den Bauch atmen: Beim Ausatmen die Körperöffnungen (After, Scheide, Harnröhre) sanft nach innen-oben ziehen.",
+      "Beim Einatmen die Muskulatur ganz bewusst und vollständig lösen und weit werden lassen.",
+      "Testen: Kann die Entspannung genauso deutlich gespürt werden wie das Anspannen?",
+      "Beobachtungen (Druckgefühl, Tonus, Missempfindungen) im Zyklusverlauf notieren."
+    ],
+    "tip": "Kein isoliertes 'Pipi-Stoppen' beim Wasserlassen trainieren, da dies den physiologischen Blasenentleerungsreflex stört und Harnwegsinfekte begünstigen kann.",
+    "source": "https://www.hebammenverband.de/"
+  },
+  {
+    "title": "Wochenbett: Lochien (Wochenfluss) und Uterusrückbildung",
+    "module": "Wochenbett",
+    "simple": "Nach der Geburt bildet sich die Gebärmutter Tag für Tag zurück. Dabei wird Wundflüssigkeit ausgeschieden, der sogenannte Wochenfluss. Er verändert sich in Farbe, Konsistenz und Menge über mehrere Wochen.",
+    "expert": "Die Lochien stammen aus der Wundfläche der Plazentahaftstelle. Stadien: Lochia rubra (Tag 1–4, rot, blutig), Lochia fusca (ca. Ende 1. Woche, bräunlich), Lochia flava (ca. Ende 2. Woche, gelblich-rahmig), Lochia alba (ca. Ende 3. Woche, weißlich-wässrig). Der Gebärmutterfundus sinkt täglich etwa um einen Querfinger (QF) ab und ist nach ca. 10–14 Tagen meist hinter der Symphyse nicht mehr tastbar.",
+    "steps": [
+      "Wochenflusshygiene: Binden regelmäßig wechseln, Hände vor und nach dem Wechsel gründlich waschen.",
+      "Fundusstand tasten: Nach dem Entleeren der Blase in flacher Rückenlage mit der Handkante von oben Richtung Bauchnabel tasten, bis die obere Kante der Gebärmutter spürbar wird.",
+      "Tägliche Notiz: Fundusstand (z. B. 'N-2' = 2 Querfinger unter Nabel), Farbe und Geruch des Wochenflusses.",
+      "Auf Ruhephasen (Bauchlage mit Kissen unter dem Unterbauch zur Förderung des Abflusses) achten."
+    ],
+    "tip": "Warnzeichen: Plötzlicher Stopp des Wochenflusses mit Kopfschmerzen und Bauchschmerzen (Lochialstau), übelriechender fötider Geruch, plötzliche sturzartige Blutungen oder Fieber über 38 °C erfordern sofortigen Kontakt zur Hebamme oder Klinik.",
+    "source": "https://www.hebammenverband.de/"
   }
 ];

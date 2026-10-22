@@ -1,6 +1,6 @@
 {
-  "version": "0.1.7.1",
+  "version": "0.1.7.2",
   "released": "2026-10-22",
-  "notes": "Illustrierte Fachkapitel Selbstkontrolle, Hygiene, Testarten und Labor-Dokumentation, unveränderte verschlüsselte Datenbank",
-  "build": 1
+  "notes": "Erweiterung Lernzentrum: NFP-Muttermundtastung, Lutealphase & Mastodynie, Beckenboden & Tonus, Wochenbett & Lochien; dynamischer Lektionszähler und PWA-Cache-Refresh.",
+  "build": 2
 }
