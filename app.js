@@ -1,5 +1,5 @@
 'use strict';
-const APP_VERSION='0.1.9.5', APP_BUILD=19, DB='frauen-app-beta', DB_VERSION=2;
+const APP_VERSION='0.1.9.3', APP_BUILD=17, DB='frauen-app-beta', DB_VERSION=2;
 const $=id=>document.getElementById(id), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const categories=['Periode','Zwischenblutung','Ausfluss','Flüssigkeitsverlust','Sexualität','Kinderwunsch','Zervixschleim / Eisprung','Basaltemperatur','Schwangerschaftstest','Schmerzen','Brustveränderung','Vulva / Scheide','WC / Ausscheidung','Wohlbefinden','Schwangerschaft','Kindsbewegungen / Wehen','Frauenarzttermin','Abstrich / Laboruntersuchung','Geburt / Wochenbett','Gemeinsame Selbstkontrolle','Krankheit / Allgemeinsymptome'];
 const categoryIcons = {
@@ -27,7 +27,7 @@ const categoryIcons = {
 };
 function getCatIcon(cat){return categoryIcons[cat]||'📝';}
 
-let updatingNow=false,db,page='home',selectedTopic=null,selectedTopic=null,selectedDay=[new Date().getFullYear(),String(new Date().getMonth()+1).padStart(2,'0'),String(new Date().getDate()).padStart(2,'0')].join('-'),reloadOnce=false,editing=null;
+let updatingNow=false,db,page='home',selectedTopic=null,selectedDay=[new Date().getFullYear(),String(new Date().getMonth()+1).padStart(2,'0'),String(new Date().getDate()).padStart(2,'0')].join('-'),reloadOnce=false,editing=null;
 const lessons=COURSE_LESSONS;
 let dataKey=null;
 const SECURE_CHECK='frauen-app-local-v1';
@@ -91,7 +91,63 @@ function notify(msg){$('toast').textContent=msg;$('toast').style.display='block'
 function buttons(){document.querySelectorAll('[data-page]').forEach(b=>{b.classList.toggle('active',b.dataset.page===page);b.onclick=()=>goto(b.dataset.page)});}
 async function goto(p,{preserveEdit=false}={}){page=p;if(!preserveEdit)editing=null;await render();window.scrollTo(0,0)}
 function optionHTML(items){return items.map(x=>`<option>${esc(x)}</option>`).join('')}
-function home(){return `<div class="card hero"><div class="hero-top"><span class="pill hero-pill">✨ Version ${APP_VERSION}</span><span class="pill hero-sub">🌸 Körperwissen &amp; Praxis</span></div><h2>Alles an einem Ort</h2><p class="muted">Beobachtungen, Zyklus und gynäkologische Befunde festhalten, mit illustrierten Fachbuch-Lektionen lernen und euren Körper gemeinsam verstehen.</p><button class="primary hero-btn" id="quick">＋ Neue Beobachtung eintragen</button></div><h3 class="section-title">Bereiche</h3><div class="grid"><button class="tile tile-diary" data-link="diary"><span class="tile-icon">📔</span>Tagebuch<small>Ausfluss, Zyklus, Symptome &amp; Fotos</small></button><button class="tile tile-cal" data-link="calendar"><span class="tile-icon">📅</span>Kalender<small>Alle Einträge &amp; Tage im Überblick</small></button><button class="tile tile-learn" data-link="learn"><span class="tile-icon">🎓</span>Lernzentrum<small>Lehrbuch, Schautafeln &amp; Fachwissen</small></button><button class="tile tile-records" data-link="records"><span class="tile-icon">🗂️</span>Frauenarztakte<small>Befunde, Termine &amp; Backup</small></button><button class="tile tile-self" data-link="selfcheck"><span class="tile-icon">🔦</span>Gemeinsame Selbstkontrolle<small>Spekulum, Tastung &amp; Praxisanleitung</small></button><button class="tile tile-ill" data-link="illness"><span class="tile-icon">🌡️</span>Krankheiten<small>Fieber, Beschwerden &amp; Verlauf</small></button></div>`}
+async function home(){
+ const entries=(await all('entries')).sort((a,b)=>b.date.localeCompare(a.date));
+ const photos=await all('photos');
+ const nextDoctor=entries.filter(e=>e.category==='Frauenarzttermin').sort((a,b)=>a.date.localeCompare(b.date))[0];
+ const lastPeriod=entries.filter(e=>e.category==='Periode'||e.category==='Zwischenblutung').sort((a,b)=>b.date.localeCompare(a.date))[0];
+ const recent=entries.slice(0,4);
+ return `<section class="dashboard-hero card">
+   <div class="dashboard-hero-top">
+    <div>
+     <span class="dashboard-overline">PERSÖNLICHES DASHBOARD</span>
+     <h2>Deine Übersicht</h2>
+     <p class="muted">Alles schneller erreichbar: Tagebuch, Kalender, Lernen, Selbstkontrolle und Akte in einer modernen Startansicht.</p>
+    </div>
+    <button class="primary hero-btn" id="quick">＋ Neue Beobachtung</button>
+   </div>
+   <div class="dashboard-stat-grid">
+    <div class="stat-box"><span class="stat-kicker">Einträge gesamt</span><strong>${entries.length}</strong><small>gespeicherte Beobachtungen</small></div>
+    <div class="stat-box"><span class="stat-kicker">Fotos gesamt</span><strong>${photos.length}</strong><small>gesicherte Vergleichsbilder</small></div>
+    <div class="stat-box"><span class="stat-kicker">Letzte Periode</span><strong>${lastPeriod?esc(new Date(lastPeriod.date).toLocaleDateString('de-AT',{day:'2-digit',month:'2-digit'})):'–'}</strong><small>${lastPeriod?esc(lastPeriod.category):'noch kein Eintrag'}</small></div>
+    <div class="stat-box"><span class="stat-kicker">Nächster Arzttermin</span><strong>${nextDoctor?esc(new Date(nextDoctor.date).toLocaleDateString('de-AT',{day:'2-digit',month:'2-digit'})):'–'}</strong><small>${nextDoctor?esc(nextDoctor.note||'Frauenarzttermin'):'kein Termin gespeichert'}</small></div>
+   </div>
+ </section>
+ 
+ <section class="card quickstrip-card">
+  <div class="row wrap" style="gap:8px;align-items:flex-start">
+   <div>
+    <h3>Schnelleinträge</h3>
+    <p class="muted" style="margin:3px 0 0">Direkt mit vorausgewählter Kategorie starten.</p>
+   </div>
+  </div>
+  <div class="quick-entry-grid">
+   <button class="quick-entry-chip" data-quickcat="Periode">🩸 Periode</button>
+   <button class="quick-entry-chip" data-quickcat="Ausfluss">💧 Ausfluss</button>
+   <button class="quick-entry-chip" data-quickcat="Brustveränderung">🤲 Brust</button>
+   <button class="quick-entry-chip" data-quickcat="Krankheit / Allgemeinsymptome">🤒 Symptome</button>
+   <button class="quick-entry-chip" data-quickcat="Frauenarzttermin">🩺 Termin</button>
+   <button class="quick-entry-chip" data-quickcat="Gemeinsame Selbstkontrolle">🔦 Kontrolle</button>
+  </div>
+ </section>
+ 
+ <h3 class="section-title">Bereiche</h3>
+ <div class="feature-grid-lg">
+  <button class="feature-tile feature-diary" data-link="diary"><span class="feature-icon">📔</span><strong>Tagebuch</strong><small>Einträge, Symptome, Fotos und Verlauf</small></button>
+  <button class="feature-tile feature-calendar" data-link="calendar"><span class="feature-icon">📅</span><strong>Kalender</strong><small>Monatsansicht mit Symbolen und Tagesübersicht</small></button>
+  <button class="feature-tile feature-learn" data-link="learn"><span class="feature-icon">🎓</span><strong>Lernzentrum</strong><small>Kapitel, Schautafeln und Fachlektionen</small></button>
+  <button class="feature-tile feature-self" data-link="selfcheck"><span class="feature-icon">🔦</span><strong>Gemeinsame Selbstkontrolle</strong><small>Themenkacheln, Hygienelektionen und Dokumentation</small></button>
+  <button class="feature-tile feature-records" data-link="records"><span class="feature-icon">🗂️</span><strong>Frauenarztakte</strong><small>Befunde, Backups und Datenverwaltung</small></button>
+  <button class="feature-tile feature-illness" data-link="illness"><span class="feature-icon">🌡️</span><strong>Krankheit</strong><small>Fieber, Husten, Beschwerden und Verlauf</small></button>
+ </div>
+ 
+ <section class="card recent-card">
+  <div class="row wrap"><div><h3>Letzte Einträge</h3><p class="muted" style="margin:3px 0 0">Die letzten gespeicherten Beobachtungen auf einen Blick.</p></div><button class="secondary" data-link="diary">Zum Tagebuch</button></div>
+  <div class="recent-stack">
+   ${recent.length?recent.map(e=>`<button class="recent-row" data-openhome="${esc(e.id)}"><span class="recent-row-ico">${getCatIcon(e.category)}</span><span class="recent-row-text"><strong>${esc(e.category)}</strong><small>${esc(new Date(e.date).toLocaleString('de-AT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}))}</small></span><span class="recent-row-chevron">›</span></button>`).join(''):'<div class="empty-inline">Noch keine Einträge gespeichert.</div>'}
+  </div>
+ </section>`}
+
 const selfcheckTopics=[
  ['Brüste','Aussehen im Spiegel beobachten, Veränderungen im üblichen Tastgefühl dokumentieren. Neue Knoten oder blutige Absonderungen ärztlich abklären.'],
  ['Vulva und Scheideneingang','Nur äußerlich mit Licht und Spiegel betrachten; Rötung, Schwellung, Schmerzen und Juckreiz notieren. Keine Instrumente einführen.'],
@@ -100,9 +156,59 @@ const selfcheckTopics=[
  ['Temperatur','Mit Thermometer messen und Messmethode/Uhrzeit festhalten.'],
  ['Muttermund und Gebärmutterhals','Anatomie und ärztliche Untersuchungsmethoden kennenlernen; keine vaginale Selbstprüfung auf Öffnung oder Verkürzung, besonders nicht in der Schwangerschaft.']
 ];
-function selfcheckPage(){return `<h2>Gemeinsame Selbstkontrolle</h2><p class="muted">Vertieftes Fachwissen mit schematischen Abbildungen, Hygieneplan, sicheren Beobachtungen und Dokumentation. Keine Heimdiagnose oder Ersatz für Vorsorge.</p><div class="warning"><strong>Schwangerschaft:</strong> Bei möglichem Fruchtwasserverlust, Blutung, Wehen oder neuen Frühgeburtszeichen unmittelbar medizinisch abklären lassen. Keine innere Muttermundkontrolle oder Spekulumanwendung zu Hause bei solchen Symptomen.</div><div class="card"><h3>Beobachtung und Labor dokumentieren</h3><button class="primary" id="new-selfcheck">＋ Gemeinsame Beobachtung erfassen</button><button class="secondary" id="new-labcheck">＋ Abstrich / Laboruntersuchung erfassen</button><p class="footnote">Die Dokumentation stellt keine Diagnose. Zur Heimselbstentnahme nur validierte Testkits und deren Originalanleitung verwenden; PAP-Zytologie und Spekulumuntersuchung nicht als allgemeine Heimroutine.</p></div><div class="row wrap" style="margin-top:14px"><h3>Illustrierte Fachlektionen (${SELF_GUIDES.length})</h3><div class="row" style="gap:6px"><button class="secondary small-btn" id="open-all-guides">Alle öffnen</button><button class="secondary small-btn" id="close-all-guides">Alle schließen</button></div></div><p class="muted">Tippe auf ein Kapitel zum Öffnen und auf eine Schautafel für die Vollbild-Ansicht.</p>${SELF_GUIDES.map(g=>`<details class="lesson guide"><summary><span class="summary-row"><span class="lesson-ico">${esc(g.icon||"📘")}</span><span class="summary-text"><span class="summary-meta"><span class="pill guide-pill">${esc(g.group)}</span>${g.images?.length?`<span class="pill img-pill">🖼️ ${g.images.length} Schautafeln</span>`:g.image?`<span class="pill img-pill">🖼️ 1 Schautafel</span>`:""}</span><strong>${esc(g.title)}</strong></span></span></summary>${g.images?g.images.map(im=>`<figure class="medical-figure"><img src="./${esc(im.src)}" alt="${esc(im.alt)}" loading="lazy"><figcaption>${esc(im.caption)}<br><span class="zoom-hint">🔍 Antippen zum Vergrößern (Vollbild)</span></figcaption></figure>`).join(''):g.image?`<figure class="medical-figure"><img src="./${esc(g.image)}" alt="${esc(g.alt)}" loading="lazy"><figcaption>${esc(g.caption)}<br><span class="zoom-hint">🔍 Antippen zum Vergrößern (Vollbild)</span></figcaption></figure>`:''}<h3>Einfach erklärt</h3><p>${esc(g.simple)}</p><h3>Medizinischer Hintergrund</h3><p>${esc(g.expert)}</p><h3>Hygiene, Vorbereitung und sichere Schritte</h3><ol>${g.steps.map(t=>`<li>${esc(t)}</li>`).join('')}</ol><h3>So dokumentiert ihr es</h3><p>${esc(g.docs)}</p><div class="warning"><strong>Grenzen / Warnzeichen:</strong> ${esc(g.warning)}</div><p class="footnote"><a href="${esc(g.source)}" target="_blank" rel="noopener noreferrer">Medizinische Fachquelle öffnen ↗</a></p><button class="secondary" data-checktopic="${esc(g.category)}">Passende Beobachtung erfassen</button></details>`).join('')}`}
+function selfcheckPage(){
+ const topics=[
+  ['Hygiene','🧼','hygiene'],
+  ['Vulva & Vagina','🌸','vulva'],
+  ['Menstruation','🩸','menstruation'],
+  ['Ausfluss & Schleim','💧','ausfluss'],
+  ['Muttermund','🫀','muttermund'],
+  ['Spekulum','🔎','spekulum'],
+  ['Abstriche','🧪','abstrich'],
+  ['Brust','🤲','brust']
+ ];
+ return `<section class="dashboard-hero card sub-hero-card">
+  <div class="dashboard-hero-top">
+   <div>
+    <span class="dashboard-overline">GEMEINSAME SELBSTKONTROLLE</span>
+    <h2>Übersicht wie im neuen Layout</h2>
+    <p class="muted">Alles, was ihr zu Hause dokumentiert, in Themen-Kacheln gebündelt. Der bestehende Inhalt bleibt darunter vollständig erhalten.</p>
+   </div>
+   <div class="hero-side-pills"><span class="pill hero-pill">${SELF_GUIDES.length} Lektionen</span><span class="pill hero-sub">Fotos &amp; Protokolle</span></div>
+  </div>
+  <div class="quick-entry-grid self-action-grid">
+   <button class="quick-entry-chip accent" id="new-selfcheck">＋ Beobachtung erfassen</button>
+   <button class="quick-entry-chip" id="new-labcheck">＋ Abstrich / Labor</button>
+   <button class="quick-entry-chip" id="open-all-guides">Alle öffnen</button>
+   <button class="quick-entry-chip" id="close-all-guides">Alle schließen</button>
+  </div>
+ </section>
+ <h3 class="section-title">Themenbereiche</h3>
+ <div class="topics-grid self-topics-grid">
+  ${topics.map(([title,icon,key])=>`<button class="topic-card self-tile" data-guidefilter="${key}"><div class="topic-card-top"><span class="topic-card-icon">${icon}</span><span class="topic-arrow">➔</span></div><strong class="topic-card-title">${title}</strong><p class="topic-card-desc">Direktsprung zum passenden Kapitel mit Bildern und Anleitung.</p></button>`).join('')}
+ </div>
+ <section class="card protocol-card">
+  <h3>Protokolle &amp; Dokumentation</h3>
+  <p class="muted">Nutze die vorhandenen Tagebuchkategorien für Beobachtungen, Bilder und spätere Vergleiche. Mit dem neuen Layout bleibt die Bedienung übersichtlicher, ohne dass Inhalte verloren gehen.</p>
+ </section>
+ <div class="row wrap" style="margin-top:14px"><h3>Fachlektionen (${SELF_GUIDES.length})</h3></div>
+ <p class="muted">Tippe auf eine Themen-Kachel oben oder öffne unten direkt ein Kapitel.</p>
+ ${SELF_GUIDES.map(g=>`<details class="lesson guide" data-guide-keywords="${esc((g.title+' '+g.category+' '+g.group).toLowerCase())}"><summary><span class="summary-row"><span class="lesson-ico">${esc(g.icon||"📘")}</span><span class="summary-text"><span class="summary-meta"><span class="pill guide-pill">${esc(g.group)}</span>${g.images?.length?`<span class="pill img-pill">🖼️ ${g.images.length} Schautafeln</span>`:g.image?`<span class="pill img-pill">🖼️ 1 Schautafel</span>`:""}</span><strong>${esc(g.title)}</strong></span></span></summary>${g.images?g.images.map(im=>`<figure class="medical-figure"><img src="./${esc(im.src)}" alt="${esc(im.alt)}" loading="lazy"><figcaption>${esc(im.caption)}<br><span class="zoom-hint">🔍 Antippen zum Vergrößern (Vollbild)</span></figcaption></figure>`).join(''):g.image?`<figure class="medical-figure"><img src="./${esc(g.image)}" alt="${esc(g.alt)}" loading="lazy"><figcaption>${esc(g.caption)}<br><span class="zoom-hint">🔍 Antippen zum Vergrößern (Vollbild)</span></figcaption></figure>`:''}<h3>Einfach erklärt</h3><p>${esc(g.simple)}</p><h3>Medizinischer Hintergrund</h3><p>${esc(g.expert)}</p><h3>Hygiene, Vorbereitung und sichere Schritte</h3><ol>${g.steps.map(t=>`<li>${esc(t)}</li>`).join('')}</ol><h3>So dokumentiert ihr es</h3><p>${esc(g.docs)}</p><div class="warning"><strong>Grenzen / Warnzeichen:</strong> ${esc(g.warning)}</div><p class="footnote"><a href="${esc(g.source)}" target="_blank" rel="noopener noreferrer">Medizinische Fachquelle öffnen ↗</a></p><button class="secondary" data-checktopic="${esc(g.category)}">Passende Beobachtung erfassen</button></details>`).join('')}`
+}
+
 const illnessTypes=['Fieber / erhöhte Temperatur','Schüttelfrost','Schlappheit / Erschöpfung','Gliederschmerzen','Husten','Schnupfen','Halsschmerzen','Kopfschmerzen','Übelkeit','Erbrechen','Durchfall','Bauchkrämpfe','Harnwegsbeschwerden','Sonstige Beschwerden'];
-function illnessPage(){return `<h2>Krankheiten & Symptome</h2><p class="muted">Erkrankungen dokumentieren und zeitlich mit Zyklus- oder Schwangerschaftseinträgen vergleichen. Einträge ersetzen keine medizinische Einschätzung.</p><div class="card"><h3>Krankheit erfassen</h3><p class="muted">Beginn, Dauer, Intensität, Körpertemperatur, Messmethode, Symptome und Medikamente erfassen.</p><button class="primary" id="new-illness">＋ Krankheits-Eintrag</button></div><div class="warning"><strong>Schwangerschaft:</strong> Fieber, starke Beschwerden oder Beschwerden beim Wasserlassen zeitnah ärztlich abklären. Bei schwerem Krankheitsgefühl, Atemnot oder anderen akuten Warnzeichen sofort medizinische Hilfe holen.</div><h3>Typische Symptome</h3>${illnessTypes.map(name=>`<button class="link-btn" data-illness="${esc(name)}">＋ ${esc(name)}</button>`).join('')}`}
+function illnessPage(){return `<section class="dashboard-hero card sub-hero-card">
+ <div class="dashboard-hero-top">
+  <div>
+   <span class="dashboard-overline">KRANKHEIT & ALLGEMEINSYMPTOME</span>
+   <h2>Beschwerden übersichtlich dokumentieren</h2>
+   <p class="muted">Beginn, Verlauf, Temperatur, Symptome und Medikamente sauber festhalten und später mit dem Zyklus vergleichen.</p>
+  </div>
+  <button class="primary hero-btn" id="new-illness">＋ Krankheits-Eintrag</button>
+ </div>
+ </section>
+ <section class="card quickstrip-card"><h3>Schnellauswahl Symptome</h3><p class="muted" style="margin:2px 0 12px">Tippe direkt auf ein Symptom, um einen neuen Eintrag mit Vorauswahl zu starten.</p><div class="quick-entry-grid">${illnessTypes.map(name=>`<button class="quick-entry-chip" data-illness="${esc(name)}">${esc(name)}</button>`).join('')}</div></section>`}
+
 function extraFields(category){if(category==='Abstrich / Laboruntersuchung')return `<div class="detailfields"><h3>Abstrich und Labor – Dokumentation</h3><label>Art des Tests</label><select name="testType">${optionHTML(['HPV-Selbsttest (validiertes Testset)','PAP-Zytologie (ärztliche Entnahme)','Vaginaler Erregerabstrich','Andere Laboruntersuchung'])}</select><label>Wer hat die Probe entnommen?</label><select name="sampleBy">${optionHTML(['Ärztin / Arzt','Patientin mit geeignetem Selbsttestset','Andere / nicht geklärt'])}</select><label>Hersteller / Testkit / Chargennummer</label><input name="testKit" placeholder="Genaue Bezeichnung laut Verpackung"><label>Labor / Arztpraxis</label><input name="labName" placeholder="Name und Kontakt"><label>Probenabgabe / Versand am</label><input name="sentAt" type="date"><label>Laborbefund / Ergebnis</label><select name="testResult">${optionHTML(['Ergebnis ausständig','Negativ / unauffällig – laut Befund','Positiv / auffällig – laut Befund','Ungültig / Probe nicht verwertbar','Sonstiges'])}</select><label>Datum Befundeingang</label><input name="resultAt" type="date"><label>Ärztlicher Kontrolltermin</label><input name="followUp" type="date"><label>Ausführlicher Befund / Fragen</label><textarea name="labDetail" placeholder="Befund wortgetreu dokumentieren; keine Eigendiagnose"></textarea><p class="fine">Nur geeignete, vom Labor akzeptierte Selbsttestsets nach Herstelleranleitung verwenden. Ein HPV-Selbsttest ersetzt nicht pauschal PAP-Zytologie oder frauenärztliche Untersuchung.</p></div>`;if(category==='Krankheit / Allgemeinsymptome')return `<div class="detailfields illness-detail-box">
  <h3>🤒 Angaben zur Erkrankung &amp; Symptome</h3>
  <div class="field-wrap" style="margin-bottom:12px">
@@ -539,7 +645,7 @@ const LEARN_TOPICS = [
     desc: 'Menstruationsverlauf, Blutmengen, Koagel, Hygiene & freies Bluten',
     colorClass: 'topic-periode',
     modules: ['Zyklus und Periode', 'Zyklus'],
-    keywords: ['menstruation', 'blutung', 'hygiene', 'periode', 'koagel', 'freies bluten', 'dysmenorrhoe', 'regelschmerz', 'gewebe']
+    keywords: ['menstruation', 'blutung', 'hygiene', 'periode']
   },
   {
     id: 'zyklus',
@@ -548,7 +654,7 @@ const LEARN_TOPICS = [
     desc: 'Eisprung, Zervixschleim, Basaltemperatur, Lutealphase & NFP',
     colorClass: 'topic-zyklus',
     modules: ['Zyklus und Periode', 'Hormone & Zyklus', 'Kinderwunsch', 'Zyklus'],
-    keywords: ['zervixschleim', 'basaltemperatur', 'lutealphase', 'sensiplan', 'eisprung', 'hormon', 'fsh', 'lh', 'östrogen', 'progesteron']
+    keywords: ['zervixschleim', 'basaltemperatur', 'lutealphase', 'sensiplan', 'eisprung', 'hormon']
   },
   {
     id: 'schwangerschaft',
@@ -557,7 +663,7 @@ const LEARN_TOPICS = [
     desc: 'Entwicklung, Fruchtblase, Fruchtwasser, Wehen & Geburt',
     colorClass: 'topic-schwanger',
     modules: ['Schwangerschaft und Geburt', 'Schwangerschaft & Geburt', 'Geburtshilfe'],
-    keywords: ['fruchtblase', 'fruchtwasser', 'geburt', 'schwangerschaft', 'einnistung', 'befruchtung', 'wehen', 'kindswochen', 'ultraschall']
+    keywords: ['fruchtblase', 'fruchtwasser', 'geburt', 'schwangerschaft']
   },
   {
     id: 'untersuchungen',
@@ -566,7 +672,7 @@ const LEARN_TOPICS = [
     desc: 'Spekulumkunde, Vaginale Tastung (VU), Portio-Einstellung & Labor',
     colorClass: 'topic-unter',
     modules: ['Untersuchungen', 'Gynäkologie'],
-    keywords: ['spekulum', 'vaginale untersuchung', 'frauenarzt', 'palpation', 'labor', 'abstrich', 'pap', 'hpv']
+    keywords: ['spekulum', 'vaginale untersuchung', 'frauenarzt', 'palpation', 'labor']
   },
   {
     id: 'anatomie',
@@ -575,7 +681,7 @@ const LEARN_TOPICS = [
     desc: 'Vulva, Schamlippen, Scheideneingang, Muttermund & Beckenboden',
     colorClass: 'topic-anatomie',
     modules: ['Anatomie'],
-    keywords: ['vulva', 'scheideneingang', 'muttermund', 'beckenboden', 'vagina', 'gebärmutter', 'eierstock', 'damm']
+    keywords: ['vulva', 'scheideneingang', 'muttermund', 'beckenboden']
   },
   {
     id: 'wochenbett',
@@ -594,15 +700,6 @@ const LEARN_TOPICS = [
     colorClass: 'topic-brust',
     modules: ['Brustgesundheit'],
     keywords: ['brust']
-  },
-  {
-    id: 'selbstkontrolle',
-    title: 'Selbstbeobachtung & Hygiene',
-    icon: '🧼',
-    desc: 'Händehygiene, Handschuhe, sichere Schritte & Fotodokumentation',
-    colorClass: 'topic-hygiene',
-    modules: ['Selbstbeobachtung', 'Gemeinsame Selbstkontrolle'],
-    keywords: ['hygiene', 'handschuh', 'selbstkontrolle', 'foto']
   }
 ];
 
@@ -616,11 +713,22 @@ function getDeepLessonsForTopic(topicId){
   });
 }
 
+function getBaseLessonsForTopic(topicId){
+  const t = LEARN_TOPICS.find(x => x.id === topicId);
+  if(!t) return lessons;
+  return lessons.filter(l => {
+    const modMatch = t.modules.includes(l.module);
+    const kwMatch = t.keywords.some(kw => l.title.toLowerCase().includes(kw) || l.simple.toLowerCase().includes(kw));
+    return modMatch || kwMatch;
+  });
+}
+
 function learn(){
  if(selectedTopic){
   const t = LEARN_TOPICS.find(x => x.id === selectedTopic);
   if(!t){ selectedTopic = null; return learn(); }
   const topicDeep = getDeepLessonsForTopic(t.id);
+  const topicBase = getBaseLessonsForTopic(t.id);
 
   return `<div class="learn-subpage-header ${t.colorClass}">
    <button class="subpage-back-btn" id="topic-back-btn">← Zur Themenübersicht</button>
@@ -632,19 +740,27 @@ function learn(){
     </div>
    </div>
    <div class="subpage-stats-chips">
-    <span class="pill sub-pill">📖 ${topicDeep.length} Fachkapitel</span>
+    <span class="pill sub-pill">📖 ${topicDeep.length} Fachlektionen</span>
+    <span class="pill sub-pill">📚 ${topicBase.length} Grundlagen</span>
     <button class="secondary small-btn" id="open-all-topic">Alle öffnen</button>
     <button class="secondary small-btn" id="close-all-topic">Alle schließen</button>
    </div>
   </div>
 
   <div class="topic-lessons-wrap">
+   <h3 class="section-title">Ausführliche Lehrbuch-Lektionen (${topicDeep.length})</h3>
    <div id="deep-lessons" class="lessons-container">
-    ${topicDeep.length ? topicDeep.map(({l,idx})=>deepCard(l,idx)).join('') : '<div class="card muted text-center" style="padding:20px">Keine Fachlektionen in diesem Bereich.</div>'}
+    ${topicDeep.length ? topicDeep.map(({l,idx})=>deepCard(l,idx)).join('') : '<div class="card muted text-center" style="padding:20px">Keine vertieften Fachlektionen in diesem Bereich.</div>'}
    </div>
+
+   ${topicBase.length ? `
+    <h3 class="section-title" style="margin-top:28px">Grundlagenlektionen (${topicBase.length})</h3>
+    <div id="lessons" class="lessons-container">${lessonCards(topicBase)}</div>
+   ` : ''}
   </div>`;
  }
 
+ // Hauptseite des Lernzentrums: Gekachelte Themenbereiche
  const doneTotal = DEEP_LESSONS.filter((_,i)=>localStorage.getItem('frauen-app-lesson-done-'+i)==='1').length;
  const pctTotal = Math.round((doneTotal / DEEP_LESSONS.length) * 100);
 
@@ -652,7 +768,7 @@ function learn(){
   <div class="learn-hero-top">
    <div class="learn-hero-title">
     <h2>🎓 Lernzentrum · Themenbereiche</h2>
-    <p class="muted" style="margin:2px 0 0">Wähle ein Fachgebiet aus, um alle ${DEEP_LESSONS.length} Fachkapitel &amp; Schautafeln zu öffnen.</p>
+    <p class="muted" style="margin:2px 0 0">Wähle ein Fachgebiet aus, um alle passenden Lektionen &amp; Schautafeln zu öffnen.</p>
    </div>
    <div class="learn-stats-badge">
     <strong>${DEEP_LESSONS.length}</strong>
@@ -676,6 +792,7 @@ function learn(){
  <div class="topics-grid">
   ${LEARN_TOPICS.map(t=>{
     const deepCount = getDeepLessonsForTopic(t.id).length;
+    const baseCount = getBaseLessonsForTopic(t.id).length;
     return `<button class="topic-card ${t.colorClass}" data-topic="${esc(t.id)}">
      <div class="topic-card-top">
       <span class="topic-card-icon">${t.icon}</span>
@@ -685,12 +802,12 @@ function learn(){
      <p class="topic-card-desc">${esc(t.desc)}</p>
      <div class="topic-card-footer">
       <span class="topic-stat-pill">📖 ${deepCount} Fachkapitel</span>
+      <span class="topic-stat-pill base-stat-pill">📚 ${baseCount} Grundlagen</span>
      </div>
     </button>`;
   }).join('')}
  </div>`;
 }
-
 function deepCard(l,i){
  const isDone = localStorage.getItem('frauen-app-lesson-done-'+i)==='1';
  return `<details class="lesson deep-lesson ${isDone?'is-completed':''}" id="deep-${i}">
@@ -774,7 +891,24 @@ function lessonCards(arr){
   </div>
  </details>`).join('') || '<div class="card muted text-center" style="padding:24px">Keine Lektionen gefunden.</div>';
 }
-function records(){return `<h2>Frauenarztakte & Sicherung</h2><div class="card"><h3>Untersuchungen dokumentieren</h3><p class="muted">Lege unter „Tagebuch“ die Kategorie „Frauenarzttermin“ an. Dort kannst du mehrere Bilder von Befunden hinzufügen. Eine eigene PDF-Verwaltung folgt später.</p><button class="secondary" id="open-record-form">＋ Frauenarzt-Eintrag</button></div><div class="card"><h3>🔐 Verschlüsselte Google-Drive-Sicherung</h3><p class="muted">Die Backup-Datei wird vor dem Teilen oder Herunterladen auf diesem Gerät mit AES-GCM verschlüsselt. Du legst dafür ein <strong>separates Sicherungspasswort</strong> fest. Ohne dieses Passwort kann niemand die Backup-Inhalte wiederherstellen.</p><button id="drive-share" class="secondary">☁ Verschlüsseltes Backup nach Drive teilen</button><button id="export" class="secondary">⬇ Verschlüsseltes Backup herunterladen</button><label for="restore">Verschlüsselte Sicherung aus Drive / Dateien auswählen</label><input id="restore" type="file" accept=".json,.fbackup,application/json"><p class="footnote">Die App verbindet sich nicht direkt mit Google Drive. Alte unverschlüsselte Backups aus 0.1.5 können nach deutlicher Warnung importiert werden. Bewahre das Passwort außerhalb der App sicher auf.</p></div><div class="warning"><strong>Datenschutz:</strong> Lokale Einträge und Fotos werden mit AES-GCM verschlüsselt, ebenso exportierte Backups. Kein Fingerabdruck und keine App-PIN. Das Datenpasswort wird zum Entschlüsseln bei jedem Start benötigt. Ein verlorenes Passwort kann nicht zurückgesetzt werden.</div><div class="card"><h3>Lokale Datenverwaltung</h3><p class="muted">Browserdaten zu löschen kann die Tagebucheinträge dauerhaft entfernen. Prüfe ein verschlüsseltes Backup und die Wiederherstellung zunächst mit Testdaten.</p><button id="clear-all" class="danger">Alle lokalen Daten löschen</button></div><div class="card"><h3>Version & Aktualisierung</h3><p>Aktuell: <strong>v${APP_VERSION}</strong></p><p class="muted">Die Prüfung oben sucht nach einer neu veröffentlichten Version.</p><button class="secondary" id="record-update">Jetzt nach Updates suchen</button></div>`}
+function records(){return `<section class="dashboard-hero card sub-hero-card">
+ <div class="dashboard-hero-top">
+  <div>
+   <span class="dashboard-overline">FRAUENARZTAKTE & SICHERUNG</span>
+   <h2>Befunde, Backups und Einstellungen</h2>
+   <p class="muted">Die Inhalte bleiben wie bisher, werden hier aber als übersichtliche Funktionsblöcke dargestellt.</p>
+  </div>
+  <button class="primary hero-btn" id="open-record-form">＋ Frauenarzt-Eintrag</button>
+ </div>
+ </section>
+ <div class="feature-grid-lg records-grid">
+  <div class="feature-tile static-tile"><span class="feature-icon">🩺</span><strong>Frauenarzttermine</strong><small>Untersuchungen, Bilder und Notizen im Tagebuch anlegen.</small><button class="secondary tile-action" id="open-record-form-2">Eintrag erstellen</button></div>
+  <div class="feature-tile static-tile"><span class="feature-icon">☁️</span><strong>Backup / Google Drive</strong><small>Verschlüsselte Sicherung teilen oder herunterladen.</small><div class="tile-action-stack"><button id="drive-share" class="secondary tile-action">Nach Drive teilen</button><button id="export" class="secondary tile-action">Backup herunterladen</button></div></div>
+  <div class="feature-tile static-tile"><span class="feature-icon">📥</span><strong>Wiederherstellen</strong><small>Eine frühere Sicherung aus Dateien oder Drive laden.</small><label class="upload-label" for="restore">Datei auswählen</label><input id="restore" type="file" accept=".json,.fbackup,application/json"></div>
+  <div class="feature-tile static-tile"><span class="feature-icon">🧹</span><strong>Lokale Daten verwalten</strong><small>Nur wenn wirklich nötig: alle lokalen Daten löschen.</small><button id="clear-all" class="danger tile-action">Alle Daten löschen</button></div>
+ </div>
+ <section class="card"><h3>Version & Aktualisierung</h3><p>Aktuell installiert: <strong>v${APP_VERSION}</strong></p><p class="muted">Der Prüfer oben sucht automatisch nach einer neuen Version auf GitHub Pages.</p><button class="secondary" id="record-update">Jetzt nach Updates suchen</button></section>`}
+
 async function buildBackupFile(){let entries=await all('entries'),photos=await all('photos');let encoded=[];for(let p of photos){let b64=await new Promise((ok,no)=>{let r=new FileReader();r.onload=()=>ok(r.result);r.onerror=no;r.readAsDataURL(p.blob)});encoded.push({...p,blob:b64})}const payload={format:'frauen-app-backup',version:1,created:new Date().toISOString(),entries,photos:encoded};return new File([JSON.stringify(payload)],'frauen-app-backup-'+new Date().toISOString().slice(0,10)+'.json',{type:'application/json'});}
 const BACKUP_LIMIT=150*1024*1024;
 function toB64(buf){let a=new Uint8Array(buf),chunks=[];for(let i=0;i<a.length;i+=8192)chunks.push(String.fromCharCode(...a.subarray(i,i+8192)));return btoa(chunks.join(''))}
@@ -786,7 +920,7 @@ async function backup(){const file=await encryptedBackupFile();saveBackup(file);
 async function shareDriveBackup(){const file=await encryptedBackupFile();if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],title:'Frauen-App verschlüsselte Sicherung'});notify('Verschlüsselte Sicherung geteilt');return}catch(err){if(err.name==='AbortError'){notify('Teilen abgebrochen');return;}}}saveBackup(file);notify('Verschlüsselte Datei herunterladen und in Drive hochladen')}
 async function readBackup(file){if(file.size>BACKUP_LIMIT*2)throw Error('Sicherungsdatei zu groß');let raw=JSON.parse(await file.text());if(raw.format==='frauen-app-backup'){if(!confirm('WARNUNG: Das ist ein ALTES, UNVERSCHLÜSSELTES Backup. Nur aus vertrauenswürdiger Quelle importieren. Fortsetzen?'))throw Error('Import abgebrochen');return raw}if(raw.format!=='frauen-app-encrypted-backup'||raw.version!==1||raw.algorithm!=='AES-256-GCM'||raw.kdf!=='PBKDF2-SHA256'||raw.iterations!==310000)throw Error('Unbekanntes verschlüsseltes Backup');const salt=fromB64(raw.salt),iv=fromB64(raw.iv),bytes=fromB64(raw.data);if(salt.length!==16||iv.length!==12||bytes.length>BACKUP_LIMIT+32)throw Error('Ungültige Verschlüsselungsparameter');const password=prompt('Sicherungspasswort eingeben:');if(password===null)throw Error('Import abgebrochen');try{const key=await passwordKey(password,salt);const clear=await crypto.subtle.decrypt({name:'AES-GCM',iv},key,bytes);return JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(clear))}catch(e){throw Error('Entschlüsselung fehlgeschlagen: Passwort falsch oder Datei beschädigt')}}
 async function restore(file){if(!file)return;if(!confirm('Achtung: Alle derzeitigen Einträge und Bilder werden durch dieses Backup ersetzt. Hast du zuvor eine Sicherung erstellt?'))return;let raw=await readBackup(file);if(raw.format!=='frauen-app-backup'||raw.version!==1||!Array.isArray(raw.entries)||!Array.isArray(raw.photos))throw Error('Unbekanntes Backup-Format');if(raw.entries.length>50000||raw.photos.length>50000)throw Error('Backup zu groß');const ids=new Set();for(const e of raw.entries){if(!e||typeof e.id!=='string'||!e.id||typeof e.date!=='string'||!/^\d{4}-\d{2}-\d{2}T/.test(e.date)||typeof e.category!=='string'||!e.category||ids.has(e.id))throw Error('Ungültiger oder doppelter Eintrag');ids.add(e.id)}const photoIds=new Set();for(const p of raw.photos){if(!p||typeof p.id!=='string'||!p.id||photoIds.has(p.id)||typeof p.entryId!=='string'||!ids.has(p.entryId)||typeof p.blob!=='string'||!/^data:image\/(png|jpeg|webp|gif);base64,/.test(p.blob))throw Error('Ungültige Fotoangaben');photoIds.add(p.id)}const newPhotos=await Promise.all(raw.photos.map(async p=>{const response=await fetch(p.blob);const blob=await response.blob();if(blob.size>20*1024*1024)throw Error('Foto im Backup zu groß');return {...p,blob}}));const encryptedEntries=await Promise.all(raw.entries.map(e=>packRecord('entries',e)));const encryptedPhotos=[];for(const p of newPhotos)encryptedPhotos.push(await packRecord('photos',p));await new Promise((ok,no)=>{let tx=db.transaction(['entries','photos'],'readwrite');tx.objectStore('entries').clear();tx.objectStore('photos').clear();for(const e of encryptedEntries)tx.objectStore('entries').put(e);for(const p of encryptedPhotos)tx.objectStore('photos').put(p);tx.oncomplete=()=>ok();tx.onerror=()=>no(tx.error);tx.onabort=()=>no(tx.error||Error('Import abgebrochen'))});notify('Backup wiederhergestellt');render()}
-async function render(){buttons();$('view').innerHTML=page==='home'?home():page==='diary'?await diary():page==='calendar'?await calendar():page==='learn'?learn():page==='selfcheck'?selfcheckPage():page==='illness'?illnessPage():records();$('view').querySelectorAll('[data-link]').forEach(b=>b.onclick=()=>goto(b.dataset.link));bindLightbox();if($('quick'))$('quick').onclick=async()=>{await goto('diary');showForm()};if(page==='selfcheck'){if($('open-all-guides'))$('open-all-guides').onclick=()=>document.querySelectorAll('details.guide').forEach(d=>d.open=true);if($('close-all-guides'))$('close-all-guides').onclick=()=>document.querySelectorAll('details.guide').forEach(d=>d.open=false);$('new-selfcheck').onclick=()=>startSpecial('Gemeinsame Selbstkontrolle');$('new-labcheck').onclick=()=>startSpecial('Abstrich / Laboruntersuchung');document.querySelectorAll('[data-checktopic]').forEach(b=>b.onclick=()=>startSpecial('Gemeinsame Selbstkontrolle','checkArea',b.dataset.checktopic))}if(page==='illness'){$('new-illness').onclick=()=>startSpecial('Krankheit / Allgemeinsymptome');document.querySelectorAll('[data-illness]').forEach(b=>b.onclick=()=>startSpecial('Krankheit / Allgemeinsymptome','illnessType',b.dataset.illness))}if(page==='diary'){const entries=await all('entries');$('new-entry').onclick=()=>showForm();$('filter').onchange=()=>{
+async function render(){buttons();$('view').innerHTML=page==='home'?await home():page==='diary'?await diary():page==='calendar'?await calendar():page==='learn'?learn():page==='selfcheck'?selfcheckPage():page==='illness'?illnessPage():records();$('view').querySelectorAll('[data-link]').forEach(b=>b.onclick=()=>goto(b.dataset.link));bindLightbox();if($('quick'))$('quick').onclick=async()=>{await goto('diary');showForm()};document.querySelectorAll('[data-quickcat]').forEach(b=>b.onclick=async()=>{await goto('diary');showForm(b.dataset.quickcat)});document.querySelectorAll('[data-openhome]').forEach(b=>b.onclick=async()=>{await goto('diary');await openEntry(b.dataset.openhome)});if(page==='selfcheck'){if($('open-all-guides'))$('open-all-guides').onclick=()=>document.querySelectorAll('details.guide').forEach(d=>d.open=true);if($('close-all-guides'))$('close-all-guides').onclick=()=>document.querySelectorAll('details.guide').forEach(d=>d.open=false);$('new-selfcheck').onclick=()=>startSpecial('Gemeinsame Selbstkontrolle');$('new-labcheck').onclick=()=>startSpecial('Abstrich / Laboruntersuchung');document.querySelectorAll('[data-checktopic]').forEach(b=>b.onclick=()=>startSpecial('Gemeinsame Selbstkontrolle','checkArea',b.dataset.checktopic));document.querySelectorAll('[data-guidefilter]').forEach(btn=>btn.onclick=()=>{const key=btn.dataset.guidefilter.toLowerCase();const map={hygiene:['hygiene','material'],vulva:['vulva','scheideneingang'],menstruation:['menstruation','periode','blutung'],ausfluss:['ausfluss','zervixschleim'],muttermund:['muttermund','gebärmutterhals'],spekulum:['spekulum'],abstrich:['pap','hpv','abstrich'],brust:['brust']};const match=(map[key]||[key]);const guides=[...document.querySelectorAll('details.guide')];let first=null;guides.forEach(g=>{const txt=(g.dataset.guideKeywords||'');const hit=match.some(m=>txt.includes(m));if(hit){g.open=true;if(!first)first=g;}});if(first)first.scrollIntoView({behavior:'smooth',block:'start'});});}if(page==='illness'){$('new-illness').onclick=()=>startSpecial('Krankheit / Allgemeinsymptome');document.querySelectorAll('[data-illness]').forEach(b=>b.onclick=()=>startSpecial('Krankheit / Allgemeinsymptome','illnessType',b.dataset.illness))}if(page==='diary'){const entries=await all('entries');$('new-entry').onclick=()=>showForm();$('filter').onchange=()=>{
    const selVal=$('filter').value;
    const filtered=entries.filter(e=>selVal.startsWith('Alle Kategorien')||e.category===selVal).sort((a,b)=>b.date.localeCompare(a.date));
    $('entry-list').innerHTML=entryRows(filtered);
@@ -830,7 +964,7 @@ async function render(){buttons();$('view').innerHTML=page==='home'?home():page=
   });
  }
 }
-if(page==='records'){$('open-record-form').onclick=async()=>{await goto('diary');showForm('Frauenarzttermin')};$('export').onclick=()=>backup().catch(err=>notify('Backup: '+err.message));$('drive-share').onclick=()=>shareDriveBackup().catch(err=>notify('Drive-Sicherung: '+err.message));$('restore').onchange=async e=>{try{await restore(e.target.files[0])}catch(err){notify('Importfehler: '+err.message)}};$('record-update').onclick=checkUpdate;$('clear-all').onclick=async()=>{if(!confirm('ALLE lokalen Gesundheitsdaten und Bilder unwiderruflich löschen?'))return;await Promise.all(['entries','photos'].map(async name=>{for(const v of await all(name))await del(name,v.id)}));notify('Alle Daten gelöscht');render()}}}
+if(page==='records'){if($('open-record-form'))$('open-record-form').onclick=async()=>{await goto('diary');showForm('Frauenarzttermin')};if($('open-record-form-2'))$('open-record-form-2').onclick=async()=>{await goto('diary');showForm('Frauenarzttermin')};$('export').onclick=()=>backup().catch(err=>notify('Backup: '+err.message));$('drive-share').onclick=()=>shareDriveBackup().catch(err=>notify('Drive-Sicherung: '+err.message));$('restore').onchange=async e=>{try{await restore(e.target.files[0])}catch(err){notify('Importfehler: '+err.message)}};$('record-update').onclick=checkUpdate;$('clear-all').onclick=async()=>{if(!confirm('ALLE lokalen Gesundheitsdaten und Bilder unwiderruflich löschen?'))return;await Promise.all(['entries','photos'].map(async name=>{for(const v of await all(name))await del(name,v.id)}));notify('Alle Daten gelöscht');render()}}}
 function bindLightbox(){
  const lb=$('lightbox');if(!lb)return;
  const close=()=>{lb.classList.remove('open');$('lb-img').src='';};
@@ -861,38 +995,41 @@ async function checkUpdate(silent=false){
  if(!silent)status.textContent='Prüfe…';
  try{
   const u=new URL('./version.json',location.href);
-  u.searchParams.set('force_ts',String(Date.now()));
+  u.searchParams.set('check',String(Date.now()));
   const res=await fetch(u.href,{cache:'no-store'});
   if(!res.ok)throw Error('Versionsdatei nicht erreichbar');
   const info=await res.json();
   const build=Number(info.build||1);
   if(info.version!==APP_VERSION||build>APP_BUILD){
-   status.textContent='Neu: v'+info.version;
+   status.textContent='Neu: '+info.version+' ('+build+')';
    if(hasPendingInput()){if(!silent)notify('Erst Eingabe speichern oder schließen, dann Update starten');return;}
    updatingNow=true;
-   status.textContent='Installiere…';
-   notify('Neue Version v'+info.version+' gefunden – Cache wird bereinigt');
+   status.textContent='Lade v'+info.version+'…';
+   notify('Neue Version gefunden: v'+info.version+' wird geladen');
    try{
     if('serviceWorker' in navigator){
-     const regs=await navigator.serviceWorker.getRegistrations();
-     for(const r of regs){ await r.unregister(); }
+     const reg=await navigator.serviceWorker.getRegistration();
+     if(reg){
+      reg.waiting?.postMessage('SKIP_WAITING');
+      await reg.update();
+     }
     }
     if('caches' in window){
      const keys=await caches.keys();
-     await Promise.all(keys.map(k=>caches.delete(k)));
+     await Promise.all(keys.filter(k=>!k.includes('build'+build)).map(k=>caches.delete(k)));
     }
    }catch(e){}
    const next=new URL('./index.html',location.href);
-   next.searchParams.set('v_fresh',info.version+'-'+build);
-   next.searchParams.set('ts',String(Date.now()));
-   setTimeout(()=>{ location.replace(next.href); },300);
+   next.searchParams.set('app_update',info.version+'-'+build);
+   next.searchParams.set('t',String(Date.now()));
+   location.replace(next.href);
   }else{
    status.textContent='Aktuell';
-   if(!silent)notify('Version v'+APP_VERSION+' (Build '+APP_BUILD+') ist aktuell');
+   if(!silent)notify('Version '+APP_VERSION+' (Build '+APP_BUILD+') ist aktuell');
   }
  }catch(e){
-  status.textContent='Prüffehler';
-  if(!silent)notify('Update-Prüfung: Bitte Internetverbindung prüfen');
+  status.textContent='Prüfung fehlgeschlagen';
+  if(!silent)notify('Update nicht prüfbar – Verbindung und GitHub kontrollieren');
  }
 }
 async function init(){try{db=await openDB();await unlockLocal();$('update').onclick=()=>checkUpdate();$('version').textContent='v'+APP_VERSION;await render();if('serviceWorker' in navigator && location.protocol==='https:'){navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).then(()=>{navigator.serviceWorker.addEventListener('controllerchange',()=>{/* App navigiert nach eigener Versionsprüfung; kein zweites Neuladen */})}).catch(()=>{});}setTimeout(()=>checkUpdate(true),2000);setInterval(()=>checkUpdate(true),5*60*1000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkUpdate(true)})}catch(err){const message=err?.message||'Unbekannter Fehler';const recoverable=/Mindestens 12 Zeichen|Passwörter stimmen nicht|Entsperren abgebrochen|Einrichtung abgebrochen|Datenpasswort falsch/.test(message);$('view').innerHTML='<div class="card"><h2>Lokale Daten '+(recoverable?'noch gesperrt':'nicht verfügbar')+'</h2><div class="warning">'+esc(message)+'</div><p class="muted">'+(recoverable?'Deine vorhandenen Daten wurden dadurch nicht gelöscht. Wähle ein Datenpasswort mit mindestens 12 Zeichen und wiederhole die Eingabe.':'Bitte nicht die Website-Daten oder den Browsercache löschen. Falls du bereits ein Backup hast, bewahre es auf.')+'</p><button class="primary" id="retry-unlock">'+'Passworteingabe erneut öffnen'+'</button></div>';const retry=$('retry-unlock');if(retry)retry.onclick=()=>{retry.disabled=true;init()};}}
