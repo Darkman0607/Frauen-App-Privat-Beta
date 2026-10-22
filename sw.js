@@ -1,4 +1,4 @@
-const CACHE='frauen-app-0.1.9.3-build17';
+const CACHE='frauen-app-0.1.9.4-build18';
 const CORE=[
   './',
   './index.html',
@@ -21,7 +21,7 @@ const CORE=[
   './speculum-cleaning-aftercare.svg',
   './cervix-cycle-comparison.svg',
   './cycle-hormones-chart.svg',
-  './postpartum-fundus.svg',
+  './postpartum-fundus.svg','./period-flow-anatomy.svg','./period-free-bleeding-guide.svg',
   './version.json',
   './icon.svg',
   './manifest.webmanifest'

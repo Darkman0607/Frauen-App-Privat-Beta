@@ -1,6 +1,6 @@
 {
-  "version": "0.1.9.3",
+  "version": "0.1.9.4",
   "released": "2026-10-22",
-  "notes": "Layout-Umbau: neue Dashboard-Startseite, moderne Kachelbereiche, übersichtlichere Selbstkontrolle, überarbeitete Frauenarztakte sowie visuelles Redesign bei gleicher Inhaltsbasis.",
-  "build": 17
+  "notes": "Force-Update & Cache-Buster Fix: Aggressive Bereinigung alter Service-Worker-Registrierungen bei Versionsaktualisierung.",
+  "build": 18
 }

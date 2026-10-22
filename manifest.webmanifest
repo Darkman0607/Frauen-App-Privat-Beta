@@ -1,1 +1,1 @@
-{"name": "Meine Frauen-App Beta 0.1.9.3", "short_name": "Frauen-App", "start_url": "./", "scope": "./", "display": "standalone", "background_color": "#fffcfd", "theme_color": "#b66e90", "icons": [{"src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}]}
+{"name":"Meine Frauen-App – private Beta","short_name":"Frauen-App","start_url":"./","scope":"./","display":"standalone","background_color":"#fffcfd","theme_color":"#b66e90","icons":[{"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
