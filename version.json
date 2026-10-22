@@ -1,6 +1,6 @@
 {
-  "version": "0.1.9.2",
+  "version": "0.1.9.3",
   "released": "2026-10-22",
-  "notes": "Lernzentrum Kapitel-Kacheln: Übersichtliche 2-Spalten-Kacheln nach Themenbereichen (Periode, Zyklus, Schwangerschaft, Untersuchungen, Anatomie, Wochenbett, Brust) mit Direktsprung auf die jeweilige Themenseite.",
-  "build": 16
+  "notes": "Layout-Umbau: neue Dashboard-Startseite, moderne Kachelbereiche, übersichtlichere Selbstkontrolle, überarbeitete Frauenarztakte sowie visuelles Redesign bei gleicher Inhaltsbasis.",
+  "build": 17
 }

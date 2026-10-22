@@ -19,3 +19,12 @@ Update von 0.1.9.1 auf 0.1.9.2 (Build 16):
     - Eigener farblich abgestimmter Header mit Zurück-Button (`← Zur Themenübersicht`).
     - Schnelltasten `Alle öffnen` / `Alle schließen`.
     - Alle vertieften Fachlektionen mit Schautafeln und Grundlagenlektionen exakt zu diesem Bereich.
+
+
+## Beta 0.1.9.3 – Layout Umbau
+- neue Dashboard-Startseite
+- schnelle Kategorie-Einträge
+- moderne Bereichs-Kacheln
+- neue Übersicht für Selbstkontrolle
+- überarbeitete Frauenarztakte / Backup
+- Inhalte aus 0.1.9.2 bleiben erhalten
