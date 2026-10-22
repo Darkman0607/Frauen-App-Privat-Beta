@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 360" role="img">
+  <rect width="680" height="360" rx="24" fill="#fff9fb"/>
+  <style>
+    text{font:14px Arial,sans-serif;fill:#4d3347}
+    .title{font:bold 19px Arial,sans-serif;fill:#3b2336}
+    .sub{font:bold 14px Arial,sans-serif;fill:#7a3e5d}
+    .minor{font-size:12px;fill:#7d6677}
+    .line{stroke:#86546e;stroke-width:1.8;fill:none}
+  </style>
+  <text x="24" y="35" class="title">Blick durch das Spekulum auf die Portio während der Menstruation</text>
+
+  <!-- Speculum Frontal Ring / View -->
+  <circle cx="195" cy="185" r="118" fill="#f7d6e4" stroke="#b37490" stroke-width="3"/>
+  <!-- Upper Speculum Blade inside view -->
+  <path d="M102 115 Q195 75 288 115 L270 142 Q195 115 120 142 Z" fill="#dce6ec" stroke="#5c6b73" stroke-width="2"/>
+  <!-- Lower Speculum Blade inside view -->
+  <path d="M102 255 Q195 295 288 255 L270 228 Q195 255 120 228 Z" fill="#dce6ec" stroke="#5c6b73" stroke-width="2"/>
+
+  <!-- Portio vaginalis cervicis -->
+  <circle cx="195" cy="185" r="58" fill="#edaec5" stroke="#9e5876" stroke-width="2.5"/>
+  <!-- Slight physiological ectopy / rim -->
+  <circle cx="195" cy="185" r="22" fill="#dc7595" opacity="0.55"/>
+  <!-- External Os (slightly opened during menstruation) -->
+  <ellipse cx="195" cy="185" rx="12" ry="7" fill="#7a1632"/>
+  <!-- Menstrual blood trickle towards posterior fornix (lower blade) -->
+  <path d="M195 190 Q198 215 190 238 Q196 244 206 238 Q203 212 200 190 Z" fill="#b81d41" opacity="0.9"/>
+  <ellipse cx="196" cy="240" rx="26" ry="8" fill="#a31839" opacity="0.85"/>
+
+  <!-- Callout lines and labels -->
+  <path d="M195 102 L345 78 L375 78" class="line"/>
+  <text x="382" y="83"><tspan font-weight="bold">Oberes Spekulumblatt</tspan> (im vorderen Gewölbe)</text>
+
+  <path d="M238 155 L345 128 L375 128" class="line"/>
+  <text x="382" y="133"><tspan font-weight="bold">Portio vaginalis</tspan> (rosafarbenes Plattenepithel)</text>
+
+  <path d="M206 185 L345 180 L375 180" class="line"/>
+  <text x="382" y="185"><tspan font-weight="bold">Äußerer Muttermund</tspan> (während Periode leicht geöffnet)</text>
+
+  <path d="M204 222 L345 232 L375 232" class="line"/>
+  <text x="382" y="237"><tspan font-weight="bold">Menstruationsblut &amp; Schleimhaut</tspan> (Abfluss aus Zervikalkanal)</text>
+
+  <path d="M220 244 L345 282 L375 282" class="line"/>
+  <text x="382" y="287"><tspan font-weight="bold">Hinteres Scheidengewölbe</tspan> (Blutsee im unteren Rinnenblatt)</text>
+
+  <text x="24" y="338" class="minor">Praxistipp: Vor der Beurteilung das angesammelte Blut im hinteren Scheidengewölbe sanft mit einer Stielkompresse / Kornzange abtupfen.</text>
+</svg>

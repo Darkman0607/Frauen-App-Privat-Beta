@@ -1,14 +1,13 @@
-# Frauen-App Beta 0.1.7.3
+# Frauen-App Beta 0.1.8.0
 
-Hotfix & Update von 0.1.7.1 / 0.1.7.2:
-- **Bugfix (Endlosschleife nach Login behoben):** `APP_VERSION` ('0.1.7.3') und `APP_BUILD` (3) in `app.js` sind jetzt exakt mit `version.json` synchronisiert. Dadurch lädt sich die App 2 Sekunden nach der Passworteingabe nicht mehr selbst neu.
-- **Lernzentrum erweitert:** 4 neue vertiefte Fachlektionen (insgesamt 14 Fachlektionen):
-  1. Muttermundtastung nach NFP / Sensiplan (Höhe, Festigkeit, Öffnung)
-  2. Lutealphase und Brustveränderungen (Gelbkörperfunktion / Mastodynie)
-  3. Beckenboden im Alltag und Zyklus (Wahrnehmung & Tonus)
-  4. Wochenbett: Lochien (Wochenfluss) und Uterusrückbildung
-- Dynamischer Zähler im Lernzentrum und auf dem Startbildschirm.
-- Verschlüsselte IndexedDB-Datenbank (`frauen-app-beta`, Version 2) bleibt zu 100 % unverändert.
-
-## Installation
-Alle enthaltenen Dateien im GitHub-Repository-Hauptverzeichnis ersetzen und committen.
+Update von 0.1.7.3 auf 0.1.8.0 (Build 4):
+- **Fachbuch-Kapitel Spekulum & Menstruation (im Lernzentrum & unter Gemeinsame Selbstkontrolle):**
+  - Detaillierte Instrumentenkunde: Zweiblättrige Spekula (Cusco / Graves) aus Edelstahl & Kunststoff vs. zweiteilige Rinnenspekula (Kristeller / Sims) sowie exakte Größenauswahl (S / M / L).
+  - 3 neue hochauflösende medizinische SVG-Schautafeln:
+    1. `speculum-types.svg`: Bauarten, Mechanik und Größenübersicht.
+    2. `speculum-application.svg`: Dreiphasige Einführung (45°-Eintritt → 90°-Drehung → Entfaltung im Scheidengewölbe) & Rückzug-Regel.
+    3. `speculum-period-view.svg`: Blick durch das Spekulum auf die Portio während der Periode (leicht geöffneter Muttermund, Blutsee im hinteren Scheidengewölbe, Abtupftechnik).
+  - Komplette Schritt-für-Schritt-Anleitung: Vorbereitung, Lagerung, Anwärmen, äußere Vorreinigung, 3-Phasen-Einführung, Abtupfen mit Stieltupfer, tropffreies Herausnehmen, sanftes Abwischen/Nachsorge der Frau (Wischrichtung von vorne nach hinten) und Kaltwasser-Vorreinigung / Desinfektion des Spekulums.
+- **Tagebuch-Erweiterung:** Neue Auswahloptionen bei der Beobachtungsmethode („Spekulum-Einstellung (Portio / Periode)“, „Vaginale Tastuntersuchung (NFP / Muttermund)“).
+- **Synchronisierte Versionsprüfung:** `APP_VERSION='0.1.8.0'` und `APP_BUILD=4` in `app.js` und `version.json` exakt abgeglichen.
+- Verschlüsselte Datenbank (`frauen-app-beta`, Version 2) bleibt 100 % unverändert.

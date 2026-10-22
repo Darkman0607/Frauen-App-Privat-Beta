@@ -87,7 +87,19 @@ const DEEP_LESSONS=[
       "Keine häusliche vaginale Tastkontrolle zur Öffnungs- oder Längenmessung durchführen."
     ],
     "tip": "Bei Frühgeburtszeichen oder Verdacht auf Fruchtwasserverlust sofort ärztlich abklären; digitale Selbstuntersuchungen geben keine Sicherheit und können Risiken bergen.",
-    "source": "https://www.nice.org.uk/guidance/ng25/chapter/recommendations"
+    "source": "https://www.nice.org.uk/guidance/ng25/chapter/recommendations",
+    "images": [
+      {
+        "src": "speculum-types.svg",
+        "alt": "Spekulum-Bauarten und Größen",
+        "caption": "Bauarten im Vergleich: Zweiblättriges Spekulum (Cusco/Graves) und Rinnenspekulum (Kristeller)."
+      },
+      {
+        "src": "anatomy-cervix.svg",
+        "alt": "Gebärmutterhals Querschnitt",
+        "caption": "Anatomischer Aufbau von Portio, äußerem Muttermund und Zervikalkanal."
+      }
+    ]
   },
   {
     "title": "Fruchtblase, Fruchtwasser und vorzeitiger Blasensprung",
@@ -206,5 +218,43 @@ const DEEP_LESSONS=[
     ],
     "tip": "Warnzeichen: Plötzlicher Stopp des Wochenflusses mit Kopfschmerzen und Bauchschmerzen (Lochialstau), übelriechender fötider Geruch, plötzliche sturzartige Blutungen oder Fieber über 38 °C erfordern sofortigen Kontakt zur Hebamme oder Klinik.",
     "source": "https://www.hebammenverband.de/"
+  },
+  {
+    "title": "Spekulum-Einstellung während der Periode – Bauarten, Lagerung, Technik & Nachsorge",
+    "module": "Untersuchungen",
+    "simple": "Mit einem Spekulum lässt sich während der Periode direkt beobachten, wie der äußere Muttermund sich leicht öffnet und das Menstruationsblut aus der Gebärmutter abfließt. Entscheidend für eine schmerzfreie und saubere Untersuchung sind die richtige Spekulumgröße, das Anwärmen, der korrekte Einführungswinkel (45°/90°) und die liebevolle, hygienische Reinigung danach.",
+    "expert": "Instrumentenkunde: Cusco-Spekula (Entenschnabelform, selbsthaltend) aus Edelstahl oder transparentem Kunststoff (Größe S: 75×18 mm, Größe M: 100×26 mm, Größe L: 115×30 mm) spreizen das vordere und hintere Scheidengewölbe, während zweiteilige Kristeller-Rinnenspekula besonders bei stärkerer Blutung in Klinik und Geburtshilfe optimale Sicht bieten. Physiologie bei Menstruation: Durch den Progesteronabfall und Prostaglandinwirkung ist das Gewebe aufgelockert, hyperämisch und der Ostium uteri externum leicht geöffnet. Da Menstruationsblut den sauren Vaginal-pH (3,8–4,5) auf ca. 7,0–7,4 anhebt und sich im hinteren Scheidengewölbe (Fornix posterior) sammelt, sind keimarmes Arbeiten, Stieltupfer zum Abtupfen des Blutsees und konsequente Wischrichtung von ventral nach dorsal (Symphyse → Anus) obligat.",
+    "images": [
+      {
+        "src": "speculum-types.svg",
+        "alt": "Spekulum-Arten und Größenübersicht",
+        "caption": "Abb. 1: Spekulum-Bauarten (Cusco/Graves vs. Kristeller) und Größenauswahl (S, M, L)."
+      },
+      {
+        "src": "speculum-application.svg",
+        "alt": "Schritt-für-Schritt-Einführung des Spekulums in 3 Phasen",
+        "caption": "Abb. 2: Dreiphasige Einführung (45° schräg → 90° waagrecht drehen → im Gewölbe öffnen) und Harnröhrenschutz."
+      },
+      {
+        "src": "speculum-period-view.svg",
+        "alt": "Blick durch das Spekulum auf die blutende Portio",
+        "caption": "Abb. 3: Portio-Ansicht während der Periode mit leicht geöffnetem Muttermund und Blutsee im hinteren Gewölbe."
+      }
+    ],
+    "steps": [
+      "Hygiene & Arbeitsplatz: Vorab Harnblase entleeren lassen. Wasserdichte Saug-Unterlage unter das Gesäß legen. Hände mit Seife waschen, Händedesinfektionsmittel (30 Sek.) einreiben, Untersuchungshandschuhe anziehen. Bereitlegen: Spekulum (passende Größe S oder M), wasserlösliches Gleitgel / sterile NaCl-0,9-%-Lösung, lange Stieltupfer/Kornzange, Nierenschale, warme feuchte Kompressen und weiches Handtuch.",
+      "Instrument temperieren: Ein Metallspekulum unter fließend warmem Wasser auf Körpertemperatur (~37 °C) anwärmen (am eigenen Handrücken prüfen). Außenseiten der Blätter dünn mit Gleitgel oder NaCl benetzen.",
+      "Lagerung & Entspannung: Rückenlage mit leicht erhöhtem Becken (flaches Kissen unter dem Kreuzbein), Beine angewinkelt, Knie locker nach außen sinken lassen. Blendfreie Lichtquelle von hinten auf den Introitus richten.",
+      "Äußere Reinigung vor Beginn: Äußeres Blut an Vulva und Schamlippen mit einer warm angefeuchteten Kompresse sanft in einem Zug von vorne nach hinten (Harnröhre Richtung After) abwischen, Tupfer danach sofort verwerfen.",
+      "Einführen (Phase 1 – 45°-Winkel): Mit Daumen und Zeigefinger der freien Hand die Labia minora sanft spreizen. Sie atmet tief ein und langsam durch den offenen Mund aus. Das komplett geschlossene Spekulum im 45°-Schrägwinkel ansetzen und mit sanftem Druck nach hinten-unten (Richtung Damm) durch den Scheideneingang führen – die empfindliche Harnröhre oben unter der Symphyse wird so gar nicht berührt.",
+      "Drehen & Vorschieben (Phase 2 – 90° horizontal): Nach ca. 2–3 cm das Spekulum sanft in die Waagrechte drehen (Griff zeigt senkrecht nach unten zum Damm) und entlang der hinteren Scheidenwand im ~45°-Winkel nach hinten-oben in das Scheidengewölbe gleiten lassen.",
+      "Öffnen & Freitupfen (Phase 3): Spekulumblätter langsam öffnen, bis die Portio dazwischen sichtbar wird, und Schraube/Rastung locker fixieren. Das im hinteren Scheidengewölbe und in der unteren Rinne angesammelte Periodenblut mit einem angefeuchteten Stieltupfer behutsam abtupfen (nur tupfen, nicht über den Muttermund reiben).",
+      "Inspektion: Beurteilen von Portio-Schleimhaut (rosig bis leicht livide), Öffnung des äußeren Muttermunds (grübchenförmig oder spaltförmig leicht geöffnet), Blutungsstärke, Blutfarbe (hellrot, dunkelrot, bräunlich) und abgehenden Endometrium-Flocken.",
+      "Herausholen (Rückzug-Technik): Zuerst die Stellschraube/Arretierung vollständig lösen! Das Spekulum die ersten 2–3 cm noch leicht geöffnet zurückziehen, damit die Portio frei aus den Blättern gleitet und nicht eingeklemmt wird. Erst kurz vor dem Scheideneingang die Blätter fast schließen (1–2 mm Spalt lassen), das untere Blatt wie einen Löffel waagrecht halten (damit kein Restblut heraustropft) und unter Ausatmung sanft herausziehen.",
+      "Sie sauber machen & Nachsorge: Mit frischen, körperwarm angefeuchteten, weichen Kompressen oder Waschlappen zuerst die kleinen und großen Schamlippen, dann den Scheideneingang und zuletzt den Damm sanft tupfend von vorne nach hinten abwischen. Anschließend mit einem sauberen, weichen Tuch trocken tupfen. Frische Binde/Periodenunterwäsche geben, Unterlage entfernen und sie 2–3 Minuten zugedeckt nachruhen lassen.",
+      "Instrumentenreinigung: Einmalspekulum entsorgen. Edelstahl-Spekulum sofort zuerst unter KALTEM Wasser abspülen (warmes Wasser koaguliert Bluteiweiß!), danach warm mit Reinigungsmittel und Bürste (besonders Schraubgewinde und Gelenk) reinigen, desinfizieren und sterilisieren/auskochen. Handschuhe ausziehen, Hände waschen."
+    ],
+    "tip": "Wichtige Grundregel beim Herausholen: Niemals das Spekulum im Scheidengewölbe komplett zuklappen, solange die Portio noch zwischen den Blättern liegt – immer erst leicht geöffnet 2–3 cm zurückziehen und das untere Blatt beim Austritt waagrecht halten, um Tropfen zu vermeiden.",
+    "source": "https://www.amboss.com/de/wissen/gynakologische-untersuchung/"
   }
 ];

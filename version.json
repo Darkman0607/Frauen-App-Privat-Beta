@@ -1,6 +1,6 @@
 {
-  "version": "0.1.7.3",
+  "version": "0.1.8.0",
   "released": "2026-10-22",
-  "notes": "Hotfix: APP_VERSION & APP_BUILD in app.js synchronisiert (behebt Update-Reload-Schleife nach Passworteingabe), inklusive der 4 neuen Fachlektionen im Lernzentrum.",
-  "build": 3
+  "notes": "Lehrbuch-Erweiterung: Spekulum-Untersuchung während der Periode (Arten, Größen, Lagerung, 3-Phasen-Einführung, Abtupfen, Herausholen, intime Nachreinigung & Instrumentenhygiene) inkl. 3 neuer medizinischer SVG-Schautafeln im Lernzentrum und unter Gemeinsame Selbstkontrolle.",
+  "build": 4
 }
