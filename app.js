@@ -1,5 +1,5 @@
 'use strict';
-const APP_VERSION='0.1.8.9', APP_BUILD=13, DB='frauen-app-beta', DB_VERSION=2;
+const APP_VERSION='0.1.9.0', APP_BUILD=14, DB='frauen-app-beta', DB_VERSION=2;
 const $=id=>document.getElementById(id), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const categories=['Periode','Zwischenblutung','Ausfluss','Flüssigkeitsverlust','Sexualität','Kinderwunsch','Zervixschleim / Eisprung','Basaltemperatur','Schwangerschaftstest','Schmerzen','Brustveränderung','Vulva / Scheide','WC / Ausscheidung','Wohlbefinden','Schwangerschaft','Kindsbewegungen / Wehen','Frauenarzttermin','Abstrich / Laboruntersuchung','Geburt / Wochenbett','Gemeinsame Selbstkontrolle','Krankheit / Allgemeinsymptome'];
 const categoryIcons = {
@@ -453,7 +453,84 @@ function formBind(){
  };
  $('close-form').onclick=()=>{editing=null;$('form-holder').innerHTML='';};
 }
-async function calendar(){let entries=await all('entries');let d=new Date(selectedDay+'T12:00:00');let year=d.getFullYear(),month=d.getMonth(),first=new Date(year,month,1),last=new Date(year,month+1,0),start=(first.getDay()+6)%7;let cells=Array(start).fill('<div></div>');for(let n=1;n<=last.getDate();n++){let date=`${year}-${String(month+1).padStart(2,'0')}-${String(n).padStart(2,'0')}`,count=entries.filter(e=>e.date.startsWith(date)).length;cells.push(`<button class="day ${date===selectedDay?'active':''}" data-day="${date}">${n}${count?`<br><small>● ${count}</small>`:''}</button>`)}let todays=entries.filter(e=>e.date.startsWith(selectedDay));return `<h2>Kalender</h2><div id="form-holder"></div><div class="card"><div class="row"><button class="secondary" id="prev">←</button><strong>${d.toLocaleDateString('de-AT',{month:'long',year:'numeric'})}</strong><button class="secondary" id="next">→</button></div><div class="week" style="margin:17px 0 6px">${['Mo','Di','Mi','Do','Fr','Sa','So'].map(x=>`<small style="text-align:center">${x}</small>`).join('')}</div><div class="week">${cells.join('')}</div></div><h3>Einträge am ${esc(new Date(selectedDay+'T12:00').toLocaleDateString('de-AT'))}</h3>${entryRows(todays)}<p class="footnote">Der Kalender zeigt dokumentierte Ereignisse. Eine medizinische Zyklusvorhersage ist in Beta 0.1 noch nicht enthalten.</p>`}
+async function calendar(){
+ let entries=await all('entries');
+ let d=new Date(selectedDay+'T12:00:00');
+ let year=d.getFullYear(),month=d.getMonth();
+ let first=new Date(year,month,1),last=new Date(year,month+1,0),start=(first.getDay()+6)%7;
+ let todayStr=[new Date().getFullYear(),String(new Date().getMonth()+1).padStart(2,'0'),String(new Date().getDate()).padStart(2,'0')].join('-');
+ 
+ let cells=Array(start).fill('<div class="day-empty"></div>');
+ for(let n=1;n<=last.getDate();n++){
+  let date=`${year}-${String(month+1).padStart(2,'0')}-${String(n).padStart(2,'0')}`;
+  let dayEntries=entries.filter(e=>e.date.startsWith(date));
+  let count=dayEntries.length;
+  let isSelected=date===selectedDay;
+  let isToday=date===todayStr;
+
+  // Extract distinct category icons for this day (max 3 visible dots/icons)
+  let catSet=[...new Set(dayEntries.map(e=>e.category))];
+  let iconBadges=catSet.slice(0,3).map(c=>`<span class="day-mini-ico" title="${esc(c)}">${getCatIcon(c)}</span>`).join('');
+  let hasMore=catSet.length>3;
+
+  // Period / Illness special highlight class
+  let hasPeriod=catSet.some(c=>c==='Periode'||c==='Zwischenblutung');
+  let hasIllness=catSet.includes('Krankheit / Allgemeinsymptome');
+  let dayTypeClass=hasPeriod?'day-has-period':hasIllness?'day-has-illness':count?'day-has-entry':'';
+
+  cells.push(`<button class="day-card ${isSelected?'active':''} ${isToday?'is-today':''} ${dayTypeClass}" data-day="${date}" aria-label="${n}. ${d.toLocaleDateString('de-AT',{month:'long'})}">
+   <span class="day-num">${n}</span>
+   <div class="day-icons-row">${iconBadges}${hasMore?'<span class="day-more-dots">+</span>':''}</div>
+   ${count>0?`<span class="day-badge-count">${count}</span>`:''}
+  </button>`);
+ }
+
+ let todays=entries.filter(e=>e.date.startsWith(selectedDay)).sort((a,b)=>b.date.localeCompare(a.date));
+ const selectedDateFormatted=new Date(selectedDay+'T12:00').toLocaleDateString('de-AT',{weekday:'long',day:'2-digit',month:'long',year:'numeric'});
+
+ return `<div class="calendar-header-card">
+  <div class="row wrap" style="margin-bottom:12px">
+   <div>
+    <h2>📅 Kalender</h2>
+    <p class="muted" style="margin:2px 0 0">Monatsübersicht mit Symptom- und Zyklus-Icons.</p>
+   </div>
+   <button class="primary new-entry-cal-btn" id="cal-new-entry">＋ Eintrag am ${new Date(selectedDay+'T12:00').toLocaleDateString('de-AT',{day:'2-digit',month:'2-digit'})}</button>
+  </div>
+
+  <div class="cal-nav-bar">
+   <button class="cal-arrow-btn" id="prev" aria-label="Vorheriger Monat">◀</button>
+   <div class="cal-month-title">
+    <strong>${d.toLocaleDateString('de-AT',{month:'long'})}</strong>
+    <small>${year}</small>
+   </div>
+   <button class="cal-arrow-btn" id="next" aria-label="Nächster Monat">▶</button>
+  </div>
+
+  <div class="week-header-row">
+   ${['Mo','Di','Mi','Do','Fr','Sa','So'].map(x=>`<span class="week-header-cell">${x}</span>`).join('')}
+  </div>
+
+  <div class="cal-grid-month">${cells.join('')}</div>
+
+  <div class="cal-legend-bar">
+   <span class="legend-item"><span class="legend-dot dot-period">🩸</span> Periode</span>
+   <span class="legend-item"><span class="legend-dot dot-ill">🤒</span> Krankheit</span>
+   <span class="legend-item"><span class="legend-dot dot-check">🔦</span> Kontrolle</span>
+   <span class="legend-item"><span class="legend-dot dot-mucus">✨</span> Schleim</span>
+  </div>
+ </div>
+
+ <div id="form-holder"></div>
+
+ <div class="selected-day-header">
+  <div class="selected-day-title-wrap">
+   <h3>Einträge am ${selectedDateFormatted}</h3>
+   <span class="selected-day-count-pill">${todays.length} ${todays.length===1?'Eintrag':'Einträge'}</span>
+  </div>
+ </div>
+
+ <div class="entries" id="entry-list">${entryRows(todays)}</div>`;
+}
 function learn(){const mods=[...new Set(lessons.map(l=>l.module))];return `<h2>Lernzentrum · Lehrbuch</h2><p class="muted">${DEEP_LESSONS.length} umfangreiche Praxis- und Fachlektionen, ${lessons.length} Grundlagenlektionen sowie ${SELF_GUIDES.length} illustrierte Kapitel unter „Gemeinsame Selbstkontrolle“. Suche, Lernstufen und Fortschritt bleiben lokal auf diesem Handy.</p><div class="warning"><strong>Sicherheit:</strong> Die Lernkartei erklärt sichere äußere Beobachtung und ärztliche Verfahren. Bei möglichem Fruchtwasserverlust oder Frühgeburtszeichen während einer Schwangerschaft sofort in die Geburtsklinik.</div><h3>Ausführliche Lehrbuchlektionen</h3><p class="footnote" id="deep-progress"></p><div id="deep-lessons">${DEEP_LESSONS.map(deepCard).join('')}</div><h3>Weitere 50 Grundlagenlektionen</h3><p class="muted">Diese älteren Kurzlektionen werden in künftigen Updates schrittweise vertieft.</p><label for="lesson-module">Lerngebiet</label><select id="lesson-module"><option value="">Alle Lerngebiete</option>${mods.map(m=>`<option value="${esc(m)}">${esc(m)}</option>`).join('')}</select><label for="search-lessons">Suche in Grundlagen</label><input id="search-lessons" placeholder="z. B. Muttermund, Hygiene, Ausfluss..." aria-label="Lektionen durchsuchen"><p id="lesson-count" class="footnote">${lessons.length} Grundlagenlektionen</p><div id="lessons">${lessonCards(lessons)}</div>`}
 function deepCard(l,i){return `<details class="lesson deep-lesson" id="deep-${i}"><summary><span class="summary-row"><span class="lesson-ico">${esc(l.icon||"🎓")}</span><span class="summary-text"><span class="summary-meta"><span class="pill">${esc(l.module)}</span>${l.images?.length?`<span class="pill img-pill">🖼️ ${l.images.length} Tafeln</span>`:""}</span><strong>${esc(l.title)}</strong></span></span></summary><p class="footnote">Vertiefte Lernlektion · ${l.steps.length} Praxis- und Dokumentationsschritte</p>${l.images?l.images.map(im=>`<figure class="medical-figure"><img src="./${esc(im.src)}" alt="${esc(im.alt)}" loading="lazy"><figcaption>${esc(im.caption)}<br><span class="zoom-hint">🔍 Antippen zum Vergrößern (Vollbild)</span></figcaption></figure>`).join(''):l.image?`<figure class="medical-figure"><img src="./${esc(l.image)}" alt="${esc(l.alt||l.title)}" loading="lazy"><figcaption>${esc(l.caption||'')}</figcaption></figure>`:""}<h3>Einfach erklärt</h3><p>${esc(l.simple)}</p><h3>Fachwissen – vertieft</h3><p>${esc(l.expert)}</p><h3>Vorbereitung und Schritt für Schritt</h3><ol>${l.steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol><div class="warning"><strong>Praxishinweis &amp; Besonderheiten:</strong> ${esc(l.tip)}</div><p class="footnote"><a target="_blank" rel="noopener noreferrer" href="${esc(l.source)}">Weiterführende Fachquelle ↗</a></p><label><input class="checkbox deep-complete" type="checkbox" data-deep="${i}" ${localStorage.getItem('frauen-app-lesson-done-'+i)==='1'?'checked':''}> Lektion abgeschlossen</label></details>`}
 function lessonCards(arr){return arr.map(l=>`<details class="lesson"><summary><span class="pill">${esc(l.module)}</span> ${esc(l.title)}</summary><p class="footnote">Grundlagenlektion – wird noch erweitert.</p><h3>Einfach erklärt</h3><p>${esc(l.simple)}</p><h3>Medizinisches Fachwissen</h3><p>${esc(l.expert)}</p><h3>Selbstbeobachtung / Dokumentation</h3><p>${esc(l.practice)}</p><div class="warning"><strong>Grenzen und Warnzeichen:</strong> ${esc(l.tip)}</div><p class="footnote"><a href="${esc(l.source)}" target="_blank" rel="noopener noreferrer">Fachquelle öffnen ↗</a></p></details>`).join('')||'<p>Keine Lektion gefunden.</p>'}
@@ -475,7 +552,13 @@ async function render(){buttons();$('view').innerHTML=page==='home'?home():page=
    $('entry-list').innerHTML=entryRows(filtered);
    if($('entries-count-text'))$('entries-count-text').textContent=filtered.length+(filtered.length===1?' Eintrag':' Einträge')+' gefunden';
    bindEntryButtons();
-  };bindEntryButtons()}if(page==='calendar'){bindEntryButtons();$('prev').onclick=()=>shiftMonth(-1);$('next').onclick=()=>shiftMonth(1);document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{selectedDay=b.dataset.day;render()})}if(page==='learn'){const updateProgress=()=>{$('deep-progress').textContent=DEEP_LESSONS.filter((_,i)=>localStorage.getItem('frauen-app-lesson-done-'+i)==='1').length+' von '+DEEP_LESSONS.length+' vertieften Lektionen abgeschlossen';};document.querySelectorAll('.deep-complete').forEach(c=>c.onchange=()=>{localStorage.setItem('frauen-app-lesson-done-'+c.dataset.deep,c.checked?'1':'0');updateProgress()});updateProgress();const filterLessons=()=>{const q=$('search-lessons').value.toLocaleLowerCase('de'),m=$('lesson-module').value;const filtered=lessons.filter(l=>(!m||l.module===m)&&[l.title,l.simple,l.expert,l.practice].some(t=>t.toLocaleLowerCase('de').includes(q)));$('lessons').innerHTML=lessonCards(filtered);$('lesson-count').textContent=filtered.length+' von '+lessons.length+' Lektionen';};$('search-lessons').oninput=filterLessons;$('lesson-module').onchange=filterLessons;}if(page==='records'){$('open-record-form').onclick=async()=>{await goto('diary');showForm('Frauenarzttermin')};$('export').onclick=()=>backup().catch(err=>notify('Backup: '+err.message));$('drive-share').onclick=()=>shareDriveBackup().catch(err=>notify('Drive-Sicherung: '+err.message));$('restore').onchange=async e=>{try{await restore(e.target.files[0])}catch(err){notify('Importfehler: '+err.message)}};$('record-update').onclick=checkUpdate;$('clear-all').onclick=async()=>{if(!confirm('ALLE lokalen Gesundheitsdaten und Bilder unwiderruflich löschen?'))return;await Promise.all(['entries','photos'].map(async name=>{for(const v of await all(name))await del(name,v.id)}));notify('Alle Daten gelöscht');render()}}}
+  };bindEntryButtons()}if(page==='calendar'){
+ bindEntryButtons();
+ $('prev').onclick=()=>shiftMonth(-1);
+ $('next').onclick=()=>shiftMonth(1);
+ if($('cal-new-entry'))$('cal-new-entry').onclick=async()=>{await goto('diary');showForm();if($('entry-date'))$('entry-date').value=selectedDay+'T12:00';};
+ document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{selectedDay=b.dataset.day;render();});
+}if(page==='learn'){const updateProgress=()=>{$('deep-progress').textContent=DEEP_LESSONS.filter((_,i)=>localStorage.getItem('frauen-app-lesson-done-'+i)==='1').length+' von '+DEEP_LESSONS.length+' vertieften Lektionen abgeschlossen';};document.querySelectorAll('.deep-complete').forEach(c=>c.onchange=()=>{localStorage.setItem('frauen-app-lesson-done-'+c.dataset.deep,c.checked?'1':'0');updateProgress()});updateProgress();const filterLessons=()=>{const q=$('search-lessons').value.toLocaleLowerCase('de'),m=$('lesson-module').value;const filtered=lessons.filter(l=>(!m||l.module===m)&&[l.title,l.simple,l.expert,l.practice].some(t=>t.toLocaleLowerCase('de').includes(q)));$('lessons').innerHTML=lessonCards(filtered);$('lesson-count').textContent=filtered.length+' von '+lessons.length+' Lektionen';};$('search-lessons').oninput=filterLessons;$('lesson-module').onchange=filterLessons;}if(page==='records'){$('open-record-form').onclick=async()=>{await goto('diary');showForm('Frauenarzttermin')};$('export').onclick=()=>backup().catch(err=>notify('Backup: '+err.message));$('drive-share').onclick=()=>shareDriveBackup().catch(err=>notify('Drive-Sicherung: '+err.message));$('restore').onchange=async e=>{try{await restore(e.target.files[0])}catch(err){notify('Importfehler: '+err.message)}};$('record-update').onclick=checkUpdate;$('clear-all').onclick=async()=>{if(!confirm('ALLE lokalen Gesundheitsdaten und Bilder unwiderruflich löschen?'))return;await Promise.all(['entries','photos'].map(async name=>{for(const v of await all(name))await del(name,v.id)}));notify('Alle Daten gelöscht');render()}}}
 function bindLightbox(){
  const lb=$('lightbox');if(!lb)return;
  const close=()=>{lb.classList.remove('open');$('lb-img').src='';};

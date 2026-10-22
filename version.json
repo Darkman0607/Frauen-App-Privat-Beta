@@ -1,6 +1,6 @@
 {
-  "version": "0.1.8.9",
+  "version": "0.1.9.0",
   "released": "2026-10-22",
-  "notes": "Redesign Tagebuch-Übersicht: Moderne Kacheln mit bunten Kategorie-Icons, Zeitstempel-Pill, hervorgehobenen Symptom-Tags, Temperatur-Badge, Schmerz-Status und ansprechenden Aktions-Buttons.",
-  "build": 13
+  "notes": "Kalender-Redesign: Moderne Monatskacheln mit bunten Mini-Icons (z. B. Periode 🩸, Krankheit 🤒, Selbstkontrolle 🔦, Schleim ✨), aktiver Tag-Hervorhebung, Zähler-Pills, Monatswechsler und Legende.",
+  "build": 14
 }
