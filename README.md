@@ -1,5 +1,7 @@
-# Frauen-App Beta 0.1.9.5 (Alle Grundlagen zu Fachlektionen aufgewertet)
+# Frauen-App Beta 0.1.9.6 (Render- & Cache-Fix)
 
-Update von 0.1.9.4 auf 0.1.9.5 (Build 19):
-- **100 % Fachlektionen:** Alle bisherigen Grundlagenlektionen wurden in vollwertige, strukturierte Fachkapitel umgewandelt (insgesamt 69 umfassende Fachlektionen).
-- Es gibt im gesamten Lernzentrum keine oberflächlichen Textkarten mehr – jede der 8 Themenkacheln führt direkt zu tiefgehenden, formatierten Fachlektionen mit Schautafeln, Hebammenwissen, Schritten und Gelernt-Häkchen.
+Update auf 0.1.9.6 (Build 20):
+- **Behebung des weißen Bildschirms / alter Version:**
+  - `index.html` wird ab sofort vom Service Worker **niemals mehr gecached** (`no-store`), sondern immer direkt frisch von GitHub geladen.
+  - Automatisches Bereinigen und Neu-Registrieren des Service Workers beim App-Start.
+- **Enthält alle 69 Fachlektionen**, Schautafeln, Themen-Kacheln, Tagebuch-Redesign und Kalender-Icons.

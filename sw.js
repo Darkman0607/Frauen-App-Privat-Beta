@@ -1,7 +1,6 @@
-const CACHE='frauen-app-0.1.9.5-build19';
+const CACHE='frauen-app-0.1.9.6-build20';
 const CORE=[
   './',
-  './index.html',
   './style.css',
   './app.js',
   './lessons.js',
@@ -21,7 +20,7 @@ const CORE=[
   './speculum-cleaning-aftercare.svg',
   './cervix-cycle-comparison.svg',
   './cycle-hormones-chart.svg',
-  './postpartum-fundus.svg','./period-flow-anatomy.svg','./period-free-bleeding-guide.svg',
+  './postpartum-fundus.svg',
   './version.json',
   './icon.svg',
   './manifest.webmanifest'
@@ -52,13 +51,14 @@ self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
   if (e.request.method !== 'GET' || url.origin !== self.location.origin) return;
 
-  // version.json und sw.js niemals aus Cache
-  if (url.pathname.endsWith('/version.json') || url.pathname.endsWith('/sw.js')) {
-    e.respondWith(fetch(e.request, { cache: 'no-store' }));
+  if (url.pathname.endsWith('/') || url.pathname.endsWith('/index.html') || url.pathname.endsWith('/version.json') || url.pathname.endsWith('/sw.js')) {
+    e.respondWith(
+      fetch(e.request, { cache: 'no-store' })
+        .catch(() => caches.match(e.request))
+    );
     return;
   }
 
-  // Network-First für Skripte, HTML und CSS damit Updates sofort sichtbar sind
   e.respondWith(
     fetch(e.request, { cache: 'no-cache' })
       .then(response => {

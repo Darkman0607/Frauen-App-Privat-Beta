@@ -1,6 +1,6 @@
 {
-  "version": "0.1.9.5",
+  "version": "0.1.9.6",
   "released": "2026-10-22",
-  "notes": "Alle Grundlagenlektionen wurden zu vollwertigen Fachlektionen aufgewertet (insgesamt 69 Fachkapitel). Jedes Thema (Periode, Zyklus, Schwangerschaft, Untersuchungen, Anatomie, Wochenbett, Brust, Hygiene) listet nun exklusiv umfassende Fachkapitel mit Schautafeln, Boxen und Praxis-Schritten.",
-  "build": 19
+  "notes": "Render- & Cache-Fix: Strikte no-store Netzwerk-Strategie für index.html und Service Worker, automatisches Entwurzeln alter Service Worker beim Start, 69 Fachlektionen.",
+  "build": 20
 }
