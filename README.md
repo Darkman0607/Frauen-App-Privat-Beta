@@ -1,5 +1,5 @@
-# Frauen-App Beta 0.1.9.4 (Force-Update & Cache-Fix)
+# Frauen-App Beta 0.1.9.5 (Alle Grundlagen zu Fachlektionen aufgewertet)
 
-Update auf 0.1.9.4 (Build 18):
-- **Radikaler Cache-Buster:** Bei Versionsaktualisierung werden alte Service Worker automatisch per `unregister()` gelöscht und alle Browser-Caches (`caches.delete`) bereinigt.
-- Alle Fachbuchkapitel zu **Periode & Blutung**, **Freiem Bluten**, **Dysmenorrhoe/Prostaglandinen**, **Vaginaler Untersuchung (VU)**, **Spekulum** und die **Themen-Kacheln** im Lernzentrum sind zu 100 % aktiv.
+Update von 0.1.9.4 auf 0.1.9.5 (Build 19):
+- **100 % Fachlektionen:** Alle bisherigen Grundlagenlektionen wurden in vollwertige, strukturierte Fachkapitel umgewandelt (insgesamt 69 umfassende Fachlektionen).
+- Es gibt im gesamten Lernzentrum keine oberflächlichen Textkarten mehr – jede der 8 Themenkacheln führt direkt zu tiefgehenden, formatierten Fachlektionen mit Schautafeln, Hebammenwissen, Schritten und Gelernt-Häkchen.
