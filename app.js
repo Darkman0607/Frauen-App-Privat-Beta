@@ -1,5 +1,5 @@
 'use strict';
-const APP_VERSION='0.1.9.4', APP_BUILD=18, DB='frauen-app-beta', DB_VERSION=2;
+const APP_VERSION='0.1.9.5', APP_BUILD=19, DB='frauen-app-beta', DB_VERSION=2;
 const $=id=>document.getElementById(id), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const categories=['Periode','Zwischenblutung','Ausfluss','Flüssigkeitsverlust','Sexualität','Kinderwunsch','Zervixschleim / Eisprung','Basaltemperatur','Schwangerschaftstest','Schmerzen','Brustveränderung','Vulva / Scheide','WC / Ausscheidung','Wohlbefinden','Schwangerschaft','Kindsbewegungen / Wehen','Frauenarzttermin','Abstrich / Laboruntersuchung','Geburt / Wochenbett','Gemeinsame Selbstkontrolle','Krankheit / Allgemeinsymptome'];
 const categoryIcons = {
@@ -27,7 +27,7 @@ const categoryIcons = {
 };
 function getCatIcon(cat){return categoryIcons[cat]||'📝';}
 
-let updatingNow=false,db,page='home',selectedTopic=null,selectedDay=[new Date().getFullYear(),String(new Date().getMonth()+1).padStart(2,'0'),String(new Date().getDate()).padStart(2,'0')].join('-'),reloadOnce=false,editing=null;
+let updatingNow=false,db,page='home',selectedTopic=null,selectedTopic=null,selectedDay=[new Date().getFullYear(),String(new Date().getMonth()+1).padStart(2,'0'),String(new Date().getDate()).padStart(2,'0')].join('-'),reloadOnce=false,editing=null;
 const lessons=COURSE_LESSONS;
 let dataKey=null;
 const SECURE_CHECK='frauen-app-local-v1';
@@ -539,7 +539,7 @@ const LEARN_TOPICS = [
     desc: 'Menstruationsverlauf, Blutmengen, Koagel, Hygiene & freies Bluten',
     colorClass: 'topic-periode',
     modules: ['Zyklus und Periode', 'Zyklus'],
-    keywords: ['menstruation', 'blutung', 'hygiene', 'periode', 'koagel', 'freies bluten', 'dysmenorrhoe', 'regelschmerz']
+    keywords: ['menstruation', 'blutung', 'hygiene', 'periode', 'koagel', 'freies bluten', 'dysmenorrhoe', 'regelschmerz', 'gewebe']
   },
   {
     id: 'zyklus',
@@ -548,7 +548,7 @@ const LEARN_TOPICS = [
     desc: 'Eisprung, Zervixschleim, Basaltemperatur, Lutealphase & NFP',
     colorClass: 'topic-zyklus',
     modules: ['Zyklus und Periode', 'Hormone & Zyklus', 'Kinderwunsch', 'Zyklus'],
-    keywords: ['zervixschleim', 'basaltemperatur', 'lutealphase', 'sensiplan', 'eisprung', 'hormon']
+    keywords: ['zervixschleim', 'basaltemperatur', 'lutealphase', 'sensiplan', 'eisprung', 'hormon', 'fsh', 'lh', 'östrogen', 'progesteron']
   },
   {
     id: 'schwangerschaft',
@@ -557,7 +557,7 @@ const LEARN_TOPICS = [
     desc: 'Entwicklung, Fruchtblase, Fruchtwasser, Wehen & Geburt',
     colorClass: 'topic-schwanger',
     modules: ['Schwangerschaft und Geburt', 'Schwangerschaft & Geburt', 'Geburtshilfe'],
-    keywords: ['fruchtblase', 'fruchtwasser', 'geburt', 'schwangerschaft']
+    keywords: ['fruchtblase', 'fruchtwasser', 'geburt', 'schwangerschaft', 'einnistung', 'befruchtung', 'wehen', 'kindswochen', 'ultraschall']
   },
   {
     id: 'untersuchungen',
@@ -566,7 +566,7 @@ const LEARN_TOPICS = [
     desc: 'Spekulumkunde, Vaginale Tastung (VU), Portio-Einstellung & Labor',
     colorClass: 'topic-unter',
     modules: ['Untersuchungen', 'Gynäkologie'],
-    keywords: ['spekulum', 'vaginale untersuchung', 'frauenarzt', 'palpation', 'labor']
+    keywords: ['spekulum', 'vaginale untersuchung', 'frauenarzt', 'palpation', 'labor', 'abstrich', 'pap', 'hpv']
   },
   {
     id: 'anatomie',
@@ -575,7 +575,7 @@ const LEARN_TOPICS = [
     desc: 'Vulva, Schamlippen, Scheideneingang, Muttermund & Beckenboden',
     colorClass: 'topic-anatomie',
     modules: ['Anatomie'],
-    keywords: ['vulva', 'scheideneingang', 'muttermund', 'beckenboden']
+    keywords: ['vulva', 'scheideneingang', 'muttermund', 'beckenboden', 'vagina', 'gebärmutter', 'eierstock', 'damm']
   },
   {
     id: 'wochenbett',
@@ -594,6 +594,15 @@ const LEARN_TOPICS = [
     colorClass: 'topic-brust',
     modules: ['Brustgesundheit'],
     keywords: ['brust']
+  },
+  {
+    id: 'selbstkontrolle',
+    title: 'Selbstbeobachtung & Hygiene',
+    icon: '🧼',
+    desc: 'Händehygiene, Handschuhe, sichere Schritte & Fotodokumentation',
+    colorClass: 'topic-hygiene',
+    modules: ['Selbstbeobachtung', 'Gemeinsame Selbstkontrolle'],
+    keywords: ['hygiene', 'handschuh', 'selbstkontrolle', 'foto']
   }
 ];
 
@@ -607,22 +616,11 @@ function getDeepLessonsForTopic(topicId){
   });
 }
 
-function getBaseLessonsForTopic(topicId){
-  const t = LEARN_TOPICS.find(x => x.id === topicId);
-  if(!t) return lessons;
-  return lessons.filter(l => {
-    const modMatch = t.modules.includes(l.module);
-    const kwMatch = t.keywords.some(kw => l.title.toLowerCase().includes(kw) || l.simple.toLowerCase().includes(kw));
-    return modMatch || kwMatch;
-  });
-}
-
 function learn(){
  if(selectedTopic){
   const t = LEARN_TOPICS.find(x => x.id === selectedTopic);
   if(!t){ selectedTopic = null; return learn(); }
   const topicDeep = getDeepLessonsForTopic(t.id);
-  const topicBase = getBaseLessonsForTopic(t.id);
 
   return `<div class="learn-subpage-header ${t.colorClass}">
    <button class="subpage-back-btn" id="topic-back-btn">← Zur Themenübersicht</button>
@@ -634,27 +632,19 @@ function learn(){
     </div>
    </div>
    <div class="subpage-stats-chips">
-    <span class="pill sub-pill">📖 ${topicDeep.length} Fachlektionen</span>
-    <span class="pill sub-pill">📚 ${topicBase.length} Grundlagen</span>
+    <span class="pill sub-pill">📖 ${topicDeep.length} Fachkapitel</span>
     <button class="secondary small-btn" id="open-all-topic">Alle öffnen</button>
     <button class="secondary small-btn" id="close-all-topic">Alle schließen</button>
    </div>
   </div>
 
   <div class="topic-lessons-wrap">
-   <h3 class="section-title">Ausführliche Lehrbuch-Lektionen (${topicDeep.length})</h3>
    <div id="deep-lessons" class="lessons-container">
-    ${topicDeep.length ? topicDeep.map(({l,idx})=>deepCard(l,idx)).join('') : '<div class="card muted text-center" style="padding:20px">Keine vertieften Fachlektionen in diesem Bereich.</div>'}
+    ${topicDeep.length ? topicDeep.map(({l,idx})=>deepCard(l,idx)).join('') : '<div class="card muted text-center" style="padding:20px">Keine Fachlektionen in diesem Bereich.</div>'}
    </div>
-
-   ${topicBase.length ? `
-    <h3 class="section-title" style="margin-top:28px">Grundlagenlektionen (${topicBase.length})</h3>
-    <div id="lessons" class="lessons-container">${lessonCards(topicBase)}</div>
-   ` : ''}
   </div>`;
  }
 
- // Hauptseite des Lernzentrums: Gekachelte Themenbereiche
  const doneTotal = DEEP_LESSONS.filter((_,i)=>localStorage.getItem('frauen-app-lesson-done-'+i)==='1').length;
  const pctTotal = Math.round((doneTotal / DEEP_LESSONS.length) * 100);
 
@@ -662,7 +652,7 @@ function learn(){
   <div class="learn-hero-top">
    <div class="learn-hero-title">
     <h2>🎓 Lernzentrum · Themenbereiche</h2>
-    <p class="muted" style="margin:2px 0 0">Wähle ein Fachgebiet aus, um alle passenden Lektionen &amp; Schautafeln zu öffnen.</p>
+    <p class="muted" style="margin:2px 0 0">Wähle ein Fachgebiet aus, um alle ${DEEP_LESSONS.length} Fachkapitel &amp; Schautafeln zu öffnen.</p>
    </div>
    <div class="learn-stats-badge">
     <strong>${DEEP_LESSONS.length}</strong>
@@ -686,7 +676,6 @@ function learn(){
  <div class="topics-grid">
   ${LEARN_TOPICS.map(t=>{
     const deepCount = getDeepLessonsForTopic(t.id).length;
-    const baseCount = getBaseLessonsForTopic(t.id).length;
     return `<button class="topic-card ${t.colorClass}" data-topic="${esc(t.id)}">
      <div class="topic-card-top">
       <span class="topic-card-icon">${t.icon}</span>
@@ -696,12 +685,12 @@ function learn(){
      <p class="topic-card-desc">${esc(t.desc)}</p>
      <div class="topic-card-footer">
       <span class="topic-stat-pill">📖 ${deepCount} Fachkapitel</span>
-      <span class="topic-stat-pill base-stat-pill">📚 ${baseCount} Grundlagen</span>
      </div>
     </button>`;
   }).join('')}
  </div>`;
 }
+
 function deepCard(l,i){
  const isDone = localStorage.getItem('frauen-app-lesson-done-'+i)==='1';
  return `<details class="lesson deep-lesson ${isDone?'is-completed':''}" id="deep-${i}">
